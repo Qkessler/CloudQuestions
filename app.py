@@ -24,5 +24,16 @@ def parsing_markdown():
     # answers = [line for line in lines if pat_answers.match(line)]
     questions_num = [line_num(q, file) for q in questions]
     print(questions_num)
+    print(lines)
+    answers = []
+    print(lines[13].strip('\n'))
     for _ in questions_num:
-        
+        print(_)
+        for r in range(3):
+            print(lines[_+r].strip('\n'))
+        answer = []
+        while pat_answers.match(lines[_+2]):
+            answer.append(lines[_])
+            _ += 1
+        print(answer)
+        break

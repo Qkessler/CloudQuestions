@@ -19,7 +19,10 @@ def parsing_markdown():
 
     # Headers will be tables in the database.
     headers = [line for line in lines if pat_headers.match(line)]
-    questions = [line for line in lines if pat_questions.match(line)]
-    questions_stripped = [q.strip('\n') for q in questions]
+    questions = [q.strip('\n') for q in lines
+                 if pat_questions.match(q)]
     # answers = [line for line in lines if pat_answers.match(line)]
     questions_num = [line_num(q, file) for q in questions]
+    print(questions_num)
+    for _ in questions_num:
+        

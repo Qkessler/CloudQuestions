@@ -13,12 +13,13 @@ def line_num(line, _file):
 
 
 def parsing_markdown():
-    with open('tests/SSL TLS.md', 'r') as f:
+    file = 'tests/SSL TLS.md'
+    with open(file, 'r') as f:
         lines = f.readlines()
 
     # Headers will be tables in the database.
     headers = [line for line in lines if pat_headers.match(line)]
     questions = [line for line in lines if pat_questions.match(line)]
     questions_stripped = [q.strip('\n') for q in questions]
-    answers = [line for line in lines if pat_answers.match(line)]
-    
+    # answers = [line for line in lines if pat_answers.match(line)]
+    questions_num = [line_num(q, file) for q in questions]

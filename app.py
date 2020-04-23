@@ -1,6 +1,7 @@
 import re
 import random
 import markdown
+import os.path
 
 pat_headers = re.compile(r'## .*')
 pat_questions = re.compile(r'- .*')
@@ -14,6 +15,16 @@ def line_num(line, _file):
                 return i
 
 
+def scrub_name(name):
+    chars = []
+    for c in name:
+        if c == ' ':
+            chars.append('_')
+        elif c.isalnum():
+            chars.append(c)
+    return "".join(chars)
+
+
 def parsing_markdown(file):
     return_file = {}
     with open(file, 'r') as f:
@@ -23,7 +34,9 @@ def parsing_markdown(file):
                  if pat_questions.match(q)]
     q_a = get_inside(questions, file)
     return_file['q_a'] = q_a
-    return_file['file_name'] = 
+    base_name = os.path.basename(file)
+    file_name = base_name.split('.')[0]
+    return_file['file_name'] = scrub_name(file_name)
     return return_file
 
 

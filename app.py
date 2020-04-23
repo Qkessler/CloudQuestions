@@ -47,7 +47,6 @@ def finalline_file(file):
 
 def get_inside(mark, file):
     mark_num = [line_num(q, file) for q in mark]
-    print(mark_num)
     with open(file, 'r') as f:
         lines = f.readlines()
     clean_lines = []
@@ -58,8 +57,9 @@ def get_inside(mark, file):
     values = []
     for _ in mark_num:
         v = []
-        while (_ + 1 != finalline_file(file)) and (pat_answers.match(clean_lines[_+1])
-                                                   or clean_lines[_+1] == '\n'):
+        not_last = (_ + 1 != finalline_file(file))
+        while not_last and (pat_answers.match(clean_lines[_+1])
+                            or clean_lines[_+1] == '\n'):
             v.append(clean_lines[_+1].strip('    '))
             _ += 1
         values.append("".join(v))

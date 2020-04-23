@@ -1,14 +1,8 @@
-from app import parsing_markdown
-import random
+import app
 
 
 if __name__ == '__main__':
-    return_files = parsing_markdown('tests/SSL TLS.md')
+    return_files = app.parsing_markdown('tests/SSL TLS.md')
     q_a = return_files['q_a']
-    print(q_a)
-    random_q = random.randint(0, len(q_a.keys()))
-    print(random_q)
-    print(list(q_a.keys())[random_q])
-    key = input('Press whatever for answer: ')
-    if key:
-        print(list(q_a.values())[random_q])
+    app.print_q_a(q_a)
+    # app.random_question(q_a)

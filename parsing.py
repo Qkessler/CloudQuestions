@@ -38,7 +38,8 @@ def parsing_markdown(file):
     return_file['q_a'] = q_a
     base_name = os.path.basename(file)
     file_name = base_name.split('.')[0]
-    return_file['file_name'] = scrub_name(file_name)
+    s_name = scrub_name(file_name)
+    return_file['file_name'] = s_name
 
     # Getting the questions and answers in the db.
     session = session_factory.create_session()
@@ -46,6 +47,7 @@ def parsing_markdown(file):
         topic = Topic()
         topic.question = q
         topic.answer = a
+        topic.topic = s_name
         session.add(topic)
     session.commit()
     session.close()

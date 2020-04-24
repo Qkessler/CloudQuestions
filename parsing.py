@@ -4,6 +4,8 @@ import markdown
 import os.path
 from models.topic import Topic
 from data import session_factory
+from question_service import same_questions
+
 
 pat_headers = re.compile(r'## .*')
 pat_questions = re.compile(r'- .*')
@@ -44,11 +46,12 @@ def parsing_markdown(file):
     # Getting the questions and answers in the db.
     session = session_factory.create_session()
     for q, a in q_a.items():
-        topic = Topic()
-        topic.question = q
-        topic.answer = a
-        topic.topic = s_name
-        session.add(topic)
+        if not same_questions(q):
+            topic = Topic()
+            topic.question = q
+            topic.answer = a
+            topic.topic = s_name
+            session.add(topic)
     session.commit()
     session.close()
 
@@ -72,11 +75,12 @@ def get_inside(mark, file):
     values = []
     for _ in mark_num:
         v = []
-        not_last = (_ + 1 != finalline_file(file))
+        not_last = (_ + 1 < finalline_file(file))
         while not_last and (pat_answers.match(clean_lines[_+1])
                             or clean_lines[_+1] == '\n'):
             v.append(clean_lines[_+1].strip('    '))
             _ += 1
+            print(f'{_+1} < {finalline_file(file)} = {not_last}')
         values.append("".join(v))
     inside = dict(zip(mark, values))
     return inside

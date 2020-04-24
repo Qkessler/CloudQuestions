@@ -2,11 +2,11 @@ import sqlalchemy
 import sqlalchemy.orm
 from db_folder import db_folder
 from models.model_base import ModelBase
-from models import topic
 
 __factory = None
 
 
+# Initiating the sqlalchemy engine in the questions db.
 def global_init():
     global __factory
 
@@ -19,6 +19,7 @@ def global_init():
     __factory = sqlalchemy.orm.sessionmaker(bind=engine)
 
 
+# Function that creates a session for accessing the db.
 def create_session():
     global __factory
 

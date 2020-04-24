@@ -3,6 +3,7 @@ import sqlalchemy
 from models.model_base import ModelBase
 
 
+# Creating table Topic(id, topic, created, question, answer).
 class Topic(ModelBase):
     __tablename__ = 'topics'
 

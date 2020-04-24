@@ -19,6 +19,17 @@ def line_num(string, _file):
                 return i
 
 
+# Unscrubs the name given.
+def unscrub_name(name):
+    chars = []
+    for c in name:
+        if c == '_':
+            chars.append(' ')
+        else:
+            chars.append(c)
+    return "".join(chars)
+
+
 # Scrubs the name given to make sure it's compatible in the db.
 def scrub_name(name):
     chars = []

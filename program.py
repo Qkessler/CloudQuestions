@@ -1,11 +1,13 @@
 import parsing
 from data.session_factory import global_init
 import os
+from question_service import search_engine
 
 
 if __name__ == '__main__':
-    dir_name = 'tests'
-    files = os.listdir('tests')
-    for f in files:
-        parsing.parsing_markdown("/".join([dir_name, f]))
-    global_init()
+    # dir_name = 'tests'
+    # files = os.listdir('tests')
+    # for f in files:
+    #     parsing.parsing_markdown("/".join([dir_name, f]))
+    # global_init()
+    search_engine('tls')

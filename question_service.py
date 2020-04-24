@@ -1,5 +1,6 @@
 from data import session_factory
 from models.topic import Topic
+import parsing
 
 
 # Query of questions given a topic
@@ -21,3 +22,16 @@ def same_questions(question, topic):
         return False
     else:
         return True
+
+
+# Checks if string is any of the topics first. Returns the topics
+# where we have any question that contains the string given by the user.
+def search_engine(string):
+    topics_return = []
+    session = session_factory.create_session()
+    topics_query = list(session.query(Topic.topic).distinct())
+    topics = [parsing.unscrub_name(topic[0]) for topic in topics_query]
+    for t in topics:
+        if string.lower() in t.lower():
+            topics_return.append(t)
+    print(topics_return)

@@ -75,24 +75,14 @@ def get_inside(mark, file):
     values = []
     for _ in mark_num:
         v = []
-        not_last = (_ + 1 < finalline_file(file))
+        not_last = (_+1 < finalline_file(file))
         while not_last and (pat_answers.match(clean_lines[_+1])
                             or clean_lines[_+1] == '\n'):
             v.append(clean_lines[_+1].strip('    '))
             _ += 1
-            print(f'{_+1} < {finalline_file(file)} = {not_last}')
         values.append("".join(v))
     inside = dict(zip(mark, values))
     return inside
-
-
-def random_question(q_a):
-    random_q = random.randint(0, len(q_a.keys())-1)
-    print(list(q_a.keys())[random_q])
-    key = input('Press <ENTER> for answer: ')
-    while key != '':
-        key = input('Press <ENTER> for answer: ')
-    print(list(q_a.values())[random_q])
 
 
 def print_q_a(q_a):

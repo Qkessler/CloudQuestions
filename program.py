@@ -4,6 +4,6 @@ import question_service
 
 
 if __name__ == '__main__':
-    return_file = parsing.parsing_markdown('tests/B4 2.md')
+    return_file = parsing.parsing_markdown('tests/test.md')
     global_init()
-    print(question_service.questions_by_topic('SSL_TLS'))
+    print(question_service.questions_by_topic('test'))

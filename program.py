@@ -10,4 +10,5 @@ if __name__ == '__main__':
     # for f in files:
     #     parsing.parsing_markdown("/".join([dir_name, f]))
     # global_init()
-    search_engine('tls')
+    topics = search_engine('suite')
+    print(topics)

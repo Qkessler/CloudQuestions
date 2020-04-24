@@ -34,4 +34,15 @@ def search_engine(string):
     for t in topics:
         if string.lower() in t.lower():
             topics_return.append(t)
-    print(topics_return)
+
+    topic_question = list(session.query(Topic.topic, Topic.question))
+    for t_q in topic_question:
+        question = t_q[1]
+        topic = t_q[0]
+        words_scrubbed = [parsing.scrub_name(word)
+                          for word in question.split(' ')]
+        words = [word for word in words_scrubbed if word]
+        if string in words:
+            if topic not in topics_return:
+                topics_return.append(topic)
+    return topics_return

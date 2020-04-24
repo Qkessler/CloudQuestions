@@ -1,7 +1,7 @@
 import parsing
 from data.session_factory import global_init
 import os
-from question_service import search_engine
+from question_service import search_engine, questions_by_topic
 
 
 if __name__ == '__main__':
@@ -10,5 +10,5 @@ if __name__ == '__main__':
     # for f in files:
     #     parsing.parsing_markdown("/".join([dir_name, f]))
     # global_init()
-    topics = search_engine('reservas')
+    topics = search_engine('test')
     print(topics)

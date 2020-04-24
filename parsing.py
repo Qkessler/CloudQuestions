@@ -1,5 +1,4 @@
 import re
-import random
 import markdown
 import os.path
 from models.topic import Topic

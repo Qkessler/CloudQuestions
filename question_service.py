@@ -10,9 +10,10 @@ def questions_by_topic(_topic):
     return questions
 
 
-def same_questions(_question):
+def same_questions(question, topic):
     session = session_factory.create_session()
-    query = session.query(Topic).filter(Topic.question == _question)
+    query = session.query(Topic).filter(Topic.question == question
+                                        and Topic.topic == topic)
     if not list(query):
         return False
     else:

@@ -2,6 +2,8 @@ import re
 import random
 import markdown
 import os.path
+from models import topic
+from data import session_factory
 
 pat_headers = re.compile(r'## .*')
 pat_questions = re.compile(r'- .*')
@@ -82,6 +84,6 @@ def print_q_a(q_a):
         print(f'{value}')
 
 
-def html_transalor(answer):
+def html_translator(answer):
     html = markdown.markdown(answer)
     print(html)

@@ -9,6 +9,6 @@ class Topic(ModelBase):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
                            autoincrement=True)
     created = sqlalchemy.Column(sqlalchemy.DateTime,
-                                default=datetime.datetime.now, index=True)
-    question = sqlalchemy.Column(sqlalchemy.String, index=True)
-    answer = sqlalchemy.Column(sqlalchemy.String, index=True)
+                                default=datetime.now, nullable=False)
+    question = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    answer = sqlalchemy.Column(sqlalchemy.String, nullable=False)

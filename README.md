@@ -1,3 +1,3 @@
 # CLOUD QUESTIONS
 
-Web-App for students creating a easier costumer experience to studying with the Flash card combined with the Active Recall technique.
+Web-App for students creating a easier costumer experience for studying with Flash Cards combined with Active Recall technique.

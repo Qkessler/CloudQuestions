@@ -45,7 +45,7 @@ def parsing_markdown(file):
     # Getting the questions and answers in the db.
     session = session_factory.create_session()
     for q, a in q_a.items():
-        if not same_questions(q):
+        if not same_questions(q, s_name):
             topic = Topic()
             topic.question = q
             topic.answer = a
@@ -57,26 +57,23 @@ def parsing_markdown(file):
     return return_file
 
 
-def finalline_file(file):
-    with open(file, 'r') as f:
-        return len(f.readlines())
-
-
 def get_inside(mark, file):
     mark_num = [line_num(q, file) for q in mark]
     with open(file, 'r') as f:
         lines = f.readlines()
     clean_lines = []
+    last_line = len(lines)
     for line in lines:
-        if line == '\n':
+        if line != '\n':
             line.strip('\n')
         clean_lines.append(line)
     values = []
     for _ in mark_num:
         v = []
-        not_last = (_+1 < finalline_file(file))
+        not_last = True
         while not_last and (pat_answers.match(clean_lines[_+1])
                             or clean_lines[_+1] == '\n'):
+            not_last = (_ + 1 < (last_line - 1))
             v.append(clean_lines[_+1].strip('    '))
             _ += 1
         values.append("".join(v))

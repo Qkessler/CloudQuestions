@@ -1,9 +1,11 @@
 import parsing
 from data.session_factory import global_init
-import question_service
+import os
 
 
 if __name__ == '__main__':
-    return_file = parsing.parsing_markdown('tests/test.md')
+    dir_name = 'tests'
+    files = os.listdir('tests')
+    for f in files:
+        parsing.parsing_markdown("/".join([dir_name, f]))
     global_init()
-    print(question_service.questions_by_topic('test'))

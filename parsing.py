@@ -2,7 +2,7 @@ import re
 import random
 import markdown
 import os.path
-from models import topic
+from models.topic import Topic
 from data import session_factory
 
 pat_headers = re.compile(r'## .*')
@@ -39,6 +39,17 @@ def parsing_markdown(file):
     base_name = os.path.basename(file)
     file_name = base_name.split('.')[0]
     return_file['file_name'] = scrub_name(file_name)
+
+    # Getting the questions and answers in the db.
+    session = session_factory.create_session()
+    for q, a in q_a.items():
+        topic = Topic()
+        topic.question = q
+        topic.answer = a
+        session.add(topic)
+    session.commit()
+    session.close()
+
     return return_file
 
 

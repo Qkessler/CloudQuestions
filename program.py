@@ -10,5 +10,5 @@ if __name__ == '__main__':
     # for f in files:
     #     parsing.parsing_markdown("/".join([dir_name, f]))
     # global_init()
-    topics = search_engine('suite')
+    topics = search_engine('reservas')
     print(topics)

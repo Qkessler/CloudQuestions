@@ -57,20 +57,22 @@ def parsing_markdown(file):
     file_name = base_name.split('.')[0]
     s_name = scrub_name(file_name)
     return_file['file_name'] = s_name
+    include_questions(q_a, s_name)
+    return return_file
 
-    # Inserting the questions and answers in the db.
+
+# Inserting the questions and answers in the db.
+def include_questions(q_a, topic_name):
     session = session_factory.create_session()
     for q, a in q_a.items():
-        if not same_questions(q, s_name):
+        if not same_questions(q, topic_name):
             topic = Topic()
             topic.question = q
             topic.answer = a
-            topic.topic = s_name
+            topic.topic = topic_name
             session.add(topic)
     session.commit()
     session.close()
-
-    return return_file
 
 
 # Given a list of questions, we calculate the line numbers and add to

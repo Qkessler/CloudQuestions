@@ -1,5 +1,4 @@
 import re
-import markdown
 import os.path
 from models.topic import Topic
 from data import session_factory
@@ -106,9 +105,3 @@ def print_q_a(q_a):
     for key, value in q_a.items():
         print(f'{key}:')
         print(f'{value}')
-
-
-# Html translator given a string.
-def html_translator(string):
-    html = markdown.markdown(string)
-    print(html)

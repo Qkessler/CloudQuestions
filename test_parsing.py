@@ -1,5 +1,6 @@
 import os
 import parsing
+from pytest import raises
 
 
 def test_line_num():
@@ -22,8 +23,28 @@ def test_scrub_name():
 def test_parsing_markdown():
     test_dict = {'q_a':
                  {'- Pregunta1':
-                  'Esto es la respuesta1\nEsto es la segunda línea\n\n\n'},
+                  'Esto es la respuesta1\nEsto es la segunda línea\n'},
                  'file_name': 'test'}
-
     assert parsing.parsing_markdown('test_files/test.md') == test_dict
-    assert parsing.parsing_markdown('non_existent_file')
+    assert raises(FileNotFoundError,
+                  parsing.parsing_markdown, 'file_not_existent')
+
+
+def tests_get_inside():
+    test_dict = {'- Pregunta1':
+                 'Esto es la respuesta1\nEsto es la segunda línea\n'}
+    file_name = 'test_files/test.md'
+    questions = ['- Pregunta1']
+    assert raises(FileNotFoundError,
+                  parsing.get_inside, [], 'file_not_existent')
+    assert parsing.get_inside(questions, file_name) == test_dict
+
+
+def test_print_q_a(capfd):
+    test_dict = {'- Pregunta1':
+                 'Esto es la respuesta1\nEsto es la segunda línea\n'}
+    parsing.print_q_a(test_dict)
+    out, err = capfd.readouterr()
+    assert out == """- Pregunta1:
+Esto es la respuesta1
+Esto es la segunda línea\n\n"""

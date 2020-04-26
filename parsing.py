@@ -61,7 +61,7 @@ def parsing_markdown(file):
 
 
 # Inserting the questions and answers in the db.
-def include_questions(q_a, topic_name):
+def include_questions(q_a, topic_name):    # pragma: no cover
     session = session_factory.create_session()
     for q, a in q_a.items():
         if not same_questions(q, topic_name):

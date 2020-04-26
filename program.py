@@ -14,7 +14,4 @@ if __name__ == '__main__':
     # print(topics)
     # test_dict = parsing.parsing_markdown('test_files/test.md')
     # print(test_dict)
-    file_name = 'test_files/test.md'
-    test_dict = {'- Pregunta1':
-                 'Esto es la respuesta1\nEsto es la segunda línea\n'}
-    parsing.print_q_a(test_dict)
+    print(questions_by_topic('test'))

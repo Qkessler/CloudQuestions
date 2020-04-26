@@ -48,3 +48,11 @@ def test_print_q_a(capfd):
     assert out == """- Pregunta1:
 Esto es la respuesta1
 Esto es la segunda línea\n\n"""
+
+
+# Not a good test, just for 100% coverage, don't want to test the
+# connection to the db.
+def test_include_questions():
+    test_dict = {'- Pregunta1':
+                 'Esto es la respuesta1\nEsto es la segunda línea\n'}
+    assert parsing.include_questions(test_dict, 'test') == None

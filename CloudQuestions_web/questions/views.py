@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, Http404
 from .models import Topic
 
 
@@ -10,4 +10,5 @@ def index(request):
 
 
 def detail(request, question_id):
-    return HttpResponse(f'This is question {question_id}')
+    question = get_object_or_404(Topic, pk=question_id)
+    return render(request, 'questions/detail.html', {question: question})

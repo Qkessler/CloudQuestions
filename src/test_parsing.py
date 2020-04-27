@@ -4,7 +4,7 @@ from pytest import raises
 
 
 def test_line_num():
-    abs_path = os.path.abspath('test_files/test.md')
+    abs_path = os.path.abspath('src/test_files/test.md')
     assert parsing.line_num('Pregunta 1', abs_path) is None
     assert parsing.line_num('Pregunta1', abs_path) == 0
 
@@ -25,7 +25,7 @@ def test_parsing_markdown():
                  {'- Pregunta1':
                   'Esto es la respuesta1\nEsto es la segunda línea\n'},
                  'file_name': 'test'}
-    assert parsing.parsing_markdown('test_files/test.md') == test_dict
+    assert parsing.parsing_markdown('src/test_files/test.md') == test_dict
     assert raises(FileNotFoundError,
                   parsing.parsing_markdown, 'file_not_existent')
 
@@ -33,7 +33,7 @@ def test_parsing_markdown():
 def tests_get_inside():
     test_dict = {'- Pregunta1':
                  'Esto es la respuesta1\nEsto es la segunda línea\n'}
-    file_name = 'test_files/test.md'
+    file_name = 'src/test_files/test.md'
     questions = ['- Pregunta1']
     assert raises(FileNotFoundError,
                   parsing.get_inside, [], 'file_not_existent')
@@ -48,11 +48,3 @@ def test_print_q_a(capfd):
     assert out == """- Pregunta1:
 Esto es la respuesta1
 Esto es la segunda línea\n\n"""
-
-
-# Not a good test, just for 100% coverage, don't want to test the
-# connection to the db.
-def test_include_questions():
-    test_dict = {'- Pregunta1':
-                 'Esto es la respuesta1\nEsto es la segunda línea\n'}
-    assert parsing.include_questions(test_dict, 'test') == None

@@ -14,4 +14,4 @@ if __name__ == '__main__':
     # print(topics)
     # test_dict = parsing.parsing_markdown('test_files/test.md')
     # print(test_dict)
-    print(questions_by_topic('test'))
+    print(search_engine('Pregunta1'))

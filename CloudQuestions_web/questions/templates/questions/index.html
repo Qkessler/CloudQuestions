@@ -1,0 +1,8 @@
+{% if question_list %}
+<ul>
+  {% for question in question_list %}
+  <li><a href='/questions/{{question.id}}/'>{{question.question}}</a></li>
+  {% endfor %}
+{% else %}
+  <p> No questions are available. <p>
+{% endif %}

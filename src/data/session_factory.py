@@ -17,6 +17,7 @@ def global_init():
     ModelBase.metadata.create_all(engine)
 
     __factory = sqlalchemy.orm.sessionmaker(bind=engine)
+    return engine
 
 
 # Function that creates a session for accessing the db.

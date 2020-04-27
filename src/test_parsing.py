@@ -4,7 +4,8 @@ from pytest import raises
 
 
 def test_line_num():
-    abs_path = os.path.abspath('src/test_files/test.md')
+    path = 'CloudQuestions_web/questions/src/test_files/test.md'
+    abs_path = os.path.abspath(path)
     assert parsing.line_num('Pregunta 1', abs_path) is None
     assert parsing.line_num('Pregunta1', abs_path) == 0
 
@@ -25,7 +26,8 @@ def test_parsing_markdown():
                  {'- Pregunta1':
                   'Esto es la respuesta1\nEsto es la segunda línea\n'},
                  'file_name': 'test'}
-    assert parsing.parsing_markdown('src/test_files/test.md') == test_dict
+    path = 'CloudQuestions_web/questions/src/test_files/test.md'
+    assert parsing.parsing_markdown(path) == test_dict
     assert raises(FileNotFoundError,
                   parsing.parsing_markdown, 'file_not_existent')
 
@@ -33,11 +35,11 @@ def test_parsing_markdown():
 def tests_get_inside():
     test_dict = {'- Pregunta1':
                  'Esto es la respuesta1\nEsto es la segunda línea\n'}
-    file_name = 'src/test_files/test.md'
+    path = 'CloudQuestions_web/questions/src/test_files/test.md'
     questions = ['- Pregunta1']
     assert raises(FileNotFoundError,
                   parsing.get_inside, [], 'file_not_existent')
-    assert parsing.get_inside(questions, file_name) == test_dict
+    assert parsing.get_inside(questions, path) == test_dict
 
 
 def test_print_q_a(capfd):

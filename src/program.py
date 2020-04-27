@@ -9,7 +9,7 @@ if __name__ == '__main__':
     # files = os.listdir('tests')
     # for f in files:
     #     parsing.parsing_markdown("/".join([dir_name, f]))
-    # global_init()
+    global_init()
     # topics = search_engine('test')
     # print(topics)
     # test_dict = parsing.parsing_markdown('test_files/test.md')

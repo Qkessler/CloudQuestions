@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from .forms import SearchForm
 from questions.src import question_service, parsing
-import pdb
 
 
 def index(request):
@@ -15,7 +14,6 @@ def index(request):
             db_topics = []
             for t in topics:
                 db_topics.append(parsing.scrub_name(t))
-            pdb.set_trace()
             topics_return = dict(zip(topics, db_topics))
             context['topics_return'] = topics_return
     else:

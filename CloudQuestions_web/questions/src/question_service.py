@@ -30,7 +30,6 @@ def same_questions(question, topic):
 # where we have any question that contains the string given by the user.
 def search_engine(string):
     topics_return = []
-    # pdb.set_trace()
     session = session_factory.create_session()
     topics_query = list(session.query(Topic.topic).distinct())
     topics = [parsing.unscrub_name(topic[0]) for topic in topics_query]
@@ -46,6 +45,6 @@ def search_engine(string):
         words = [word for word in words_scrubbed if word]
         if string in words:
             if topic not in topics_return:
-                topics_return.append(topic)
+                topics_return.append(parsing.unscrub_name(topic))
     session.close()
     return topics_return

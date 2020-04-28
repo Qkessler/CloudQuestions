@@ -1,8 +1,15 @@
-{% if question_list %}
-<ul>
-  {% for question in question_list %}
-  <li><a href="{% url 'detail' question.topic %}"> {{question.question}} </a></li>
-  {% endfor %}
-{% else %}
-  <p> No questions are available. <p>
-{% endif %}
+<body>
+  <form action="/questions/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+  {% if topics_return %}
+  <ul>
+    {% for topic in topics_return %}
+    <li><a href="{% url 'detail' topic %}"> {{topic}} </a></li>
+    {% endfor %}
+    {% else %}
+    <p> No questions are available. <p>
+      {% endif %}
+</body>

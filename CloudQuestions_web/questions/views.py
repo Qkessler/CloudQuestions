@@ -1,17 +1,21 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
-# from db_folder.session_factory import create_session
-from db_folder.session_factory import create_session
-from models.topic import Topic
+from .forms import SearchForm
 from questions.src import question_service
 
 
 def index(request):
-    session = create_session()
-    # latest_question_list = Topic.objects.order_by('-created')[:5]
-    # context = {'question_list': latest_question_list}
-    # return render(request, 'questions/index.html', context)
-    return HttpResponse('Esto es una prueba')
+    context = {}
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            topic = form.cleaned_data.get('search_text')
+            topics_return = question_service.search_engine(topic)
+            context['topics_return'] = topics_return
+    else:
+        form = SearchForm()
+    context['form'] = form
+    return render(request, 'questions/index.html', context)
 
 
 def detail(request, topic):

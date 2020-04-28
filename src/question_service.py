@@ -1,4 +1,4 @@
-from data import session_factory
+import session_factory
 from models.topic import Topic
 import parsing
 

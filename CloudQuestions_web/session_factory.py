@@ -1,6 +1,6 @@
 import sqlalchemy
 import sqlalchemy.orm
-from db_folder import db_folder
+import db_folder
 from models.model_base import ModelBase
 
 __factory = None

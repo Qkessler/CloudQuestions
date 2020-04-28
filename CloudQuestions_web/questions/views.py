@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from .models import Topic
-from session_factory import create_session
+from db_folder.session_factory import create_session
 from models.topic import Topic
 
 

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from .forms import SearchForm
-from questions.src import question_service
+from questions.src import question_service, parsing
+import pdb
 
 
 def index(request):
@@ -10,7 +11,12 @@ def index(request):
         form = SearchForm(request.POST)
         if form.is_valid():
             topic = form.cleaned_data.get('search_text')
-            topics_return = question_service.search_engine(topic)
+            topics = question_service.search_engine(topic)
+            db_topics = []
+            for t in topics:
+                db_topics.append(parsing.scrub_name(t))
+            pdb.set_trace()
+            topics_return = dict(zip(topics, db_topics))
             context['topics_return'] = topics_return
     else:
         form = SearchForm()

@@ -1,7 +1,7 @@
 import re
 import os.path
 from models.topic import Topic
-from data import session_factory
+from db_folder import session_factory
 from question_service import same_questions
 
 # Patterns for parsing the markdown file.

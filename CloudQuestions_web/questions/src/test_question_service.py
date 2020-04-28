@@ -1,4 +1,3 @@
-import pytest
 import question_service
 
 

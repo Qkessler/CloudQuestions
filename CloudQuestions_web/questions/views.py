@@ -9,6 +9,9 @@ def index(request):
     return render(request, 'questions/index.html', context)
 
 
-def detail(request, question_id):
-    question = get_object_or_404(Topic, pk=question_id)
-    return render(request, 'questions/detail.html', {question: question})
+def detail(request, topic):
+    topics = Topic.objects.all()
+    questions_by_topic = [t.question for t in topics if t.topic == topic]
+    return render(request, 'questions/detail.html',
+                  {'topic': topic,
+                   'questions_by_topic': questions_by_topic})

@@ -1,1 +1,4 @@
-{{ question.topic }}
+<h1> {{ topic }} </h1>
+<ul> {% for q in questions_by_topic %}
+  <li> {{q}} </li>
+</ul> {% endfor %}

@@ -1,6 +1,6 @@
 from db_folder import session_factory
 from models.topic import Topic
-import parsing
+import questions.src.parsing as parsing
 
 
 # Query of questions given a topic

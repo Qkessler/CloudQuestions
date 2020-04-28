@@ -2,7 +2,7 @@ import re
 import os.path
 from models.topic import Topic
 from db_folder import session_factory
-from question_service import same_questions
+import questions.src.question_service as question_service
 
 # Patterns for parsing the markdown file.
 pat_headers = re.compile(r'## .*')
@@ -64,7 +64,7 @@ def parsing_markdown(file):
 def include_questions(q_a, topic_name):    # pragma: no cover
     session = session_factory.create_session()
     for q, a in q_a.items():
-        if not same_questions(q, topic_name):
+        if not question_service.same_questions(q, topic_name):
             topic = Topic()
             topic.question = q
             topic.answer = a

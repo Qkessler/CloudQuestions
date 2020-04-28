@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
-from .models import Topic
+# from db_folder.session_factory import create_session
 from db_folder.session_factory import create_session
 from models.topic import Topic
+from questions.src import question_service
 
 
 def index(request):
@@ -14,11 +15,7 @@ def index(request):
 
 
 def detail(request, topic):
-    session = create_session()
-    query = session.query(Topic).filter(Topic.topic == topic)
-    questions_by_topic = {topic.question:
-                          topic.answer for topic in list(query)}
-    session.close()
+    questions_by_topic = question_service.questions_by_topic(topic)
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})

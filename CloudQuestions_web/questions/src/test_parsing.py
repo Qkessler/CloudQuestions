@@ -1,5 +1,5 @@
 import os
-import parsing
+from questions.src import parsing
 from pytest import raises
 
 

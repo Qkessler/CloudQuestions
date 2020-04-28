@@ -1,4 +1,4 @@
-import question_service
+from questions.src import question_service
 
 
 def test_questions_by_topic():

@@ -4,10 +4,11 @@ from pytest import raises
 
 
 def test_line_num():
-    path = 'CloudQuestions_web/questions/src/test_files/test.md'
-    abs_path = os.path.abspath(path)
-    assert parsing.line_num('Pregunta 1', abs_path) is None
-    assert parsing.line_num('Pregunta1', abs_path) == 0
+    path = 'test_files/test.md'
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    test_path = '/'.join([dir_path, path])
+    assert parsing.line_num('Pregunta 1', test_path) is None
+    assert parsing.line_num('Pregunta1', test_path) == 0
 
 
 def test_unscrub_name():
@@ -26,8 +27,10 @@ def test_parsing_markdown():
                  {'- Pregunta1':
                   'Esto es la respuesta1\nEsto es la segunda línea\n'},
                  'file_name': 'test'}
-    path = 'CloudQuestions_web/questions/src/test_files/test.md'
-    assert parsing.parsing_markdown(path) == test_dict
+    path = 'test_files/test.md'
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    test_path = '/'.join([dir_path, path])
+    assert parsing.parsing_markdown(test_path) == test_dict
     assert raises(FileNotFoundError,
                   parsing.parsing_markdown, 'file_not_existent')
 
@@ -35,11 +38,13 @@ def test_parsing_markdown():
 def tests_get_inside():
     test_dict = {'- Pregunta1':
                  'Esto es la respuesta1\nEsto es la segunda línea\n'}
-    path = 'CloudQuestions_web/questions/src/test_files/test.md'
+    path = 'test_files/test.md'
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    test_path = '/'.join([dir_path, path])
     questions = ['- Pregunta1']
     assert raises(FileNotFoundError,
                   parsing.get_inside, [], 'file_not_existent')
-    assert parsing.get_inside(questions, path) == test_dict
+    assert parsing.get_inside(questions, test_path) == test_dict
 
 
 def test_print_q_a(capfd):

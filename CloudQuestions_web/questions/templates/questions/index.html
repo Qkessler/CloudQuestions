@@ -1,17 +1,16 @@
 <body>
   <form action="/questions/" method="post">
     {% csrf_token %}
+    <input type="hidden" name="action" value="search">
     {{ search_form }}
     <input type="submit" value="Submit">
   </form>
   <form action="/questions/" method="post">
     {% csrf_token %}
+    <input type="hidden" name="action" value="upload">
     {{ upload_file_form }}
     <input type="submit" value="Submit">
   </form>
-  {% if correct_upload %}
-  <a> {{correct_upload}} </a>
-  {% endif %}
   {% if topics_return %}
   <ul>
     {% for topic, db_name in topics_return.items %}

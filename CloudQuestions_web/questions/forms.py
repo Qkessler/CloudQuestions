@@ -1,4 +1,5 @@
 from django import forms
+from . import validators
 
 
 class SearchForm(forms.Form):
@@ -6,4 +7,4 @@ class SearchForm(forms.Form):
 
 
 class UploadFileForm(forms.Form):
-    file = forms.FileField()
+    file = forms.FileField(validators=[validators.validate_markdown])

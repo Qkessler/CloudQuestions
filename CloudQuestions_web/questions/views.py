@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
-from django.core.exceptions import ValidationError
 
 
 def index(request):
@@ -26,13 +25,6 @@ def index(request):
         elif action == 'upload':
             upload_file_form = UploadFileForm(request.POST)
             uploaded = request.FILES.get('file')
-            # if uploaded:
-                # if uploaded.file.read() != 'text/markdown':
-                #     raise ValidationError(u'Incorrect extension')
-                # else:
-                #     print(uploaded)
-                # print(uploaded.file.read())
-            # parsing.parsing_markdown(uploaded)
     else:
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

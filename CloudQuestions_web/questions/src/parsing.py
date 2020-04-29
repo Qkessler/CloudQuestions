@@ -50,13 +50,14 @@ def parsing_markdown(file):
     lines = file_lines
     questions = [q.strip('\n') for q in lines
                  if pat_questions.match(q)]
-    q_a = get_inside(questions, file)
-    return_file['q_a'] = q_a
     base_name = os.path.basename(file)
     file_name = base_name.split('.')[0]
     s_name = scrub_name(file_name)
     return_file['file_name'] = s_name
-    include_questions(q_a, s_name)
+    if questions:
+        q_a = get_inside(questions, file)
+        return_file['q_a'] = q_a
+        include_questions(q_a, s_name)
     return return_file
 
 

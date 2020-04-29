@@ -26,11 +26,12 @@ def index(request):
         elif action == 'upload':
             upload_file_form = UploadFileForm(request.POST)
             uploaded = request.FILES.get('file')
-            if uploaded:
-                if uploaded.file.content_type != 'text/markdown':
-                    raise ValidationError(u'Incorrect extension')
-                else:
-                    print(uploaded)
+            # if uploaded:
+                # if uploaded.file.read() != 'text/markdown':
+                #     raise ValidationError(u'Incorrect extension')
+                # else:
+                #     print(uploaded)
+                # print(uploaded.file.read())
             # parsing.parsing_markdown(uploaded)
     else:
         search_form = SearchForm(prefix='search_form')

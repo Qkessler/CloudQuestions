@@ -6,6 +6,7 @@ import questions.src.question_service as question_service
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+import pdb
 
 
 # Patterns for parsing the markdown file.
@@ -17,12 +18,13 @@ pat_answers = re.compile(r'\s{4}.*')
 # Function to create a tmp file to push into the db through
 # the parsing_markdown function
 def handling_uploaded_file(uploaded):
-    tmp_path = f'tmp/{uploaded.name[2:]}'
+    tmp_path = f'tmp/{uploaded.name}'
     default_storage.save(tmp_path, ContentFile(uploaded.file.read()))
-    full_tmp_path = os.path.join(settings.MEDIA_ROOT, tmp_path)
+    full_tmp_path = os.path.join(settings.BASE_DIR, tmp_path)
     with open(full_tmp_path, 'wb') as f:
         for chunk in uploaded.chunks():
             f.write(chunk)
+        print(full_tmp_path)
         parsing_markdown(full_tmp_path)
     default_storage.delete(full_tmp_path)
 
@@ -61,6 +63,7 @@ def scrub_name(name):
 # being the markdown toggles. After that, parses for each question,
 # the answer below.
 def parsing_markdown(file):
+    # pdb.set_trace()
     return_file = {}
     with open(file, 'r') as f:
         file_lines = f.readlines()

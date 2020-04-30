@@ -24,8 +24,7 @@ def handling_uploaded_file(uploaded):
     with open(full_tmp_path, 'wb') as f:
         for chunk in uploaded.chunks():
             f.write(chunk)
-        print(full_tmp_path)
-        parsing_markdown(full_tmp_path)
+    parsing_markdown(full_tmp_path)
     default_storage.delete(full_tmp_path)
 
 
@@ -63,7 +62,6 @@ def scrub_name(name):
 # being the markdown toggles. After that, parses for each question,
 # the answer below.
 def parsing_markdown(file):
-    # pdb.set_trace()
     return_file = {}
     with open(file, 'r') as f:
         file_lines = f.readlines()

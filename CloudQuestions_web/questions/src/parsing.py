@@ -66,7 +66,7 @@ def parsing_markdown(file):
     with open(file, 'r') as f:
         file_lines = f.readlines()
     lines = file_lines
-    questions = [q.strip('\n') for q in lines
+    questions = [' '.join(q.strip('\n').split(' ')[1:]) for q in lines
                  if pat_questions.match(q)]
     base_name = os.path.basename(file)
     file_name = base_name.split('.')[0]

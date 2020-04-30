@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 
+
 # Patterns for parsing the markdown file.
 pat_headers = re.compile(r'## .*')
 pat_questions = re.compile(r'- .*')
@@ -22,8 +23,8 @@ def handling_uploaded_file(uploaded):
     with open(full_tmp_path, 'wb') as f:
         for chunk in uploaded.chunks():
             f.write(chunk)
-        parsing_markdown(f)
-    default_storage.delete(tmp_path)
+        parsing_markdown(full_tmp_path)
+    default_storage.delete(full_tmp_path)
 
 
 # Gets the line number of the line that contains the string given.

@@ -23,8 +23,10 @@ def index(request):
                     topics_return = dict(zip(topics, db_topics))
                     context['topics_return'] = topics_return
         elif action == 'upload':
-            upload_file_form = UploadFileForm(request.POST)
-            uploaded = request.FILES.get('file')
+            upload_file_form = UploadFileForm(request.POST, request.FILES)
+            if upload_file_form.is_valid():
+                uploaded = request.FILES.get('file')
+                print(uploaded)
     else:
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

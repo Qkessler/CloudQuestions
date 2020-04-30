@@ -3,11 +3,27 @@ import os.path
 from models.topic import Topic
 from db_folder import session_factory
 import questions.src.question_service as question_service
+from django.conf import settings
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 # Patterns for parsing the markdown file.
 pat_headers = re.compile(r'## .*')
 pat_questions = re.compile(r'- .*')
 pat_answers = re.compile(r'\s{4}.*')
+
+
+# Function to create a tmp file to push into the db through
+# the parsing_markdown function
+def handling_uploaded_file(uploaded):
+    tmp_path = f'tmp/{uploaded.name[2:]}'
+    default_storage.save(tmp_path, ContentFile(uploaded.file.read()))
+    full_tmp_path = os.path.join(settings.MEDIA_ROOT, tmp_path)
+    with open(full_tmp_path, 'wb') as f:
+        for chunk in uploaded.chunks():
+            f.write(chunk)
+        parsing_markdown(f)
+    default_storage.delete(tmp_path)
 
 
 # Gets the line number of the line that contains the string given.

@@ -26,7 +26,7 @@ def index(request):
             upload_file_form = UploadFileForm(request.POST, request.FILES)
             if upload_file_form.is_valid():
                 uploaded = request.FILES.get('file')
-                print(uploaded)
+                handle_uploaded_file(uploaded)
     else:
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

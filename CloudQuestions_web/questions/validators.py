@@ -13,5 +13,5 @@ def validate_markdown(upload):
     full_tmp_path = os.path.join(settings.MEDIA_ROOT, tmp_path)
     file_type = magic.from_file(full_tmp_path, mime=True)
     default_storage.delete(tmp_path)
-    if file_type not in 'text/markdown':
+    if file_type not in 'text/plain':
         raise ValidationError('File type not supported: md (Markdown) only.')

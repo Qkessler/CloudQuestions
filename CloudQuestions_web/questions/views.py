@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
+import pdb
 
 
 def index(request):
@@ -43,10 +44,10 @@ def detail(request, topic):
                    'questions_by_topic': questions_by_topic})
 
 
-def random(request, topic):
-    context = []
+def random_questions(request, topic):
+    context = {}
     pdb.set_trace()
     random_question = question_service.random_question(topic)
     context['random_question'] = random_question
     context['topic'] = topic
-    return render(request, 'questions/random.html'), context)
+    return render(request, 'questions/random.html', context)

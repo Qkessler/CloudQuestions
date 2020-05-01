@@ -3,6 +3,7 @@ from models.topic import Topic
 from models.question import Question
 import questions.src.parsing as parsing
 import random
+import pdb
 
 
 # Inserting the questions and answers in the db.
@@ -72,7 +73,6 @@ def topics_by_name(ids):
 # ids in the db.
 def topics_by_id(names):
     session = session_factory.create_session()
-    pdb.set_trace()
     query = list(session.query(Topic.id).filter(Topic.name.in_(names)))
     topic_ids = [topic.id for topic in list(query)]
     session.close()
@@ -104,10 +104,12 @@ def search_engine(string):
 
 # Function that returns a random question for a topic.
 def random_question(topic):
+    # pdb.set_trace()
     session = session_factory.create_session()
     topic_id = topics_by_id([topic])[0]
     random_number = random.randrange(
         0, session.query(Question).filter(Question.topic == topic_id).count())
-    random_question = session.query(
-        Question.question).filter(Question.topic == topic_id)[random_number]
-    return random_question
+    random_question = list(session.query(
+        Question.question).filter(Question.topic == topic_id)[random_number])
+    session.close()
+    return random_question[0]

@@ -13,7 +13,7 @@
   </form>
   {% if topics_return %}
   <ul>
-    {% for topic, db_name in topics_return.items %}
+    {% for db_name, topic in topics_return.items %}
     <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
     {% endfor %}
     {% else %}

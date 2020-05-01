@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
-import pdb
 
 
 def index(request):
@@ -17,11 +16,11 @@ def index(request):
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
-                topics = question_service.search_engine(search_term)
-                db_topics = []
-                for t in topics:
-                    db_topics.append(parsing.scrub_name(t))
-                    topics_return = dict(zip(topics, db_topics))
+                db_topics = question_service.search_engine(search_term)
+                topics = []
+                for t in db_topics:
+                    topics.append(parsing.unscrub_name(t))
+                    topics_return = dict(zip(db_topics, topics))
                     context['topics_return'] = topics_return
         elif action == 'upload':
             upload_file_form = UploadFileForm(request.POST, request.FILES)

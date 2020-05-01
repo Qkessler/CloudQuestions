@@ -30,7 +30,8 @@ def include_questions(q_a, topic_name):    # pragma: no cover
 # Query of questions given a topic
 def questions_by_topic(topic):
     session = session_factory.create_session()
-    questions = session.query(Question).filter(Question.topic == topic)
+    topic_ids = topics_by_id([topic])
+    questions = session.query(Question).filter(Question.topic.in_(topic_ids))
     questions = {question.question: question.answer
                  for question in list(questions)}
     session.close()
@@ -67,6 +68,7 @@ def topics_by_name(ids):
 
 def topics_by_id(names):
     session = session_factory.create_session()
+    pdb.set_trace()
     query = list(session.query(Topic.id).filter(Topic.name.in_(names)))
     topic_ids = [topic.id for topic in list(query)]
     session.close()

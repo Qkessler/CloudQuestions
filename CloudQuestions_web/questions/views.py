@@ -46,7 +46,7 @@ def detail(request, topic):
 
 def random_questions(request, topic):
     context = {}
-    pdb.set_trace()
+    # pdb.set_trace()
     random_question = question_service.random_question(topic)
     context['random_question'] = random_question
     context['topic'] = topic

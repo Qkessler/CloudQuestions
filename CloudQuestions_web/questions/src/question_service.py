@@ -2,16 +2,20 @@ from db_folder import session_factory
 from models.topic import Topic
 from models.question import Question
 import questions.src.parsing as parsing
+import pdb
 
 
 # Inserting the questions and answers in the db.
 def include_questions(q_a, topic_name):    # pragma: no cover
     session = session_factory.create_session()
-    topics = session.query(Topic)
+    pdb.set_trace()
+    topics = list(session.query(Topic))
     if topic_name not in topics:
         topic = Topic()
         topic.name = topic_name
         session.add(topic)
+    else:
+        topic = list(session.query(Topic).filter(Topic.name == topic_name))[0]
     for q, a in q_a.items():
         if not same_questions(q, topic_name):
             question = Question()
@@ -37,14 +41,20 @@ def questions_by_topic(topic):
 # in the db for a given topic.
 def same_questions(question, topic):
     session = session_factory.create_session()
-    topic_id = list(session.query(Topic).filter(Topic.name == topic))[0].id
-    query = session.query(Question).filter(Question.question == question
-                                           and Question.topic == topic_id)
-    session.close()
-    if not list(query):
-        return False
+    topic = list(session.query(Topic).filter(Topic.name == topic))
+    if topic:
+        topic_id = topic[0].id
+        session = session_factory.create_session()
+        query = session.query(Question).filter(Question.question == question
+                                               and Question.topic == topic_id)
+        session.close()
+        if not list(query):
+            return False
+        else:
+            return True
     else:
-        return True
+        session.close()
+        return False
 
 
 # Checks if string is any of the topics first. Returns the topics

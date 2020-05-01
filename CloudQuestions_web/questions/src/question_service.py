@@ -57,7 +57,7 @@ def same_questions(question, topic):
         return False
 
 
-def topics_by_name(*ids):
+def topics_by_name(ids):
     session = session_factory.create_session()
     query = list(session.query(Topic.name).filter(Topic.id.in_(ids)))
     topic_names = [topic.name for topic in list(query)]
@@ -65,7 +65,7 @@ def topics_by_name(*ids):
     return topic_names
 
 
-def topics_by_id(*names):
+def topics_by_id(names):
     session = session_factory.create_session()
     query = list(session.query(Topic.id).filter(Topic.name.in_(names)))
     topic_ids = [topic.id for topic in list(query)]
@@ -92,5 +92,6 @@ def search_engine(string):
             if topic not in topics_ids:
                 topics_ids.append(topic)
     session.close()
-    topics_return = topics_by_name((topics_ids))
+    pdb.set_trace()
+    topics_return = topics_by_name(topics_ids)
     return topics_return

@@ -75,22 +75,8 @@ def parsing_markdown(file):
     if questions:
         q_a = get_inside(questions, file)
         return_file['q_a'] = q_a
-        include_questions(q_a, s_name)
+        question_service.include_questions(q_a, s_name)
     return return_file
-
-
-# Inserting the questions and answers in the db.
-def include_questions(q_a, topic_name):    # pragma: no cover
-    session = session_factory.create_session()
-    for q, a in q_a.items():
-        if not question_service.same_questions(q, topic_name):
-            topic = Topic()
-            topic.question = q
-            topic.answer = a
-            topic.topic = topic_name
-            session.add(topic)
-    session.commit()
-    session.close()
 
 
 # Given a list of questions, we calculate the line numbers and add to

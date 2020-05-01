@@ -5,7 +5,7 @@ from models.model_base import ModelBase
 
 # Creating table Topic(id, topic, created, question, answer).
 class Topic(ModelBase):
-    __tablename__ = 'topics'
+    __tablename__ = 'Topic'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
                            autoincrement=True)

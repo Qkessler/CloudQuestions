@@ -1,15 +1,15 @@
 import sqlalchemy
 from datetime import datetime
-from model_base import ModelBase
+from models.model_base import ModelBase
 from .topic import Topic
 
 
 class Question(ModelBase):
-    __tablename__ = 'questions'
+    __tablename__ = 'Question'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
                            autoincrement=True, nullable=False)
-    created = sqlalchemy.Column(sqlalchemy.Datetime, default=datetime.now,
+    created = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.now,
                                 nullable=False)
     topic = sqlalchemy.Column(sqlalchemy.Integer,
                               sqlalchemy.ForeignKey(Topic.id),

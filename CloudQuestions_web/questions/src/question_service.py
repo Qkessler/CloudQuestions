@@ -82,15 +82,15 @@ def search_engine(string):
     if topic_id:
         topics_ids.append(topic_id)
     topic_question = list(session.query(Question.topic, Question.question))
-    for t_q in topic_question:
-        question = t_q[1]
-        topic = t_q[0]
+    for q_elem in topic_question:
+        question = q_elem.question
+        topic = q_elem.topic
         words_scrubbed = [parsing.scrub_name(word)
                           for word in question.split(' ')]
         words = [word for word in words_scrubbed if word]
         if string in words:
             if topic not in topics_ids:
                 topics_ids.append(topic)
-    topics_return = []
     session.close()
+    topics_return = topics_by_name((topics_ids))
     return topics_return

@@ -2,6 +2,7 @@ from db_folder import session_factory
 from models.topic import Topic
 from models.question import Question
 import questions.src.parsing as parsing
+import pdb
 
 
 # Inserting the questions and answers in the db.
@@ -56,16 +57,30 @@ def same_questions(question, topic):
         return False
 
 
+def topics_by_name(*ids):
+    session = session_factory.create_session()
+    query = list(session.query(Topic.name).filter(Topic.id.in_(ids)))
+    topic_names = [topic.name for topic in list(query)]
+    session.close()
+    return topic_names
+
+
+def topics_by_id(*names):
+    session = session_factory.create_session()
+    query = list(session.query(Topic.id).filter(Topic.name.in_(names)))
+    topic_ids = [topic.id for topic in list(query)]
+    session.close()
+    return topic_ids
+
+
 # Checks if string is any of the topics first. Returns the topics
 # where we have any question that contains the string given by the user.
 def search_engine(string):
-    topics_return = []
+    topics_ids = []
     session = session_factory.create_session()
-    topics_query = list(session.query(Topic.name))
-    topics = [parsing.unscrub_name(topic[0]) for topic in topics_query]
-    for t in topics:
-        if string.lower() in t.lower():
-            topics_return.append(t)
+    topic_id = topics_by_id(string)
+    if topic_id:
+        topics_ids.append(topic_id)
     topic_question = list(session.query(Question.topic, Question.question))
     for t_q in topic_question:
         question = t_q[1]
@@ -74,7 +89,8 @@ def search_engine(string):
                           for word in question.split(' ')]
         words = [word for word in words_scrubbed if word]
         if string in words:
-            if topic not in topics_return:
-                topics_return.append(parsing.unscrub_name(topic))
+            if topic not in topics_ids:
+                topics_ids.append(topic)
+    topics_return = []
     session.close()
     return topics_return

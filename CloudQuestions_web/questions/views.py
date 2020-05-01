@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
+import pdb
 
 
 def index(request):
@@ -15,8 +16,8 @@ def index(request):
         if action == 'search':
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
-                topic = search_form.cleaned_data.get('search_text')
-                topics = question_service.search_engine(topic)
+                search_term = search_form.cleaned_data.get('search_text')
+                topics = question_service.search_engine(search_term)
                 db_topics = []
                 for t in topics:
                     db_topics.append(parsing.scrub_name(t))

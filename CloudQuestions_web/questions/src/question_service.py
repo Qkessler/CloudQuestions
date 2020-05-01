@@ -2,18 +2,17 @@ from db_folder import session_factory
 from models.topic import Topic
 from models.question import Question
 import questions.src.parsing as parsing
-import pdb
 
 
 # Inserting the questions and answers in the db.
 def include_questions(q_a, topic_name):    # pragma: no cover
     session = session_factory.create_session()
-    pdb.set_trace()
     topics = list(session.query(Topic))
     if topic_name not in topics:
         topic = Topic()
         topic.name = topic_name
         session.add(topic)
+        session.flush()
     else:
         topic = list(session.query(Topic).filter(Topic.name == topic_name))[0]
     for q, a in q_a.items():

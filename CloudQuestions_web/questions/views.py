@@ -41,3 +41,12 @@ def detail(request, topic):
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})
+
+
+def random(request, topic):
+    context = []
+    pdb.set_trace()
+    random_question = question_service.random_question(topic)
+    context['random_question'] = random_question
+    context['topic'] = topic
+    return render(request, 'questions/random.html'), context)

@@ -2,7 +2,7 @@ from db_folder import session_factory
 from models.topic import Topic
 from models.question import Question
 import questions.src.parsing as parsing
-import pdb
+import random
 
 
 # Inserting the questions and answers in the db.
@@ -58,6 +58,8 @@ def same_questions(question, topic):
         return False
 
 
+# Function that given a list of ids searches for the corresponding
+# names in the db.
 def topics_by_name(ids):
     session = session_factory.create_session()
     query = list(session.query(Topic.name).filter(Topic.id.in_(ids)))
@@ -66,6 +68,8 @@ def topics_by_name(ids):
     return topic_names
 
 
+# Function that given a list of names searches for the corresponding
+# ids in the db.
 def topics_by_id(names):
     session = session_factory.create_session()
     pdb.set_trace()
@@ -94,6 +98,16 @@ def search_engine(string):
             if topic not in topics_ids:
                 topics_ids.append(topic)
     session.close()
-    pdb.set_trace()
     topics_return = topics_by_name(topics_ids)
     return topics_return
+
+
+# Function that returns a random question for a topic.
+def random_question(topic):
+    session = session_factory.create_session()
+    topic_id = topics_by_id([topic])[0]
+    random_number = random.randrange(
+        0, session.query(Question).filter(Question.topic == topic_id).count())
+    random_question = session.query(
+        Question.question).filter(Question.topic == topic_id)[random_number]
+    return random_question

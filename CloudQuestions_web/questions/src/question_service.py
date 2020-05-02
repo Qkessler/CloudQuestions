@@ -30,7 +30,7 @@ def include_questions(q_a, topic_name):    # pragma: no cover
 
 # Query of questions given a topic
 def questions_by_topic(topic):
-    pdb.set_trace()
+    # pdb.set_trace()
     session = session_factory.create_session()
     topic_ids = topics_by_id(topic)
     questions = session.query(Question).filter(Question.topic.in_(topic_ids))
@@ -110,7 +110,7 @@ def search_engine(string):
 def random_question(topic):
     # pdb.set_trace()
     session = session_factory.create_session()
-    topic_id = topics_by_id([topic])[0]
+    topic_id = topics_by_id(topic)[0]
     random_number = random.randrange(
         0, session.query(Question).filter(Question.topic == topic_id).count())
     random_question = list(session.query(

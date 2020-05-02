@@ -49,3 +49,7 @@ def random_questions(request, topic):
     context['random_question'] = random_question
     context['topic'] = topic
     return render(request, 'questions/random.html', context)
+
+
+def login(request):
+    return render(request, 'questions/login.html')

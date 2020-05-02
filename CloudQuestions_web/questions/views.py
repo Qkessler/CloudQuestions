@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
-import pdb
 
 
 def index(request):

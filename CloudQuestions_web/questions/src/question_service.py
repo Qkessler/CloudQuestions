@@ -69,11 +69,13 @@ def topics_by_name(ids):
     return topic_names
 
 
-# Function that given a list of names searches for the corresponding
+# Function that given a name searches for the corresponding
 # ids in the db.
-def topics_by_id(names):
+def topics_by_id(name):
     session = session_factory.create_session()
-    query = list(session.query(Topic.id).filter(Topic.name.in_(names)))
+    # pdb.set_trace()
+    search = f'%{name}%'
+    query = list(session.query(Topic.id).filter(Topic.name.like(search)))
     topic_ids = [topic.id for topic in list(query)]
     session.close()
     return topic_ids
@@ -83,10 +85,11 @@ def topics_by_id(names):
 # where we have any question that contains the string given by the user.
 def search_engine(string):
     topics_ids = []
+    # pdb.set_trace()
     session = session_factory.create_session()
-    topic_id = topics_by_id(string)
-    if topic_id:
-        topics_ids.append(topic_id)
+    topic_id_query = topics_by_id(string)
+    if topic_id_query:
+        topics_ids = [t for t in topic_id_query]
     topic_question = list(session.query(Question.topic, Question.question))
     for q_elem in topic_question:
         question = q_elem.question

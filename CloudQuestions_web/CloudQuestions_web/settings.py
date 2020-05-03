@@ -104,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # AUTH_MODELS.
 AUTHENTICATION_BACKENDS = ['db_folder.sql_alchemy_auth.SQLAlchemyUserBackend']
-AUTH_USER_MODEL = 'questions.User'
 
 
 # Internationalization

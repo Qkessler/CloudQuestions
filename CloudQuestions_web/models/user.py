@@ -9,10 +9,13 @@ user_logged_in.disconnect(update_last_login)
 
 class User(ModelBase):
     __tablename__ = "User"
+
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     username = sqlalchemy.Column(sqlalchemy.String, unique=True)
     salt = sqlalchemy.Column(sqlalchemy.String(10))
     password = sqlalchemy.Column(sqlalchemy.String(128))
+
+    USERNAME_FIELD = 'username'
 
     def is_authenticated(self):
         return True

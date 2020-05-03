@@ -1,8 +1,8 @@
 from django.contrib.auth.models import update_last_login, user_logged_in
 from django.contrib.auth import check_password, make_password
 from django.contrib.auth import random_characters
-from .model_base import ModelBase
 import sqlalchemy
+from models.model_base import ModelBase
 
 user_logged_in.disconnect(update_last_login)
 

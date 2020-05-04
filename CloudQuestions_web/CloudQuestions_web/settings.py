@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_sorcery.db.middleware.SQLAlchemyMiddleware'
 ]
 
 ROOT_URLCONF = 'CloudQuestions_web.urls'
@@ -85,6 +86,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+MIGRATION_MODULES = {'questions': None}
+
 
 
 AUTH_PASSWORD_VALIDATORS = [

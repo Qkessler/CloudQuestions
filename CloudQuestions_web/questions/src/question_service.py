@@ -28,6 +28,7 @@ def questions_by_topic(topic):
     questions = Question.query.filter(topic__in=topic_ids)
     questions = {question.question: question.answer
                  for question in questions}
+    db.flush()
     return questions
 
 
@@ -38,11 +39,13 @@ def same_questions(question, topic):
     if topic:
         topic_id = topic.id
         query = Question.query.filter(question=question).filter(topic=topic_id)
+        db.flush()
         if not query:
             return False
         else:
             return True
     else:
+        db.flush()
         return False
 
 
@@ -51,6 +54,7 @@ def same_questions(question, topic):
 def topics_by_name(ids):
     query = Topic.query.filter(id__in=ids)
     topic_names = [topic.name for topic in query]
+    db.flush()
     return topic_names
 
 
@@ -59,6 +63,7 @@ def topics_by_name(ids):
 def topics_by_id(name):
     query = Topic.query.filter(name__contains=name)
     topic_ids = [topic.id for topic in query]
+    db.flush()
     return topic_ids
 
 
@@ -79,14 +84,16 @@ def search_engine(string):
             if topic not in topics_ids:
                 topics_ids.append(topic)
     topics_return = topics_by_name(topics_ids)
+    db.flush()
     return topics_return
 
 
 # Function that returns a random question for a topic.
 def random_question(topic):
-    topic_id = Topic.query.get(name=topic).values('id')
+    topic_id = Topic.query.filter(name=topic)[0].id
     query = Question.query.filter(topic=topic_id)
     random_number = random.randrange(
         0, query.count())
     random_question = query[random_number].question
+    db.flush()
     return random_question

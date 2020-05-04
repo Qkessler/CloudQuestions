@@ -1,9 +1,9 @@
 """
-Adding start of models after transition.
+Add django models after transitions
 
-Revision ID: ca90af101130
+Revision ID: 26546376c45e
 Revises: 
-Create Date: 2020-05-04 18:50:53.306180
+Create Date: 2020-05-04 20:08:45.602420
 """
 
 from alembic import op
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ca90af101130'
+revision = '26546376c45e'
 down_revision = None
 branch_labels = None
 depends_on = None

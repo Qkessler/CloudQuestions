@@ -1,12 +1,9 @@
 import re
 import os.path
-from models.topic import Topic
-from db_folder import session_factory
 import questions.src.question_service as question_service
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
-import pdb
 
 
 # Patterns for parsing the markdown file.

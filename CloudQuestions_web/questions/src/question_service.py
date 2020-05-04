@@ -1,84 +1,64 @@
-from db_folder import session_factory
-from models.topic import Topic
-from models.question import Question
+from questions.models import Topic, Question, db
 import questions.src.parsing as parsing
 import random
-import pdb
 
 
 # Inserting the questions and answers in the db.
 def include_questions(q_a, topic_name):    # pragma: no cover
-    session = session_factory.create_session()
-    topics = list(session.query(Topic))
+    topics = list(Topic.query.all())
     if topic_name not in topics:
         topic = Topic()
         topic.name = topic_name
-        session.add(topic)
-        session.flush()
+        db.add(topic)
     else:
-        topic = list(session.query(Topic).filter(Topic.name == topic_name))[0]
+        topic = Topic.query.get(name=topic_name)
     for q, a in q_a.items():
         if not same_questions(q, topic_name):
             question = Question()
             question.topic = topic.id
             question.question = q
             question.answer = a
-            session.add(question)
-    session.commit()
-    session.close()
+            db.add(question)
+    db.flush()
 
 
 # Query of questions given a topic
 def questions_by_topic(topic):
-    # pdb.set_trace()
-    session = session_factory.create_session()
     topic_ids = topics_by_id(topic)
-    questions = session.query(Question).filter(Question.topic.in_(topic_ids))
+    questions = Question.query.filter(topic__in=topic_ids)
     questions = {question.question: question.answer
-                 for question in list(questions)}
-    session.close()
+                 for question in questions}
     return questions
 
 
 # Returns a boolean indicating whether the same question already exists
 # in the db for a given topic.
 def same_questions(question, topic):
-    session = session_factory.create_session()
-    topic = list(session.query(Topic).filter(Topic.name == topic))
+    topic = Topic.query.get(name=topic)
     if topic:
-        topic_id = topic[0].id
-        session = session_factory.create_session()
-        query = session.query(Question).filter(Question.question == question
-                                               and Question.topic == topic_id)
-        session.close()
-        if not list(query):
+        topic_id = topic.id
+        query = Question.query.filter(question=question).filter(topic=topic_id)
+        if not query:
             return False
         else:
             return True
     else:
-        session.close()
         return False
 
 
 # Function that given a list of ids searches for the corresponding
 # names in the db.
 def topics_by_name(ids):
-    session = session_factory.create_session()
-    query = list(session.query(Topic.name).filter(Topic.id.in_(ids)))
-    topic_names = [topic.name for topic in list(query)]
-    session.close()
+    query = Topic.query.filter(id__in=ids)
+    topic_names = [topic.name for topic in query]
     return topic_names
 
 
 # Function that given a name searches for the corresponding
 # ids in the db.
 def topics_by_id(name):
-    session = session_factory.create_session()
-    # pdb.set_trace()
-    search = f'%{name}%'
-    query = list(session.query(Topic.id).filter(Topic.name.like(search)))
-    topic_ids = [topic.id for topic in list(query)]
-    session.close()
+    query = Topic.query.filter(name__contains=name)
+    topic_ids = [topic.id for topic in query]
     return topic_ids
 
 
@@ -86,34 +66,27 @@ def topics_by_id(name):
 # where we have any question that contains the string given by the user.
 def search_engine(string):
     topics_ids = []
-    # pdb.set_trace()
-    session = session_factory.create_session()
     topic_id_query = topics_by_id(string)
     if topic_id_query:
         topics_ids = [t for t in topic_id_query]
-    topic_question = list(session.query(Question.topic, Question.question))
-    for q_elem in topic_question:
-        question = q_elem.question
-        topic = q_elem.topic
+    query = Question.query.all()
+    topic_question = {question.topic: question.question for question in query}
+    for topic, question in topic_question.items():
         words_scrubbed = [parsing.scrub_name(word)
                           for word in question.split(' ')]
         words = [word for word in words_scrubbed if word]
         if string in words:
             if topic not in topics_ids:
                 topics_ids.append(topic)
-    session.close()
     topics_return = topics_by_name(topics_ids)
     return topics_return
 
 
 # Function that returns a random question for a topic.
 def random_question(topic):
-    # pdb.set_trace()
-    session = session_factory.create_session()
-    topic_id = topics_by_id(topic)[0]
+    topic_id = Topic.query.get(name=topic).values('id')
+    query = Question.query.filter(topic=topic_id)
     random_number = random.randrange(
-        0, session.query(Question).filter(Question.topic == topic_id).count())
-    random_question = list(session.query(
-        Question.question).filter(Question.topic == topic_id)[random_number])
-    session.close()
-    return random_question[0]
+        0, query.count())
+    random_question = query[random_number].question
+    return random_question

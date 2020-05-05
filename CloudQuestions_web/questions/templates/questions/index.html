@@ -14,11 +14,15 @@
   {% if topics_return %}
   <ul>
     {% for db_name, topic in topics_return.items %}
-    <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
-    {% endfor %}
-    {% else %}
-    <p> No questions are available. <p>
-      {% endif %}
+      <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
+      {% endfor %}
   </ul>
+  {% else %}
+  <ul>
+      {% for db_name, topic in all_topics.items %}
+      <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
+      {% endfor %}
+  </ul>
+  {% endif %}
   <a href="{% url 'questions:login' %}"> Login </a>
 </body>

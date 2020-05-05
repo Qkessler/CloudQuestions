@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
+from .models import Topic
 
 
 def index(request):
@@ -33,6 +33,8 @@ def index(request):
         upload_file_form = UploadFileForm(prefix='upload_file_form')
     context['search_form'] = search_form
     context['upload_file_form'] = upload_file_form
+    context['all_topics'] = {topic.name: parsing.unscrub_name(topic.name)
+                             for topic in Topic.query.all()}
     return render(request, 'questions/index.html', context)
 
 

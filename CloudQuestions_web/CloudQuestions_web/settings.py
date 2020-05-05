@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_sorcery',
-    'questions.apps.QuestionsConfig'
+    'questions.apps.QuestionsConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -106,8 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # AUTH_MODELS.
-AUTHENTICATION_BACKENDS = ['db_folder.sql_alchemy_auth.SQLAlchemyUserBackend']
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

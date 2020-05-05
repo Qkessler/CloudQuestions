@@ -11,12 +11,15 @@
     {{ upload_file_form }}
     <input type="submit" value="Submit">
   </form>
-  {% if topics_return %}
+  {% if searched %}
   <ul>
     {% for db_name, topic in topics_return.items %}
       <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
       {% endfor %}
   </ul>
+  {% if empty %}
+  <p> No hay ningún topic con esa búsqueda. </p>
+  {% endif %}
   {% else %}
   <ul>
       {% for db_name, topic in all_topics.items %}

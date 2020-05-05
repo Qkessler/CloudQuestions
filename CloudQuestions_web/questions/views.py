@@ -6,6 +6,10 @@ from .models import Topic
 
 def index(request):
     context = {}
+    topics_return = []
+    context['searched'] = False
+    context['empty'] = True
+
     if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')
@@ -21,7 +25,8 @@ def index(request):
                 for t in db_topics:
                     topics.append(parsing.unscrub_name(t))
                     topics_return = dict(zip(db_topics, topics))
-                    context['topics_return'] = topics_return
+                    context['empty'] = False
+                context['searched'] = True
         elif action == 'upload':
             upload_file_form = UploadFileForm(request.POST, request.FILES)
             if upload_file_form.is_valid():
@@ -35,6 +40,7 @@ def index(request):
     context['upload_file_form'] = upload_file_form
     context['all_topics'] = {topic.name: parsing.unscrub_name(topic.name)
                              for topic in Topic.query.all()}
+    context['topics_return'] = topics_return
     return render(request, 'questions/index.html', context)
 
 

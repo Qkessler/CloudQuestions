@@ -14,5 +14,7 @@ urlpatterns = [
         redirect_field_name='questions:index'), name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(
         template_name='password_reset.html',
-        email_template_name='password_reset.html'), name='password_reset')
+        email_template_name='password_reset.html'), name='password_reset'),
+    path('password_reset/done', auth_views.PasswordResetDoneView.as_view(),
+         name='password_reset_done')
 ]

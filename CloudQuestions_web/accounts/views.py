@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as log
+from django.contrib.auth import authenticate
 from django.http import HttpResponse
+from .forms import SignUpForm
 
 
-def home_view(request):
+def index(request):
     return HttpResponse('Esta es la view base')
 
 
-def signup_view(request):
-    form = UserCreationForm(request.POST)
+def register(request):
+    form = SignUpForm(request.POST)
     if form.is_valid():
         form.save()
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
-        user = authenticate(username=username, password=password)
-        login(request, user)
+        email = form.cleaned_data.get('email')
+        user = authenticate(username=username, password=password, email=email)
+        log(request, user)
         return redirect('questions:index')
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'register.html', {'form': form})

@@ -1,5 +1,6 @@
 <html>
     <body>
+	{% block content %}
 	<h2>Sign up Form</h2>
 	<form method="post">
 	    {% csrf_token %}
@@ -16,6 +17,7 @@
 	    </p>
 	    {% endfor %}
 	    <button type="submit">Sign up</button>
+	    {% endblock %}	    
 	</form>
     </body>
 </html>

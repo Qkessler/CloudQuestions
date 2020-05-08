@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 # from django.http import HttpResponse
 from .forms import SignUpForm
 
 
 # Logout view that takes you to the questions:index view.
+@login_required
 def logout_view(request):
     if request.user.is_authenticated:
-        logout()
+        logout(request)
     return redirect('questions:index')
 
 

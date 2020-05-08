@@ -18,8 +18,7 @@ urlpatterns = [
          name='password_reset_confirm'),
     path('register/', views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(
-        template_name='login.html',
-        redirect_field_name='questions:index'), name='login'),
+        template_name='login.html'), name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('reset/', auth_views.PasswordResetView.as_view(
         template_name='password_reset.html',

@@ -20,9 +20,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(
         template_name='login.html',
         redirect_field_name='questions/'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(
-        template_name='logout.html',
-        redirect_field_name='questions:index'), name='logout'),
+    path('logout/', views.logout_view, name='logout'),
     path('reset/', auth_views.PasswordResetView.as_view(
         template_name='password_reset.html',
         email_template_name='password_reset.html'), name='password_reset'),

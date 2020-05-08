@@ -8,7 +8,8 @@ from django.core.files.base import ContentFile
 
 # Patterns for parsing the markdown file.
 pat_headers = re.compile(r'## .*')
-pat_questions = re.compile(r'- .*')
+pat_questions1 = re.compile(r'- .*')
+pat_questions2 = re.compile(r'\t.*')
 pat_answers = re.compile(r'\s{4}.*')
 
 
@@ -64,7 +65,7 @@ def parsing_markdown(file):
         file_lines = f.readlines()
     lines = file_lines
     questions = [' '.join(q.strip('\n').split(' ')[1:]) for q in lines
-                 if pat_questions.match(q)]
+                 if pat_questions1.match(q) or pat_questions2.match(q)]
     base_name = os.path.basename(file)
     file_name = base_name.split('.')[0]
     s_name = scrub_name(file_name)

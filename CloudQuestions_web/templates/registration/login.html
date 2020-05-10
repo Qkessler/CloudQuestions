@@ -33,7 +33,6 @@
     </div>
 </form>
 
-{# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
+<a href="{% url 'accounts:oauth:begin' 'github' %}">Login with GitHub</a><br>
 {% endblock %}

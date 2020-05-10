@@ -34,5 +34,7 @@
 </form>
 
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<br>
+<p><strong>-- OR --</strong></p>
 <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
 {% endblock %}

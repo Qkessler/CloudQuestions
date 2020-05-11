@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = 'questions:index'
+SOCIAL_AUTH_LOGIN_ERROR_URL = 'accounts:settings'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'accounts:settings'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # Application definition
 

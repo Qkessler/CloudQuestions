@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<p>Hi, <a href="/accounts/settings/">{{ user.username }}</a>! </p>
+{% endif %}
 <form action="/questions/" method="post">
     {% csrf_token %}
     <input type="hidden" name="action" value="search">

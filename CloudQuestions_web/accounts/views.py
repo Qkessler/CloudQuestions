@@ -41,7 +41,6 @@ def settings(request):
 
     can_disconnect = (user.social_auth.count() > 1 or
                       user.has_usable_password())
-
     context['github_login'] = github_login
     context['twitter_login'] = twitter_login
     context['google_login'] = google_login

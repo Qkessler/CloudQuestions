@@ -6,4 +6,17 @@
 <ul> {% for q in questions_by_topic %}
     <li> {{q}} </li>
 </ul> {% endfor %}
+
+
+{% if user.is_authenticated %}
+<form method="get" action="#">
+    <input name="red_button" type="submit" value="Bad"/>
+</form>
+<form method="get" action="#">
+    <input name="yellow_button" type="submit" value="Medium"/>
+</form>
+<form method="get" action="#">
+    <input name="green_button" type="submit" value="Good"/>
+</form>
+{% endif %}
 {% endblock %}

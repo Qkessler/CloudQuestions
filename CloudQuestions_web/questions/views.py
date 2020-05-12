@@ -46,12 +46,15 @@ def index(request):
 
 def detail(request, topic):
     questions_by_topic = question_service.questions_by_topic(topic)
+    color = None    
     if request.GET.get('red_button') == 'Bad':
-        print('User clicked bad.')
+        color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':
-        print('User clicked yellow.')
+        color = 'yellow'
     elif request.GET.get('green_button') == 'Good':
-        print('User clicked Green.')
+        color = 'green'
+    if color:
+        question_service.update_stats(color)
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})

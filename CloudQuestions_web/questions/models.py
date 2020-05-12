@@ -1,4 +1,5 @@
 from django_sorcery.db import databases
+from django.conf import settings
 from datetime import datetime
 # from django.contrib.auth.models import update_last_login, user_logged_in
 # from django.contrib.auth import check_password, make_password
@@ -31,29 +32,13 @@ class Question(db.Model):
     answer = db.Column(db.String())
 
 
-# user_logged_in.disconnect(update_last_login)
-
-
-# class User(db.Model):
-#     __tablename__ = "User"
-
-#     id = db.Column(db.Integer(), primary_key=True)
-#     username = db.Column(db.String(), unique=True)
-#     salt = db.Column(db.String(length=10))
-#     password = db.Column(db.String(legth=128))
-
-#     USERNAME_FIELD = 'username'
-
-#     def is_authenticated(self):
-#         return True
-
-#     def is_anonymous(self):
-#         return False
-
-#     def check_password(self, raw_password):
-#         return check_password(raw_password, self.password)
-
-#     def set_password(self, password):
-#         if not self.salt:
-#             self.salt = random_characters(10)
-#         self.password = make_password(password, salt=self.salt)
+class Rating(db.Model):
+    id = db.Column(db.Integer(), primary_key=True,
+                   autoincrement=True, nullable=False)
+    user = db.Column(db.Integer(), db.ForeignKey(settings.AUTH_USER_MODEL),
+                   nullable=False, index=True)
+    topic = db.Column(db.Integer(),
+                      db.ForeignKey(Topic.id), nullable=False)
+    created = db.Column(db.DateTime(), default=datetime.now,
+                        nullable=False)
+    rating = db.Column(db.String(), nullable=False)

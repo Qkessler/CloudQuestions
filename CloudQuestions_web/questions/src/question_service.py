@@ -97,3 +97,15 @@ def random_question(topic):
     random_question = query[random_number].question
     db.flush()
     return random_question
+
+
+# TODO: Given the color of the rating for the topic studied, creates
+# a rating instance in the db.
+def update_stats(color):
+    pass
+
+
+# Creates the dict to set the data in the view.
+def create_table(user_id):
+    ratings = Rating.query.filter(user=user_id)
+

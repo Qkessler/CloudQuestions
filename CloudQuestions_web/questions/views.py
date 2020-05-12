@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
 from .models import Topic
@@ -55,6 +55,7 @@ def detail(request, topic):
         color = 'green'
     if color:
         question_service.update_stats(color)
+        return redirect('accounts:settings')
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})

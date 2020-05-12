@@ -1,9 +1,7 @@
 from django_sorcery.db import databases
 from django.conf import settings
 from datetime import datetime
-# from django.contrib.auth.models import update_last_login, user_logged_in
-# from django.contrib.auth import check_password, make_password
-# from django.contrib.auth import random_characters
+from django.contrib.auth.models import User as auth_user
 
 
 db = databases.get('default')
@@ -35,8 +33,8 @@ class Question(db.Model):
 class Rating(db.Model):
     id = db.Column(db.Integer(), primary_key=True,
                    autoincrement=True, nullable=False)
-    user = db.Column(db.Integer(), db.ForeignKey(settings.AUTH_USER_MODEL),
-                   nullable=False, index=True)
+    #TODO: needs changing.
+    user = db.Column(db.Integer(), nullable=False, index=True)
     topic = db.Column(db.Integer(),
                       db.ForeignKey(Topic.id), nullable=False)
     created = db.Column(db.DateTime(), default=datetime.now,

@@ -53,7 +53,6 @@ def detail(request, topic):
         color = 'green'
     if color:
         question_service.update_stats(topic, color, request.user)
-        question_service.create_table(request.user)
         return redirect('accounts:settings')
     return render(request, 'questions/detail.html',
                   {'topic': topic,

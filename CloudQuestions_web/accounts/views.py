@@ -4,6 +4,8 @@ from django.contrib.auth import login
 from django.contrib.auth import authenticate
 from .forms import SignUpForm
 from social_django.models import UserSocialAuth
+from pprint import pprint as pp
+from  questions.src import question_service
 
 
 def register(request):
@@ -22,6 +24,8 @@ def register(request):
 @login_required
 def settings(request):
     user = request.user
+    table = question_service.create_table(user)
+    pp(table)
     context = {}
 
     try:

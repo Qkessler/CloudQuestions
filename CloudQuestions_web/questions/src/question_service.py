@@ -16,7 +16,7 @@ def include_questions(q_a, topic_name):    # pragma: no cover
     for q, a in q_a.items():
         if not same_questions(q, topic_name):
             question = Question()
-            question.topic = topic.id
+            question.topic = topic
             question.question = q
             question.answer = a
             question.save()
@@ -28,7 +28,6 @@ def questions_by_topic(topic):
     questions = Question.objects.filter(topic__in=topic_ids)
     questions = {question.question: question.answer
                  for question in questions}
-    db.flush()
     return questions
 
 
@@ -67,7 +66,7 @@ def topics_by_id(name):
 # where we have any question that contains the string given by the user.
 def search_engine(string):
     topics_ids = []
-    topic_id_query = topics_by_id(string)
+    topic_id_query = topics_by_id(parsing.scrub_name(string))
     if topic_id_query:
         topics_ids = [t for t in topic_id_query]
     query = Question.objects.all()
@@ -90,7 +89,6 @@ def random_question(topic):
     random_number = random.randrange(
         0, query.count())
     random_question = query[random_number].question
-    db.flush()
     return random_question
 
 

@@ -5,6 +5,7 @@ import random
 
 # Inserting the questions and answers in the db.
 def include_questions(q_a, topic_name):    # pragma: no cover
+    breakpoint()
     topics = list(Topic.objects.all())
     if topic_name not in topics:
         topic = Topic()

@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateField(default=datetime.datetime.now)),
-                ('name', models.TextField(unique=True, db_index=True))
+                ('name', models.TextField(unique=True, db_index=True, default='default'))
             ],
         ),
         migrations.CreateModel(

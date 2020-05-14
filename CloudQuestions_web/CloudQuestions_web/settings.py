@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_sorcery',
     'questions.apps.QuestionsConfig',
     'accounts.apps.AccountsConfig',
     'social_django'
@@ -94,7 +93,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-MIGRATION_MODULES = {'questions': None}
+# MIGRATION_MODULES = {'questions': None}
 
 
 

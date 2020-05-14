@@ -1,4 +1,4 @@
-from questions.models import Topic, Question, db
+from questions.models import Topic, Question, Rating
 import questions.src.parsing as parsing
 import random
 

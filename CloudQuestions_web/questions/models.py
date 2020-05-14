@@ -1,42 +1,22 @@
-from django_sorcery.db import databases
 from django.conf import settings
 from datetime import datetime
-from django.contrib.auth.models import User as auth_user
-from django.contrib.auth.models import UserManager
-from sqlalchemy.orm import relationship
+from django.db import models
 
 
-db = databases.get('default')
-
-class Topic(db.Model):
-    __tablename__ = 'Topic'
-
-    id = db.Column(db.Integer(), primary_key=True,
-                   autoincrement=True)
-    name = db.Column(db.String(), unique=True)
-    created = db.Column(db.DateTime,
-                        default=datetime.now, nullable=False)
+class Topic(models.Model):
+    name = models.TextField(unique=True, db_index=True),
+    created = models.DateField(default=datetime.now)
 
 
-class Question(db.Model):
-    __tablename__ = 'Question'
-
-    id = db.Column(db.Integer(), primary_key=True,
-                   autoincrement=True, nullable=False)
-    created = db.Column(db.DateTime(), default=datetime.now,
-                        nullable=False)
-    topic = db.Column(db.Integer(),
-                      db.ForeignKey(Topic.id), nullable=False)
-    question = db.Column(db.String(), unique=True)
-    answer = db.Column(db.String())
+class Question(models.Model):
+    created = models.DateField(default=datetime.now)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, db_index=True)
+    question = models.TextField(unique=True, db_index=True)
+    answer = models.TextField(unique=True, db_index=True)
 
 
-class Rating(db.Model):
-    id = db.Column(db.Integer(), primary_key=True,
-                   autoincrement=True, nullable=False)
-    # user = db.Column(db.ForeignKey(settings.AUTH_USER_MODEL), nullable=False, index = True)
-    topic = db.Column(db.Integer(),
-                      db.ForeignKey(Topic.id), nullable=False)
-    created = db.Column(db.DateTime(), default=datetime.now,
-                        nullable=False)
-    rating = db.Column(db.String(), nullable=False)
+class Rating(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    created = models.DateField(default=datetime.now)
+    rating = models.TextField(db_index=True)

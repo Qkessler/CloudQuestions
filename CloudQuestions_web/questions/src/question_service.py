@@ -1,5 +1,6 @@
 from questions.models import Topic, Question, Rating
 import questions.src.parsing as parsing
+from pprint import pprint as pp
 import random
 
 
@@ -92,14 +93,28 @@ def random_question(topic):
     return random_question
 
 
-# TODO: Given the color of the rating for the topic studied, creates
+# Given the color of the rating for the topic studied, creates
 # a rating instance in the db.
-def update_stats(color):
-    pass
+def update_stats(topic_name, color, user):
+    topic = Topic.objects.get(name=topic_name)
+    rating = Rating()
+    rating.rating = color
+    rating.topic = topic
+    rating.user = user
+    rating.save()
+    
 
 
-# Creates the dict to set the data in the view.
-def create_table(user_id):
-    # ratings = Rating.objects.filter(user=user_id)
-    pass
-
+# TODO: Creates the dict to set the data in the view.
+def create_table(user):
+    ratings_user = Rating.objects.all().filter(user=user)
+    topics = []
+    [topics.append(rating.topic) for rating in ratings_user
+     if rating.topic not in topics]
+    table = {}
+    for rating in ratings_user:
+        rating_id = rating.id
+        info = {rating.created: rating.rating}
+        table[rating_id] = info
+    pp(table)
+        

@@ -105,16 +105,15 @@ def update_stats(topic_name, color, user):
     
 
 
-# TODO: Creates the dict to set the data in the view.
+# Creates the dict to set the data in the view.
 def create_table(user):
     ratings_user = Rating.objects.all().filter(user=user)
     table = {}
+    breakpoint()
     for rating in ratings_user:
         topic_id = rating.topic
-        info = {rating.created: rating.rating}
-        if topic_id in table.keys():
-            table[topic_id].append(info)
-        else:
-            table[topic_id] = info
+        if topic_id not in table.keys():
+            table[topic_id] = []
+        table[topic_id].append(rating)
     return table
         

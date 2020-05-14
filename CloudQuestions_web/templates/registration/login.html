@@ -34,6 +34,7 @@
 </form>
 
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'accounts:register' %}">Don't have an account?</a></p>
 <p><strong>-- OR --</strong></p>
 <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
 <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>

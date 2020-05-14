@@ -13,7 +13,6 @@ def index(request):
     if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')
-        # We check whether is the search or upload_file_form.
         action = request.POST.get('action')
 
         if action == 'search':
@@ -32,7 +31,6 @@ def index(request):
             if upload_file_form.is_valid():
                 uploaded = request.FILES.get('file')
                 parsing.handling_uploaded_file(uploaded)
-                print('I went through handling the file.')
     else:
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

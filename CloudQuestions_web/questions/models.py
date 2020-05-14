@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Topic(models.Model):
-    name = models.TextField(unique=True, db_index=True),
+    topic_name = models.TextField(unique=True, db_index=True),
     created = models.DateField(default=datetime.now)
 
 

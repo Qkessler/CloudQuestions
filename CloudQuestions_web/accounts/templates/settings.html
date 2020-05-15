@@ -50,4 +50,24 @@
 {% else %}
 <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
 {% endif %}
+
+<h3>Ratings table</h3>
+<table class="ratings-table">
+    <tr>
+	<th>Topic name</th>
+    </tr>
+    {{ for topic in ratings_table.keys }}
+    <tr>
+	<td>{{ topic.name }}</td>
+	{{ for rating in ratings_table.get(topic) }}
+	<td>{{rating.created}}</td>
+	{{ endfor }}
+    </tr>
+    {{ endfor }}
+</table>
+
 {% endblock %}
+
+
+
+

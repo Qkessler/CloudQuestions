@@ -63,13 +63,13 @@ def topics_by_id(name):
     return topic_ids
 
 
-# Checks if string is any of the topics first. Returns the topics
+# Checks if string isany of the topics first. Returns the topics
 # where we have any question that contains the string given by the user.
 def search_engine(string):
     topics_ids = []
     topic_id_query = topics_by_id(parsing.scrub_name(string))
     if topic_id_query:
-        topics_ids = [t for t in topic_id_query]
+        topics_ids = topic_id_query
     query = Question.objects.all()
     topic_question = {question.topic: question.question for question in query}
     for topic, question in topic_question.items():
@@ -89,8 +89,8 @@ def random_question(topic):
     query = Question.objects.filter(topic=topic_id)
     random_number = random.randrange(
         0, query.count())
-    random_question = query[random_number].question
-    return random_question
+    question = query[random_number].question
+    return question
 
 
 # Given the color of the rating for the topic studied, creates
@@ -102,18 +102,15 @@ def update_stats(topic_name, color, user):
     rating.topic = topic
     rating.user = user
     rating.save()
-    
 
 
 # Creates the dict to set the data in the view.
 def create_table(user):
     ratings_user = Rating.objects.all().filter(user=user)
     table = {}
-    breakpoint()
     for rating in ratings_user:
         topic_id = rating.topic
         if topic_id not in table.keys():
             table[topic_id] = []
         table[topic_id].append(rating)
     return table
-        

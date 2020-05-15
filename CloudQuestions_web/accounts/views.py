@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
 from .forms import SignUpForm
-from social_django.models import UserSocialAuth
 from pprint import pprint as pp
+from social_django.models import UserSocialAuth
 from  questions.src import question_service
 
 
@@ -23,10 +23,11 @@ def register(request):
 
 @login_required
 def settings(request):
+    context = {}
     user = request.user
     table = question_service.create_table(user)
     pp(table)
-    context = {}
+    context['ratings_table'] = table
 
     try:
         github_login = user.social_auth.get(provider='github')

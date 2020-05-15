@@ -44,7 +44,7 @@ def index(request):
 
 def detail(request, topic):
     questions_by_topic = question_service.questions_by_topic(topic)
-    color = None    
+    color = None
     if request.GET.get('red_button') == 'Bad':
         color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':
@@ -57,6 +57,7 @@ def detail(request, topic):
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})
+
 
 
 def random_questions(request, topic):

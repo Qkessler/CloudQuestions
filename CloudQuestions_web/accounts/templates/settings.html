@@ -56,14 +56,14 @@
     <tr>
 	<th>Topic name</th>
     </tr>
-    {{ for topic in ratings_table.keys }}
+    {% for topic, ratings in ratings_table.items %}
     <tr>
 	<td>{{ topic.name }}</td>
-	{{ for rating in ratings_table.get(topic) }}
-	<td>{{rating.created}}</td>
-	{{ endfor }}
+	{% for rating in ratings %}
+	<td>{{ rating.created }}</td>
+	{% endfor %}
     </tr>
-    {{ endfor }}
+    {% endfor %}
 </table>
 
 {% endblock %}

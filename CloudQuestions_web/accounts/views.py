@@ -26,7 +26,6 @@ def settings(request):
     context = {}
     user = request.user
     table = question_service.create_table(user)
-    pp(table)
     context['ratings_table'] = table
 
     try:

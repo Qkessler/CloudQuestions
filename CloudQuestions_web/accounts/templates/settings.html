@@ -58,7 +58,7 @@
     </tr>
     {% for topic, ratings in ratings_table.items %}
     <tr>
-	<td>{{ topic.name }}</td>
+	<td><a href="url 'questions:detail' topic.name">{{ topic.name }}</a></td>
 	{% for rating in ratings %}
 	<td>{{ rating.created }}</td>
 	{% endfor %}
@@ -67,7 +67,3 @@
 </table>
 
 {% endblock %}
-
-
-
-

@@ -42,12 +42,6 @@ def settings(request):
     except UserSocialAuth.DoesNotExist:
         google_login = None
 
-    form = SwitchForm(request.POST)
-    if form.is_valid():
-        form.save()
-        on = form.cleaned_data.get('')
-        print(on)
-    context['switch'] = form
     can_disconnect = (user.social_auth.count() > 1 or
                       user.has_usable_password())
     context['github_login'] = github_login

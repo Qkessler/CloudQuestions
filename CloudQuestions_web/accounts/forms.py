@@ -12,9 +12,5 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2', )
 
 
-class SwitchForm(forms.ModelForm):
+class SwitchForm(forms.Form):
     on = forms.CheckboxInput()
-
-    class Meta:
-        model = 'Switch'
-        fields = ('on', )

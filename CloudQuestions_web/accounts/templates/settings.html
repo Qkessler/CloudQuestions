@@ -53,10 +53,8 @@
 <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
 {% endif %}
 <div class="custom-control custom-switch">
-    {% csrf_token %}
-    {{ switch.as_p }}
     <input type="checkbox" class="custom-control-input" id="customSwitch1">
-    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+    <label class="custom-control-label" for="customSwitch1">Toggle Google Calendar's connection.</label>
 </div>
 
 <h3>Ratings table</h3>

@@ -61,6 +61,12 @@ def topics_by_id(name):
     return topic_ids
 
 
+# Gets the words of a question
+def get_words(question: Question):
+    text = question.question
+    return [parsing.scrub_name(word) for word in text.split(' ')]
+
+
 # Checks if string isany of the topics first. Returns the topics
 # where we have any question that contains the string given by the user.
 def search_engine(string):
@@ -69,14 +75,21 @@ def search_engine(string):
     if topic_id_query:
         topics_ids = topic_id_query
     query = Question.objects.all()
-    topic_question = {question.topic: question.question for question in query}
-    for topic, question in topic_question.items():
-        words_scrubbed = [parsing.scrub_name(word)
-                          for word in question.split(' ')]
-        words = [word for word in words_scrubbed if word]
-        if string in words:
+    topic_question = {}
+    for question in query:
+        if question.topic not in topic_question.keys():
+            topic_question[question.topic] = []
+        topic_question[question.topic].append(question)
+
+    for topic, questions in topic_question.items():
+        words_topic = []
+        for question in questions:
+            for word in get_words(question):
+                if word != '':
+                    words_topic.append(word)
+        if string in words_topic:
             if topic not in topics_ids:
-                topics_ids.append(topic)
+                topics_ids.append(topic.id)
     topics_return = topics_by_name(topics_ids)
     return topics_return
 

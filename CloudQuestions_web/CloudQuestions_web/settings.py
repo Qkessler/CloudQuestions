@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questions.apps.QuestionsConfig',
     'accounts.apps.AccountsConfig',
+    'bootstrap4',
     'social_django'
 ]
 

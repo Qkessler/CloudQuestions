@@ -52,18 +52,29 @@
 {% endif %}
 
 <h3>Ratings table</h3>
-<table class="ratings-table">
-    <tr>
-	<th>Topic name</th>
-    </tr>
-    {% for topic, ratings in ratings_table.items %}
-    <tr>
-	<td><a href="url 'questions:detail' topic.name">{{ topic.name }}</a></td>
-	{% for rating in ratings %}
-	<td>{{ rating.created }}</td>
+<table class="table table-stripped table-hover">
+    <thead class="thead-light">
+	<tr>
+	    <th>Topic name</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for topic, ratings in ratings_table.items %}
+	<tr>
+	    <td>{{ topic.name }}</td>
+	    {% for rating in ratings %}
+	    {% if rating.rating == 'red' %}
+	    <td class='bg-danger'>{{ rating.created }}</td>
+	    {% elif rating.rating == 'yellow' %}
+	    <td class='bg-warning'>{{ rating.created }}</td>
+	    {% elif rating.rating == 'green' %}
+	    <td class='bg-success'>{{ rating.created }}</td>
+	    {% endif %}
+	    
+	    {% endfor %}
+	</tr>
 	{% endfor %}
-    </tr>
-    {% endfor %}
+    </tbody>
 </table>
 
 {% endblock %}

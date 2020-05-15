@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questions.apps.QuestionsConfig',
     'accounts.apps.AccountsConfig',
-    'bootstrap4',
     'social_django'
 ]
 
@@ -95,6 +94,10 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 # MIGRATION_MODULES = {'questions': None}
+
+# Dates.
+USE_L10N = False
+DATE_FORMAT = "%d/%m/%Y"
 
 
 

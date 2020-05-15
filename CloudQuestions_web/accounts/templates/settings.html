@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
 
 {% block content %}
 <h2>Settings</h2>
@@ -50,31 +52,40 @@
 {% else %}
 <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
 {% endif %}
+<div class="custom-control custom-switch">
+    {% csrf_token %}
+    {{ switch.as_p }}
+    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+</div>
 
 <h3>Ratings table</h3>
-<table class="table table-stripped table-hover">
-    <thead class="thead-light">
-	<tr>
-	    <th>Topic name</th>
-	</tr>
-    </thead>
-    <tbody>
-	{% for topic, ratings in ratings_table.items %}
-	<tr>
-	    <td>{{ topic.name }}</td>
-	    {% for rating in ratings %}
-	    {% if rating.rating == 'red' %}
-	    <td class='bg-danger'>{{ rating.created }}</td>
-	    {% elif rating.rating == 'yellow' %}
-	    <td class='bg-warning'>{{ rating.created }}</td>
-	    {% elif rating.rating == 'green' %}
-	    <td class='bg-success'>{{ rating.created }}</td>
-	    {% endif %}
-	    
+<div class="ratings_table">
+    <table class="table table-stripped table-hover">
+	<thead class="thead-light">
+	    <tr>
+		<th>Topic name</th>
+	    </tr>
+	</thead>
+	<tbody>
+	    {% for topic, ratings in ratings_table.items %}
+	    <tr>
+		<td>{{ topic.name }}</td>
+		{% for rating in ratings %}
+		{% if rating.rating == 'red' %}
+		<td class='bg-danger'>{{ rating.created }}</td>
+		{% elif rating.rating == 'yellow' %}
+		<td class='bg-warning'>{{ rating.created }}</td>
+		{% elif rating.rating == 'green' %}
+		<td class='bg-success'>{{ rating.created }}</td>
+		{% endif %}
+		
+		{% endfor %}
+	    </tr>
 	    {% endfor %}
-	</tr>
-	{% endfor %}
-    </tbody>
-</table>
-
+	</tbody>
+    </table>
+</div>
 {% endblock %}
+
+

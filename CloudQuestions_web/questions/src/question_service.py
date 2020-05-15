@@ -62,7 +62,7 @@ def topics_by_id(name):
 
 
 # Gets the words of a question
-def get_words(question: Question):
+def get_words(question):
     text = question.question
     return [parsing.scrub_name(word) for word in text.split(' ')]
 

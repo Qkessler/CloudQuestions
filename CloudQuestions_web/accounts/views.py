@@ -20,6 +20,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+# TODO: get the google's calendar integration.
 @login_required
 def settings(request):
     context = {}

@@ -18,11 +18,12 @@ def calendar_connection():
         user_agent='CloudQuestions',
         redirect_uri='http://127.0.0.1:8000/accounts/settings/'
     )
-    storage = Storage('credentials.dat')
+    storage = Storage('test_credentials.dat')
     credentials = storage.get()
     if not credentials or credentials.invalid:
         authorize_url = flow.step1_get_authorize_url()
-        code = raw_input('Enter verification code: ').strip()
+        print(authorize_url)
+        code = input('Enter verification code: ').strip()
         credentials = flow.step2_exchange(code)
     http_base = httplib2.Http()
     http = credentials.authorize(http_base)
@@ -32,3 +33,4 @@ def calendar_connection():
 
 if __name__ == '__main__':
     service = calendar_connection()
+    print(service.calendarList().list().execute())

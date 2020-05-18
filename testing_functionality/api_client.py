@@ -11,21 +11,24 @@ scope_events = 'https://www.googleapis.com/auth/calendar.events'
 
 
 def calendar_connection():
-    # flags = tools.argparser.parse_args([])
-    FLOW = OAuth2WebServerFlow(
+    flow = OAuth2WebServerFlow(
         client_id=os.environ['CALENDAR_CLIENT_ID'],
         client_secret=os.environ['CALENDAR_CLIENT_SECRET'],
         scope=scope_events,
         user_agent='CloudQuestions',
         redirect_uri='http://127.0.0.1:8000/accounts/settings/'
     )
-    credentials = tools.run_flow(FLOW)
-    http = httplib2.Http()
-    http = credentials.authorize(http)
+    storage = Storage('credentials.dat')
+    credentials = storage.get()
+    if not credentials or credentials.invalid:
+        authorize_url = flow.step1_get_authorize_url()
+        code = raw_input('Enter verification code: ').strip()
+        credentials = flow.step2_exchange(code)
+    http_base = httplib2.Http()
+    http = credentials.authorize(http_base)
     service = build('calendar', 'v3', http=http)
     return service
 
 
 if __name__ == '__main__':
     service = calendar_connection()
-    print(service)

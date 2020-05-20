@@ -1,20 +1,20 @@
 import os
+import httplib2
 from googleapiclient.discovery import build
 from oauth2client import tools
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
-import httplib2
 
 
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
-scope_events = 'https://www.googleapis.com/auth/calendar.events'
+SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 
 
 def calendar_connection():
     flow = OAuth2WebServerFlow(
         client_id=os.environ['CALENDAR_CLIENT_ID'],
         client_secret=os.environ['CALENDAR_CLIENT_SECRET'],
-        scope=scope_events,
+        scope=SCOPE_EVENTS,
         user_agent='CloudQuestions',
         redirect_uri='http://127.0.0.1:8000/accounts/settings/'
     )
@@ -32,5 +32,5 @@ def calendar_connection():
 
 
 if __name__ == '__main__':
-    service = calendar_connection()
-    print(service.calendarList().list().execute())
+    s = calendar_connection()
+    print(s.calendarList().list().execute())

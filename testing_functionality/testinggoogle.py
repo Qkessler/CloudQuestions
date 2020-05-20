@@ -13,20 +13,6 @@ from pprint import pprint as pp
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 
 
-def init_client_secrets():
-    with open('credentials.json', 'w') as f:
-        credens = {}
-        credens['installed'] = {}
-        installed = credens['installed']
-        installed['client_id'] = environ['CALENDAR_CLIENT_ID']
-        installed['client_secret'] = environ['CALENDAR_CLIENT_SECRET']
-        installed['redirect_uris'] = [
-            'http://127.0.0.1:8000/accounts/settings/']
-        json.dump(credens, f)
-        return credens
-    return None
-
-
 def main():
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
@@ -68,6 +54,4 @@ def main():
 
 
 if __name__ == '__main__':
-    credentials = init_client_secrets()
-    if credentials:
-        main()
+    main()

@@ -100,7 +100,6 @@ USE_L10N = False
 DATE_FORMAT = "%d/%m/%Y"
 
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

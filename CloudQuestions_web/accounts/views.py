@@ -44,7 +44,7 @@ def settings(request):
         code = request.GET.get('code')
         flow = get_flow()
         service = calendar_connection(code, flow)
-        print(service.calendarList().list())
+        print(service.calendarList().list().execute())
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

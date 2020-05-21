@@ -7,7 +7,7 @@ from oauth2client.file import Storage
 
 
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
-SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
+SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar'
 
 
 def get_flow():

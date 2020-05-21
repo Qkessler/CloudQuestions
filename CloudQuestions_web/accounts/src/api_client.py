@@ -32,8 +32,3 @@ def calendar_connection(code, flow):
     http = credentials.authorize(http_base)
     service = build('calendar', 'v3', http=http)
     return service
-
-
-# if __name__ == '__main__':
-#     s = calendar_connection()
-#     print(s.calendarList().list().execute())

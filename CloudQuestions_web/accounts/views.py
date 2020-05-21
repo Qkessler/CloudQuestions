@@ -4,11 +4,18 @@ from django.contrib.auth import login
 from django.contrib.auth import authenticate
 from .forms import SignUpForm, SwitchForm
 from social_django.models import UserSocialAuth
+from accounts.src.api_client import get_url, get_flow, calendar_connection
 from questions.src import question_service
 from oauth2client.contrib import xsrfutil
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
 import httplib2
+import os
+
+CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
+SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
+CALENDAR_REDIRECT_URI = 'http://127.0.0.1:8000/accounts/settings/'
+TEST = True
 
 
 def register(request):
@@ -30,7 +37,14 @@ def settings(request):
     user = request.user
     table = question_service.create_table(user)
     context['ratings_table'] = table
-
+    breakpoint()
+    if request.GET.get('code'):
+        code = request.GET.get('code')
+        service = calendar_connection(code, flow)
+        print(service)
+    if TEST:
+        flow = get_flow()
+        return redirect(get_url(flow))
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

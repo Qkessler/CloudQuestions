@@ -4,7 +4,11 @@ from django.contrib.auth import login
 from django.contrib.auth import authenticate
 from .forms import SignUpForm, SwitchForm
 from social_django.models import UserSocialAuth
-from  questions.src import question_service
+from questions.src import question_service
+from oauth2client.contrib import xsrfutil
+from oauth2client.client import OAuth2WebServerFlow
+from oauth2client.file import Storage
+import httplib2
 
 
 def register(request):
@@ -20,7 +24,6 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-# TODO: get the google's calendar integration.
 @login_required
 def settings(request):
     context = {}

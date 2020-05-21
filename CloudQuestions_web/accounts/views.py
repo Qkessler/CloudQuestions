@@ -31,20 +31,19 @@ def register(request):
 
 
 @login_required
-def settings(request):
+def settings(request, topic=None, color=None):
     context = {}
     user = request.user
     table = question_service.create_table(user)
     context['ratings_table'] = table
-    # breakpoint()
-    if request.GET.get('calendar'):
-        flow = get_flow()
+    breakpoint()
+    flow = get_flow()
+    if topic and color:
         return redirect(get_url(flow))
     if request.GET.get('code'):
         code = request.GET.get('code')
-        flow = get_flow()
         service = calendar_connection(code, flow)
-        print(service.calendarList().list().execute())
+
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

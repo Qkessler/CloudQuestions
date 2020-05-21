@@ -53,11 +53,10 @@ def detail(request, topic):
         color = 'green'
     if color:
         question_service.update_stats(topic, color, request.user)
-        return redirect('accounts:settings')
+        return redirect('accounts:settings', topic, color)
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})
-
 
 
 def random_questions(request, topic):

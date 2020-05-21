@@ -1,6 +1,7 @@
-from questions.models import Topic, Question, Rating
-import questions.src.parsing as parsing
 import random
+import questions.src.parsing as parsing
+from questions.models import Topic, Question, Rating
+from accounts.src.api_client import get_url, get_flow, calendar_connection
 
 
 # Inserting the questions and answers in the db.
@@ -36,7 +37,8 @@ def same_questions(question, topic):
     topic = Topic.objects.get(name=topic)
     if topic:
         topic_id = topic.id
-        query = Question.objects.filter(question=question).filter(topic=topic_id)
+        query = Question.objects.filter(
+            question=question).filter(topic=topic_id)
         if not query:
             return False
         else:

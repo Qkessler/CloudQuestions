@@ -8,7 +8,11 @@ from oauth2client.file import Storage
 
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
-day_colors =
+day_colors = {
+    'red': 1,
+    'yellow': 3,
+    'green': 5
+}
 
 
 def get_flow():
@@ -35,4 +39,7 @@ def calendar_connection(code, flow):
     return service
 
 
-def create_event(topic, color):
+def create_event(topic, color, service):
+    event = {}
+    print(event)
+    # service.events().insert(calendarId='primary', event=event).execute()

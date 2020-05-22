@@ -54,6 +54,7 @@ def settings(request, topic=None, color=None):
         create_event(EVENT_TOPIC, EVENT_COLOR, service)
     if request.GET.get('calendar'):
         question_service.change_calendar_connection(user)
+        return redirect('accounts:settings')
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

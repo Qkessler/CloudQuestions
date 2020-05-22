@@ -4,8 +4,11 @@ from googleapiclient.discovery import build
 from oauth2client import tools
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
+from datetime import datetime, timedelta
+import random
 
 
+DEFAULT_URL = 'http://127.0.0.1:8000/'
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 day_colors = {
@@ -41,31 +44,26 @@ def calendar_connection(code, flow):
 
 def create_event(topic, color, service):
     event_colors = [str(num+1) for num in range(11)]
+    date = datetime.now().date() + timedelta(days=day_colors.get(color))
+    description = 'This is an event created by CloudQuestions as '
+    description += f'a reminder to revisit the topic "{topic}" '
+    description += 'in the following link: \n'
+    description = description + DEFAULT_URL + 'questions/' + topic
     event = {
         'summary': 'AR ' + topic,
-        'description': 'This is an event created by CloudQuestions',
+        'description': description,
         'start': {
-            'dateTime': '2015-05-28T09:00:00-07:00',
-            'timeZone': 'America/Los_Angeles',
+            'date': str(date),
         },
         'end': {
-            'dateTime': '2015-05-28T17:00:00-07:00',
-            'timeZone': 'America/Los_Angeles',
+            'date': str(date),
         },
-        'recurrence': [
-            'RRULE:FREQ=DAILY;COUNT=2'
-        ],
-        'attendees': [
-            {'email': 'lpage@example.com'},
-            {'email': 'sbrin@example.com'},
-        ],
+        'colorId': event_colors[random.randint(0, len(event_colors) - 1)],
         'reminders': {
             'useDefault': False,
             'overrides': [
-                {'method': 'email', 'minutes': 24 * 60},
                 {'method': 'popup', 'minutes': 10},
             ],
         },
     }
-    print(event)
-    # service.events().insert(calendarId='primary', event=event).execute()
+    service.events().insert(calendarId='primary', event=event).execute()

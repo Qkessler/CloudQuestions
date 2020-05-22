@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from .forms import SignUpForm, SwitchForm
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
+from accounts.src.api_client import create_event
 from questions.src import question_service
 from oauth2client.contrib import xsrfutil
 from oauth2client.client import OAuth2WebServerFlow
@@ -36,13 +37,14 @@ def settings(request, topic=None, color=None):
     user = request.user
     table = question_service.create_table(user)
     context['ratings_table'] = table
-    breakpoint()
     flow = get_flow()
+    breakpoint()
     if topic and color:
-        return redirect(get_url(flow))
+        return redirect(get_url(flow), topic=topic, color=color)
     if request.GET.get('code'):
         code = request.GET.get('code')
         service = calendar_connection(code, flow)
+        create_event(topic, color, service)
 
     try:
         github_login = user.social_auth.get(provider='github')

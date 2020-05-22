@@ -66,4 +66,4 @@ def create_event(topic, color, service):
             ],
         },
     }
-    service.events().insert(calendarId='primary', event=event).execute()
+    service.events().insert(calendarId='primary', body=event).execute()

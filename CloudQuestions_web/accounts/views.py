@@ -16,6 +16,8 @@ import os
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 CALENDAR_REDIRECT_URI = 'http://127.0.0.1:8000/accounts/settings/'
+EVENT_TOPIC = None
+EVENT_COLOR = None
 
 
 def register(request):
@@ -38,13 +40,16 @@ def settings(request, topic=None, color=None):
     table = question_service.create_table(user)
     context['ratings_table'] = table
     flow = get_flow()
-    breakpoint()
+    global EVENT_TOPIC
+    global EVENT_COLOR
     if topic and color:
-        return redirect(get_url(flow), topic=topic, color=color)
+        EVENT_TOPIC = topic
+        EVENT_COLOR = color
+        return redirect(get_url(flow), topic, color)
     if request.GET.get('code'):
         code = request.GET.get('code')
         service = calendar_connection(code, flow)
-        create_event(topic, color, service)
+        create_event(EVENT_TOPIC, EVENT_COLOR, service)
 
     try:
         github_login = user.social_auth.get(provider='github')

@@ -16,7 +16,14 @@ class Question(models.Model):
 
 
 class Rating(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE, db_index=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     created = models.DateField(default=datetime.now)
     rating = models.TextField(db_index=True)
+
+
+class CalendarConnection(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE, db_index=True)
+    connection = models.BooleanField(default=False)

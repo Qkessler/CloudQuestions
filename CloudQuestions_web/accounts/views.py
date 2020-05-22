@@ -29,20 +29,22 @@ def register(request):
         email = form.cleaned_data.get('email')
         user = authenticate(username=username, password=password, email=email)
         login(request, user)
+        question_service.create_calendar_connection(user)
         return redirect('questions:index')
     return render(request, 'register.html', {'form': form})
 
 
 @login_required
 def settings(request, topic=None, color=None):
+    global EVENT_TOPIC
+    global EVENT_COLOR
     context = {}
     user = request.user
     table = question_service.create_table(user)
+    user_calendar = question_service.get_calendar(request.user)
     context['ratings_table'] = table
     flow = get_flow()
-    global EVENT_TOPIC
-    global EVENT_COLOR
-    if topic and color:
+    if topic and color and user_calendar:
         EVENT_TOPIC = topic
         EVENT_COLOR = color
         return redirect(get_url(flow), topic, color)
@@ -50,7 +52,8 @@ def settings(request, topic=None, color=None):
         code = request.GET.get('code')
         service = calendar_connection(code, flow)
         create_event(EVENT_TOPIC, EVENT_COLOR, service)
-
+    if request.GET.get('calendar'):
+        question_service.change_calendar_connection(user)
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:
@@ -68,6 +71,7 @@ def settings(request, topic=None, color=None):
 
     can_disconnect = (user.social_auth.count() > 1 or
                       user.has_usable_password())
+    context['calendar_connection'] = user_calendar
     context['github_login'] = github_login
     context['twitter_login'] = twitter_login
     context['google_login'] = google_login

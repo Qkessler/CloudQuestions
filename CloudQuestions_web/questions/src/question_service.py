@@ -1,6 +1,6 @@
 import random
 import questions.src.parsing as parsing
-from questions.models import Topic, Question, Rating
+from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 
 
@@ -127,3 +127,23 @@ def create_table(user):
             table[topic_id] = []
         table[topic_id].append(rating)
     return table
+
+
+def get_calendar(user):
+    user_calendar = CalendarConnection.objects.get(user=user)
+    return user_calendar.connection
+
+
+def create_calendar_connection(user):
+    calendar_boolean = CalendarConnection()
+    calendar_boolean.user = user
+    calendar_boolean.save()
+
+
+def change_calendar_connection(user):
+    user_calendar = CalendarConnection.objects.get(user=user)
+    if user_calendar.connection:
+        user_calendar.connection = False
+    else:
+        user_calendar.connection = True
+    user_calendar.save()

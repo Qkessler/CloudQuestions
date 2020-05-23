@@ -67,12 +67,14 @@ def detail(request, topic):
 def random_questions(request, topic):
     global QUESTION_LIST
     context = {}
-    random_question = question_service.random_question(topic, QUESTION_LIST)
-    if random_question:
-        QUESTION_LIST.append(random_question)
-    if request.GET.get('next_question'):
-        if not random_question:
-            return redirect('questions:detail', topic)
+    breakpoint()
+    if request.GET.get('next_question') or len(QUESTION_LIST) == 0:
+        random_question = question_service.random_question(
+            topic, QUESTION_LIST)
+        if random_question:
+            QUESTION_LIST.append(random_question)
+            if not random_question:
+                return redirect('questions:detail', topic)
         return redirect('questions:random', topic)
     if request.GET.get('return'):
         return redirect('questions:detail', topic)

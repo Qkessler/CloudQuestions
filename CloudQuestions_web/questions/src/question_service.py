@@ -15,21 +15,22 @@ def include_questions(q_a, topic_name):    # pragma: no cover
     else:
         topic = Topic.objects.get(name=topic_name)
     for q, a in q_a.items():
-        # if not same_questions(q, topic_name):
-        #     question = Question()
-        #     question.topic = topic
-        #     question.question = q
-        #     question.answer = a
-        #     question.save()
         if not same_questions(q, topic_name):
             question = Question()
             question.topic = topic
             question.question = q
-            question.answer = markdown2.markdown(a)
+            question.answer = a
             question.save()
+        # if not same_questions(q, topic_name):
+        #     question = Question()
+        #     question.topic = topic
+        #     question.question = q
+        #     question.answer = markdown2.markdown(a)
+        #     question.save()
+
+        # Query of questions given a topic
 
 
-# Query of questions given a topic
 def questions_by_topic(topic):
     topic_ids = topics_by_id(topic)
     questions = Question.objects.filter(topic__in=topic_ids)

@@ -12,7 +12,9 @@ def index(request):
     context['searched'] = False
     context['empty'] = True
 
-    if request.method == 'POST':
+
+n
+   if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')
         action = request.POST.get('action')
@@ -67,12 +69,13 @@ def detail(request, topic):
 
 def random_questions(request, topic):
     global QUESTION_LIST
-    # breakpoint()
     context = {}
     random_question = question_service.random_question(topic, QUESTION_LIST)
-    print(random_question)
-    QUESTION_LIST.append(random_question)
+    if random_question:
+        QUESTION_LIST.append(random_question)
     if request.GET.get('next_question'):
+        if not random_question:
+            return redirect('questions:detail', topic)
         return redirect('questions:random', topic)
     if request.GET.get('return'):
         return redirect('questions:detail', topic)

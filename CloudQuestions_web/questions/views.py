@@ -3,6 +3,8 @@ from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
 from .models import Topic
 
+QUESTION_LIST = []
+
 
 def index(request):
     context = {}
@@ -43,6 +45,7 @@ def index(request):
 
 
 def detail(request, topic):
+    global QUESTION_LIST
     questions_by_topic = question_service.questions_by_topic(topic)
     color = None
     if request.GET.get('red_button') == 'Bad':
@@ -54,6 +57,9 @@ def detail(request, topic):
     if color:
         question_service.update_stats(topic, color, request.user)
         return redirect('accounts:settings', topic, color)
+    if request.GET.get('random'):
+        QUESTION_LIST.clear()
+        return redirect('questions:random', topic)
     return render(request, 'questions/detail.html',
                   {'topic': topic,
                    'questions_by_topic': questions_by_topic})
@@ -61,7 +67,12 @@ def detail(request, topic):
 
 def random_questions(request, topic):
     context = {}
-    random_question = question_service.random_question(topic)
+    random_question = question_service.random_question(topic, QUESTION_LIST)
+    QUESTION_LIST.append(random_question)
+    if request.GET.get('next_question'):
+        return redirect('questions:random', topic)
+    if request.GET.get('return'):
+        return redirect('questions:detail', topic)
     context['random_question'] = random_question
     context['topic'] = topic
     return render(request, 'questions/random.html', context)

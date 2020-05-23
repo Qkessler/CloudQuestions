@@ -1,5 +1,15 @@
 <body>
   <h1>{{topic}}</h1>
-  <a>{{random_question}} </a>
+  <details>
+      <summary>{{random_quesiton.question}}</summary>
+      <p>{{random_question.answer}}</p>
+  </details>
+  <form action="get">
+      <input name="next_question" type="submit" value="Next"/>
+  </form>
+  <form action="get">
+      <input name="return" type="submit" value="Go back"/>
+  </form>
+  
 
 </body>

@@ -2,7 +2,9 @@
 
 {% block content %}
 <h1> {{ topic }} </h1>
-<input class="button_random" type="button" value="Random question" onclick="location.href='{% url  'questions:random' topic%} '"/>
+<form method="get">
+    <input name="random" type="submit" value="Random session"/>
+</form>
 <ul>
     {% for q, answer in questions_by_topic.items %}
     <details>

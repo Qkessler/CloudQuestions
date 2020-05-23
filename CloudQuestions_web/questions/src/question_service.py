@@ -2,7 +2,6 @@ import random
 import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import get_url, get_flow, calendar_connection
-import markdown2
 
 
 # Inserting the questions and answers in the db.
@@ -21,16 +20,9 @@ def include_questions(q_a, topic_name):    # pragma: no cover
             question.question = q
             question.answer = a
             question.save()
-        # if not same_questions(q, topic_name):
-        #     question = Question()
-        #     question.topic = topic
-        #     question.question = q
-        #     question.answer = markdown2.markdown(a)
-        #     question.save()
-
-        # Query of questions given a topic
 
 
+# Query of questions given a topic
 def questions_by_topic(topic):
     topic_ids = topics_by_id(topic)
     questions = Question.objects.filter(topic__in=topic_ids)
@@ -105,12 +97,14 @@ def search_engine(string):
 
 
 # Function that returns a random question for a topic.
-def random_question(topic):
+def random_question(topic, questions_showed):
     topic_id = Topic.objects.filter(name=topic)[0].id
     query = Question.objects.filter(topic=topic_id)
-    random_number = random.randrange(
-        0, query.count())
-    question = query[random_number].question
+    question = None
+    while question == None or question in question_showed:
+        random_number = random.randrange(
+            0, query.count())
+        question = query[random_number].question
     return question
 
 

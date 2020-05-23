@@ -86,6 +86,8 @@ def get_inside(question_list, file):
     clean_lines = []
     last_line = len(lines)
     for line in lines:
+        if line != '\n':
+            line.strip('\n')
         clean_lines.append(line)
     values = []
     for _ in question_num:

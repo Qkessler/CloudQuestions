@@ -2,6 +2,7 @@ import random
 import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import get_url, get_flow, calendar_connection
+import markdown2
 
 
 # Inserting the questions and answers in the db.
@@ -14,11 +15,17 @@ def include_questions(q_a, topic_name):    # pragma: no cover
     else:
         topic = Topic.objects.get(name=topic_name)
     for q, a in q_a.items():
+        # if not same_questions(q, topic_name):
+        #     question = Question()
+        #     question.topic = topic
+        #     question.question = q
+        #     question.answer = a
+        #     question.save()
         if not same_questions(q, topic_name):
             question = Question()
             question.topic = topic
             question.question = q
-            question.answer = a
+            question.answer = markdown2.markdown(a)
             question.save()
 
 

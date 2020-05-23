@@ -129,17 +129,22 @@ def create_table(user):
     return table
 
 
+# Gets calendar preference for the user.
 def get_calendar(user):
     user_calendar = CalendarConnection.objects.get(user=user)
     return user_calendar.connection
 
 
+# Creates the instance of the calendar_connection db entry,
+# when a new user is registered.
 def create_calendar_connection(user):
     calendar_boolean = CalendarConnection()
     calendar_boolean.user = user
     calendar_boolean.save()
 
 
+# Function that changes the calendar_connection entry
+# for the user, inverting the value before.
 def change_calendar_connection(user):
     user_calendar = CalendarConnection.objects.get(user=user)
     if user_calendar.connection:

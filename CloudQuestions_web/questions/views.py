@@ -11,9 +11,7 @@ def index(request):
     topics_return = []
     context['searched'] = False
     context['empty'] = True
-
-
-   if request.method == 'POST':
+    if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')
         action = request.POST.get('action')

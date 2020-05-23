@@ -13,7 +13,6 @@ def index(request):
     context['empty'] = True
 
 
-n
    if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

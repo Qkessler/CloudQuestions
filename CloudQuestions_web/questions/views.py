@@ -67,7 +67,6 @@ def detail(request, topic):
 def random_questions(request, topic):
     global QUESTION_LIST
     context = {}
-    print(QUESTION_LIST)
     first_question = len(QUESTION_LIST) == 0
     if request.GET.get('next_question') or first_question:
         random_question = question_service.random_question(

@@ -66,8 +66,11 @@ def detail(request, topic):
 
 
 def random_questions(request, topic):
+    global QUESTION_LIST
+    # breakpoint()
     context = {}
     random_question = question_service.random_question(topic, QUESTION_LIST)
+    print(random_question)
     QUESTION_LIST.append(random_question)
     if request.GET.get('next_question'):
         return redirect('questions:random', topic)

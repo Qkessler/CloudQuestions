@@ -98,13 +98,14 @@ def search_engine(string):
 
 # Function that returns a random question for a topic.
 def random_question(topic, questions_showed):
+    # breakpoint()
     topic_id = Topic.objects.filter(name=topic)[0].id
     query = Question.objects.filter(topic=topic_id)
     question = None
-    while question == None or question in question_showed:
+    while question == None or question in questions_showed:
         random_number = random.randrange(
             0, query.count())
-        question = query[random_number].question
+        question = query[random_number]
     return question
 
 

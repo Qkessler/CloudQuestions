@@ -1,13 +1,13 @@
 <body>
   <h1>{{topic}}</h1>
   <details>
-      <summary>{{random_quesiton.question}}</summary>
+      <summary>{{random_question.question}}</summary>
       <p>{{random_question.answer}}</p>
   </details>
-  <form action="get">
+  <form method="get">
       <input name="next_question" type="submit" value="Next"/>
   </form>
-  <form action="get">
+  <form method="get">
       <input name="return" type="submit" value="Go back"/>
   </form>
   

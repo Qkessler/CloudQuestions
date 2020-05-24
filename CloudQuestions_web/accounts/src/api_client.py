@@ -14,7 +14,7 @@ SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 day_colors = {
     'red': 1,
     'yellow': 3,
-    'green': 5
+    'green': 7
 }
 
 

@@ -100,11 +100,11 @@ def search_engine(string):
 def random_question(topic, questions_showed):
     topic_id = Topic.objects.filter(name=topic)[0].id
     query = Question.objects.filter(topic=topic_id)
-    len_query = len([question for question in query])
+    len_query = len(query)
     question = None
     if len(questions_showed) == len_query:
         return None
-    while question == None or question in questions_showed:
+    while question is None or question in questions_showed:
         random_number = random.randrange(
             0, query.count())
         question = query[random_number]

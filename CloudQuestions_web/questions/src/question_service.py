@@ -1,7 +1,7 @@
 import random
 import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
-from accounts.src.api_client import get_url, get_flow, calendar_connection
+from accounts.src.api_client import random_color
 
 
 def include_questions(q_a, topic_name):    # pragma: no cover
@@ -10,6 +10,7 @@ def include_questions(q_a, topic_name):    # pragma: no cover
     if topic_name not in topics:
         topic = Topic()
         topic.name = topic_name
+        topic.color = random_color()
         topic.save()
     else:
         topic = Topic.objects.get(name=topic_name)
@@ -160,3 +161,5 @@ def change_calendar_connection(user):
 def get_color(topic):
     """ Function that given a topic, gets the color from db. """
     topic_id = topics_by_id(topic)[0]
+    color = Topic.objects.get(id=topic_id).color
+    return color

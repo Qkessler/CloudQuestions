@@ -2,7 +2,7 @@ import os
 import random
 from datetime import datetime, timedelta
 import httplib2
-from questions.src.question_service import get_color
+from questions.src import question_service
 from googleapiclient.discovery import build
 from oauth2client import tools
 from oauth2client.client import OAuth2WebServerFlow
@@ -44,7 +44,6 @@ def calendar_connection(code, flow):
     return service
 
 
-# TODO: Get the color from topic creation, not random for consistancy.
 def create_event(topic, color, service):
     """ Creation of the event for the topic after the random session ended"""
     day_colors = {
@@ -66,7 +65,7 @@ def create_event(topic, color, service):
         'end': {
             'date': str(date),
         },
-        'colorId':
+        'colorId': question_service.get_color(topic),
         'reminders': {
             'useDefault': False,
             'overrides': [
@@ -79,6 +78,7 @@ def create_event(topic, color, service):
 
 def random_color():
     """ Returns a random color from the 11 colorIds
-    supported by calendar api. """
+    supported by the google calendar api. """
     event_colors = [str(num+1) for num in range(11)]
-    random_color = event_colors[random.randint(0, len(event_colors) - 1)]
+    color = event_colors[random.randint(0, len(event_colors) - 1)]
+    return color

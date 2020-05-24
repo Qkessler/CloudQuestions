@@ -4,8 +4,8 @@ from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 
 
-# Inserting the questions and answers in the db.
 def include_questions(q_a, topic_name):    # pragma: no cover
+    """ Inserting the questions and answers in the db. """
     topics = list(Topic.objects.all())
     if topic_name not in topics:
         topic = Topic()
@@ -13,17 +13,17 @@ def include_questions(q_a, topic_name):    # pragma: no cover
         topic.save()
     else:
         topic = Topic.objects.get(name=topic_name)
-    for q, a in q_a.items():
-        if not same_questions(q, topic_name):
+    for question, answer in q_a.items():
+        if not same_questions(question, topic_name):
             question = Question()
             question.topic = topic
-            question.question = q
-            question.answer = a
+            question.question = question
+            question.answer = answer
             question.save()
 
 
-# Query of questions given a topic
 def questions_by_topic(topic):
+    """ Query of questions given a topic. """
     topic_ids = topics_by_id(topic)
     questions = Question.objects.filter(topic__in=topic_ids)
     questions = {question.question: question.answer
@@ -31,9 +31,9 @@ def questions_by_topic(topic):
     return questions
 
 
-# Returns a boolean indicating whether the same question already exists
-# in the db for a given topic.
 def same_questions(question, topic):
+    """ Returns a boolean indicating whether the same question already exists
+    in the db for a given topic. """
     topic = Topic.objects.get(name=topic)
     if topic:
         topic_id = topic.id
@@ -41,37 +41,35 @@ def same_questions(question, topic):
             question=question).filter(topic=topic_id)
         if not query:
             return False
-        else:
-            return True
-    else:
-        return False
+        return True
+    return False
 
 
-# Function that given a list of ids searches for the corresponding
-# names in the db.
 def topics_by_name(ids):
+    """ Function that given a list of ids searches for the corresponding
+    names in the db. """
     query = Topic.objects.filter(id__in=ids)
     topic_names = [topic.name for topic in query]
     return topic_names
 
 
-# Function that given a name searches for the corresponding
-# ids in the db.
 def topics_by_id(name):
+    """ Function that given a name searches for the corresponding
+ids in the db. """
     query = Topic.objects.filter(name__contains=name)
     topic_ids = [topic.id for topic in query]
     return topic_ids
 
 
-# Gets the words of a question
 def get_words(question):
+    """ Gets the words of a question. """
     text = question.question
     return [parsing.scrub_name(word) for word in text.split(' ')]
 
 
-# Checks if string isany of the topics first. Returns the topics
-# where we have any question that contains the string given by the user.
 def search_engine(string):
+    """ Checks if string isany of the topics first. Returns the topics
+    where we have any question that contains the string given by the user. """
     topics_ids = []
     topic_id_query = topics_by_id(parsing.scrub_name(string))
     if topic_id_query:
@@ -96,8 +94,8 @@ def search_engine(string):
     return topics_return
 
 
-# Function that returns a random question for a topic.
 def random_question(topic, questions_showed):
+    """ Function that returns a random question for a topic. """
     topic_id = Topic.objects.filter(name=topic)[0].id
     query = Question.objects.filter(topic=topic_id)
     len_query = len(query)
@@ -111,9 +109,9 @@ def random_question(topic, questions_showed):
     return question
 
 
-# Given the color of the rating for the topic studied, creates
-# a rating instance in the db.
 def update_stats(topic_name, color, user):
+    """ Given the color of the rating for the topic studied, creates
+    a rating instance in the db. """
     topic = Topic.objects.get(name=topic_name)
     rating = Rating()
     rating.rating = color
@@ -122,8 +120,8 @@ def update_stats(topic_name, color, user):
     rating.save()
 
 
-# Creates the dict to set the data in the view.
 def create_table(user):
+    """ Creates the dict to set the data in the view. """
     ratings_user = Rating.objects.all().filter(user=user)
     table = {}
     for rating in ratings_user:
@@ -134,26 +132,31 @@ def create_table(user):
     return table
 
 
-# Gets calendar preference for the user.
 def get_calendar(user):
+    """ Gets calendar preference for the user. """
     user_calendar = CalendarConnection.objects.get(user=user)
     return user_calendar.connection
 
 
-# Creates the instance of the calendar_connection db entry,
-# when a new user is registered.
 def create_calendar_connection(user):
+    """ Creates the instance of the calendar_connection db entry,
+    when a new user is registered. """
     calendar_boolean = CalendarConnection()
     calendar_boolean.user = user
     calendar_boolean.save()
 
 
-# Function that changes the calendar_connection entry
-# for the user, inverting the value before.
 def change_calendar_connection(user):
+    """ Function that changes the calendar_connection entry
+    for the user, inverting the value before."""
     user_calendar = CalendarConnection.objects.get(user=user)
     if user_calendar.connection:
         user_calendar.connection = False
     else:
         user_calendar.connection = True
     user_calendar.save()
+
+
+def get_color(topic):
+    """ Function that given a topic, gets the color from db. """
+    topic_id = topics_by_id(topic)[0]

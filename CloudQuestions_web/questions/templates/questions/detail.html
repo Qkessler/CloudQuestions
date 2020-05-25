@@ -26,4 +26,11 @@
     <input name="green_button" type="submit" value="Good"/>
 </form>
 {% endif %}
+
+{% if creator %}
+<form method="get">
+    <input name="delete" type="submit" value="Remove topic"/>
+</form>
+
+{% endif %}
 {% endblock %}

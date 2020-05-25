@@ -164,3 +164,9 @@ def get_color(topic):
     topic_id = topics_by_id(topic)[0]
     color = Topic.objects.get(id=topic_id).color
     return color
+
+
+def get_creator(topic):
+    topic_id = topics_by_id(topic)[0]
+    creator = Topic.objects.get(id=topic_id).creator
+    return creator

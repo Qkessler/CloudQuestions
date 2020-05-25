@@ -101,13 +101,14 @@ def random_question(topic, questions_showed):
     topic_id = Topic.objects.filter(name=topic)[0].id
     query = Question.objects.filter(topic=topic_id)
     len_query = len(query)
-    question = None
+    question_id = None
     if len(questions_showed) == len_query:
         return None
-    while question is None or question in questions_showed:
+    while question_id is None or question_id in questions_showed:
         random_number = random.randrange(
             0, query.count())
         question = query[random_number]
+        question_id = question.id
     return question
 
 
@@ -167,6 +168,28 @@ def get_color(topic):
 
 
 def get_creator(topic):
+    """ Functions that returns the creator of a given topic. """
     topic_id = topics_by_id(topic)[0]
     creator = Topic.objects.get(id=topic_id).creator
     return creator
+
+
+def get_list_questions(list_questions):
+    """ Function that given a string, gets the list of questions
+    for the random view. """
+    if not list_questions.strip():
+        return []
+    questions_list = [int(string) for string in list_questions.split('+')]
+    return questions_list
+
+
+def create_question_list(question_list):
+    """ Function that creates a string for the questions_list given. """
+    string = '+'.join([str(id) for id in question_list])
+    return string
+
+
+def question_by_id(question_id):
+    """ Return a question given the id. """
+    question = Question.objects.get(id=question_id)
+    return question

@@ -3,8 +3,6 @@ from .forms import SearchForm, UploadFileForm
 from questions.src import question_service, parsing
 from .models import Topic
 
-QUESTION_LIST = []
-
 
 def index(request):
     context = {}
@@ -22,8 +20,8 @@ def index(request):
                 search_term = search_form.cleaned_data.get('search_text')
                 db_topics = question_service.search_engine(search_term)
                 topics = []
-                for t in db_topics:
-                    topics.append(parsing.unscrub_name(t))
+                for topic in db_topics:
+                    topics.append(parsing.unscrub_name(topic))
                     topics_return = dict(zip(db_topics, topics))
                     context['empty'] = False
                 context['searched'] = True
@@ -44,7 +42,6 @@ def index(request):
 
 
 def detail(request, topic):
-    global QUESTION_LIST
     questions_by_topic = question_service.questions_by_topic(topic)
     color = None
     context = {}
@@ -68,28 +65,29 @@ def detail(request, topic):
         question_service.update_stats(topic, color, request.user)
         return redirect('accounts:settings', topic, color)
     if request.GET.get('random'):
-        QUESTION_LIST.clear()
-        return redirect('questions:random', topic)
+        return redirect('questions:random', topic, ' ')
     context['topic'] = topic
     context['questions_by_topic'] = questions_by_topic
     return render(request, 'questions/detail.html', context)
 
 
-def random_questions(request, topic):
-    global QUESTION_LIST
+def random_questions(request, topic, list_questions=''):
     context = {}
-    first_question = len(QUESTION_LIST) == 0
+    questions_list = question_service.get_list_questions(list_questions)
+    first_question = len(questions_list) == 0
     if request.GET.get('next_question') or first_question:
         random_question = question_service.random_question(
-            topic, QUESTION_LIST)
+            topic, questions_list)
         if random_question:
-            QUESTION_LIST.append(random_question)
-            context['random_question'] = random_question
-        else:
-            return redirect('questions:detail', topic)
+            questions_list.append(random_question.id)
+            str_list = question_service.create_question_list(questions_list)
+            return redirect('questions:random', topic, str_list)
+        return redirect('questions:detail', topic)
     if request.GET.get('return'):
         return redirect('questions:detail', topic)
     context['topic'] = topic
+    context['random_question'] = question_service.question_by_id(
+        questions_list[-1])
     return render(request, 'questions/random.html', context)
 
 

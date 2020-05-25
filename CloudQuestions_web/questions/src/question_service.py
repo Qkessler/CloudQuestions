@@ -99,17 +99,14 @@ def search_engine(string):
 def random_question(topic, questions_showed):
     """ Function that returns a random question for a topic. """
     topic_id = Topic.objects.filter(name=topic)[0].id
-    query = Question.objects.filter(topic=topic_id)
-    len_query = len(query)
+    len_query = Question.objects.filter(topic=topic_id).count()
     question_id = None
     if len(questions_showed) == len_query:
         return None
     while question_id is None or question_id in questions_showed:
-        random_number = random.randrange(
-            0, query.count())
-        question = query[random_number]
-        question_id = question.id
-    return question
+        question_id = random.randrange(
+            0, len_query) + 1
+    return question_id
 
 
 def update_stats(topic_name, color, user):

@@ -79,9 +79,10 @@ def random_questions(request, topic, list_questions=''):
         random_question = question_service.random_question(
             topic, questions_list)
         if random_question:
-            questions_list.append(random_question.id)
+            questions_list.append(random_question)
             str_list = question_service.create_question_list(questions_list)
             return redirect('questions:random', topic, str_list)
+        print(list_questions)
         return redirect('questions:detail', topic)
     if request.GET.get('return'):
         return redirect('questions:detail', topic)

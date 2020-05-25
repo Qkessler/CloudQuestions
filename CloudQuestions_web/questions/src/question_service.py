@@ -161,5 +161,5 @@ def change_calendar_connection(user):
 def get_color(topic):
     """ Function that given a topic, gets the color from db. """
     topic_id = topics_by_id(topic)[0]
-    color = [topic.color for topic in Topic.objects.get(id=topic_id)][0]
+    color = Topic.objects.get(id=topic_id).color
     return color

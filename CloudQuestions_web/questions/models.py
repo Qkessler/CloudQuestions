@@ -7,6 +7,9 @@ class Topic(models.Model):
     name = models.TextField(unique=True, db_index=True, default='')
     created = models.DateField(default=datetime.now)
     color = models.IntegerField(null=True)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.DO_NOTHING,
+                                db_index=True)
 
 
 class Question(models.Model):

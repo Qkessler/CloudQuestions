@@ -15,14 +15,14 @@ pat_answers = re.compile(r'\s{4}.*')
 
 # Function to create a tmp file to push into the db through
 # the parsing_markdown function
-def handling_uploaded_file(uploaded):
+def handling_uploaded_file(uploaded, user):
     tmp_path = f'tmp/{uploaded.name}'
     default_storage.save(tmp_path, ContentFile(uploaded.file.read()))
     full_tmp_path = os.path.join(settings.BASE_DIR, tmp_path)
     with open(full_tmp_path, 'wb') as f:
         for chunk in uploaded.chunks():
             f.write(chunk)
-    parsing_markdown(full_tmp_path)
+    parsing_markdown(full_tmp_path, user)
     default_storage.delete(full_tmp_path)
 
 
@@ -59,7 +59,7 @@ def scrub_name(name):
 # Given a file as parameter, reads the lines and gets the questions,
 # being the markdown toggles. After that, parses for each question,
 # the answer below.
-def parsing_markdown(file):
+def parsing_markdown(file, user):
     return_file = {}
     with open(file, 'r') as f:
         file_lines = f.readlines()
@@ -73,7 +73,7 @@ def parsing_markdown(file):
     if questions:
         q_a = get_inside(questions, file)
         return_file['q_a'] = q_a
-        question_service.include_questions(q_a, s_name)
+        question_service.include_questions(q_a, s_name, user)
     return return_file
 
 

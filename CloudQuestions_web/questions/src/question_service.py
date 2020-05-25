@@ -4,13 +4,14 @@ from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import random_color
 
 
-def include_questions(q_a, topic_name):    # pragma: no cover
+def include_questions(q_a, topic_name, user):    # pragma: no cover
     """ Inserting the questions and answers in the db. """
     topics = list(Topic.objects.all())
     if topic_name not in [topic.name for topic in topics]:
         topic = Topic()
         topic.name = topic_name
         topic.color = random_color()
+        topic.creator = user
         topic.save()
     else:
         topic = Topic.objects.get(name=topic_name)

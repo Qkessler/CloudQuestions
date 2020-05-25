@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questions.apps.QuestionsConfig',
     'accounts.apps.AccountsConfig',
-    'social_django'
+    'social_django',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -173,3 +174,5 @@ SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ[
     'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
+RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']

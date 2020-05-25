@@ -56,6 +56,10 @@ def detail(request, topic):
     if color:
         question_service.update_stats(topic, color, request.user)
         return redirect('accounts:settings', topic, color)
+    if request.GET.get('delete'):
+        topic_id = question_service.topics_by_name(topic)[0]
+        topic = Topic.objects.get(id=topic_id)
+        topic.delete()
     if request.GET.get('random'):
         QUESTION_LIST.clear()
         return redirect('questions:random', topic)

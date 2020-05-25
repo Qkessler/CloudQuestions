@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1> {{ topic }} </h1>
+<p> Creator: {{ creator }}</p>
 <form method="get">
     <input name="random" type="submit" value="Random session"/>
 </form>
@@ -27,7 +28,7 @@
 </form>
 {% endif %}
 
-{% if creator %}
+{% if is_creator %}
 <form method="get">
     <input name="delete" type="submit" value="Remove topic"/>
 </form>

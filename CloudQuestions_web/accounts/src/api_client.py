@@ -79,6 +79,6 @@ def create_event(topic, color, service):
 def random_color():
     """ Returns a random color from the 11 colorIds
     supported by the google calendar api. """
-    event_colors = [str(num+1) for num in range(11)]
+    event_colors = [num+1 for num in range(11)]
     color = event_colors[random.randint(0, len(event_colors) - 1)]
     return color

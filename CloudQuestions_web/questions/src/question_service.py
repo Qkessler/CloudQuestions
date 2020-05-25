@@ -7,19 +7,19 @@ from accounts.src.api_client import random_color
 def include_questions(q_a, topic_name):    # pragma: no cover
     """ Inserting the questions and answers in the db. """
     topics = list(Topic.objects.all())
-    if topic_name not in topics:
+    if topic_name not in [topic.name for topic in topics]:
         topic = Topic()
         topic.name = topic_name
         topic.color = random_color()
         topic.save()
     else:
         topic = Topic.objects.get(name=topic_name)
-    for question, answer in q_a.items():
-        if not same_questions(question, topic_name):
+    for question_el, answer_el in q_a.items():
+        if not same_questions(question_el, topic_name):
             question = Question()
             question.topic = topic
-            question.question = question
-            question.answer = answer
+            question.question = question_el
+            question.answer = answer_el
             question.save()
 
 
@@ -161,5 +161,5 @@ def change_calendar_connection(user):
 def get_color(topic):
     """ Function that given a topic, gets the color from db. """
     topic_id = topics_by_id(topic)[0]
-    color = Topic.objects.get(id=topic_id).color
+    color = [topic.color for topic in Topic.objects.get(id=topic_id)][0]
     return color

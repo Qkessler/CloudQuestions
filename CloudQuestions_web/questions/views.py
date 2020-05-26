@@ -99,6 +99,7 @@ def login(request):
     return render(request, 'questions/login.html')
 
 
+# TODO: Adding cookie for saving form data when entered.
 def create_topic(request):
     context = {}
     if request.method == 'POST':

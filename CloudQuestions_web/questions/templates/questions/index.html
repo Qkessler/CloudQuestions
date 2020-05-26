@@ -34,4 +34,9 @@
     {% endfor %}
 </ul>
 {% endif %}
+{% if user.is_authenticated %}
+<form method="get">
+    <input name="upload_topic" type="submit" value="Create topic"/>
+</form>
+{% endif %}
 {% endblock %}

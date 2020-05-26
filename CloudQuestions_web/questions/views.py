@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import SearchForm, UploadFileForm
+from .forms import (SearchForm, UploadFileForm,
+                    CreateTopicForm, CreateQuestionForm)
 from questions.src import question_service, parsing
 from .models import Topic
 
@@ -9,6 +10,8 @@ def index(request):
     topics_return = []
     context['searched'] = False
     context['empty'] = True
+    if request.GET.get('upload_topic'):
+        return redirect('questions:create_topic')
     if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')
@@ -94,3 +97,23 @@ def random_questions(request, topic, list_questions=''):
 
 def login(request):
     return render(request, 'questions/login.html')
+
+
+def create_topic(request):
+    context = {}
+    if request.method == 'POST':
+        create_topic_form = CreateTopicForm(prefix='create_topic_form')
+        create_question_form = CreateQuestionForm(prefix='upload_file_form')
+        action = request.POST.get('action')
+
+        if action == 'create_topic':
+            create_topic_form = CreateTopicForm(
+                request.POST, prefix='create_topic_form')
+            if create_topic_form.is_valid():
+                pass
+        elif action == 'create_question':
+            create_question_form = CreateQuestionForm(
+                request.POST, prefix='create_question_form')
+            if create_question_form.is_valid():
+                pass
+    return render(request, 'questions/create_topic.html', context)

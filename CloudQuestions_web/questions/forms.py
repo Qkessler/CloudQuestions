@@ -13,7 +13,7 @@ class UploadFileForm(forms.Form):
 
 class CreateTopicForm(forms.Form):
     name = forms.CharField(max_length=30)
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(label='')
 
 
 class CreateQuestionForm(forms.Form):

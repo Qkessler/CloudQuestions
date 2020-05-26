@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>This is a test</h1>
-<form action="/quesions/create_topic" method="post">
+<h1>Create topic</h1>
+<form action="/questions/create_topic" method="post">
     {% csrf_token %}
     <input type="hidden" name="action" value="create_topic">
     {{ create_topic_form }}
-    </form>
+</form>
+<br/>
+<form action="/questions/create_topic" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="create_question">
+    {{ create_question_form }}
 </form>
 {% endblock %}

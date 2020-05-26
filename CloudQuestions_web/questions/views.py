@@ -110,10 +110,16 @@ def create_topic(request):
             create_topic_form = CreateTopicForm(
                 request.POST, prefix='create_topic_form')
             if create_topic_form.is_valid():
-                pass
+                topic_name = create_topic_form.cleaned_data.get('name')
         elif action == 'create_question':
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
                 pass
+    else:
+        create_topic_form = CreateTopicForm(prefix='create_topic_form')
+        create_question_form = CreateQuestionForm(
+            prefix='create_question_form')
+    context['create_topic_form'] = create_topic_form
+    context['create_question_form'] = create_question_form
     return render(request, 'questions/create_topic.html', context)

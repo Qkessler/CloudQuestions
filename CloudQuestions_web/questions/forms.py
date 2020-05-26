@@ -1,5 +1,6 @@
 from django import forms
 from . import validators
+from captcha.fields import ReCaptchaField
 
 
 class SearchForm(forms.Form):
@@ -12,6 +13,7 @@ class UploadFileForm(forms.Form):
 
 class CreateTopicForm(forms.Form):
     name = forms.CharField(max_length=30)
+    captcha = ReCaptchaField()
 
 
 class CreateQuestionForm(forms.Form):

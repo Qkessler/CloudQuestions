@@ -186,7 +186,8 @@ def create_question_list(question_list):
     return string
 
 
-def question_by_id(question_id):
+def question_by_position(topic, position):
     """ Return a question given the id. """
-    question = Question.objects.get(id=question_id)
-    return question
+    topic_id = topics_by_id(topic)[0]
+    questions = Question.objects.all().filter(topic=topic_id)
+    return questions[position - 1]

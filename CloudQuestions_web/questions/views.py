@@ -111,11 +111,14 @@ def create_topic(request):
                 request.POST, prefix='create_topic_form')
             if create_topic_form.is_valid():
                 topic_name = create_topic_form.cleaned_data.get('name')
+                print(topic_name)
         elif action == 'create_question':
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
-                pass
+                question = create_question_form.cleaned_data.get('question')
+                answer = create_question_form.cleaned_data.get('answer')
+                print(question, answer)
     else:
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
         create_question_form = CreateQuestionForm(

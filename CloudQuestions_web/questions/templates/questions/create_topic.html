@@ -11,5 +11,6 @@
     {% csrf_token %}
     <input type="hidden" name="action" value="create_question">
     {{ create_question_form }}
+    <input name="button" type="submit" value="Add"/>
 </form>
 {% endblock %}

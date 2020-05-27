@@ -101,15 +101,22 @@ def login(request):
 
 def create_topic(request, topic_added=None):
     context = {}
+    breakpoint()
     if topic_added:
         list_args = topic_added.split('+')
         topic = list_args[0]
         added = list_args[1]
         if len(list_args) > 2:
             created = list_args[2]
+            topic_id = question_service.topics_by_id(topic)[0]
+            list_questions = [
+                question.question for question in Question.objects
+                .all().filter(id=topic_id)]
+            context['list_questions'] = list_questions
+            context['created'] = created
         context['topic'] = topic
         context['added'] = added
-        context['created'] = created
+
     if request.method == 'POST':
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
         create_question_form = CreateQuestionForm(prefix='upload_file_form')
@@ -126,13 +133,13 @@ def create_topic(request, topic_added=None):
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
-                topic = Topic.get_or_create(name=topic)
+                topic_created = Topic.objects.get_or_create(name=topic)
                 question = create_question_form.cleaned_data.get(
                     'question')
                 answer = create_question_form.cleaned_data.get('answer')
                 if topic:
                     created_question = Question()
-                    created_question.topic = topic
+                    created_question.topic = topic_created
                     created_question.question = question
                     created_question.question = answer
                     created_question.save()

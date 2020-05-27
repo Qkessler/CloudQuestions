@@ -10,6 +10,13 @@
 <br/>
 {% if added %}
 <h1>{{topic}}</h1>
+{% if created %}
+<ul>
+    {% for question in list_questions%}
+    <li>{{question}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 <form action="/questions/create_topic" method="post">
     {% csrf_token %}
     <input type="hidden" name="action" value="create_question">
@@ -18,4 +25,3 @@
 </form>
 {% endif %}
 {% endblock %}
-

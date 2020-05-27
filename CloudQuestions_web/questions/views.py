@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import (SearchForm, UploadFileForm,
                     CreateTopicForm, CreateQuestionForm)
 from questions.src import question_service, parsing
-from .models import Topic
+from .models import Topic, Question
 
 
 def index(request):
@@ -99,27 +99,45 @@ def login(request):
     return render(request, 'questions/login.html')
 
 
-# TODO: Adding cookie for saving form data when entered.
-def create_topic(request):
+def create_topic(request, topic_added=None):
     context = {}
+    if topic_added:
+        list_args = topic_added.split('+')
+        topic = list_args[0]
+        added = list_args[1]
+        if len(list_args) > 2:
+            created = list_args[2]
+        context['topic'] = topic
+        context['added'] = added
+        context['created'] = created
     if request.method == 'POST':
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
         create_question_form = CreateQuestionForm(prefix='upload_file_form')
         action = request.POST.get('action')
-
         if action == 'create_topic':
             create_topic_form = CreateTopicForm(
                 request.POST, prefix='create_topic_form')
             if create_topic_form.is_valid():
                 topic_name = create_topic_form.cleaned_data.get('name')
-                print(topic_name)
+                added = True
+                topic_added = topic_name + '+' + str(added)
+                return redirect('questions:create_topic', topic_added)
         elif action == 'create_question':
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
-                question = create_question_form.cleaned_data.get('question')
+                topic = Topic.get_or_create(name=topic)
+                question = create_question_form.cleaned_data.get(
+                    'question')
                 answer = create_question_form.cleaned_data.get('answer')
-                print(question, answer)
+                if topic:
+                    created_question = Question()
+                    created_question.topic = topic
+                    created_question.question = question
+                    created_question.question = answer
+                    created_question.save()
+                    return redirect('questions:create_topic',
+                                    topic_added + '+' + 'created')
     else:
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
         create_question_form = CreateQuestionForm(

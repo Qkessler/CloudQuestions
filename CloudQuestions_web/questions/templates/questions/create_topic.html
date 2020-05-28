@@ -19,6 +19,7 @@
 {% endif %}
 <form action="/questions/create_topic" method="post">
     {% csrf_token %}
+    <input name="topic_name" type="hidden" value="{{topic}}"/>
     <input type="hidden" name="action" value="create_question">
     {{ create_question_form }}
     <input name="button" type="submit" value="Add"/>

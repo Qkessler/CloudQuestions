@@ -101,7 +101,6 @@ def login(request):
 
 def create_topic(request, topic_added=None):
     context = {}
-    breakpoint()
     if topic_added:
         list_args = topic_added.split('+')
         topic = list_args[0]
@@ -133,18 +132,22 @@ def create_topic(request, topic_added=None):
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
-                topic_created = Topic.objects.get_or_create(name=topic)
+                topic_name = request.POST.get('topic_name')
+                topic_created = Topic.objects.get_or_create(
+                    name=topic_name, creator=request.user)
                 question = create_question_form.cleaned_data.get(
                     'question')
                 answer = create_question_form.cleaned_data.get('answer')
-                if topic:
+                if topic_created:
                     created_question = Question()
-                    created_question.topic = topic_created
+                    created_question.topic = topic_created[0]
                     created_question.question = question
                     created_question.question = answer
                     created_question.save()
+                    topic_added = topic_name + '+' + \
+                        'True' + '+' + 'created'
                     return redirect('questions:create_topic',
-                                    topic_added + '+' + 'created')
+                                    topic_added)
     else:
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
         create_question_form = CreateQuestionForm(

@@ -12,8 +12,11 @@
 <h1>{{topic}}</h1>
 {% if created %}
 <ul>
-    {% for question in list_questions%}
-    <li>{{question}}</li>
+    {% for question, answer in list_questions.items %}
+    <details>
+	<summary>{{question}}</summary>
+	<p>{{answer}}</p>
+    </details>
     {% endfor %}
 </ul>
 {% endif %}

@@ -110,9 +110,9 @@ def create_topic(request, topic_added=None):
             breakpoint()
             created = list_args[2]
             topic_id = question_service.topics_by_id(topic)[0]
-            list_questions = [
-                question.question for question in Question.objects
-                .all().filter(id=topic_id)]
+            list_questions = {question.question: question.answer
+                              for question in Question.objects.
+                              all().filter(topic=topic_id)}
             context['list_questions'] = list_questions
             context['created'] = created
         context['topic'] = topic
@@ -131,11 +131,12 @@ def create_topic(request, topic_added=None):
                 topic_added = topic_name + '+' + str(added)
                 return redirect('questions:create_topic', topic_added)
         elif action == 'create_question':
+            breakpoint()
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
                 topic_name = request.POST.get('topic_name')
-                topic_created = Topic.objects.get(name=topic_name)
+                topic_created = Topic.objects.all().filter(name=topic_name)
                 question = create_question_form.cleaned_data.get(
                     'question')
                 answer = create_question_form.cleaned_data.get('answer')
@@ -144,16 +145,18 @@ def create_topic(request, topic_added=None):
                     topic_created.name = topic_name
                     topic_created.color = api_client.random_color()
                     topic_created.creator = request.user
+                    topic_created.save()
                 else:
-                    created_question = Question()
-                    created_question.topic = topic_created
-                    created_question.question = question
-                    created_question.answer = answer
-                    created_question.save()
-                    topic_added = topic_name + '+' + \
-                        'True' + '+' + 'created'
-                    return redirect('questions:create_topic',
-                                    topic_added)
+                    topic_created = topic_created[0]
+                created_question = Question()
+                created_question.topic = topic_created
+                created_question.question = question
+                created_question.answer = answer
+                created_question.save()
+                topic_added = topic_name + '+' + \
+                    'True' + '+' + 'created'
+                return redirect('questions:create_topic',
+                                topic_added)
     else:
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
         create_question_form = CreateQuestionForm(

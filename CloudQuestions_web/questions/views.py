@@ -107,7 +107,6 @@ def create_topic(request, topic_added=None):
         topic = list_args[0]
         added = list_args[1]
         if len(list_args) > 2:
-            breakpoint()
             created = list_args[2]
             topic_id = question_service.topics_by_id(topic)[0]
             list_questions = {question.question: question.answer
@@ -117,6 +116,11 @@ def create_topic(request, topic_added=None):
             context['created'] = created
         context['topic'] = topic
         context['added'] = added
+    if request.GET.get('delete'):
+        topic_id = question_service.topics_by_id(topic)[0]
+        topic = Topic.objects.get(id=topic_id)
+        topic.delete()
+        return redirect('questions:index')
 
     if request.method == 'POST':
         create_topic_form = CreateTopicForm(prefix='create_topic_form')
@@ -131,7 +135,6 @@ def create_topic(request, topic_added=None):
                 topic_added = topic_name + '+' + str(added)
                 return redirect('questions:create_topic', topic_added)
         elif action == 'create_question':
-            breakpoint()
             create_question_form = CreateQuestionForm(
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():

@@ -4,6 +4,7 @@ import questions.src.question_service as question_service
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+import markdown2
 
 
 # Patterns for parsing the markdown file.
@@ -89,17 +90,17 @@ def get_inside(question_list, file):
         if line != '\n':
             line.strip('\n')
         clean_lines.append(line)
-    values = []
+    answers = []
     for _ in question_num:
-        v = []
+        answer = []
         not_last = True
         while not_last and (pat_answers.match(clean_lines[_+1])
                             or clean_lines[_+1] == '\n'):
             not_last = (_ + 1 < (last_line - 1))
-            v.append(clean_lines[_+1].strip('    '))
+            answer.append(clean_lines[_+1].strip('    '))
             _ += 1
-        values.append("".join(v))
-    inside = dict(zip(question_list, values))
+        answers.append(markdown2.markdown("".join(answer)))
+    inside = dict(zip(question_list, answers))
     return inside
 
 

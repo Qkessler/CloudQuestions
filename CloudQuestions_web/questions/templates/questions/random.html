@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>{{topic}}</h1>
-  <details>
-      <summary>{{random_question.question}}</summary>
-      <p>{{random_question.answer}}</p>
-  </details>
-  <form method="get">
-      <input name="next_question" type="submit" value="Next"/>
-  </form>
-  <form method="get">
-      <input name="return" type="submit" value="Go back"/>
-  </form>
+{% autoescape off %}
+<details>
+    <summary>{{random_question.question}}</summary>
+    <p>{{random_question.answer}}</p>
+</details>
+{% endautoescape %}
+
+<form method="get">
+    <input name="next_question" type="submit" value="Next"/>
+</form>
+<form method="get">
+    <input name="return" type="submit" value="Go back"/>
+</form>
 {% endblock %}

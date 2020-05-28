@@ -9,8 +9,17 @@
 <ul>
     {% for q, answer in questions_by_topic.items %}
     <details id="questions_answers">
-	<summary>{{q}}</summary>
-	document.getElementById("questions_answers").innerHTML = answer
+	<script>
+	 var stringToHTML = function(str){
+	     var parser = new DOMParser();
+	     var doc = parser.parseFromString(str, 'text/html');
+	     return doc.body
+	 };
+	 var answer = stringToHTML("{{answer}}")
+	 var question = stringToHTML("<summary>{{q}}</summary>")
+	 document.getElementById('questions_answers').innerHTML = question +
+	 answer;
+	</script>
     </details>
     {% endfor %}
 </ul> 

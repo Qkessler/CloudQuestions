@@ -10,8 +10,10 @@
 <br/>
 {% if added %}
 <h1 class="name_topic">{{topic}}</h1>
-<input name="delete" type="submit" value="Delete topic"/>
 {% if created %}
+<form method="get">
+    <input name="delete" type="submit" value="Delete topic"/>
+</form>
 <ul>
     {% for question, answer in list_questions.items %}
     <details>

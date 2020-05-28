@@ -8,9 +8,9 @@
 </form>
 <ul>
     {% for q, answer in questions_by_topic.items %}
-    <details>
+    <details id="questions_answers">
 	<summary>{{q}}</summary>
-	<p>{{answer}}</p>
+	document.getElementById("questions_answers").innerHTML = answer
     </details>
     {% endfor %}
 </ul> 

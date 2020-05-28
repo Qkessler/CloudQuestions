@@ -3,6 +3,7 @@ from .forms import (SearchForm, UploadFileForm,
                     CreateTopicForm, CreateQuestionForm)
 from questions.src import question_service, parsing
 from .models import Topic, Question
+from accounts.src import api_client
 
 
 def index(request):
@@ -134,7 +135,8 @@ def create_topic(request, topic_added=None):
             if create_question_form.is_valid():
                 topic_name = request.POST.get('topic_name')
                 topic_created = Topic.objects.get_or_create(
-                    name=topic_name, creator=request.user)
+                    name=topic_name, creator=request.user,
+                    color=api_client.random_color())
                 question = create_question_form.cleaned_data.get(
                     'question')
                 answer = create_question_form.cleaned_data.get('answer')
@@ -142,7 +144,7 @@ def create_topic(request, topic_added=None):
                     created_question = Question()
                     created_question.topic = topic_created[0]
                     created_question.question = question
-                    created_question.question = answer
+                    created_question.answer = answer
                     created_question.save()
                     topic_added = topic_name + '+' + \
                         'True' + '+' + 'created'

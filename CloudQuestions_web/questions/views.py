@@ -107,6 +107,7 @@ def create_topic(request, topic_added=None):
         topic = list_args[0]
         added = list_args[1]
         if len(list_args) > 2:
+            breakpoint()
             created = list_args[2]
             topic_id = question_service.topics_by_id(topic)[0]
             list_questions = [
@@ -134,15 +135,18 @@ def create_topic(request, topic_added=None):
                 request.POST, prefix='create_question_form')
             if create_question_form.is_valid():
                 topic_name = request.POST.get('topic_name')
-                topic_created = Topic.objects.get_or_create(
-                    name=topic_name, creator=request.user,
-                    color=api_client.random_color())
+                topic_created = Topic.objects.get(name=topic_name)
                 question = create_question_form.cleaned_data.get(
                     'question')
                 answer = create_question_form.cleaned_data.get('answer')
-                if topic_created:
+                if not topic_created:
+                    topic_created = Topic()
+                    topic_created.name = topic_name
+                    topic_created.color = api_client.random_color()
+                    topic_created.creator = request.user
+                else:
                     created_question = Question()
-                    created_question.topic = topic_created[0]
+                    created_question.topic = topic_created
                     created_question.question = question
                     created_question.answer = answer
                     created_question.save()

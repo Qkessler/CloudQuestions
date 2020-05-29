@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Hi, <a href="/accounts/settings/">{{ user.username }}</a>! </p>
+{% endif %}
+<form action="/questions/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="search">
+    {{ search_form }}
+    <input type="submit" value="Submit">
+</form>
+{% if user.is_authenticated %}
+<form action="/questions/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="upload">
+    {{ upload_file_form }}
+    <input type="submit" value="Submit">
+</form>
+{% endif %}
+{% if user.is_authenticated %}
+<form method="get">
+    <input name="upload_topic" type="submit" value="Create topic"/>
+</form>
+{% endif %}
+{% if searched %}
+<ul>
+    {% for db_name, topic in topics_return.items %}
+    <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
+    {% endfor %}
+</ul>
+{% if empty %}
+<p> No hay ningún topic con esa búsqueda. </p>
+{% endif %}
+{% else %}
+<ul>
+    {% for db_name, topic in all_topics.items %}
+    <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

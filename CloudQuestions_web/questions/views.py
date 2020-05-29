@@ -7,6 +7,10 @@ from accounts.src import api_client
 
 
 def index(request):
+    return render(request, 'questions/index.html')
+
+
+def questions(request):
     context = {}
     topics_return = []
     context['searched'] = False
@@ -42,7 +46,7 @@ def index(request):
     context['all_topics'] = {topic.name: parsing.unscrub_name(topic.name)
                              for topic in Topic.objects.all()}
     context['topics_return'] = topics_return
-    return render(request, 'questions/index.html', context)
+    return render(request, 'questions/questions.html', context)
 
 
 def detail(request, topic):
@@ -58,7 +62,7 @@ def detail(request, topic):
         topic_id = question_service.topics_by_id(topic)[0]
         topic = Topic.objects.get(id=topic_id)
         topic.delete()
-        return redirect('questions:index')
+        return redirect('questions:questions')
     if request.GET.get('red_button') == 'Bad':
         color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':

@@ -30,7 +30,7 @@ def register(request):
         user = authenticate(username=username, password=password, email=email)
         login(request, user)
         question_service.create_calendar_connection(user)
-        return redirect('questions:index')
+        return redirect('questions:questions')
     return render(request, 'register.html', {'form': form})
 
 

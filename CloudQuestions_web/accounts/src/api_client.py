@@ -14,7 +14,7 @@ CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 
 
-def get_flow():
+def get_flow(topic, color):
     """ Creation of the web server flow given the auth
     parameters in the environment """
     flow = OAuth2WebServerFlow(
@@ -22,7 +22,8 @@ def get_flow():
         client_secret=os.environ['CALENDAR_CLIENT_SECRET'],
         scope=SCOPE_EVENTS,
         user_agent='CloudQuestions',
-        redirect_uri='http://127.0.0.1:8000/accounts/settings/'
+        redirect_uri='http://127.0.0.1:8000/accounts/settings/',
+        state=f'{topic}+{color}'
     )
     return flow
 

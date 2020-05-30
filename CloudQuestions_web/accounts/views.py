@@ -34,17 +34,18 @@ def register(request):
 
 @login_required
 def settings(request, topic=None, color=None):
-    """ TODO: Fix global variables. """
     context = {}
     user = request.user
     table = question_service.create_table(user)
     user_calendar = question_service.get_calendar(request.user)
     context['ratings_table'] = table
-    flow = get_flow()
+    flow = get_flow(topic, color)
     if topic and color and user_calendar:
-        return redirect(get_url(flow), topic, color)
+        return redirect(get_url(flow))
     if request.GET.get('code'):
+        breakpoint()
         code = request.GET.get('code')
+        topic, color = request.GET.get('state').split('+')
         service = calendar_connection(code, flow)
         create_event(topic, color, service)
     if request.GET.get('calendar'):

@@ -1,3 +1,4 @@
+import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -10,8 +11,6 @@ from questions.src import question_service
 from oauth2client.contrib import xsrfutil
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
-import httplib2
-import os
 
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'

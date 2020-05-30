@@ -36,6 +36,7 @@ def register(request):
 
 @login_required
 def settings(request, topic=None, color=None):
+    """ TODO: Fix global variables. """
     global EVENT_TOPIC
     global EVENT_COLOR
     context = {}

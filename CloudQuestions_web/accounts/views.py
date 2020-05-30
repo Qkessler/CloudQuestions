@@ -16,8 +16,6 @@ import os
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 CALENDAR_REDIRECT_URI = 'http://127.0.0.1:8000/accounts/settings/'
-EVENT_TOPIC = None
-EVENT_COLOR = None
 
 
 def register(request):
@@ -37,8 +35,6 @@ def register(request):
 @login_required
 def settings(request, topic=None, color=None):
     """ TODO: Fix global variables. """
-    global EVENT_TOPIC
-    global EVENT_COLOR
     context = {}
     user = request.user
     table = question_service.create_table(user)
@@ -46,13 +42,11 @@ def settings(request, topic=None, color=None):
     context['ratings_table'] = table
     flow = get_flow()
     if topic and color and user_calendar:
-        EVENT_TOPIC = topic
-        EVENT_COLOR = color
         return redirect(get_url(flow), topic, color)
     if request.GET.get('code'):
         code = request.GET.get('code')
         service = calendar_connection(code, flow)
-        create_event(EVENT_TOPIC, EVENT_COLOR, service)
+        create_event(topic, color, service)
     if request.GET.get('calendar'):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')

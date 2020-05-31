@@ -42,7 +42,6 @@ def settings(request, topic=None, color=None):
     if topic and color and user_calendar:
         return redirect(get_url(flow))
     if request.GET.get('code'):
-        breakpoint()
         code = request.GET.get('code')
         topic, color = request.GET.get('state').split('+')
         service = calendar_connection(code, flow)

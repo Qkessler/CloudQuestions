@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from questions.views import index
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -11,3 +12,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

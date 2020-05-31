@@ -6,7 +6,7 @@
     <p id="user_hi">Hi, <a id="user_name" href="/accounts/settings/">{{ user.username }}</a>! </p>
 </div>
 {% endif %}
-<div class="container_search" id="search_form">
+<div class="container_forms" id="search_form">
     <form action="/questions/" method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="search">

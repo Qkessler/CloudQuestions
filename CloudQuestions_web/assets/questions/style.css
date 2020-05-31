@@ -4,16 +4,18 @@ body {
 }
 
 #user_hi {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 #user_hi a {
     font-size: 30px;
 }
 
-.container_search {
-    padding: 10px;
+.container_forms {
+    padding-bottom: 10px;
 }
+
 #search_form input[type="text"] {
     background: url(search-24px.svg) no-repeat 10px 6px #fcfcfc;
     border: 1px solid #d1d1d1;
@@ -31,8 +33,8 @@ body {
     -moz-transition: all 0.7s ease 0s;
     -o-transition: all 0.7s ease 0s;
     transition: all 0.7s ease 0s;
-    }
+}
 
 #search_form input[type="text"]:focus {
     width: 50%;
-    }
+}

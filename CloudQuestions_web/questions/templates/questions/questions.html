@@ -6,11 +6,13 @@
     <p id="user_hi">Hi, <a id="user_name" href="/accounts/settings/">{{ user.username }}</a>! </p>
 </div>
 {% endif %}
-<form action="/questions/" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="action" value="search">
-    {{ search_form }}
-</form>
+<div class="container_search" id="search_form">
+    <form action="/questions/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="search">
+        {{ search_form }}
+    </form>
+</div>
 {% if user.is_authenticated %}
 <form action="/questions/" method="post" enctype="multipart/form-data">
     {% csrf_token %}

@@ -1,3 +1,16 @@
+base {
+    padding: 20px;
+}
+
 h1 {
     text-align: center;
+}
+
+#user_hi {
+    padding: 30px;
+    text-align: center;
+}
+
+#user_name {
+    
 }

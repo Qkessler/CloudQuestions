@@ -2,7 +2,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<p>Hi, <a href="/accounts/settings/">{{ user.username }}</a>! </p>
+<div class="base">
+    <p id="user_hi">Hi, <a id="user_name" href="/accounts/settings/">{{ user.username }}</a>! </p>
+</div>
 {% endif %}
 <form action="/questions/" method="post">
     {% csrf_token %}

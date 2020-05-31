@@ -4,7 +4,10 @@ from captcha.fields import ReCaptchaField
 
 
 class SearchForm(forms.Form):
-    search_text = forms.CharField(label='Search topics', max_length=100)
+    search_text = forms.CharField(
+        label='', max_length=100, widget=forms.TextInput(
+            attrs={'class': 'search_form',
+                   'placeholder': 'Search...'}))
 
 
 class UploadFileForm(forms.Form):

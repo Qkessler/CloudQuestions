@@ -1,16 +1,23 @@
-base {
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
+body {
+    /* text-align: center; */
+    margin: 0 auto;
 }
 
 #user_hi {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
 }
 
-#user_name {
-    
+#user_hi a {
+    font-size: 30px;
+}
+
+.search_form {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.search_form:focus {
+  width: 100%;
 }

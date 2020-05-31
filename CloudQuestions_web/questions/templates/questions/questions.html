@@ -10,7 +10,6 @@
     {% csrf_token %}
     <input type="hidden" name="action" value="search">
     {{ search_form }}
-    <input type="submit" value="Submit">
 </form>
 {% if user.is_authenticated %}
 <form action="/questions/" method="post" enctype="multipart/form-data">

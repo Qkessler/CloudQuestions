@@ -11,7 +11,9 @@ class SearchForm(forms.Form):
 
 
 class UploadFileForm(forms.Form):
-    file = forms.FileField(validators=[validators.validate_markdown])
+    file = forms.FileField(validators=[validators.validate_markdown], label="",
+                           widget=forms.FileInput(
+                               attrs={'id': 'file_upload'}))
 
 
 class CreateTopicForm(forms.Form):

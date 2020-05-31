@@ -38,3 +38,7 @@ body {
 #search_form input[type="text"]:focus {
     width: 50%;
 }
+
+#file_upload {
+    width: 20%;
+}

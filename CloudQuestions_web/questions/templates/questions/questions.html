@@ -13,13 +13,17 @@
         {{ search_form }}
     </form>
 </div>
+
 {% if user.is_authenticated %}
-<form action="/questions/" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="hidden" name="action" value="upload">
-    {{ upload_file_form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="container_forms" id="file_upload_form">
+    <form action="/questions/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="upload">
+        {{ upload_file_form }}
+        <label for="file_upload">Choose a file...</label>
+        <input name="file_button" type="submit" value="Submit">
+    </form>
+</div>
 {% endif %}
 {% if user.is_authenticated %}
 <form method="get">

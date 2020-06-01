@@ -45,6 +45,11 @@
 		</ul>
 	    </div>
 	</nav>
+    <script>
+     $('form .autosubmit').on('change', function() {
+         this.form.submit();
+     });
+    </script>
 	{% block content %}
 	{% endblock %}
 

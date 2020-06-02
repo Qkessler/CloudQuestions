@@ -12,6 +12,7 @@ pat_headers = re.compile(r'## .*')
 pat_questions1 = re.compile(r'- .*')
 pat_questions2 = re.compile(r'\t.*')
 pat_answers = re.compile(r'\s{4}.*')
+pat_images = re.compile(r'.*\!\[.*\].*')
 
 
 # Function to create a tmp file to push into the db through
@@ -82,13 +83,15 @@ def parsing_markdown(file, user):
 # the dictionary all that matches the answer pattern (4 spaces).
 def get_inside(question_list, file):
     question_num = [line_num(q, file) for q in question_list]
-    with open(file, 'r') as f:
-        lines = f.readlines()
+    with open(file, 'r') as markdown_f:
+        lines = markdown_f.readlines()
     clean_lines = []
     last_line = len(lines)
     for line in lines:
         if line != '\n':
             line.strip('\n')
+        if pat_images.match(line):
+            continue
         clean_lines.append(line)
     answers = []
     for _ in question_num:

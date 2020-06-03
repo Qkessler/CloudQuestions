@@ -14,8 +14,7 @@ class UploadFileForm(forms.Form):
     file = forms.FileField(validators=[validators.validate_markdown],
                            label="",
                            widget=forms.FileInput(
-                               attrs={'id': 'file_upload',
-                                      'name': 'file'}))
+                               attrs={'class': 'file_upload'}))
 
 
 class CreateTopicForm(forms.Form):

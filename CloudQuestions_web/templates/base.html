@@ -40,9 +40,9 @@
 			    </a>
 			    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     {% if user.is_authenticated %}
-                    <a class="dropdown-item" href="{% url 'accounts/logout' %}">Logout</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     {% else %}
-                    <a class="dropdown-item" href="#">Login</a>
+                    <a class="dropdown-item" href="login">Login</a>
                     {% endif %}
                     <a class="dropdown-item" href="{% url 'accounts:settings' %}">Settings</a>
 			    </div>

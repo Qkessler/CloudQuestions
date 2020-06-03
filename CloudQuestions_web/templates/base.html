@@ -36,13 +36,17 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			        User
+                    {% if user.is_authenticated %}
+                    {{ user.username }}
+                    {% else %}
+                    User
+                    {% endif %}
 			    </a>
 			    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     {% if user.is_authenticated %}
                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     {% else %}
-                    <a class="dropdown-item" href="login">Login</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
                     {% endif %}
                     <a class="dropdown-item" href="{% url 'accounts:settings' %}">Settings</a>
 			    </div>

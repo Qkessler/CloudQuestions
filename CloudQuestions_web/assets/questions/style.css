@@ -48,7 +48,7 @@ input[type="file"] {
 	z-index: -1;
 }
 
-/* .file_upload + label { */
+/* .file_upload_form + label { */
 /*     font-size: 1.25em; */
 /*     font-weight: 700; */
 /*     color: white; */
@@ -59,4 +59,7 @@ input[type="file"] {
 /* .file_upload:focus + label, */
 /* .file_upload + label:hover { */
 /*     background-color: red; */
-/* }  */
+/* } */
+
+.container {
+}

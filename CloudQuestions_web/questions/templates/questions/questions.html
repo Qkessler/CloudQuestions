@@ -15,7 +15,8 @@
 </div>
 
 {% if user.is_authenticated %}
-<div class="container_forms" id="file_upload_form">
+<div class="container">
+<div id="file_upload_form">
     <form action="/questions/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" name="action" value="upload">
@@ -24,12 +25,11 @@
         <input name="file_button" type="submit" value="Submit">
     </form>
 </div>
-{% endif %}
-{% if user.is_authenticated %}
 <form method="get">
     <input name="upload_topic" type="submit" value="Create topic"/>
 </form>
 {% endif %}
+</div>
 {% if searched %}
 <div class="list_topics">
 <ul>

@@ -86,7 +86,6 @@ def get_inside(question_list, file):
     with open(file, 'r') as markdown_f:
         lines = markdown_f.readlines()
     clean_lines = []
-    last_line = len(lines)
     for line in lines:
         if line != '\n':
             line.strip('\n')
@@ -94,6 +93,7 @@ def get_inside(question_list, file):
             continue
         clean_lines.append(line)
     answers = []
+    last_line = len(clean_lines)
     for _ in question_num:
         answer = []
         not_last = True

@@ -61,5 +61,6 @@ input[type="file"] {
 /*     background-color: red; */
 /* } */
 
-.container {
+#container_user_info a{
+    text-align: center;
 }

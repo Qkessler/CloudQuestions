@@ -42,7 +42,7 @@
                     User
                     {% endif %}
 			    </a>
-			    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+			    <div class="dropdown-menu dropdown-menu-right" id="container_user_info" aria-labelledby="navbarDropdownMenuLink">
                     {% if user.is_authenticated %}
                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     {% else %}

@@ -44,7 +44,7 @@ input[type="file"] {
 	height: 0.1px;
 	opacity: 0;
 	overflow: hidden;
-	position: absolute;
+    position: absolute;
 	z-index: -1;
 }
 
@@ -54,7 +54,6 @@ input[type="file"] {
 
 .container {
     width: 50%;
-    /* background: #212; */
 }
 
 #file_upload_form, #create_topic_form {

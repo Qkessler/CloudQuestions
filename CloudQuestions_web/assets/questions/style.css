@@ -95,6 +95,36 @@ input[type="file"] {
     cursor: pointer;
 }
 
+.list_searched ul {
+    list-style-type: none;
+}
+
+.list_searched a, h3, p{
+    color: black;
+    display: inline-block;
+}
+
+.list_searched p {
+    font-size: 15px;
+}
+
+.list_searched li {
+    position: relative;
+    width: 65%;
+    list-style: none;
+    display: block;
+    padding: 20px 0;
+    overflow: visible;
+    -moz-box-shadow: 2px 3px 2px grey;
+    -webkit-box-shadow: 2px 3px 2px grey;
+    box-shadow: 2px 3px 2px grey;
+}
+
+.list_searched li:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
 /* COLORS FOR TOPICS */
 
 .color_1 {

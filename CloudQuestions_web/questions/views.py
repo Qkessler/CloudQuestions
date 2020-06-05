@@ -27,11 +27,11 @@ def questions(request):
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
                 db_topics = question_service.search_engine(search_term)
-                topics = []
+                unscrubed_topics = []
                 for topic in db_topics:
-                    topics.append(parsing.unscrub_name(topic))
-                    topics_return = dict(zip(db_topics, topics))
-                    context['empty'] = False
+                    unscrubed_topics.append(parsing.unscrub_name(topic.name))
+                topics_return = dict(zip(db_topics, unscrubed_topics))
+                context['empty'] = False
                 context['searched'] = True
         elif action == 'upload':
             upload_file_form = UploadFileForm(request.POST, request.FILES)

@@ -34,11 +34,17 @@
 </div>
 {% if searched %}
 <div class="list_searched">
-<ul>
-    {% for db_name, topic in topics_return.items %}
-    <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for topic, printable_topic in topics_return.items %}
+        <li class="color_{{topic.color}}">
+            <a href="{% url 'questions:detail' topic.name %}">
+                <h3>{{printable_topic}}</h3>
+                <p>Created: {{topic.created}}</p>
+                <p>Creator: {{topic.creator}}</p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% if empty %}
 <p> No hay ningún topic con esa búsqueda. </p>

@@ -82,7 +82,54 @@ input[type="file"] {
 }
 
 li:hover {
-  background: #eee;
-  cursor: pointer;
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+/* COLORS FOR TOPICS */
+
+.color_1 {
+    background: #7986cb;
+    opacity: 0.5;
+}
+.color_2 {
+    background: #33b679;
+    opacity: 0.5;
+}
+.color_3 {
+    background: #8e24aa;
+    opacity: 0.5;
+}
+.color_4 {
+    background: #e67c73;
+    opacity: 0.5;
+}
+.color_5 {
+	background:	#f6c026;
+    opacity: 0.5;
+}
+.color_6 {
+	background:	#f5511d;
+    opacity: 0.5;
+}
+.color_7 {
+	background:	#039be5;
+    opacity: 0.5;
+}
+.color_8 {
+	background:	#616161;
+    opacity: 0.5;
+}
+.color_9 {
+	background:	#3f51b5;
+    opacity: 0.5;
+}
+.color_10 {
+	background:	#0b8043;
+    opacity: 0.5;
+}
+.color_11 {
+	background:	#d60000;
+    opacity: 0.5;
 }
 

@@ -56,7 +56,7 @@ input[type="file"] {
 
 .container {
     width: 75%;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 #file_upload_form, #create_topic_form {
@@ -65,11 +65,24 @@ input[type="file"] {
     display: inline-block;
 }
 
-ul {
+.list_topic ul {
     list-style-type: none;
+}
+
+.list_topic a, p{
+    display: inline-block;
+}
+
+.list_topic p {
+    font-size: 15px;
+}
+
+.list_topic li {
+    padding: 10px;
 }
 
 li:hover {
   background: #eee;
   cursor: pointer;
 }
+

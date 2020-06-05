@@ -48,9 +48,11 @@
 <ul>
     {% for topic, printable_topic in all_topics.items %}
     <li class="color_{{topic.color}}">
-        <a href="{% url 'questions:detail' topic.name %}"> {{printable_topic}} </a>
-        <p>Created: {{topic.created}}</p>
-        <p>Creator: {{topic.creator}}</p>
+        <a href="{% url 'questions:detail' topic.name %}">
+            <h3>{{printable_topic}}</h3>
+            <p>Created: {{topic.created}}</p>
+            <p>Creator: {{topic.creator}}</p>
+        </a>
     </li>
     {% endfor %}
 </ul>

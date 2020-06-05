@@ -69,7 +69,8 @@ input[type="file"] {
     list-style-type: none;
 }
 
-.list_topic a, p{
+.list_topic a, h3, p{
+    color: black;
     display: inline-block;
 }
 
@@ -78,10 +79,18 @@ input[type="file"] {
 }
 
 .list_topic li {
-    padding: 10px;
+    position: relative;
+    width: 65%;
+    list-style: none;
+    display: block;
+    padding: 20px 0;
+    overflow: visible;
+    -moz-box-shadow: 2px 3px 2px grey;
+    -webkit-box-shadow: 2px 3px 2px grey;
+    box-shadow: 2px 3px 2px grey;
 }
 
-li:hover {
+.list_topic li:hover {
     opacity: 0.75;
     cursor: pointer;
 }

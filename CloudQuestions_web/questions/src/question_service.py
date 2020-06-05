@@ -70,7 +70,7 @@ def get_words(question):
 
 
 def search_engine(string):
-    """ Checks if string isany of the topics first. Returns the topics
+    """ Checks if string is any of the topics first. Returns the topics
     where we have any question that contains the string given by the user. """
     topics_ids = []
     topic_id_query = topics_by_id(parsing.scrub_name(string))
@@ -92,7 +92,7 @@ def search_engine(string):
         if string in words_topic:
             if topic not in topics_ids:
                 topics_ids.append(topic.id)
-    topics_return = topics_by_name(topics_ids)
+    topics_return = Topic.objects.all().filter(id__in=topics_ids)
     return topics_return
 
 

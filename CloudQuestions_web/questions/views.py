@@ -43,7 +43,7 @@ def questions(request):
         upload_file_form = UploadFileForm(prefix='upload_file_form')
     context['search_form'] = search_form
     context['upload_file_form'] = upload_file_form
-    context['all_topics'] = {topic.name: parsing.unscrub_name(topic.name)
+    context['all_topics'] = {topic: parsing.unscrub_name(topic.name)
                              for topic in Topic.objects.all()}
     context['topics_return'] = topics_return
     return render(request, 'questions/questions.html', context)

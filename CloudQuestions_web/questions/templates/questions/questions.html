@@ -33,7 +33,7 @@
 {% endif %}
 </div>
 {% if searched %}
-<div class="list_topics">
+<div id="list_searched">
 <ul>
     {% for db_name, topic in topics_return.items %}
     <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
@@ -44,10 +44,16 @@
 <p> No hay ningún topic con esa búsqueda. </p>
 {% endif %}
 {% else %}
+<div id="list_topic">
 <ul>
-    {% for db_name, topic in all_topics.items %}
-    <li><a href="{% url 'questions:detail' db_name %}"> {{topic}} </a></li>
+    {% for topic, printable_topic in all_topics.items %}
+    <li>
+        <a href="{% url 'questions:detail' topic.name %}"> {{printable_topic}} </a>
+        <p>Created: {{topic.created}}</p>
+        <p>Creator: {{topic.creator}}</p>
+    </li>
     {% endfor %}
 </ul>
+</div>
 {% endif %}
 {% endblock %}

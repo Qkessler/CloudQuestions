@@ -65,3 +65,11 @@ input[type="file"] {
     display: inline-block;
 }
 
+ul {
+    list-style-type: none;
+}
+
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}

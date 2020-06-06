@@ -90,6 +90,10 @@ ul.list_topic {
     display: inline-block;
 }
 
+.toggle-help {
+    padding-left: 20px;
+}
+
 .list_topic p {
     font-size: 15px;
 }
@@ -146,47 +150,47 @@ a.list_searched h3.list_searched p.list_searched{
 /* COLORS FOR TOPICS */
 
 .color_1 {
-    background: #7986cb;
+    background: #adb5db;
     opacity: 0.5;
 }
 .color_2 {
-    background: #33b679;
+    background: #95e8c1;
     opacity: 0.5;
 }
 .color_3 {
-    background: #8e24aa;
+    background: #dc9ded;
     opacity: 0.5;
 }
 .color_4 {
-    background: #e67c73;
+    background: #f0b0aa;
     opacity: 0.5;
 }
 .color_5 {
-	background:	#f6c026;
+	background:	#f0e87d;
     opacity: 0.5;
 }
 .color_6 {
-	background:	#f5511d;
+	background:	#f28968;
     opacity: 0.5;
 }
 .color_7 {
-	background:	#039be5;
+	background:	#8ccded;
     opacity: 0.5;
 }
 .color_8 {
-	background:	#616161;
+	background:	#c4c4c4;
     opacity: 0.5;
 }
 .color_9 {
-	background:	#3f51b5;
+	background:	#8b98e0;
     opacity: 0.5;
 }
 .color_10 {
-	background:	#0b8043;
+	background:	#72b896;
     opacity: 0.5;
 }
 .color_11 {
-	background:	#d60000;
+	background:	#eb6060;
     opacity: 0.5;
 }
 

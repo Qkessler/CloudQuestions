@@ -15,10 +15,11 @@ def questions(request, toggle_help=None):
     topics_searched = []
     context['searched'] = False
     context['empty'] = True
+    context['help'] = 'help_false'
     if request.GET.get('upload_topic'):
         return redirect('questions:create_topic')
     if toggle_help:
-        print('Help is true.')
+        context['help'] = 'help_true'
     if request.GET.get('toggle_help'):
         if toggle_help == "true":
             return redirect('questions:questions')

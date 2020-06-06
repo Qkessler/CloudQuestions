@@ -104,10 +104,11 @@ ul.list_topic {
     line-height: 1.42857;
 }
 
-#help-button {
-    background-image: url("question-toggle-button.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+.questions-help_false {  
+    background-image: none;
+}
+.questions-help_true {
+    background-image: url("test-background.jpg");
 }
 
 .list_topic p {

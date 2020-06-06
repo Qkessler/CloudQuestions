@@ -5,6 +5,11 @@
 <div class="base">
     <p id="user_hi">Hi, <a id="user_name" href="/accounts/settings/">{{ user.username }}</a>! </p>
 </div>
+<div class="toggle-help">
+    <form method="get">
+        <input name="toggle_help" type="submit" value="help"/>
+    </form>
+</div>
 {% endif %}
 <div class="container_forms" id="search_form">
     <form action="/questions/" method="post">

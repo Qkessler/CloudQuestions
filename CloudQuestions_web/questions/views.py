@@ -10,13 +10,15 @@ def index(request):
     return render(request, 'questions/index.html')
 
 
-def questions(request):
+def questions(request, toggle_help=None):
     context = {}
     topics_searched = []
     context['searched'] = False
     context['empty'] = True
     if request.GET.get('upload_topic'):
         return redirect('questions:create_topic')
+    if request.GET.get('toggle_help'):
+
     if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

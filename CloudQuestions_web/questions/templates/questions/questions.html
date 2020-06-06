@@ -38,9 +38,9 @@
         {% for topic, printable_topic in topics_return.items %}
         <li class="color_{{topic.color}}">
             <a href="{% url 'questions:detail' topic.name %}">
-                <h3>{{printable_topic}}</h3>
-                <p>Created: {{topic.created}}</p>
-                <p>Creator: {{topic.creator}}</p>
+                <h3 class="inline-block-black">{{printable_topic}}</h3>
+                <p class="inline-block-black">Created: {{topic.created}}</p>
+                <p class="inline-block-black">Creator: {{topic.creator}}</p>
             </a>
         </li>
         {% endfor %}
@@ -54,10 +54,10 @@
 <ul>
     {% for topic, printable_topic in all_topics.items %}
     <li class="color_{{topic.color}}">
-        <a href="{% url 'questions:detail' topic.name %}">
-            <h3>{{printable_topic}}</h3>
-            <p>Created: {{topic.created}}</p>
-            <p>Creator: {{topic.creator}}</p>
+        <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
+            <h3 class="inline-block-black">{{printable_topic}}</h3>
+            <p class="inline-block-black">Created: {{topic.created}}</p>
+            <p class="inline-block-black">Creator: {{topic.creator}}</p>
         </a>
     </li>
     {% endfor %}

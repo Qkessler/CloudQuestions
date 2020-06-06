@@ -77,11 +77,15 @@ input[type="file"] {
     margin-right: 20%;
 }
 
-.list_topic ul {
+ul.list_topic {
     list-style-type: none;
 }
 
-.list_topic a, h3, p{
+.link-clickable {
+    display: block;
+}
+
+.inline-block-black {
     color: black;
     display: inline-block;
 }
@@ -112,7 +116,7 @@ input[type="file"] {
     list-style-type: none;
 }
 
-.list_searched a, h3, p{
+a.list_searched h3.list_searched p.list_searched{
     color: black;
     display: inline-block;
 }

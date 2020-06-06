@@ -108,7 +108,8 @@ ul.list_topic {
     background-image: none;
 }
 .questions-help_true {
-    background-image: url("test-background.jpg");
+    background-image: url("questions_page_help.png");
+    background-repeat: no-repeat;
 }
 
 .list_topic p {

@@ -65,6 +65,18 @@ input[type="file"] {
     display: inline-block;
 }
 
+.list_topic {
+    width: 53%;
+    margin-left: 22.5%;
+    margin-right: 20%;
+}
+
+.list_searched {
+    width: 53%;
+    margin-left: 22.5%;
+    margin-right: 20%;
+}
+
 .list_topic ul {
     list-style-type: none;
 }
@@ -80,7 +92,7 @@ input[type="file"] {
 
 .list_topic li {
     position: relative;
-    width: 65%;
+    width: 100%;
     list-style: none;
     display: block;
     padding: 20px 0;
@@ -88,6 +100,7 @@ input[type="file"] {
     -moz-box-shadow: 2px 3px 2px grey;
     -webkit-box-shadow: 2px 3px 2px grey;
     box-shadow: 2px 3px 2px grey;
+    margin-bottom: 10px;
 }
 
 .list_topic li:hover {
@@ -110,7 +123,7 @@ input[type="file"] {
 
 .list_searched li {
     position: relative;
-    width: 65%;
+    width: 100%;
     list-style: none;
     display: block;
     padding: 20px 0;
@@ -118,6 +131,7 @@ input[type="file"] {
     -moz-box-shadow: 2px 3px 2px grey;
     -webkit-box-shadow: 2px 3px 2px grey;
     box-shadow: 2px 3px 2px grey;
+    margin-bottom: 10px;
 }
 
 .list_searched li:hover {

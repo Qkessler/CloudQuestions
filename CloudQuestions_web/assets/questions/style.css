@@ -94,6 +94,22 @@ ul.list_topic {
     padding-left: 20px;
 }
 
+.circle-button {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+#help-button {
+    background-image: url("question-toggle-button.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 .list_topic p {
     font-size: 15px;
 }

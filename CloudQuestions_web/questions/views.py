@@ -12,7 +12,7 @@ def index(request):
 
 def questions(request):
     context = {}
-    topics_return = []
+    topics_searched = []
     context['searched'] = False
     context['empty'] = True
     if request.GET.get('upload_topic'):
@@ -30,7 +30,7 @@ def questions(request):
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))
-                topics_return = dict(zip(db_topics, unscrubed_topics))
+                topics_searched = dict(zip(db_topics, unscrubed_topics))
                 context['empty'] = False
                 context['searched'] = True
         elif action == 'upload':
@@ -43,9 +43,14 @@ def questions(request):
         upload_file_form = UploadFileForm(prefix='upload_file_form')
     context['search_form'] = search_form
     context['upload_file_form'] = upload_file_form
-    context['all_topics'] = {topic: parsing.unscrub_name(topic.name)
-                             for topic in Topic.objects.all()}
-    context['topics_return'] = topics_return
+    all_topics = {topic: parsing.unscrub_name(topic.name)
+                  for topic in Topic.objects.all()}
+    if len(all_topics) > 50:
+        all_topics = all_topics[:50]
+    if len(topics_searched) > 50:
+        topics_searched = topics_searched[:50]
+    context['topics_searched'] = topics_searched
+    context['all_topics'] = all_topics
     return render(request, 'questions/questions.html', context)
 
 

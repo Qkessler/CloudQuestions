@@ -35,7 +35,7 @@
 {% if searched %}
 <div class="list_searched">
     <ul>
-        {% for topic, printable_topic in topics_return.items %}
+        {% for topic, printable_topic in topics_searched.items %}
         <li class="color_{{topic.color}}">
             <a href="{% url 'questions:detail' topic.name %}">
                 <h3 class="inline-block-black">{{printable_topic}}</h3>

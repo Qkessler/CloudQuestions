@@ -31,6 +31,13 @@
         <input class="btn btn-outline-danger" id="file_button" name="file_button" type="submit" value="Submit">
     </form>
 </div>
+<script type="text/javascript">
+ $('#file_upload').change(function() {
+     var i = $(this).prev('label').clone();
+     var file = $('#file_upload')[0].files[0].name;
+     $(this).prev('label').text(file);
+ });
+</script>
 <div id="create_topic_form">
     <form method="get">
         <input class="btn btn-outline-primary" name="upload_topic" type="submit" value="Create topic"/>

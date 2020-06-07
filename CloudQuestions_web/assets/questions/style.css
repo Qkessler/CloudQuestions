@@ -106,6 +106,12 @@ ul.list_topic {
     font-size: 15px;
 }
 
+@media (max-width: 1907px) {
+    .hide-help {
+        display: none;
+    }
+}
+
 .list_topic li {
     position: relative;
     width: 100%;

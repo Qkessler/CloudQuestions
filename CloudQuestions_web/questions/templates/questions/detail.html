@@ -6,18 +6,6 @@
     <p class="inline-block-black"> Created: {{topic.created}}</p>
     <p class="inline-block-black" > Creator: {{ creator }}</p>
 </div>
-<div id="list_questions">
-<ul>
-    {% autoescape off %}
-    {% for q, answer in questions_by_topic.items %}
-    <details id="questions_answers">
-	    <summary>{{q}}</summary>
-	    <p class="align-left"> {{answer}} </p>
-    </details>
-    {% endfor %}
-    {% endautoescape %}
-</ul>
-</div>
 <div id="random_session">
     <form method="get">
         <input name="random" type="submit" value="Random session"/>
@@ -44,4 +32,16 @@
     </form>
 </div>
 {% endif %}
+<div id="list_questions">
+<ul>
+    {% autoescape off %}
+    {% for q, answer in questions_by_topic.items %}
+    <details id="questions_answers">
+	    <summary>{{q}}</summary>
+        <p class="align-left"> {{answer}}</p>
+    </details>
+    {% endfor %}
+    {% endautoescape %}
+</ul>
+</div>
 {% endblock %}

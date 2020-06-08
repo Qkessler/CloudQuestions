@@ -87,7 +87,10 @@ def detail(request, topic):
         return redirect('accounts:settings', topic, color)
     if request.GET.get('random'):
         return redirect('questions:random', topic, ' ')
-    context['topic'] = parsing.unscrub_name(topic)
+    context['topic_pretty_name'] = parsing.unscrub_name(topic)
+    topic_id = question_service.topics_by_id(topic)[0]
+    topic = Topic.objects.get(id=topic_id)
+    context['topic'] = topic
     context['questions_by_topic'] = questions_by_topic
     return render(request, 'questions/detail.html', context)
 

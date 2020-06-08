@@ -49,7 +49,7 @@
 <div class="list_searched">
     <ul>
         {% for topic, printable_topic in topics_searched.items %}
-        <li class="color_{{topic.color}}">
+        <li class="list_topic_item color_{{topic.color}}">
             <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
                 <h3 class="inline-block-black">{{printable_topic}}</h3>
                 <p class="inline-block-black">Created: {{topic.created}}</p>
@@ -66,7 +66,7 @@
 <div class="list_topic">
 <ul>
     {% for topic, printable_topic in all_topics.items %}
-    <li class="color_{{topic.color}}">
+    <li class="list_topic_item color_{{topic.color}}">
         <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
             <h3 class="inline-block-black">{{printable_topic}}</h3>
             <p class="inline-block-black">Created: {{topic.created}}</p>

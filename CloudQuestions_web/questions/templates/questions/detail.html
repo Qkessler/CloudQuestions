@@ -36,7 +36,7 @@
 <ul>
     {% autoescape off %}
     {% for q, answer in questions_by_topic.items %}
-    <div class="note rounded">
+    <div class="note rounded color-light_{{topic.color}}">
     <details id="questions_answers">
 	    <summary>{{q}}</summary>
         <p class="align-left"> {{answer}}</p>

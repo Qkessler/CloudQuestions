@@ -145,7 +145,10 @@ def random_questions(request, topic, list_questions=''):
         return redirect('questions:detail', topic)
     if request.GET.get('return'):
         return redirect('questions:detail', topic)
-    context['topic'] = topic
+    context['topic_pretty_name'] = parsing.unscrub_name(topic)
+    topic_id = question_service.topics_by_id(topic)[0]
+    topic_context = Topic.objects.get(id=topic_id)
+    context['topic'] = topic_context
     context['random_question'] = question_service.question_by_position(
         topic, questions_list[-1])
     return render(request, 'questions/random.html', context)

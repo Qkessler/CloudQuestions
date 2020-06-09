@@ -261,6 +261,43 @@ a.list_searched h3.list_searched p.list_searched{
 	background:	#eb6060;
 }
 
+.color-light_1 {
+    background: #ccd2f0;
+
+}
+.color-light_2 {
+    background: #c7fce4;
+
+}
+.color-light_3 {
+    background: #ebc6f5;
+
+}
+.color-light_4 {
+    background: #f7cac6;
+}
+.color-light_5 {
+	background:	#f2eda7;
+}
+.color-light_6 {
+	background:	#f2ac96;
+}
+.color-light_7 {
+	background:	#c2ebff;
+}
+.color-light_8 {
+	background:	#e0dede;
+}
+.color-light_9 {
+	background:	#c3cbf7;
+}
+.color-light_10 {
+	background:	#bcebd4;
+}
+.color-light_11 {
+	background:	#f5a9a9;
+}
+
 /* Testing for questions and answers. */
 
 details summary::-webkit-details-marker {
@@ -276,7 +313,6 @@ details summary::-webkit-details-marker {
   width: 40%;
   padding: 1em 1.5em;
   margin: 2em auto;
-  background: #c8dce6;
   overflow: hidden;
 }
 .note:before {
@@ -302,95 +338,22 @@ details summary::-webkit-details-marker {
 }
 .note.rounded:before {
   border-width: 8px;
-  /* Triggers a 1px 'step' along the diagonal in Safari 5 (and Chrome 10) */
   border-color: white white transparent transparent;
-  /* Avoids the 1px 'step' in webkit. Background colour shows through */
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius: 0 0 0 5px;
   border-radius: 0 0 0 5px;
   box-shadow: 0 6px 4px -4px #263238;
 }
 
-/* details { */
-/*     margin: 1rem auto; */
-/*     padding: 0 1rem; */
-/*     width: 35em; */
-/*     max-width: calc(100% - 2rem); */
-/*     position: relative; */
-/*     border: 1px solid #78909C; */
-/*     border-radius: 6px; */
-/*     background-color: #ECEFF1; */
-/*     color: #263238; */
-/*     transition: background-color .15s; */
-    
-/*     > :last-child { */
-/*         margin-bottom: 1rem; */
-/*     } */
-    
-/*     &::before { */
-/*         width: 100%; */
-/*         height: 100%; */
-/*         content: ''; */
-/*         position: absolute; */
-/*         top: 0; */
-/*         left: 0; */
-/*         border-radius: inherit; */
-/*         opacity: .15; */
-/*         box-shadow: 0 .25em .5em #263238; */
-/*         pointer-events: none; */
-/*         transition: opacity .2s; */
-/*         z-index: -1; */
-/*     } */
-    
-/*     &[open] { */
-/*         background-color: #FFF; */
-        
-/*         &::before { */
-/*             opacity: .6; */
-/*         } */
-/*     } */
-/* } */
-
 .align-left {
     text-align: left;
 }
 
-/* summary { */
-/*     text-align: left; */
-/*     padding: 1rem 2em 1rem 0; */
-/*     display: block; */
-/*     position: relative; */
-/*     font-size: 1.33em; */
-/*     cursor: pointer; */
-    
-/*     &::before, */
-/*     &::after { */
-/*         width: .75em; */
-/*         height: 2px; */
-/*         position: absolute; */
-/*         top: 50%; */
-/*         right: 0; */
-/*         content: ''; */
-/*         background-color: currentColor; */
-/*         text-align: right; */
-/*         transform: translateY(-50%); */
-/*         transition: transform .2s ease-in-out; */
-/*     } */
-    
-/*     &::after { */
-/*         transform: translateY(-50%) rotate(90deg); */
-        
-/*         [open] & { */
-/*             transform: translateY(-50%) rotate(180deg); */
-/*         } */
-/*     } */
-    
-/*     &::-webkit-details-marker { */
-/*         display: none; */
-/*     } */
-/* } */
-
-
+summary {
+    font-size: 1.25em;
+    cursor: pointer;
+    padding-bottom: 20px;
+}
 
 
 

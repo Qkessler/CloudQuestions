@@ -36,10 +36,12 @@
 <ul>
     {% autoescape off %}
     {% for q, answer in questions_by_topic.items %}
+    <div class="note rounded">
     <details id="questions_answers">
 	    <summary>{{q}}</summary>
         <p class="align-left"> {{answer}}</p>
     </details>
+    </div>
     {% endfor %}
     {% endautoescape %}
 </ul>

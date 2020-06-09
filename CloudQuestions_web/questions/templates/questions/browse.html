@@ -5,7 +5,7 @@
     <h1>Browse topics!</h1>
 </div>
 
-<div class="container_forms" id="search_form">
+<div class="container_forms padding-bottom" id="search_form">
     <form action="/questions/browse" method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="search">

@@ -47,19 +47,31 @@ def same_questions(question, topic):
     return False
 
 
-def topics_by_name(ids):
+def topics_by_name(ids, creator=None):
     """ Function that given a list of ids searches for the corresponding
     names in the db. """
-    query = Topic.objects.filter(id__in=ids)
-    topic_names = [topic.name for topic in query]
+    topic_names = []
+    if not creator:
+        query = Topic.objects.filter(id__in=ids)
+        topic_names = [topic.name for topic in query]
+    else:
+        query_creator = Topic.objects.filter(
+            id__in=ids).filter(creator=creator)
+        topic_names = [topic.name for topic in query_creator]
     return topic_names
 
 
-def topics_by_id(name):
+def topics_by_id(name, creator=None):
     """ Function that given a name searches for the corresponding
 ids in the db. """
-    query = Topic.objects.filter(name__contains=name)
-    topic_ids = [topic.id for topic in query]
+    topic_ids = []
+    if not creator:
+        query = Topic.objects.filter(name__contains=name)
+        topic_ids = [topic.id for topic in query]
+    else:
+        query_creator = Topic.objects.filter(
+            name__contains=name).filter(creator=creator)
+        topic_ids = [topic.id for topic in query_creator]
     return topic_ids
 
 
@@ -69,30 +81,55 @@ def get_words(question):
     return [parsing.scrub_name(word) for word in text.split(' ')]
 
 
-def search_engine(string):
-    """ Checks if string is any of the topics first. Returns the topics
-    where we have any question that contains the string given by the user. """
-    topics_ids = []
-    topic_id_query = topics_by_id(parsing.scrub_name(string))
-    if topic_id_query:
-        topics_ids = topic_id_query
-    query = Question.objects.all()
-    topic_question = {}
-    for question in query:
-        if question.topic not in topic_question.keys():
-            topic_question[question.topic] = []
-        topic_question[question.topic].append(question)
+def search_engine(search_term, creator=None):
+    """ Checks if the search_term is any of the topics first. Returns the topics
+    where we have any question that contains the search_term given by the user.
+    The creator is the decider to which search_engine to use, depending if
+    the user is in the questions or the browse view. """
+    if not creator:
+        topics_ids = []
+        topic_id_query = topics_by_id(parsing.scrub_name(search_term))
+        if topic_id_query:
+            topics_ids = topic_id_query
+        query = Question.objects.all()
+        topic_question = {}
+        for question in query:
+            if question.topic not in topic_question.keys():
+                topic_question[question.topic] = []
+            topic_question[question.topic].append(question)
 
-    for topic, questions in topic_question.items():
-        words_topic = []
-        for question in questions:
-            for word in get_words(question):
-                if word != '':
-                    words_topic.append(word)
-        if string in words_topic:
-            if topic not in topics_ids:
-                topics_ids.append(topic.id)
-    topics_return = Topic.objects.all().filter(id__in=topics_ids)
+        for topic, questions in topic_question.items():
+            words_topic = []
+            for question in questions:
+                for word in get_words(question):
+                    if word != '':
+                        words_topic.append(word)
+            if search_term in words_topic:
+                if topic not in topics_ids:
+                    topics_ids.append(topic.id)
+        topics_return = Topic.objects.all().filter(id__in=topics_ids)
+    else:
+        topics_ids = []
+        topic_id_query = topics_by_id(parsing.scrub_name(search_term), creator)
+        if topic_id_query:
+            topics_ids = topic_id_query
+        query = Question.objects.all().filter(topic__in=topics_ids)
+        topic_question = {}
+        for question in query:
+            if question.topic not in topic_question.keys():
+                topic_question[question.topic] = []
+            topic_question[question.topic].append(question)
+
+        for topic, questions in topic_question.items():
+            words_topic = []
+            for question in questions:
+                for word in get_words(question):
+                    if word != '':
+                        words_topic.append(word)
+            if search_term in words_topic:
+                if topic not in topics_ids:
+                    topics_ids.append(topic.id)
+        topics_return = Topic.objects.all().filter(id__in=topics_ids)
     return topics_return
 
 

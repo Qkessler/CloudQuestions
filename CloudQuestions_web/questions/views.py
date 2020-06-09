@@ -34,7 +34,8 @@ def questions(request, toggle_help=None):
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
-                db_topics = question_service.search_engine(search_term)
+                db_topics = question_service.search_engine(
+                    search_term, request.user)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))
@@ -52,7 +53,8 @@ def questions(request, toggle_help=None):
     context['search_form'] = search_form
     context['upload_file_form'] = upload_file_form
     all_topics = {topic: parsing.unscrub_name(topic.name)
-                  for topic in Topic.objects.all()}
+                  for topic in Topic.objects.all().
+                  filter(creator=request.user)}
     if len(all_topics) > 50:
         all_topics = all_topics[:50]
     if len(topics_searched) > 50:

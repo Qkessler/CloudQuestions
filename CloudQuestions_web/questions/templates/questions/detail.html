@@ -8,19 +8,19 @@
 </div>
 <div id="random_session">
     <form method="get">
-        <input name="random" type="submit" value="Random session"/>
+        <input class="btn btn-primary" name="random" type="submit" value="Random session"/>
     </form>
 </div>
 {% if user.is_authenticated %}
 <div class="inline-block-black" id="rating-buttons">
     <form class="inline-block-black" method="get" action="#">
-        <input name="red_button" type="submit" value="Bad"/>
+        <input class="btn btn-danger" name="red_button" type="submit" value="Bad"/>
     </form>
     <form class="inline-block-black" method="get" action="#">
-        <input  name="yellow_button" type="submit" value="Medium"/>
+        <input class="btn btn-warning" name="yellow_button" type="submit" value="Medium"/>
     </form>
     <form class="inline-block-black" method="get" action="#">
-        <input name="green_button" type="submit" value="Good"/>
+        <input class="btn btn-success" name="green_button" type="submit" value="Good"/>
     </form>
 </div>
 {% endif %}
@@ -28,7 +28,7 @@
 {% if is_creator %}
 <div id="delete-form">
     <form method="get">
-        <input name="delete" type="submit" value="Remove topic"/>
+        <input class="btn btn-dark" name="delete" type="submit" value="Remove topic"/>
     </form>
 </div>
 {% endif %}

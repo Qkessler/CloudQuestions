@@ -352,7 +352,11 @@ details summary::-webkit-details-marker {
 summary {
     font-size: 1.25em;
     cursor: pointer;
-    padding-bottom: 20px;
+    padding: 10px;
+}
+
+#rating-buttons {
+    padding: 20px;
 }
 
 

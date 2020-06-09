@@ -149,6 +149,7 @@ def random_questions(request, topic, list_questions=''):
     topic_id = question_service.topics_by_id(topic)[0]
     topic_context = Topic.objects.get(id=topic_id)
     context['topic'] = topic_context
+    context['creator'] = topic_context.creator
     context['random_question'] = question_service.question_by_position(
         topic, questions_list[-1])
     return render(request, 'questions/random.html', context)

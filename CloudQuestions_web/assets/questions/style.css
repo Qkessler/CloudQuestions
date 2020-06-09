@@ -298,6 +298,7 @@ details summary::-webkit-details-marker {
   -webkit-border-radius: 5px 0 5px 5px;
   -moz-border-radius: 5px 0 5px 5px;
   border-radius: 5px 0 5px 5px;
+  box-shadow: 0 6px 4px -4px #263238;
 }
 .note.rounded:before {
   border-width: 8px;
@@ -307,6 +308,7 @@ details summary::-webkit-details-marker {
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius: 0 0 0 5px;
   border-radius: 0 0 0 5px;
+  box-shadow: 0 6px 4px -4px #263238;
 }
 
 /* details { */

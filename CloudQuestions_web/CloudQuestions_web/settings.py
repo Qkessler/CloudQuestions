@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = 'questions:questions'
 SOCIAL_AUTH_LOGIN_ERROR_URL = 'accounts:settings'

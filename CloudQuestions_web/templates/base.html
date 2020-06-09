@@ -9,6 +9,7 @@
 	<meta name="author" content="">
 	
     <title>CloudQuestions</title>
+    
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{% static 'questions/style.css' %}" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
@@ -25,7 +26,10 @@
 	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav">
 		    <li class="nav-item active">
-			<a class="nav-link" href="{% url 'questions:questions' %}">Questions</a>
+			    <a class="nav-link" href="{% url 'questions:questions' %}">Questions</a>
+		    </li>
+            <li class="nav-item active">
+			    <a class="nav-link" href="{% url 'questions:browse' %}">Browse</a>
 		    </li>
 		    <li class="nav-item">
 			    <a class="nav-link disabled" href="">Pricing</a>

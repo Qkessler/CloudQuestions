@@ -4,6 +4,7 @@ from . import views
 app_name = 'questions'
 urlpatterns = [
     path('', views.questions, name='questions'),
+    path('browse', views.browse, name='browse'),
     path('create_topic', views.create_topic, name='create_topic'),
     path('create_topic/<str:topic_added>',
          views.create_topic, name='create_topic'),

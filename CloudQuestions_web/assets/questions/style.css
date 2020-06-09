@@ -10,6 +10,14 @@ body {
     padding-bottom: 10px;
 }
 
+.architects {
+    font-family: 'Architects Daughter', cursive;
+}
+
+#browse-title {
+    padding: 30px;
+}
+
 #user_hi a {
     font-size: 40px;
 }

@@ -95,6 +95,40 @@ def detail(request, topic):
     return render(request, 'questions/detail.html', context)
 
 
+def browse(request):
+    context = {}
+    topics_searched = []
+    context['searched'] = False
+    context['empty'] = True
+    if request.method == 'POST':
+        search_form = SearchForm(prefix='search_form')
+        action = request.POST.get('action')
+
+        if action == 'search':
+            search_form = SearchForm(request.POST, prefix='search_form')
+            if search_form.is_valid():
+                search_term = search_form.cleaned_data.get('search_text')
+                db_topics = question_service.search_engine(search_term)
+                unscrubed_topics = []
+                for topic in db_topics:
+                    unscrubed_topics.append(parsing.unscrub_name(topic.name))
+                topics_searched = dict(zip(db_topics, unscrubed_topics))
+                context['empty'] = False
+                context['searched'] = True
+    else:
+        search_form = SearchForm(prefix='search_form')
+    context['search_form'] = search_form
+    all_topics = {topic: parsing.unscrub_name(topic.name)
+                  for topic in Topic.objects.all()}
+    if len(all_topics) > 50:
+        all_topics = all_topics[:50]
+    if len(topics_searched) > 50:
+        topics_searched = topics_searched[:50]
+    context['topics_searched'] = topics_searched
+    context['all_topics'] = all_topics
+    return render(request, 'questions/browse.html', context)
+
+
 def random_questions(request, topic, list_questions=''):
     context = {}
     questions_list = question_service.get_list_questions(list_questions)
@@ -106,7 +140,6 @@ def random_questions(request, topic, list_questions=''):
             questions_list.append(random_question)
             str_list = question_service.create_question_list(questions_list)
             return redirect('questions:random', topic, str_list)
-        print(list_questions)
         return redirect('questions:detail', topic)
     if request.GET.get('return'):
         return redirect('questions:detail', topic)

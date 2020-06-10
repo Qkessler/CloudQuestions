@@ -16,7 +16,8 @@ def include_questions(q_a, topic_name, user):    # pragma: no cover
     else:
         topic = Topic.objects.get(name=topic_name)
     for question_el, answer_el in q_a.items():
-        if not same_questions(question_el, topic_name):
+        if not same_questions(question_el, topic_name) and not same_answers(
+                answer_el, topic_name):
             question = Question()
             question.topic = topic
             question.question = question_el
@@ -39,9 +40,21 @@ def same_questions(question, topic):
     topic = Topic.objects.get(name=topic)
     if topic:
         topic_id = topic.id
-        query = Question.objects.filter(
+        query_questions = Question.objects.filter(
             question=question).filter(topic=topic_id)
-        if not query:
+        if not query_questions:
+            return False
+        return True
+    return False
+
+
+def same_answers(answer, topic):
+    topic = Topic.objects.get(name=topic)
+    if topic:
+        topic_id = topic.id
+        query_answers = Question.objects.filter(
+            answer=answer).filter(topic=topic_id)
+        if not query_answers:
             return False
         return True
     return False

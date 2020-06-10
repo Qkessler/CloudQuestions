@@ -40,8 +40,8 @@ def same_questions(question, topic):
     topic = Topic.objects.get(name=topic)
     if topic:
         topic_id = topic.id
-        query_questions = Question.objects.filter(
-            question=question).filter(topic=topic_id)
+        query_questions = Question.objects.filter(topic=topic_id).filter(
+            question=question)
         if not query_questions:
             return False
         return True

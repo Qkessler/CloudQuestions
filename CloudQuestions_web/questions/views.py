@@ -16,7 +16,6 @@ def questions(request, toggle_help=None):
     context['searched'] = False
     context['empty'] = True
     context['help'] = 'help_false'
-    print(toggle_help)
     if toggle_help:
         context['help'] = 'help_true'
     if request.GET.get('toggle_help'):

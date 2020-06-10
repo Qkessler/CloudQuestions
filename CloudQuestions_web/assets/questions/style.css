@@ -359,8 +359,13 @@ summary {
     padding: 20px;
 }
 
+.borderless {
+    border: none;
+}
 
-
+.margin-left {
+    margin-left: 15px;
+}
 
 
 

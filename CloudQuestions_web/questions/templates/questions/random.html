@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
@@ -13,11 +14,16 @@
 </details>
 </div>
 {% endautoescape %}
+<div class="inline-block-black" id="return-button">
+    <form method="get">
+        <input class="btn btn-primary" name="return" type="submit" value="Go back"/>
+    </form>
+</div>
 
-<form method="get">
-    <input name="next_question" type="submit" value="Next"/>
-</form>
-<form method="get">
-    <input name="return" type="submit" value="Go back"/>
-</form>
+<div class="inline-block-black margin-left" id="next-question">
+    <form method="get">
+        <input class="btn btn-success" name="next_question" type="submit" value="Next"/>
+    </form>
+</div>
+
 {% endblock %}

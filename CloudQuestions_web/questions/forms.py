@@ -1,6 +1,8 @@
 from django import forms
 from . import validators
 from captcha.fields import ReCaptchaField
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 
 class SearchForm(forms.Form):
@@ -15,6 +17,16 @@ class UploadFileForm(forms.Form):
                            label="",
                            widget=forms.FileInput(
                                attrs={'id': 'file_upload'}))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'file_upload-form'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = 'submit_survey'
+
+        self.helper.add_input(Submit('submit', 'Submit'))
 
 
 class CreateTopicForm(forms.Form):

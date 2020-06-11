@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     'accounts.apps.AccountsConfig',
     'social_django',
-    'captcha'
+    'captcha',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

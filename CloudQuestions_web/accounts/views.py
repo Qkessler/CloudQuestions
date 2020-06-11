@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
-from .forms import SignUpForm, SwitchForm
+from .forms import SignUpForm
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event

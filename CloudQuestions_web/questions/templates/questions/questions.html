@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy upload_file_form upload_file_form.helper %}
 
 {% block content %}
 <div class="questions-{{help}}">
@@ -22,14 +24,14 @@
 
 {% if user.is_authenticated %}
 <div class="container">
-<div id="file_upload_form">
-    <form action="/questions/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="hidden" name="action" value="upload">
-        {{ upload_file_form }}
-        <input class="btn btn-outline-danger" id="file_button" name="file_button" type="submit" value="Submit">
-    </form>
-</div>
+    <div id="file_upload_form">
+        <form action="/questions/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="upload">
+            {{ upload_file_form }}
+            <input class="btn btn-outline-danger" id="file_button" name="file_button" type="submit" value="Submit">
+        </form>
+    </div>
 <script type="text/javascript">
  $('#file_upload').change(function() {
      var i = $(this).prev('label').clone();

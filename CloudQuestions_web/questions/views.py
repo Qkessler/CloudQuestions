@@ -53,7 +53,7 @@ def questions(request, toggle_help=None):
     context['upload_file_form'] = upload_file_form
     all_topics = {topic: parsing.unscrub_name(topic.name)
                   for topic in Topic.objects.all().
-                  filter(creator=request.user)}
+                  filter(creator=request.user).order_by('name')}
     if len(all_topics) > 50:
         all_topics = all_topics[:50]
     if len(topics_searched) > 50:

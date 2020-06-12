@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Create topic</h1>
+<h1 class="architects">Create a new topic!</h1>
 <form action="/questions/create_topic" method="post">
     {% csrf_token %}
     <input type="hidden" name="action" value="create_topic">
     {{ create_topic_form }}
     <input name="button" type="submit" value="Add"/>    
 </form>
-<br/>
 {% if added %}
 <h1 class="name_topic">{{topic}}</h1>
 {% if created %}

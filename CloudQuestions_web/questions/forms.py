@@ -18,22 +18,71 @@ class UploadFileForm(forms.Form):
                            widget=forms.FileInput(
                                attrs={'id': 'file_upload'}))
 
+
+class CreateTopicForm(forms.Form):
+    name = forms.CharField(
+        label='Topic name',
+        max_length=30,
+        required=True)
+    question = forms.CharField(
+        label='Question',
+        max_length=200,
+        required=True)
+    answer = forms.CharField(
+        label='Answer',
+        max_length=400,
+        required=True)
+    captcha = ReCaptchaField(label='')
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_id = 'file_upload-form'
+        self.helper.form_id = 'id-create-topic-form'
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
-        self.helper.form_action = 'submit_survey'
+        self.helper.form_action = ''
 
         self.helper.add_input(Submit('submit', 'Submit'))
 
 
-class CreateTopicForm(forms.Form):
-    name = forms.CharField(max_length=30)
-    captcha = ReCaptchaField(label='')
+class ExampleForm(forms.Form):
+    like_website = forms.TypedChoiceField(
+        label="Do you like this website?",
+        choices=((1, "Yes"), (0, "No")),
+        coerce=lambda x: bool(int(x)),
+        widget=forms.RadioSelect,
+        initial='1',
+        required=True,
+    )
 
+    favorite_food = forms.CharField(
+        label="What is your favorite food?",
+        max_length=80,
+        required=True,
+    )
 
-class CreateQuestionForm(forms.Form):
-    question = forms.CharField(label='Question', max_length=200)
-    answer = forms.CharField(label='Answer', max_length=400)
+    favorite_color = forms.CharField(
+        label="What is your favorite color?",
+        max_length=80,
+        required=True,
+    )
+
+    favorite_number = forms.IntegerField(
+        label="Favorite number",
+        required=False,
+    )
+
+    notes = forms.CharField(
+        label="Additional notes or feedback",
+        required=False,
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-exampleForm'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = '#'
+
+        self.helper.add_input(Submit('submit', 'Submit'))

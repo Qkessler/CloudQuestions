@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import (SearchForm, UploadFileForm,
-                    CreateTopicForm, CreateQuestionForm)
+                    CreateTopicForm,
+                    ExampleForm)
 from questions.src import question_service, parsing
 from .models import Topic, Question
 from accounts.src import api_client
@@ -158,69 +159,12 @@ def login(request):
     return render(request, 'questions/login.html')
 
 
-def create_topic(request, topic_added=None):
+def create_topic(request):
     context = {}
-    if topic_added:
-        list_args = topic_added.split('+')
-        topic = list_args[0]
-        added = list_args[1]
-        if len(list_args) > 2:
-            created = list_args[2]
-            topic_id = question_service.topics_by_id(topic)[0]
-            list_questions = {question.question: question.answer
-                              for question in Question.objects.
-                              all().filter(topic=topic_id)}
-            context['list_questions'] = list_questions
-            context['created'] = created
-        context['topic'] = topic
-        context['added'] = added
+    topic_form = CreateTopicForm(prefix="example_form")
     if request.method == 'POST':
-        create_topic_form = CreateTopicForm(prefix='create_topic_form')
-        create_question_form = CreateQuestionForm(prefix='upload_file_form')
-        action = request.POST.get('action')
-        if action == 'create_topic':
-            create_topic_form = CreateTopicForm(
-                request.POST, prefix='create_topic_form')
-            if create_topic_form.is_valid():
-                topic_name = create_topic_form.cleaned_data.get('name')
-                added = True
-                topic_added = topic_name + '+' + str(added)
-                return redirect('questions:create_topic', topic_added)
-        elif action == 'create_question':
-            create_question_form = CreateQuestionForm(
-                request.POST, prefix='create_question_form')
-            if create_question_form.is_valid():
-                topic_name = request.POST.get('topic_name')
-                topic_created = Topic.objects.all().filter(name=topic_name)
-                question = create_question_form.cleaned_data.get(
-                    'question')
-                answer = create_question_form.cleaned_data.get('answer')
-                if not topic_created:
-                    topic_created = Topic()
-                    topic_created.name = topic_name
-                    topic_created.color = api_client.random_color()
-                    topic_created.creator = request.user
-                    topic_created.save()
-                else:
-                    topic_created = topic_created[0]
-                created_question = Question()
-                created_question.topic = topic_created
-                created_question.question = question
-                created_question.answer = answer
-                created_question.save()
-                topic_added = topic_name + '+' + \
-                    'True' + '+' + 'created'
-                return redirect('questions:create_topic',
-                                topic_added)
-    else:
-        create_topic_form = CreateTopicForm(prefix='create_topic_form')
-        create_question_form = CreateQuestionForm(
-            prefix='create_question_form')
-        if request.GET.get('delete'):
-            topic_id = question_service.topics_by_id(topic)[0]
-            topic = Topic.objects.get(id=topic_id)
-            topic.delete()
-            return redirect('questions:create_topic')
-    context['create_topic_form'] = create_topic_form
-    context['create_question_form'] = create_question_form
-    return render(request, 'questions/create_topic.html', context)
+        topic_form = CreateTopicForm(request.POST, prefix="example_form")
+        if topic_form.is_valid():
+            print(topic_form.cleaned_data)
+    context['topic_form'] = topic_form
+    return render(request, 'questions/testing_crispy_forms.html', context)

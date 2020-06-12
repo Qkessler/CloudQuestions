@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="architects">Create a new topic!</h1>
+{% crispy topic_form topic_form.helper %}
+{% endblock %}

@@ -349,6 +349,14 @@ details summary::-webkit-details-marker {
     text-align: left;
 }
 
+.align-center {
+    text-align: center;
+}
+
+.g-recaptcha {
+    display: inline-block;
+}
+
 summary {
     font-size: 1.25em;
     cursor: pointer;
@@ -367,5 +375,7 @@ summary {
     margin-left: 15px;
 }
 
-
-
+#create-topic-form {
+    width: 60%;
+    background: grey;
+}

@@ -3,6 +3,8 @@ from . import validators
 from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from crispy_forms.layout import (Layout, Fieldset, ButtonHolder,
+                                 Submit, Field, Div)
 
 
 class SearchForm(forms.Form):
@@ -27,22 +29,29 @@ class CreateTopicForm(forms.Form):
     question = forms.CharField(
         label='Question',
         max_length=200,
-        required=True)
+        required=True,
+        widget=forms.Textarea)
     answer = forms.CharField(
         label='Answer',
         max_length=400,
-        required=True)
+        required=True,
+        widget=forms.Textarea)
     captcha = ReCaptchaField(label='')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_id = 'id-create-topic-form'
-        self.helper.form_class = 'blueForms'
-        self.helper.form_method = 'post'
-        self.helper.form_action = ''
-
-        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                'name',
+                'question',
+                'answer',
+                'captcha'),
+            ButtonHolder(
+                Submit('submit', 'Submit', css_class='button white')
+            )
+        )
 
 
 class ExampleForm(forms.Form):

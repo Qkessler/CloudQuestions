@@ -5,6 +5,7 @@ from .forms import (SearchForm, UploadFileForm,
 from questions.src import question_service, parsing
 from .models import Topic, Question
 from accounts.src import api_client
+from django.http import HttpResponse
 
 
 def index(request):
@@ -17,12 +18,14 @@ def questions(request, toggle_help=None):
     context['searched'] = False
     context['empty'] = True
     context['help'] = 'help_false'
-    if toggle_help:
+    if toggle_help == 'help=True':
         context['help'] = 'help_true'
+    elif toggle_help:
+        return HttpResponse(status='404')
     if request.GET.get('toggle_help'):
-        if toggle_help == "true":
+        if toggle_help == "help=True":
             return redirect('questions:questions')
-        return redirect('questions:questions', 'true')
+        return redirect('questions:questions', 'help=True')
     if request.GET.get('upload_topic'):
         return redirect('questions:create_topic')
     if request.method == 'POST':

@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import (SearchForm, UploadFileForm,
-                    CreateTopicForm,
-                    ExampleForm)
+                    CreateTopicForm)
 from questions.src import question_service, parsing
 from .models import Topic, Question
 from accounts.src import api_client

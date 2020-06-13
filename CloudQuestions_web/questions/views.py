@@ -167,6 +167,6 @@ def create_topic(request):
     if request.method == 'POST':
         topic_form = CreateTopicForm(request.POST, prefix="example_form")
         if topic_form.is_valid():
-            print(topic_form.cleaned_data)
+            context['created'] = True
     context['topic_form'] = topic_form
     return render(request, 'questions/testing_crispy_forms.html', context)

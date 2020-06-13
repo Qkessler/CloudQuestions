@@ -98,7 +98,6 @@ ul.list_topic {
 }
 
 .inline-block-black {
-    color: black;
     display: inline-block;
 }
 
@@ -376,6 +375,14 @@ summary {
 }
 
 #create-topic-form {
-    width: 60%;
-    background: grey;
+    padding-bottom: 30px;
+}
+
+#create-new-topic {
+    padding-bottom: 20px;
+}
+
+#list-questions-topic {
+    width: 40%;
+    display: inline-block;
 }

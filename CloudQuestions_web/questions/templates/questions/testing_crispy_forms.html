@@ -2,6 +2,27 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1 class="architects">Create a new topic!</h1>
-{% crispy topic_form topic_form.helper %}
+<h1 class="architects" id="create-new-topic">Create a new topic!</h1>
+<div id="create-topic-form">
+    {% crispy topic_form topic_form.helper %}
+</div>
+{% if created %}
+<div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
+    <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
+    <p class="inline-block-black"> Created: {{topic.created}}</p>
+    <p class="inline-block-black" > Creator: {{ creator }}</p>
+</div>
+<div id="lq-create-topic">
+    <ul>
+        {% for question, answer in list_questions.items %}
+        <details>
+	        <summary>{{question}}</summary>
+	        <p>{{answer}}</p>
+        </details>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
 {% endblock %}
+
+

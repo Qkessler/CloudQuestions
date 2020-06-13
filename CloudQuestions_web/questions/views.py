@@ -45,7 +45,7 @@ def questions(request, toggle_help=None):
         elif action == 'upload':
             upload_file_form = UploadFileForm(request.POST, request.FILES)
             if upload_file_form.is_valid():
-                uploaded = request.FILES.get('file')
+                uploaded = request.FILES.get('file_upload')
                 parsing.handling_uploaded_file(uploaded, request.user)
     else:
         search_form = SearchForm(prefix='search_form')

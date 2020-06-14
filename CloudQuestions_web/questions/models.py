@@ -10,6 +10,7 @@ class Topic(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.DO_NOTHING,
                                 db_index=True)
+    created_flag = models.BooleanField(default=True)
 
 
 class Question(models.Model):

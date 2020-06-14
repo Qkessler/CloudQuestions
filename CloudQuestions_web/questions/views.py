@@ -17,6 +17,7 @@ def questions(request, toggle_help=None):
     context['searched'] = False
     context['empty'] = True
     context['help'] = 'help_false'
+    question_service.delete_flagged()
     if toggle_help == 'help=True':
         context['help'] = 'help_true'
     elif toggle_help:
@@ -168,5 +169,11 @@ def create_topic(request):
         topic_form = CreateTopicForm(request.POST, prefix="example_form")
         if topic_form.is_valid():
             context['created'] = True
+            topic_name = topic_form.cleaned_data['name']
+            question = topic_form.cleaned_data['question']
+            answer = topic_form.cleaned_data['answer']
+            user = request.user
+            # question_service.create_or_modify(
+            # topic_name, question, answer, user)
     context['topic_form'] = topic_form
     return render(request, 'questions/testing_crispy_forms.html', context)

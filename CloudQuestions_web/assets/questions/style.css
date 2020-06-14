@@ -176,6 +176,9 @@ a.list_searched h3.list_searched p.list_searched{
 #header-topic {
     margin-bottom: 40px;
 }
+#header-topic-created {
+    margin-bottom: 40px;
+}
 
 /* COLORS FOR TOPICS */
 

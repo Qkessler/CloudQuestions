@@ -243,3 +243,36 @@ def question_by_position(topic, position):
     topic_id = topics_by_id(topic)[0]
     questions = Question.objects.all().filter(topic=topic_id)
     return questions[position - 1]
+
+
+def create_or_modify(topic_name, question, answer, user):
+    """ Creates or modifies a topic based if we have topics with the name
+    entered and the user is the creator. """
+    query_ids = topics_by_id(topic_name)
+    topic_com = None
+    for topic_id in query_ids:
+        topic = Topic.objects.get(id=topic_id)
+        if topic.creator == user:
+            topic_com = topic
+            break
+    if not topic_com:
+        topic_to_add = Topic()
+        topic_to_add.name = topic_name
+        topic_to_add.creator = user
+        topic_to_add.created_flag = False
+        topic_to_add.save()
+    # In case the user wants to add questions to an existing topic.
+    question_to_add = Question()
+    question_to_add.topic = topic_com
+    question_to_add.question = question
+    question_to_add.answer = answer
+    question_to_add.save()
+
+
+def delete_flagged():
+    """ This is a function created to make sure that the topics with less
+    than 2 questions created by the user, or the case that the user leaves
+    create_topic view, are deleted. """
+    query_flagged = Topic.objects.filter(created_flag=False)
+    for topic in query_flagged:
+        topic.delete()

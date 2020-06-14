@@ -50,6 +50,6 @@ class CreateTopicForm(forms.Form):
                     'answer',
                     'captcha', style="width: 40%; display: inline-block")),
             ButtonHolder(
-                Submit('submit', 'Submit', css_class='button white')
+                Submit('submit', 'Add question', css_class='button white')
             )
         )

@@ -7,7 +7,7 @@
     {% crispy topic_form topic_form.helper %}
 </div>
 {% if created %}
-<div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
+<div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic-created">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
     <p class="inline-block-black" > Creator: {{ creator }}</p>

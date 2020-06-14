@@ -162,27 +162,35 @@ def login(request):
     return render(request, 'questions/login.html')
 
 
-def create_topic(request):
+def create_topic(request, topic_id=None):
     context = {}
     topic_form = CreateTopicForm(prefix="example_form")
     if request.method == 'POST':
         topic_form = CreateTopicForm(request.POST, prefix="example_form")
         if topic_form.is_valid():
-            context['created'] = True
             topic_name = topic_form.cleaned_data['name']
             question = topic_form.cleaned_data['question']
             answer = topic_form.cleaned_data['answer']
             user = request.user
             topic_com = question_service.create_or_modify(
                 topic_name, question, answer, user)
-            context['enough_size'] = (
-                Question.objects.filter(topic=topic_com).count() > 1)
-            context['topic_pretty_name'] = parsing.unscrub_name(topic_com.name)
-            context['topic'] = topic_com
+            return redirect('questions:create_topic', topic_com.id)
     else:
-        if request.GET.get('add_topic'):
-            # topic_com.created_flag = True
-            # topic_com.save()
-            return redirect('questions:questions')
+        if topic_id:
+            topic_url = Topic.objects.get(id=topic_id)
+            if topic_url and topic_url.creator == request.user:
+                context['topic_pretty_name'] = parsing.unscrub_name(
+                    topic_url.name)
+                context['topic'] = topic_url
+                context['enough_size'] = (
+                    Question.objects.filter(topic=topic_url).count() > 1)
+                context['list_by_topic'] = question_service.questions_by_topic(
+                    topic_url)
+                print(question_service.questions_by_topic(topic_url))
+                if request.GET.get('add_topic'):
+                    topic_url.created_flag = True
+                    topic_url.save()
+                    return redirect('questions:questions')
+
     context['topic_form'] = topic_form
     return render(request, 'questions/testing_crispy_forms.html', context)

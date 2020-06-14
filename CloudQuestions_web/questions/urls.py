@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.questions, name='questions'),
     path('browse', views.browse, name='browse'),
     path('create_topic', views.create_topic, name='create_topic'),
-    path('create_topic/<str:topic_added>',
+    path('create_topic/<int:topic_id>',
          views.create_topic, name='create_topic'),
     path('<str:topic>/', views.detail, name='detail'),
     path('<str:topic>/random/', views.random_questions, name='random'),

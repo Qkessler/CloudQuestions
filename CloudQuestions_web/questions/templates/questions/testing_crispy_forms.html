@@ -6,7 +6,7 @@
 <div id="create-topic-form">
     {% crispy topic_form topic_form.helper %}
 </div>
-{% if created %}
+{% if topic %}
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic-created">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
@@ -14,7 +14,7 @@
 </div>
 <div id="lq-create-topic">
     <ul>
-        {% for question, answer in list_questions.items %}
+        {% for question, answer in list_by_topic.items %}
         <details>
 	        <summary>{{question}}</summary>
 	        <p>{{answer}}</p>

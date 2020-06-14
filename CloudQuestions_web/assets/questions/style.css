@@ -98,6 +98,7 @@ ul.list_topic {
 }
 
 .inline-block-black {
+    color: black;
     display: inline-block;
 }
 

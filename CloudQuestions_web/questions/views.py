@@ -173,7 +173,16 @@ def create_topic(request):
             question = topic_form.cleaned_data['question']
             answer = topic_form.cleaned_data['answer']
             user = request.user
-            # question_service.create_or_modify(
-            # topic_name, question, answer, user)
+            topic_com = question_service.create_or_modify(
+                topic_name, question, answer, user)
+            context['enough_size'] = (
+                Question.objects.filter(topic=topic_com).count() > 1)
+            context['topic_pretty_name'] = parsing.unscrub_name(topic_com.name)
+            context['topic'] = topic_com
+    else:
+        if request.GET.get('add_topic'):
+            # topic_com.created_flag = True
+            # topic_com.save()
+            return redirect('questions:questions')
     context['topic_form'] = topic_form
     return render(request, 'questions/testing_crispy_forms.html', context)

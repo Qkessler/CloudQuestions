@@ -258,15 +258,18 @@ def create_or_modify(topic_name, question, answer, user):
     if not topic_com:
         topic_to_add = Topic()
         topic_to_add.name = topic_name
+        topic_to_add.color = random_color()
         topic_to_add.creator = user
         topic_to_add.created_flag = False
         topic_to_add.save()
+        topic_com = topic_to_add
     # In case the user wants to add questions to an existing topic.
     question_to_add = Question()
     question_to_add.topic = topic_com
     question_to_add.question = question
     question_to_add.answer = answer
     question_to_add.save()
+    return topic_com
 
 
 def delete_flagged():

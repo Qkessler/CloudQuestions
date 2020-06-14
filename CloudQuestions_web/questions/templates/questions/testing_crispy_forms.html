@@ -10,7 +10,7 @@
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic-created">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
-    <p class="inline-block-black" > Creator: {{ creator }}</p>
+    <p class="inline-block-black" > Creator: {{ topic.creator }}</p>
 </div>
 <div id="lq-create-topic">
     <ul>
@@ -22,6 +22,13 @@
         {% endfor %}
     </ul>
 </div>
+{% if enough_size %}
+<div id="add-topic-button-div">
+    <form method="get">
+        <input class="btn btn-outline-success" id="add-topic-button" name="add_topic" type="submit" value="Add topic"/>
+    </form>
+</div>
+{% endif %}
 {% endif %}
 {% endblock %}
 

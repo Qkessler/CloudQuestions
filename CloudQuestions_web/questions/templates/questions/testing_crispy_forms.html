@@ -2,25 +2,31 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1 class="architects" id="create-new-topic">Create a new topic!</h1>
+<h1 class="architects" id="create-new-topic">Create or modify a topic!</h1>
 <div id="create-topic-form">
     {% crispy topic_form topic_form.helper %}
 </div>
 {% if topic %}
-<div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic-created">
+<div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
     <p class="inline-block-black" > Creator: {{ topic.creator }}</p>
 </div>
 <div id="lq-create-topic">
-    <ul>
-        {% for question, answer in list_by_topic.items %}
-        <details>
-	        <summary>{{question}}</summary>
-	        <p>{{answer}}</p>
-        </details>
-        {% endfor %}
-    </ul>
+    <div id="list_questions">
+        <ul>
+            {% autoescape off %}
+            {% for q, answer in list_by_topic.items %}
+            <div class="note rounded color-light_{{topic.color}}">
+                <details id="questions_answers">
+	                <summary>{{q}}</summary>
+                    <p class="align-left"> {{answer}}</p>
+                </details>
+            </div>
+            {% endfor %}
+            {% endautoescape %}
+        </ul>
+    </div>
 </div>
 {% if enough_size %}
 <div id="add-topic-button-div">

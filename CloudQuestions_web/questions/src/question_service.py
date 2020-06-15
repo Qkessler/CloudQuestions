@@ -2,6 +2,7 @@ import random
 import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import random_color
+import markdown
 
 
 def include_questions(q_a, topic_name, user):    # pragma: no cover
@@ -25,9 +26,9 @@ def include_questions(q_a, topic_name, user):    # pragma: no cover
             question.save()
 
 
-def questions_by_topic(topic):
-    """ Query of questions given a topic. """
-    topic_ids = topics_by_id(topic)
+def questions_by_topic(topic_name):
+    """ Query of questions given a topic name. """
+    topic_ids = topics_by_id(topic_name)
     questions = Question.objects.filter(topic__in=topic_ids)
     questions = {question.question: question.answer
                  for question in questions}

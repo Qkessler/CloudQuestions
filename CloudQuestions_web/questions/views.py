@@ -185,7 +185,7 @@ def create_topic(request, topic_id=None):
                 context['enough_size'] = (
                     Question.objects.filter(topic=topic_url).count() > 1)
                 context['list_by_topic'] = question_service.questions_by_topic(
-                    topic_url)
+                    topic_url.name)
                 print(question_service.questions_by_topic(topic_url))
                 if request.GET.get('add_topic'):
                     topic_url.created_flag = True

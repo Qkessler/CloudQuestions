@@ -267,8 +267,8 @@ def create_or_modify(topic_name, question, answer, user):
     # In case the user wants to add questions to an existing topic.
     question_to_add = Question()
     question_to_add.topic = topic_com
-    question_to_add.question = question
-    question_to_add.answer = answer
+    question_to_add.question = markdown.markdown(question)
+    question_to_add.answer = markdown.markdown(answer)
     question_to_add.save()
     return topic_com
 

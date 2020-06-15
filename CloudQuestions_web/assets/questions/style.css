@@ -390,3 +390,8 @@ summary {
     width: 40%;
     display: inline-block;
 }
+
+#more-topics-form {
+    padding: 10px;
+    padding-bottom: 30px;
+}

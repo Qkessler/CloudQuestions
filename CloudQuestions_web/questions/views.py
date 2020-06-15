@@ -100,11 +100,13 @@ def detail(request, topic):
     return render(request, 'questions/detail.html', context)
 
 
-def browse(request):
+def browse(request, number_questions=10):
     context = {}
     topics_searched = []
     context['searched'] = False
     context['empty'] = True
+    if number_questions % 10 != 0:
+        return HttpResponse(status='404')
     if request.method == 'POST':
         search_form = SearchForm(prefix='search_form')
         action = request.POST.get('action')
@@ -125,12 +127,30 @@ def browse(request):
     context['search_form'] = search_form
     all_topics = {topic: parsing.unscrub_name(topic.name)
                   for topic in Topic.objects.all()}
-    if len(all_topics) > 50:
-        all_topics = all_topics[:50]
-    if len(topics_searched) > 50:
-        topics_searched = topics_searched[:50]
+    all_topics_items = list(all_topics.items())
+    if len(all_topics_items) + number_questions > 10:
+        context['more'] = True
+    if request.GET.get('next_topics'):
+        return redirect('questions:browse', number_questions + 10)
+    if len(topics_searched) > 10:
+        topics_searched = topics_searched[:10]
     context['topics_searched'] = topics_searched
-    context['all_topics'] = all_topics
+    if number_questions > 10:
+        if len(all_topics_items) > number_questions:
+            number = number_questions - 10
+            context['all_topics'] = all_topics_items[
+                number:number_questions]
+        elif len(all_topics_items) > number_questions + 10:
+            number = number_questions + 10
+            context['all_topics'] = all_topics_items[
+                number_questions:number]
+        else:
+            length = len(all_topics_items)
+            context['all_topics'] = all_topics_items[
+                number_questions-10:length]
+            context['more'] = False
+    else:
+        context['all_topics'] = all_topics_items[:10]
     return render(request, 'questions/browse.html', context)
 
 

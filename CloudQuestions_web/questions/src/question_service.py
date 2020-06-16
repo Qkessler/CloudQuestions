@@ -258,7 +258,7 @@ def create_or_modify(topic_name, question, answer, user):
             break
     if not topic_com:
         topic_to_add = Topic()
-        topic_to_add.name = topic_name
+        topic_to_add.name = parsing.scrub(topic_name)
         topic_to_add.color = random_color()
         topic_to_add.creator = user
         topic_to_add.created_flag = False

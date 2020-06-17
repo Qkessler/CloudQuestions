@@ -303,8 +303,12 @@ a.list_searched h3.list_searched p.list_searched{
 
 /* Testing for questions and answers. */
 
-details summary::-webkit-details-marker {
-  display:none;
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
 }
 
 #questions_answers {

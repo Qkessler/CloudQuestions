@@ -6,62 +6,77 @@
 <div class="architects">
     <h2 id="settings-text">Settings 🔨</h2>
 </div>
-<h3>GitHub</h3>
-{% if github_login %}
-<p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
-{% if can_disconnect %}
-<form method="post" action="{% url 'social:disconnect' 'github' %}">
-    {% csrf_token %}
-    <button type="submit">Disconnect from GitHub</button>
-</form>
-{% else %}
-<button type="button" disabled>Disconnect from GitHub</button>
-<p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
-{% endif %}
-{% else %}
-<a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
-{% endif %}
 
-<h3>Twitter</h3>
-{% if twitter_login %}
-<p>Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
-{% if can_disconnect %}
-<form method="post" action="{% url 'social:disconnect' 'twitter' %}">
-    {% csrf_token %}
-    <button type="submit">Disconnect from Twitter</button>
-</form>
-{% else %}
-<button type="button" disabled>Disconnect from Twitter</button>
-<p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
-{% endif %}
-{% else %}
-<a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
-{% endif %}
+<div class="align-center" id="social-container">
+    <div class="align-left" id="social-login">
+        <div>
+            <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
+            {% if github_login %}
+            <p class="inline-block-black">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+            {% if can_disconnect %}
+            <div class="inline-block-black">
+                <form method="post" action="{% url 'social:disconnect' 'github' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Disconnect">
+                </form>
+            </div>
+            {% else %}
+            <button class="inline-block-black" type="button" disabled>Disconnect from GitHub</button>
+            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
+            {% endif %}
+            {% else %}
+            <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
+            {% endif %}
+        </div>
+        <div>
+            <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
+            {% if twitter_login %}
+            <p class="inline-block-black">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+            {% if can_disconnect %}
+            <div class="inline-block-black">
+                <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Disconnect">
+                </form>
+            </div>
+            {% else %}
+            <button class="inline-block-black" type="button" disabled>Disconnect from Twitter</button>
+            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+            {% endif %}
+            {% else %}
+            <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
+            {% endif %}
+        </div>
+        <div>
+            <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
+            {% if google_login %}
+            <p class="inline-block-black">Connected with Google</p>
+            {% if can_disconnect %}
+            <div class="inline-block-black">
+                <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Disconnect">
+                </form>
+            </div>
+            {% else %}
+            <button type="button" disabled>Disconnect from Google</button>
+            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
+            {% endif %}
+            {% else %}
+            <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+            {% endif %}
+        </div>
 
-<h3>Google</h3>
-{% if google_login %}
-<p>Connected with Google.</p>
-{% if can_disconnect %}
-<form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
-    {% csrf_token %}
-    <button type="submit">Disconnect from Google</button>
-</form>
-{% else %}
-<button type="button" disabled>Disconnect from Google</button>
-<p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
-{% endif %}
-{% else %}
-<a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
-{% endif %}
-
-<form method="get" action="#">
-    <input name="calendar" type="submit" value="Calendar Connection"/>
-    {% if calendar_connection %}
-    <label for="calendar">Connected to Google Calendar!</label>
-    {% else %}
-    <label for="calendar">Not connected to Google Calendar!</label>
-    {% endif %}
-</form>
+        <form method="get" action="">
+            <input name="calendar" type="submit" value="Calendar Connection"/>
+            {% if calendar_connection %}
+            <label for="calendar">Connected to Google Calendar!</label>
+            {% else %}
+            <label for="calendar">Not connected to Google Calendar!</label>
+            {% endif %}
+        </form>
+    </div>
+</div>
 
 <h3>Ratings table</h3>
 <div class="ratings_table">

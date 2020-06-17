@@ -410,3 +410,25 @@ summary {
     padding: 20px;
 }
 
+#social-login {
+    padding: 20px;
+}
+
+#social-container {
+    width: 60%;
+}
+
+#google-logo {
+    width: 3%;
+    height: auto;
+}
+
+#twitter-logo {
+    width: 4%;
+    height: auto;
+}
+
+#github-logo {
+    width: 3.2%;
+    height: auto;
+}

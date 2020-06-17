@@ -3,8 +3,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
 
 {% block content %}
-<h2>Settings</h2>
-<p>Hi, {{ user.username }}! </p>
+<div class="architects">
+    <h2 id="settings-text">Settings 🔨</h2>
+</div>
 <h3>GitHub</h3>
 {% if github_login %}
 <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>

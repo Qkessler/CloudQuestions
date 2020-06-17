@@ -53,6 +53,10 @@ body {
     width: 75%;
 }
 
+#buttons-random {
+    padding-bottom: 20px;
+}
+
 /* input[type="file"] { */
 /*     width: 0.1px; */
 /* 	height: 0.1px; */

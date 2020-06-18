@@ -72,11 +72,11 @@
             <div class="inline-block-black">
                 <form method="get" action="">
                     {% if calendar_connection %}
-                    <input class="btn btn-danger" name="calendar" type="submit" value="Disconnect"/>
-                    <label for="calendar">Connected to Google Calendar!</label>
+                    <label class="label-calendar" for="calendar">Connected to Google Calendar!</label>
+                    <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
                     {% else %}
-                    <input class="btn btn-primary" name="calendar" type="submit" value="Connect"/>
-                    <label for="calendar">Not connected to Google Calendar!</label>
+                    <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>
+                    <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="Connect"/>
                     {% endif %}
                 </form>
             </div>
@@ -84,31 +84,33 @@
     </div>
 </div>
 
-<h3>Ratings table</h3>
-<div class="ratings_table">
-    <table class="table table-sm table-stripped table-hover">
-	<thead class="thead-light">
-	    <tr>
-		<th>Topic name</th>
-	    </tr>
-	</thead>
-	<tbody>
-	    {% for topic, ratings in ratings_table.items %}
-	    <tr>
-		<td>{{ topic.name }}</td>
-		{% for rating in ratings %}
-		{% if rating.rating == 'red' %}
-		<td class='bg-danger'>{{ rating.created }}</td>
-		{% elif rating.rating == 'yellow' %}
-		<td class='bg-warning'>{{ rating.created }}</td>
-		{% elif rating.rating == 'green' %}
-		<td class='bg-success'>{{ rating.created }}</td>
-		{% endif %}
-		
-		{% endfor %}
-	    </tr>
-	    {% endfor %}
-	</tbody>
-    </table>
+<div id="ratings-container">
+    <h2 id="ratings-table-title" class="architects">Ratings table</h2>
+    <div id="ratings-table">
+        <table class="table table-sm table-stripped table-hover">
+	        <thead class="thead-light">
+	            <tr>
+		            <th>Topic name</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            {% for topic, ratings in ratings_table.items %}
+	            <tr>
+		            <td>{{ topic.name }}</td>
+		            {% for rating in ratings %}
+		            {% if rating.rating == 'red' %}
+		            <td class='bg-danger'>{{ rating.created }}</td>
+		            {% elif rating.rating == 'yellow' %}
+		            <td class='bg-warning'>{{ rating.created }}</td>
+		            {% elif rating.rating == 'green' %}
+		            <td class='bg-success'>{{ rating.created }}</td>
+		            {% endif %}
+		            
+		            {% endfor %}
+	            </tr>
+	            {% endfor %}
+	        </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

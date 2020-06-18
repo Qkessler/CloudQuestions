@@ -420,7 +420,7 @@ summary {
     width: 60%;
     border-style: solid;
     border-width: 1px;
-    border-color: black black black black;
+    border-color: #7a7977;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius: 0 0 0 5px;
     border-radius: 0 0 0 5px;
@@ -453,4 +453,21 @@ summary {
     margin-right: 5px;
 }
 
+.label-calendar {
+    margin-right: 10px;
+}
 
+
+#ratings-table-title {
+    padding: 40px;
+}
+
+
+#ratings-container {
+    margin: 0 auto;
+    width: 60%;
+}
+
+#ratings-table {
+    
+}

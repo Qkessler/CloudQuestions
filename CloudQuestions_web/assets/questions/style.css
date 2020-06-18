@@ -408,6 +408,7 @@ summary {
 #settings-text {
     font-size: 45px;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 #social-login {
@@ -415,7 +416,15 @@ summary {
 }
 
 #social-container {
+    margin: 0 auto;
     width: 60%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black black black black;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius: 0 0 0 5px;
+    border-radius: 0 0 0 5px;
+    box-shadow: 0 6px 4px -4px #263238;
 }
 
 #google-logo {
@@ -432,3 +441,16 @@ summary {
     width: 30px;
     height: auto;
 }
+
+.padding-login{
+    padding-bottom: 7px;
+}
+
+
+#calendar-logo {
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+}
+
+

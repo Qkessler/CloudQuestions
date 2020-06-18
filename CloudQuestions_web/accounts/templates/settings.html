@@ -9,7 +9,7 @@
 
 <div class="align-center" id="social-container">
     <div class="align-left" id="social-login">
-        <div>
+        <div class="padding-login" id="github-login">
             <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
             {% if github_login %}
             <p class="inline-block-black">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
@@ -28,7 +28,8 @@
             <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
             {% endif %}
         </div>
-        <div>
+        
+        <div class="padding-login" id="twitter-login">
             <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
             {% if twitter_login %}
             <p class="inline-block-black">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
@@ -47,7 +48,7 @@
             <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
             {% endif %}
         </div>
-        <div>
+        <div class="padding-login" id="google-login">
             <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
             {% if google_login %}
             <p class="inline-block-black">Connected with Google</p>
@@ -66,15 +67,20 @@
             <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
             {% endif %}
         </div>
-
-        <form method="get" action="">
-            <input name="calendar" type="submit" value="Calendar Connection"/>
-            {% if calendar_connection %}
-            <label for="calendar">Connected to Google Calendar!</label>
-            {% else %}
-            <label for="calendar">Not connected to Google Calendar!</label>
-            {% endif %}
-        </form>
+        <div id="calendar-connection">
+            <img id="calendar-logo" alt="Calendar logo" src="{% static 'questions/calendar-logo.png'%}"/>
+            <div class="inline-block-black">
+                <form method="get" action="">
+                    {% if calendar_connection %}
+                    <input class="btn btn-danger" name="calendar" type="submit" value="Disconnect"/>
+                    <label for="calendar">Connected to Google Calendar!</label>
+                    {% else %}
+                    <input class="btn btn-primary" name="calendar" type="submit" value="Connect"/>
+                    <label for="calendar">Not connected to Google Calendar!</label>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

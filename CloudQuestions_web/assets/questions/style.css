@@ -480,3 +480,14 @@ summary {
 #topic-name-table {
     witdh: 10%;
 }
+
+#signup-text {
+    padding: 20px;
+}
+
+#register-form-container {
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+    padding-bottom: 60px;
+}

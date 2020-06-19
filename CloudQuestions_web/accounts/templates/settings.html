@@ -18,7 +18,7 @@
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'github' %}">
                     {% csrf_token %}
-                    <input type="submit" value="Disconnect">
+                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
                 </form>
             </div>
             {% else %}
@@ -38,7 +38,7 @@
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
                     {% csrf_token %}
-                    <input type="submit" value="Disconnect">
+                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
                 </form>
             </div>
             {% else %}
@@ -57,7 +57,7 @@
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
                     {% csrf_token %}
-                    <input type="submit" value="Disconnect">
+                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
                 </form>
             </div>
             {% else %}

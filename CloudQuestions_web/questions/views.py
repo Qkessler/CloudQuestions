@@ -120,6 +120,8 @@ def browse(request, number_questions=10):
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))
                 topics_searched = dict(zip(db_topics, unscrubed_topics))
+                topics_searched_items = list(topics_searched.items())
+                context['topics_searched'] = topics_searched_items
                 context['empty'] = False
                 context['searched'] = True
     else:
@@ -132,9 +134,6 @@ def browse(request, number_questions=10):
         context['more'] = True
     if request.GET.get('next_topics'):
         return redirect('questions:browse', number_questions + 10)
-    if len(topics_searched) > 10:
-        topics_searched = topics_searched[:10]
-    context['topics_searched'] = topics_searched
     if number_questions > 10:
         if len(all_topics_items) > number_questions:
             number = number_questions - 10

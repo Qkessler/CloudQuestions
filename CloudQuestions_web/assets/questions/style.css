@@ -529,7 +529,7 @@ summary {
 }
 
 #google-login-container {
-    background: #4ca0f5;
+    background: #eb302a;
     padding: 12px;
 }
 
@@ -539,7 +539,7 @@ summary {
 }
 
 #twitter-login-container {
-    background: #4ca0f5;
+    background: #293b96;
     padding: 12px;
 }
 
@@ -550,7 +550,7 @@ summary {
 
 #github-login-link {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 #twitter-login-link {

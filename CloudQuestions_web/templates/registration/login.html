@@ -1,42 +1,47 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<div id="login-form">
+    <h1 id="login-text" class="architects">Login!</h1>
+    {% if form.errors %}
+    <p>{{ form.errors | crispy }}</p>
+    {% endif %}
 
-{% if next %}
-{% if user.is_authenticated %}
-<p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-{% else %}
-<p>Please login to see this page.</p>
-{% endif %}
-{% endif %}
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p class="architects">Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+    {% else %}
+    <p class="architects">Please login to see this page.</p>
+    {% endif %}
+    {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <div id="login-form-button">
+	        <input class="btn btn-primary" type="submit" value="Login" />
+	        <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+    </form>
 
-    <div>
-	<td>{{ form.username.label_tag }}</td>
-	<td>{{ form.username }}</td>
+    <p id="lost-password"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    <p id="register-login-link"><a href="{% url 'accounts:register' %}">Don't have an account?</a></p>
+    <p>or</p>
+    <div id="google-login-container" class="social-login">
+        <img id="google-logo" alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
+        <a id="google-login-link" href="{% url 'social:begin' 'google-oauth2' %}">Google</a><br>
     </div>
-    <div>
-	<td>{{ form.password.label_tag }}</td>
-	<td>{{ form.password }}</td>
+    <div id="github-login-container" class="social-login">
+        <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
+        <a id="github-login-link" href="{% url 'social:begin' 'github' %}">GitHub</a><br>
     </div>
-
-    <div>
-	<input type="submit" value="login" />
-	<input type="hidden" name="next" value="{{ next }}" />
+    <div id="twitter-login-container" class="social-login">
+        <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
+        <a id="twitter-login-link" href="{% url 'social:begin' 'twitter' %}">Twitter</a><br>
     </div>
-</form>
-
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-<p><a href="{% url 'accounts:register' %}">Don't have an account?</a></p>
-<p><strong>-- OR --</strong></p>
-<a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
-<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
-<a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>
+</div>
 {% endblock %}

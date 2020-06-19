@@ -407,9 +407,20 @@ summary {
 
 #settings-text {
     font-size: 45px;
-    padding: 20px;
+    padding-top: 20px;
+    margin-right: 10px;
+}
+
+#settings-logo {
+    width: 60px;
+    height: auto;
     margin-bottom: 20px;
 }
+
+#settings-text-container {
+    padding: 20px;
+}
+
 
 #social-login {
     padding: 20px;

@@ -1,6 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-<div>
-    <p>You are now logged out.</p>
+<div id="logout-done">
+    <h1 class="architects">You are now logged out.</h1>
     <a href="{% url 'login' %}">Login again?</a>
 </div>
 {% endblock %}

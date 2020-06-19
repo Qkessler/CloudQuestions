@@ -557,3 +557,8 @@ summary {
     text-decoration: none;
     color: white;
 }
+
+#logout-done {
+    margin-top: 30px;
+    text-align: center;
+}

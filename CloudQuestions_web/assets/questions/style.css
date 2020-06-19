@@ -562,3 +562,21 @@ summary {
     margin-top: 30px;
     text-align: center;
 }
+
+#reset-password-text {
+    padding: 20px;
+}
+
+#reset-password-form {
+    margin: 0 auto;
+    width: 40%;
+}
+
+#password-reset-message {
+    padding: 40px;
+}
+
+#change-password-id {
+    padding: 20px;
+}
+

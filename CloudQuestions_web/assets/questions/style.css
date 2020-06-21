@@ -585,6 +585,9 @@ summary {
 }
 
 #topic-explanation-container {
-    background: #cfccc6;
-    padding: 20px;
+    background: #dedcd7;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: [topic-image] 50% [topic-explanation]50%;
+    grid-template-rows: auto;
 }

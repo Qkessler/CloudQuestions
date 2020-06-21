@@ -579,3 +579,12 @@ summary {
 #change-password-id {
     padding: 20px;
 }
+
+#logo-container {
+    padding: 40px;
+}
+
+#topic-explanation-container {
+    background: #cfccc6;
+    padding: 20px;
+}

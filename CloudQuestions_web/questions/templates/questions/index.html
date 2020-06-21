@@ -1,5 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+<div id="index-container">
+    <div id="logo-container">
+        <img id="cloudquestions-logo" alt="CloudQuestions logo" src="{% static 'questions/settings-logo.png'%}"/>
+    </div>
+    <div id="topic-explanation-container">
+        <div class="list_topic_item color_3">
+            <h3 class="inline-block-black">Topic</h3>
+            <p class="inline-block-black">Created: 10/05/2020</p>
+            <p class="inline-block-black">Creator: name</p>
+        </div>
+        <h1>testing topic explanation</h1>
+    </div>
+</div>
 {% endblock %}
 
 

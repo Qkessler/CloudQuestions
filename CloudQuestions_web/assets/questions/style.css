@@ -585,9 +585,24 @@ summary {
 }
 
 #topic-explanation-container {
-    background: #dedcd7;
+    background: #f0eeeb;
     padding: 40px;
     display: grid;
     grid-template-columns: [topic-image] 50% [topic-explanation]50%;
     grid-template-rows: auto;
+}
+
+#topic-explanation-topic {
+    padding: 20px;
+    opacity: 0.75;
+    margin: auto;
+}
+
+#topic-explanation-topic:hover {
+    opacity: 1;
+}
+
+#topic-explanation-text {
+    font-size: 45px;
+    margin: auto;
 }

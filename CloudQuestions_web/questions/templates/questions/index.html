@@ -6,12 +6,30 @@
         <img id="cloudquestions-logo" alt="CloudQuestions logo" src="{% static 'questions/settings-logo.png'%}"/>
     </div>
     <div id="topic-explanation-container">
-        <div class="list_topic_item color-opacity_2 inline-block-black">
+        <div id="topic-explanation-topic"class="list_topic_item color-opacity_2">
             <h3 class="inline-block-black">Topic</h3>
             <p class="inline-block-black">Created: 10/05/2020</p>
             <p class="inline-block-black">Creator: name</p>
         </div>
-        <h1 class="inline-block-black">testing topic explanation</h1>
+        <div id="topic-explanation-text">
+            <p class="architects">Topic, contains questions</p>
+        </div>
+    </div>
+    <div id="ratings-explanation-container">
+        <div id="random-session-container">
+            <button id="random-session-button" class="btn btn-primary">Random session</button>
+            <div id="random-session-text">
+                <p class="architects">Answer questions</p>
+            </div>
+        </div>
+        <div id="rating-buttons">
+            <input class="btn btn-danger" name="red_button" type="submit" value="Bad"/>
+            <input class="btn btn-warning" name="yellow_button" type="submit" value="Medium"/>
+            <input class="btn btn-success" name="green_button" type="submit" value="Good"/>
+            <div id="rating-text">
+                <p class="architects">Rate the topic!</p>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

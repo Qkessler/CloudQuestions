@@ -588,7 +588,7 @@ summary {
     background: #f0eeeb;
     padding: 40px;
     display: grid;
-    grid-template-columns: [topic-image] 50% [topic-explanation]50%;
+    grid-template-columns: [topic-image] 34% [arrow] 33% [topic-explanation] 33%;
     grid-template-rows: auto;
 }
 

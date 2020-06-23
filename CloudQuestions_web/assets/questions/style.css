@@ -608,7 +608,26 @@ summary {
 }
 
 #arrow-image {
-    width: 60%;
+    width: 125px;
     padding: 20px;
-    margin-top: 40px;
+    align-self: center;
+}
+
+#ratings-explanation-container {
+    padding: 60px;
+    display: grid;
+    grid-template-columns: [random-session] 50% [rate-topics] 50%;
+    grid-template-rows: [random-session-text] 50% [rate-topics-text] 50%;
+}
+
+#random-session-container {
+    padding: 20px;
+}
+
+#random-session-text {
+    padding: 15px;
+}
+
+#rating-text {
+    padding: 15px;
 }

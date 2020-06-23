@@ -606,3 +606,9 @@ summary {
     font-size: 45px;
     margin: auto;
 }
+
+#arrow-image {
+    width: 60%;
+    padding: 20px;
+    margin-top: 40px;
+}

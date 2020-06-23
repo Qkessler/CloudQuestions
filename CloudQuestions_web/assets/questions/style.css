@@ -631,3 +631,10 @@ summary {
 #rating-text {
     padding: 15px;
 }
+
+#ratings-table-container {
+    padding: 60px;
+    display: grid;
+    grid-template-columns: [ratings-table] 60% [text-and-legend] 40%;
+    grid-template-rows: [random-session-text] 50% [rate-topics-text] 50%;
+}

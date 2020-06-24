@@ -57,15 +57,6 @@ body {
     padding-bottom: 20px;
 }
 
-/* input[type="file"] { */
-/*     width: 0.1px; */
-/* 	height: 0.1px; */
-/* 	opacity: 0; */
-/* 	overflow: hidden; */
-/*     position: absolute; */
-/* 	z-index: -1; */
-/* } */
-
 #container_user_info a{
     text-align: center;
 }
@@ -75,10 +66,18 @@ body {
     padding-bottom: 20px;
 }
 
+#file_button {
+    margin-bottom: 10px;
+}
+
 #file_upload_form, #create_topic_form {
     padding-left: 10px;
     padding-right: 20px;
     display: inline-block;
+}
+
+#file-upload {
+    margin-bottom: 10px;
 }
 
 .list_topic {
@@ -642,12 +641,14 @@ summary {
     grid-column: 2;
     grid-row: 1;
     padding: 20px;
+    margin-left: 20px;
 }
 
 .item-c {
     grid-column: 2;
     grid-row: 2;
     padding: 20px;
+    margin-left: 20px;    
 }
 
 #ratings-table-container {

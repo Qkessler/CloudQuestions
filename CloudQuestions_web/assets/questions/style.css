@@ -658,6 +658,16 @@ summary {
     grid-template-rows: 50% 50%;
 }
 
+#red-button {
+    margin-bottom: 10px;
+}
 
+#yellow-button {
+    margin-bottom: 10px;    
+}
+
+#green-button { 
+    margin-bottom: 10px;   
+}
 
 

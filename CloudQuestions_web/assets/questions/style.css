@@ -614,7 +614,7 @@ summary {
 }
 
 #ratings-explanation-container {
-    padding: 60px;
+    padding-top: 60px;
     display: grid;
     grid-template-columns: [random-session] 50% [rate-topics] 50%;
     grid-template-rows: [random-session-text] 50% [rate-topics-text] 50%;
@@ -632,9 +632,31 @@ summary {
     padding: 15px;
 }
 
+.item-a {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    padding: 20px;
+}
+
+.item-b {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 20px;
+}
+
+.item-c {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 20px;
+}
+
 #ratings-table-container {
     padding: 60px;
     display: grid;
-    grid-template-columns: [ratings-table] 60% [text-and-legend] 40%;
-    grid-template-rows: [random-session-text] 50% [rate-topics-text] 50%;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 50% 50%;
 }
+
+
+
+

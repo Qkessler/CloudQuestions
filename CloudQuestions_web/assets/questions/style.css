@@ -718,3 +718,11 @@ summary {
     }
 }
 
+#topic-image-mockup {
+    width: 700px;
+    height: auto;
+}
+
+#topic-image {
+    padding: 40px;
+}

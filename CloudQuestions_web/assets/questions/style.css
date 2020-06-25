@@ -671,7 +671,7 @@ summary {
     margin-bottom: 10px;   
 }
 
-#ratings-table-text {
+#ratings-table-header {
     font-size: 40px;
 }
 
@@ -716,6 +716,10 @@ summary {
     #calendar-explanation-image {
         width: 60%;
     }
+    
+    #topic-image-mockup {
+        width: 60%;
+    }
 }
 
 #topic-image-mockup {
@@ -725,4 +729,8 @@ summary {
 
 #topic-image {
     padding: 40px;
+}
+
+#ratings-table-caption {
+    padding: 20px;
 }

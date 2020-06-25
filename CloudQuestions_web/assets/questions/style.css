@@ -711,3 +711,10 @@ summary {
 #topic-explanation-text-container {
     margin-left: 40px;
 }
+
+@media (min-width: 1195px) {
+    #calendar-explanation-image {
+        width: 60%;
+    }
+}
+

@@ -6,16 +6,14 @@
         <img id="cloudquestions-logo" alt="CloudQuestions logo" src="{% static 'questions/settings-logo.png'%}"/>
     </div>
     <div id="topic-explanation-container">
-        <div id="topic-explanation-topic"class="list_topic_item color-opacity_2">
+        <div id="topic-explanation-topic" class="list_topic_item color-opacity_2">
             <h3 class="inline-block-black">Topic</h3>
             <p class="inline-block-black">Created: 10/05/2020</p>
             <p class="inline-block-black">Creator: name</p>
         </div>
-        <div class="arrow">
-            <img id="arrow-image" alt="Arrow" src="{% static 'questions/arrow-image.png'%}"/>
-        </div>
-        <div id="topic-explanation-text">
-            <p class="architects">Topic, contains questions</p>
+        <div id="topic-explanation-text-container">
+            <p id="topic-explanation-text" class="architects">Information divided in Topics</p>
+            <p class="align-left" id="topic-text">Topics contain questions, which can be answered as a random session. Questions should be easy to read and not so long that they become tiring.</p>
         </div>
     </div>
     <div id="ratings-explanation-container">
@@ -23,6 +21,7 @@
             <button id="random-session-button" class="btn btn-primary">Random session</button>
             <div id="random-session-text">
                 <h2 class="architects">Answer questions</h2>
+                <p id="questions-randomized" class="align-left">Questions are randomized creating a random session, which ends when all questions are answered.</p>
             </div>
         </div>
         <div id="rating-buttons">
@@ -73,7 +72,7 @@
             </table>
         </div>
         <div class="item-b" id="ratings-table-text">
-            <h1 class="architects">Revisit the topics</h1>
+            <p class="architects">Revisit the topics</p>
         </div>
         <div class="item-c" id="ratings-table-caption">
             <img class="inline-block-black" id="settings-logo" alt="Settings emoji" src="{% static 'questions/settings-logo.png'%}"/>
@@ -81,10 +80,13 @@
     </div>
     <div id="calendar-explanation-container">
         <div id="calendar-explanation-text">
-            <h2 class="architects">Event reminder</h2>
+            <p id="event-reminder" class="architects">Event reminder</p>
+            <p class="align-left" id="event-reminder-info">
+                When topics are rated, if the calendar connection is enabled, a Google Calendar event will be created.
+            </p>
         </div>
-        <div id="calendar-explanation-image">
-            <img class="inline-block-black" id="settings-logo" alt="Settings emoji" src="{% static 'questions/settings-logo.png'%}"/>
+        <div id="calendar-image-container">
+            <img class="inline-block-black" id="calendar-explanation-image" alt="Settings emoji" src="{% static 'questions/calendar_event.png'%}"/>
         </div>
     </div>
 </div>

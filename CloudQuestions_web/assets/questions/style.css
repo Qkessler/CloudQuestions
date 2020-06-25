@@ -586,10 +586,9 @@ summary {
 }
 
 #topic-explanation-container {
-    background: #f0eeeb;
     padding: 40px;
     display: grid;
-    grid-template-columns: [topic-image] 34% [arrow] 33% [topic-explanation] 33%;
+    grid-template-columns: [topic-image] 40% [topic-explanation] 60%;
     grid-template-rows: auto;
 }
 
@@ -672,4 +671,43 @@ summary {
     margin-bottom: 10px;   
 }
 
+#ratings-table-text {
+    font-size: 40px;
+}
 
+#calendar-explanation-container {
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+}
+
+#calendar-image-container {
+    padding: 40px;
+}
+
+#event-reminder {
+    font-size: 40px;
+}
+
+#calendar-explanation-image {
+    margin-right: 20px;
+    width: 400px;
+    height: auto;
+}
+
+#event-reminder-info {
+    padding-left: 20px;
+}
+
+#questions-randomized {
+    margin-left: 20px;
+}
+
+#topic-text {
+    margin-left: 20px;
+}
+
+#topic-explanation-text-container {
+    margin-left: 40px;
+}

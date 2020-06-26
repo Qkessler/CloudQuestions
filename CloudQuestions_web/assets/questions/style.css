@@ -720,6 +720,10 @@ summary {
     #topic-image-mockup {
         width: 60%;
     }
+
+    #table-legend {
+        width: 60%;
+    }
 }
 
 #topic-image-mockup {
@@ -733,6 +737,7 @@ summary {
 
 #ratings-table-text {
     margin-left: 20px;
+    padding: 20px;
 }
 
 #ratings-table-caption {
@@ -740,7 +745,7 @@ summary {
 }
 
 #table-legend {
-    margin-top: 20px;
-    width: 200px;
+    padding: 20px;
+    width: 220px;
     height: auto;
 }

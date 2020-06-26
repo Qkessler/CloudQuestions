@@ -738,3 +738,9 @@ summary {
 #ratings-table-caption {
     padding: 20px;
 }
+
+#table-legend {
+    margin-top: 20px;
+    width: 200px;
+    height: auto;
+}

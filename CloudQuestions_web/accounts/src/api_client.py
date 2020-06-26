@@ -9,7 +9,7 @@ from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
 
 
-DEFAULT_URL = 'http://127.0.0.1:8000/'
+DEFAULT_URL = 'https://cloudquestions.es/'
 CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
 SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
 

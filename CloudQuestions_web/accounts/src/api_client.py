@@ -56,7 +56,7 @@ def create_event(topic, color, service):
     description = 'This is an event created by CloudQuestions as '
     description += f'a reminder to revisit the topic "{topic}" '
     description += 'in the following link: \n'
-    description = description + DEFAULT_URL + 'questions/' + topic
+    description = description + DEFAULT_URL + 'questions/' + topic + '/'
     event = {
         'summary': 'AR ' + topic,
         'description': description,

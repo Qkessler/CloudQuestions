@@ -731,6 +731,10 @@ summary {
     padding: 40px;
 }
 
+#ratings-table-text {
+    margin-left: 20px;
+}
+
 #ratings-table-caption {
     padding: 20px;
 }

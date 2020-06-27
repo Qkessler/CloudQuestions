@@ -717,6 +717,10 @@ summary {
         margin: 0 auto;
     }
 
+    .note {
+        width: 50%;
+    }
+
 }
 
 @media (min-width: 1195px) {

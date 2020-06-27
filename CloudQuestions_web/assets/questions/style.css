@@ -673,6 +673,7 @@ summary {
 
 #ratings-table-header {
     font-size: 40px;
+    margin-left: 20px;
 }
 
 #calendar-explanation-container {
@@ -736,16 +737,15 @@ summary {
 }
 
 #ratings-table-text {
-    margin-left: 20px;
     padding: 20px;
+    width: 350px;
 }
 
-#ratings-table-caption {
-    padding: 20px;
+#ratings-table-text-container {
+    margin-bottom: 20px;
 }
 
 #table-legend {
-    padding: 20px;
-    width: 220px;
+    width: 250px;
     height: auto;
 }

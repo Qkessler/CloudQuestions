@@ -576,7 +576,7 @@ summary {
 #topic-explanation-container {
     padding: 40px;
     display: grid;
-    grid-template-columns: [topic-image] 40% [topic-explanation] 60%;
+    grid-template-columns: [topic-image] 60% [topic-explanation] 40%;
     grid-template-rows: auto;
 }
 
@@ -695,6 +695,7 @@ summary {
 
 #topic-text {
     margin-left: 20px;
+    width: 400px;
 }
 
 #topic-explanation-text-container {

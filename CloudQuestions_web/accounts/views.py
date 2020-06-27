@@ -33,6 +33,8 @@ def register(request):
 
 @login_required
 def settings(request, topic=None, color=None):
+    if request.GET.get('toggle_help'):
+        return redirect('questions:detail', 'CloudQuestions_Help')
     context = {}
     user = request.user
     table = question_service.create_table(user)

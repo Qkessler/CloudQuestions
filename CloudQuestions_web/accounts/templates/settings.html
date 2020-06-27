@@ -6,6 +6,11 @@
 <div id="settings-text-container">
     <h2 class="architects inline-block-black" id="settings-text">Settings</h2>
     <img class="inline-block-black" id="settings-logo" alt="Settings emoji" src="{% static 'questions/settings-logo.png'%}"/>
+    <div class="toggle-help inline-block-black hide-help">
+        <form method="get">
+            <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="Help?"/>
+        </form>
+    </div>
 </div>
 
 <div class="align-center" id="social-container">

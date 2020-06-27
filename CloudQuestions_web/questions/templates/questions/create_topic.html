@@ -2,7 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1 class="architects" id="create-new-topic">Create or modify a topic!</h1>
+<h1 class="architects inline-block-black" id="create-new-topic">Create or modify a topic!</h1>
+<div class="toggle-help inline-block-black hide-help">
+    <form method="get">
+        <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="Help?"/>
+    </form>
+</div>
 <div id="create-topic-form">
     {% crispy topic_form topic_form.helper %}
 </div>

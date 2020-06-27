@@ -61,6 +61,8 @@ def questions(request):
 
 
 def detail(request, topic):
+    if request.GET.get('toggle_help'):
+        return redirect('questions:detail', 'CloudQuestions_Help')
     questions_by_topic = question_service.questions_by_topic(topic)
     color = None
     context = {}
@@ -177,6 +179,8 @@ def login(request):
 def create_topic(request, topic_id=None):
     context = {}
     topic_form = CreateTopicForm(prefix="example_form")
+    if request.GET.get('toggle_help'):
+        return redirect('questions:detail', 'CloudQuestions_Help')
     if request.method == 'POST':
         topic_form = CreateTopicForm(request.POST, prefix="example_form")
         if topic_form.is_valid():

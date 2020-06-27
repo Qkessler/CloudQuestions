@@ -11,21 +11,14 @@ def index(request):
     return render(request, 'questions/index.html')
 
 
-def questions(request, toggle_help=None):
+def questions(request):
     context = {}
     topics_searched = []
     context['searched'] = False
     context['empty'] = True
-    context['help'] = 'help_false'
     question_service.delete_flagged()
-    if toggle_help == 'help=True':
-        context['help'] = 'help_true'
-    elif toggle_help:
-        return HttpResponse(status='404')
     if request.GET.get('toggle_help'):
-        if toggle_help == "help=True":
-            return redirect('questions:questions')
-        return redirect('questions:questions', 'help=True')
+        return redirect('questions:detail', 'CloudQuestions_Help')
     if request.GET.get('upload_topic'):
         return redirect('questions:create_topic')
     if request.method == 'POST':

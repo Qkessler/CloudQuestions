@@ -111,22 +111,8 @@ ul.list_topic {
     padding-left: 20px;
 }
 
-.questions-help_false {  
-    background-image: none;
-}
-.questions-help_true {
-    background-image: url("questions_page_help2.png");
-    background-repeat: no-repeat;
-}
-
 .list_topic p {
     font-size: 15px;
-}
-
-@media (max-width: 1907px) {
-    .hide-help {
-        display: none;
-    }
 }
 
 .list_topic_item {

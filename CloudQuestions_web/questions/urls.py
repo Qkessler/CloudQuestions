@@ -13,5 +13,4 @@ urlpatterns = [
     path('<str:topic>/random/', views.random_questions, name='random'),
     path('<str:topic>/random/<str:list_questions>',
          views.random_questions, name='random'),
-    path('<str:toggle_help>', views.questions, name='questions')
 ]

@@ -96,6 +96,8 @@ def detail(request, topic):
 
 
 def browse(request, number_questions=10):
+    if request.GET.get('toggle_help'):
+        return redirect('questions:detail', 'CloudQuestions_Help')
     context = {}
     topics_searched = []
     context['searched'] = False

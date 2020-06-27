@@ -84,15 +84,11 @@ body {
 }
 
 .list_topic {
-    width: 53%;
-    margin-left: 22.5%;
-    margin-right: 20%;
+    width: 90%;
 }
 
 .list_searched {
-    width: 53%;
-    margin-left: 22.5%;
-    margin-right: 20%;
+    width: 90%;
 }
 
 ul.list_topic {
@@ -309,7 +305,7 @@ details > summary::-webkit-details-marker {
 
 .note {
   position: relative;
-  width: 40%;
+  width: 90%;
   padding: 1em 1.5em;
   margin: 2em auto;
   overflow: hidden;
@@ -465,7 +461,7 @@ summary {
 
 #ratings-container {
     margin: 0 auto;
-    width: 60%;
+    width: 90%;
 }
 
 #ratings-table {

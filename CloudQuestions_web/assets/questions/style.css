@@ -715,7 +715,7 @@ summary {
 
 @media (min-width: 1195px) {
     #calendar-explanation-image {
-        width: 60%;
+        width: 50%;
     }
     
     #topic-image-mockup {
@@ -746,6 +746,7 @@ summary {
 }
 
 #table-legend {
+    margin-top: 20px;
     width: 250px;
     height: auto;
 }

@@ -731,6 +731,13 @@ summary {
 
 }
 
+@media (min-width: 1440px) {
+    .navbar {
+        width: 70%;
+        margin: 0 auto;
+    } 
+}
+
 @media (min-width: 1195px) {
     #calendar-explanation-image {
         width: 50%;

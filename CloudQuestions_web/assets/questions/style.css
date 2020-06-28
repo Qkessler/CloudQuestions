@@ -761,6 +761,6 @@ summary {
     height: auto;
 }
 
-#note-answer {
+.note-answer {
     padding-left: 20px;
 }

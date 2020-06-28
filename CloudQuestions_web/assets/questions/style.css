@@ -760,3 +760,7 @@ summary {
     width: 250px;
     height: auto;
 }
+
+#note-answer {
+    padding-left: 20px;
+}

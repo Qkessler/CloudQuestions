@@ -349,6 +349,14 @@ details > summary::-webkit-details-marker {
   box-shadow: 0 6px 4px -4px #263238;
 }
 
+.note ul {
+    padding: 20px;
+}
+
+.note ol {
+    padding: 20px;
+}
+
 .align-left {
     text-align: left;
 }
@@ -761,6 +769,6 @@ summary {
     height: auto;
 }
 
-.note-answer {
-    padding-left: 20px;
-}
+/* .note-answer { */
+/*     padding-left: 20px; */
+/* } */

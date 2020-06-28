@@ -741,7 +741,12 @@ summary {
     .navbar {
         width: 70%;
         margin: 0 auto;
-    } 
+    }
+    
+    #ratings-container {
+        margin: 0 auto;
+        width: 70%;
+    }
 }
 
 @media (min-width: 1195px) {

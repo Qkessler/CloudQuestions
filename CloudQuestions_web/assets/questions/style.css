@@ -714,6 +714,12 @@ summary {
 #topic-explanation-text-container {
     margin-left: 40px;
 }
+
+.nav-item {
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
 @media (min-width: 750px) {
     .list_topic {
         width: 60%;

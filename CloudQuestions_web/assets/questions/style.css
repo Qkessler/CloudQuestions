@@ -794,14 +794,13 @@ summary {
     grid-row: 1;
     padding: 20px;
     margin: 0 auto;
-    background: red;
 }
 
 #footer-developers {
     width: 100%;
     grid-column: 1;
     grid-row: 2;
-    padding: 20px;
+    padding: 10px;
     margin: 0 auto;
 }
 
@@ -860,4 +859,8 @@ summary {
 
 #link-github {
     padding: 15px;
+}
+
+#developers-header {
+    padding-bottom: 10px;
 }

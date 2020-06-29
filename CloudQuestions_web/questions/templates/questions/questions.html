@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% crispy upload_file_form upload_file_form.helper %}
 
@@ -74,8 +75,15 @@
 </div>
 
 <div class="footer-container">
-    <p id="about-header" class="architects">ABOUT</p>
-    <img alt="Twitter logo" src=""/>
+    <div id="footer-about">
+        <p id="about-header" class="architects">ABOUT</p>
+        <div id="footer-twitter-info">
+            <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo-footer.svg'%}"/>
+        </div>
+        <div id="footer-github-info">
+            <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo-footer.svg'%}"/>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

@@ -793,6 +793,31 @@ summary {
     grid-row: 1;
     padding: 20px;
     margin: 0 auto;
+    background: red;
+}
+
+#footer-developers {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 20px;
+    margin: 0 auto;
+    background: blue;
+}
+
+#footer-connect {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 20px;
+    margin: 0 auto;
+    background: green;
+}
+
+#footer-help {
+    grid-column: 1;
+    grid-row: 4;
+    padding: 20px;
+    margin: 0 auto;
+    background: yellow;
 }
 
 #footer-container-grid {
@@ -828,7 +853,8 @@ summary {
 }
 
 .footer-header {
-    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 20px;
 }
 
 #link-github {

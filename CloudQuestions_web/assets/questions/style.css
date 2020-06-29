@@ -837,7 +837,7 @@ summary {
     margin-top: 15px;
 }
 #photo-enrique {
-    width: 50px;
+    width: 45px;
     height: auto;
 }
 
@@ -854,13 +854,17 @@ summary {
 
 .footer-header {
     font-size: 20px;
+    padding-bottom: 10px;
+}
+
+#about-header {
     padding-bottom: 20px;
 }
 
-#link-github {
+#github-profile-link {
     padding: 15px;
 }
 
-#developers-header {
-    padding-bottom: 10px;
+.github-link {
+    padding-bottom: 5px;
 }

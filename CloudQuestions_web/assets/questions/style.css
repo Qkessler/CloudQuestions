@@ -820,6 +820,17 @@ summary {
     color: #8898aa;
     opacity: 0.75;
 }
+
+.footer-link:hover {
+    color: #8898aa;
+    opacity: 1;
+    text-decoration: none;
+}
+
 .footer-header {
     font-weight: bold;
+}
+
+#link-github {
+    padding: 15px;
 }

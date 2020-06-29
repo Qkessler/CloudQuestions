@@ -795,7 +795,10 @@ summary {
     margin: 0 auto;
 }
 
-#footer-container {
+#footer-container-grid {
+    color: #8898aa;
+    opacity: 0.75;
+    margin-top: 60px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 35% 20% 35% 10%;
@@ -803,4 +806,20 @@ summary {
 
 #footer-twitter-info {
     
+}
+
+.twitter-creators {
+    margin-top: 15px;
+}
+#photo-enrique {
+    width: 50px;
+    height: auto;
+}
+
+.footer-link {
+    color: #8898aa;
+    opacity: 0.75;
+}
+.footer-header {
+    font-weight: bold;
 }

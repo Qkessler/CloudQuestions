@@ -74,16 +74,19 @@
     {% endif %}
 </div>
 
-<div class="footer-container">
+<div id="footer-container-grid" class="bg-light">
     <nav class="navbar sticky-bottom navbar-light bg-light">
         <div id="footer-about">
-            <p id="about-header" class="architects">ABOUT</p>
+            <p id="about-header" class="footer-header architects">ABOUT</p>
             <div id="footer-social-info">
                 <div id="footer-twitter-info">
                     <img id="footer-twitter-logo" alt="Twitter logo" src="{% static 'questions/twitter-logo-footer.svg'%}"/>
                     <div class="twitter-creators">
+                        <img id="photo-enrique" class="inline-block-black" alt="Enrique Kessler Martínez" src="{% static 'questions/enrique_kessler_martinez.png'%}"/>
+                        <a class="inline-block-black footer-link" href="https://twitter.com/quique_kessler">@quique_kessler</a>
                     </div>
-                    <div class="twitter-creators"></div>
+                    <div class="twitter-creators">
+                    </div>
                 </div>
                 <div id="footer-github-info">
                     <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo-footer.svg'%}"/>

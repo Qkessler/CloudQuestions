@@ -789,6 +789,7 @@ summary {
 }
 
 #footer-about {
+    width: 100%;
     grid-column: 1;
     grid-row: 1;
     padding: 20px;
@@ -797,27 +798,27 @@ summary {
 }
 
 #footer-developers {
+    width: 100%;
     grid-column: 1;
     grid-row: 2;
     padding: 20px;
     margin: 0 auto;
-    background: blue;
 }
 
 #footer-connect {
+    width: 100%;
     grid-column: 1;
     grid-row: 3;
     padding: 20px;
     margin: 0 auto;
-    background: green;
 }
 
 #footer-help {
+    width: 100%;
     grid-column: 1;
     grid-row: 4;
     padding: 20px;
     margin: 0 auto;
-    background: yellow;
 }
 
 #footer-container-grid {
@@ -825,7 +826,7 @@ summary {
     opacity: 0.75;
     margin-top: 60px;
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 100%;
     grid-template-rows: 35% 20% 35% 10%;
 }
 

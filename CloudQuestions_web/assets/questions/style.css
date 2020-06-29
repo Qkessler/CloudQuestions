@@ -870,5 +870,15 @@ summary {
 }
 
 #contact-form {
-    
+    width: 150px;
+    margin: 0 auto;
+    border-width: thin;
+    border-style: solid;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+
+#email-link {
+    padding: 5px;
 }

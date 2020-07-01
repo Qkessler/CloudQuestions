@@ -522,7 +522,12 @@ summary {
 
 #login-form {
     margin: 0 auto;
-    width: 40%;
+    width: 80%;
+    margin-top: 80px;
+}
+
+#login-form-container {
+    padding: 20px;
 }
 
 #login-text {
@@ -531,18 +536,19 @@ summary {
 
 .social-login {
     margin: 0 auto;
-    width: 50%;
+    width: 140px;
     border-style: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: lightgrey;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius: 0 0 0 5px;
     border-radius: 0 0 0 5px;
     box-shadow: 0 6px 4px -4px #263238;
+    margin-bottom: 10px;
 }
 
 #google-login-container {
-    background: #eb302a;
+    background: #bd534f;
     padding: 12px;
 }
 
@@ -552,7 +558,7 @@ summary {
 }
 
 #twitter-login-container {
-    background: #293b96;
+    background: #4285f4;
     padding: 12px;
 }
 
@@ -574,6 +580,7 @@ summary {
 #logout-done {
     margin-top: 30px;
     text-align: center;
+    margin-bottom: 150px;
 }
 
 #reset-password-text {
@@ -722,6 +729,10 @@ summary {
     width: 400px;
 }
 
+#next-question {
+    margin-bottom: 150px;
+}
+
 #topic-explanation-text-container {
     margin-left: 40px;
 }
@@ -750,6 +761,17 @@ summary {
         width: 600px;
     }
 
+    #login-form {
+        width: 50%;
+    }
+    
+    #login-form-container {
+        margin-bottom: 40px;
+        padding: 40px;
+        border-radius: 4px;
+        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    }
+    
     #footer-container-grid {
         grid-template-columns: auto !important;
         grid-template-rows: auto !important;
@@ -788,7 +810,7 @@ summary {
     }
 }
 
-@media (min-width: 1195px) {
+@media (min-width: 1024px) {
     #calendar-explanation-image {
         width: 50%;
     }
@@ -799,6 +821,10 @@ summary {
 
     #table-legend {
         width: 60%;
+    }
+
+    #login-form {
+        width: 500px;
     }
 }
 

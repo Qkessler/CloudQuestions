@@ -78,7 +78,7 @@ body {
     margin-top: 10px;
 }
 
-#file_upload_form, #create_topic_form {
+#file_upload_form, #create_topic_container {
     padding-left: 10px;
     padding-right: 20px;
     display: inline-block;
@@ -389,8 +389,17 @@ summary {
     margin-left: 15px;
 }
 
-#create-topic-form {
+#create-topic-container {
     padding-bottom: 30px;
+}
+
+#create-topic-form {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#add-topic-button-div {
+    margin-bottom: 30px;
 }
 
 #create-new-topic {
@@ -737,6 +746,30 @@ summary {
         width: 50%;
     }
 
+    #footer-container-grid {
+        grid-template-columns: auto !important;
+        grid-template-rows: auto !important;
+    }
+
+    #footer-about {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    #footer-developers {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+    }
+
+    #footer-connect {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+    }
+
+    #footer-help {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+    }
 }
 
 @media (min-width: 1440px) {

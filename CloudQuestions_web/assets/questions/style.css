@@ -351,11 +351,11 @@ details > summary::-webkit-details-marker {
 }
 
 .note ul {
-    padding: 20px;
+    padding-left: 20px;
 }
 
 .note ol {
-    padding: 20px;
+    padding-left: 20px;
 }
 
 .align-left {

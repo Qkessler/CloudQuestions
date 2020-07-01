@@ -746,6 +746,10 @@ summary {
         width: 50%;
     }
 
+    #create-topic-form {
+        width: 600px;
+    }
+
     #footer-container-grid {
         grid-template-columns: auto !important;
         grid-template-rows: auto !important;

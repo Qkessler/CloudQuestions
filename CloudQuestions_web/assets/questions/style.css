@@ -577,6 +577,14 @@ summary {
     color: white;
 }
 
+#register-form {
+    margin: 0 auto;
+}
+
+#register-form-container {
+    width: 90%;
+}
+
 #logout-done {
     margin-top: 30px;
     text-align: center;

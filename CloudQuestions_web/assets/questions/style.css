@@ -512,8 +512,9 @@ summary {
 #register-form-container {
     text-align: center;
     margin: 0 auto;
-    width: 40%;
+    width: 90%;
     padding-bottom: 60px;
+    margin-top: 80px;
 }
 
 #login-form-button {
@@ -579,10 +580,6 @@ summary {
 
 #register-form {
     margin: 0 auto;
-}
-
-#register-form-container {
-    width: 90%;
 }
 
 #logout-done {
@@ -772,12 +769,25 @@ summary {
     #login-form {
         width: 50%;
     }
+
+    #register-form {
+        width: 80%;
+        margin: 0 auto;
+    }
     
     #login-form-container {
         margin-bottom: 40px;
         padding: 40px;
         border-radius: 4px;
         box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    }
+
+    #register-form-container {
+        margin-bottom: 40px;
+        padding: 40px;
+        border-radius: 4px;
+        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+        width: 60%;
     }
     
     #footer-container-grid {
@@ -832,6 +842,10 @@ summary {
     }
 
     #login-form {
+        width: 500px;
+    }
+
+    #register-form {
         width: 500px;
     }
 }

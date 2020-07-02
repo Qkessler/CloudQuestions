@@ -592,13 +592,21 @@ summary {
     padding: 20px;
 }
 
+#reset-password-container {
+    margin: 0 auto;
+    margin-top: 80px;
+    padding: 20px;
+}
+
 #reset-password-form {
     margin: 0 auto;
-    width: 40%;
+    width: 90%;
 }
 
 #password-reset-message {
     padding: 40px;
+    margin-bottom: 300px;
+    margin-top: 80px;
 }
 
 #change-password-id {
@@ -790,6 +798,14 @@ summary {
         width: 60%;
     }
     
+    #reset-password-container {
+        margin-bottom: 40px;
+        padding: 40px;
+        border-radius: 4px;
+        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+        width: 60%;
+    }
+    
     #footer-container-grid {
         grid-template-columns: auto !important;
         grid-template-rows: auto !important;
@@ -845,7 +861,11 @@ summary {
         width: 500px;
     }
 
-    #register-form {
+    #register-form-container {
+        width: 500px;
+    }
+
+    #reset-password-container {
         width: 500px;
     }
 }

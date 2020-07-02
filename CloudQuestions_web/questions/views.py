@@ -76,8 +76,11 @@ def detail(request, topic):
         topic = Topic.objects.get(id=topic_id)
         topic.delete()
         return redirect('questions:questions')
-    if request.GET.get('privacy-button'):
-        print("Entro aquí")
+    if request.GET.get('privacy-button.x'):
+        topic_id = question_service.topics_by_id(topic)[0]
+        topic_privacy = Topic.objects.get(id=topic_id)
+        topic_privacy.privacy = not topic_privacy.privacy
+        topic_privacy.save()
     if request.GET.get('red_button') == 'Bad':
         color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':
@@ -94,6 +97,7 @@ def detail(request, topic):
     topic = Topic.objects.get(id=topic_id)
     context['topic'] = topic
     context['questions_by_topic'] = questions_by_topic
+    context['public'] = question_service.get_privacy()
     return render(request, 'questions/detail.html', context)
 
 

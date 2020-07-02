@@ -7,8 +7,8 @@
     <p class="inline-block-black"> Created: {{topic.created}}</p>
     <p class="inline-block-black" > Creator: {{ creator }}</p>
     <div id="privacy-button-container" class="inline-block-black">
-        <form action="" method="get">
-            <input name="privacy-button" type="image" src="{% static 'questions/public-24px.svg' %}"value="alt"/>
+        <form method="get">
+            <input name="privacy-button" type="image" src="{% static 'questions/public-24px.svg' %}"alt="Public button"/>
         </form>
     </div>
 </div>
@@ -25,7 +25,7 @@
     <form class="inline-block-black" method="get" action="">
         <input class="btn btn-warning" name="yellow_button" type="submit" value="Medium"/>
     </form>
-    <form class="inline-block-black" method="get" action="">
+    <form class="inline-block-black" method="get">
         <input class="btn btn-success" name="green_button" type="submit" value="Good"/>
     </form>
 </div>

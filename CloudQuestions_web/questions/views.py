@@ -76,8 +76,8 @@ def detail(request, topic):
         topic = Topic.objects.get(id=topic_id)
         topic.delete()
         return redirect('questions:questions')
-
-    if request.GET.get('')
+    if request.GET.get('privacy-button'):
+        print("Entro aquí")
     if request.GET.get('red_button') == 'Bad':
         color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':

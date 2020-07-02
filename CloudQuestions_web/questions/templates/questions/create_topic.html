@@ -13,7 +13,10 @@
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
-    <p class="inline-block-black" > Creator: {{ topic.creator }}</p>    
+    <p class="inline-block-black" > Creator: {{ topic.creator }}</p>
+    <form method="get">
+        <input name="privacy-button" class="inline-block-black" id="privacy-button" type="submit" value="Hey"/>
+    </form>
 </div>
 <div id="lq-create-topic">
     <div id="list_questions">

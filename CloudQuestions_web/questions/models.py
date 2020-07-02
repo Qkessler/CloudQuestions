@@ -11,6 +11,7 @@ class Topic(models.Model):
                                 on_delete=models.DO_NOTHING,
                                 db_index=True)
     created_flag = models.BooleanField(default=True)
+    privacy = models.BooleanField(default=False)
 
 
 class Question(models.Model):

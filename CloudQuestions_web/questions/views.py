@@ -125,7 +125,7 @@ def browse(request, number_questions=10):
         search_form = SearchForm(prefix='search_form')
     context['search_form'] = search_form
     all_topics = {topic: parsing.unscrub_name(topic.name)
-                  for topic in Topic.objects.all()}
+                  for topic in Topic.objects.all().filter(privacy=True)}
     all_topics_items = list(all_topics.items())
     if len(all_topics_items) + number_questions > 10:
         context['more'] = True

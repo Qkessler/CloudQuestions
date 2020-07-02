@@ -6,6 +6,7 @@
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
     <p class="inline-block-black" > Creator: {{ creator }}</p>
+    {% if is_creator %}
     <div id="privacy-button-container" class="inline-block-black">
         {% if public == 1%}
         <form method="get">
@@ -17,6 +18,7 @@
         </form>
         {% endif %}
     </div>
+    {% endif %}
 </div>
 <div id="random_session">
     <form method="get">

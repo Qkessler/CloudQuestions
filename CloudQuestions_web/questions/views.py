@@ -94,10 +94,10 @@ def detail(request, topic):
         return redirect('questions:random', topic, ' ')
     context['topic_pretty_name'] = parsing.unscrub_name(topic)
     topic_id = question_service.topics_by_id(topic)[0]
-    topic = Topic.objects.get(id=topic_id)
-    context['topic'] = topic
+    topic_context = Topic.objects.get(id=topic_id)
+    context['topic'] = topic_context
     context['questions_by_topic'] = questions_by_topic
-    context['public'] = question_service.get_privacy()
+    context['public'] = question_service.get_privacy(topic)
     return render(request, 'questions/detail.html', context)
 
 

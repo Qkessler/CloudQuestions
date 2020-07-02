@@ -1,10 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
     <p class="inline-block-black" > Creator: {{ creator }}</p>
+    {% if is_creator %}
+    <div id="privacy-button-container" class="inline-block-black">
+        {% if public == 1%}
+        <form method="get">
+            <input name="privacy-button" type="image" src="{% static 'questions/public-24px.svg' %}"alt="Public button"/>
+        </form>
+        {% else %}
+        <form method="get">
+            <input name="privacy-button" type="image" src="{% static 'questions/lock-24px.svg' %}"alt="Public button"/>
+        </form>
+        {% endif %}
+    </div>
+    {% endif %}
 </div>
 <div id="random_session">
     <form method="get">
@@ -19,7 +33,7 @@
     <form class="inline-block-black" method="get" action="">
         <input class="btn btn-warning" name="yellow_button" type="submit" value="Medium"/>
     </form>
-    <form class="inline-block-black" method="get" action="">
+    <form class="inline-block-black" method="get">
         <input class="btn btn-success" name="green_button" type="submit" value="Good"/>
     </form>
 </div>

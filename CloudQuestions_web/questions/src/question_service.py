@@ -280,3 +280,11 @@ def delete_flagged():
     query_flagged = Topic.objects.filter(created_flag=False)
     for topic in query_flagged:
         topic.delete()
+
+
+def get_privacy(topic):
+    """ Function created to get the context for the detail form, which puts and 
+    icon if the topic is public"""
+    topic_id = topics_by_id(topic)[0]
+    topic = Topic.objects.get(id=topic_id)
+    return topic.privacy

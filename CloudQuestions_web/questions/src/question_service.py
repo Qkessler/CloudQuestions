@@ -290,3 +290,8 @@ def get_privacy(topic):
     topic_id = topics_by_id(topic)[0]
     topic = Topic.objects.get(id=topic_id)
     return topic.privacy
+
+
+def get_question(question_id):
+    """ Given an id, gets question from db."""
+    return Question.objects.get(id=question_id)

@@ -29,6 +29,7 @@
             <div id="remove-button-container" class="inline-block-black">
                 <form method="get">
                     <input name="remove-button" type="image" src="{% static 'questions/clear-24px.svg' %}"alt="Public button"/>
+                    <input type="hidden" name="action" value="{{question.id}}">
                 </form>
             </div>
             {% endfor %}

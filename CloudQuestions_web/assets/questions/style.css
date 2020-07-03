@@ -757,40 +757,38 @@ summary {
 
 
 #footer-container-grid {
+    width: 100%;
     color: #8898aa;
     opacity: 0.75;
     margin-top: 60px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 35% 20% 35% 10%;
+    grid-template-rows: 50% 20% 20% 10%;
 }
 
 .footer-grid-a {
     grid-column: 1;
     grid-row: 1;
     padding: 20px;
-    background: red;
 }
 
 .footer-grid-b {
     grid-column: 1;
     grid-row: 2;
     padding: 10px;
-    background: blue;
 }
 
 .footer-grid-c {
     grid-column: 1;
     grid-row: 3;
     padding: 20px;
-    background: green;
 }
 
 .footer-grid-d {
     grid-column: 1;
     grid-row: 4;
     padding: 20px;
-    background: yellow;
 }
 
 

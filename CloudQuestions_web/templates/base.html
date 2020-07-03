@@ -69,29 +69,28 @@
         </div>
 	    {% block content %}
 	    {% endblock %}
-        <div id="footer-container-grid" class="bg-light">
-            <nav class="navbar sticky-bottom navbar-light bg-light">
-                <div id="footer-about">
+        <nav id="footer" class="navbar sticky-bottom navbar-light bg-light">
+            <div id="footer-container-grid" class="bg-light">
+                <div id="footer-about" class="footer-grid-a">
                     <p id="about-header" class="footer-header architects">ABOUT</p>
                     <div id="footer-social-info">
                         <div id="footer-twitter-info">
-                            <img id="footer-twitter-logo" alt="Twitter logo" src="{% static 'questions/twitter-logo-footer.gif'%}"/>
+                            <img id="footer-twitter-logo" class="half-opacity" alt="Twitter logo" src="{% static 'questions/twitter-logo-footer.gif'%}"/>
                             <div class="twitter-creators">
-                                <img id="photo-enrique" class="inline-block-black" alt="Enrique Kessler Martínez" src="{% static 'questions/enrique_kessler_martinez.png'%}"/>
                                 <a class="inline-block-black footer-link" href="https://twitter.com/quique_kessler">@quique_kessler</a>
                             </div>
                             <div class="twitter-creators">
                             </div>
                         </div>
                         <div id="footer-github-info">
-                            <img id="footer-github-logo" alt="Github logo" src="{% static 'questions/github-logo-footer.gif'%}"/>
+                            <img id="footer-github-logo" class="half-opacity" alt="Github logo" src="{% static 'questions/github-logo-footer.gif'%}"/>
                             <div>
                                 <a id="github-profile-link" class="footer-link" href="https://github.com/Qkessler">Qkessler</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="footer-developers">
+                <div id="footer-developers" class="footer-grid-b">
                     <p id="developers-header" class="footer-header architects">DEVELOPERS</p>
                     <div class="github-link">
                         <a class="footer-link" href="https://github.com/Qkessler/CloudQuestions">Repository</a>
@@ -100,7 +99,7 @@
                         <a class="footer-link" href="https://github.com/Qkessler/CloudQuestions/issues">Issues</a>
                     </div>
                 </div>
-                <div id="footer-connect">
+                <div id="footer-connect" class="footer-grid-c">
                     <p id="connect-header" class="footer-header architects">CONNECT WITH US</p>
                     <div id="contact-form">
                         <div id="email-link">
@@ -109,11 +108,11 @@
                     </div>
 
                 </div>
-                <div id="footer-help">
+                <div id="footer-help" class="footer-grid-d">
                     <a class="footer-header architects footer-link" href="http://127.0.0.1:8000/questions/CloudQuestions_Help/">NEED HELP?</a>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

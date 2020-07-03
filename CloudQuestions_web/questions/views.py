@@ -81,6 +81,9 @@ def detail(request, topic):
         topic_privacy = Topic.objects.get(id=topic_id)
         topic_privacy.privacy = not topic_privacy.privacy
         topic_privacy.save()
+    if request.GET.get('modify-button.x'):
+        topic_id = question_service.topics_by_id(topic)[0]
+        return redirect('questions:create_topic', topic_id)
     if request.GET.get('red_button') == 'Bad':
         color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':

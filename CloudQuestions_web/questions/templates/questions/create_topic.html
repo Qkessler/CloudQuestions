@@ -19,11 +19,11 @@
     <div id="list_questions">
         <ul>
             {% autoescape off %}
-            {% for q, answer in list_by_topic.items %}
+            {% for question in list_by_topic %}
             <div class="note rounded color-light_{{topic.color}}">
                 <details id="questions_answers">
-	                <summary>{{q}}</summary>
-                    <p class="align-left"> {{answer}}</p>
+	                <summary>{{question.question}}</summary>
+                    <p class="align-left"> {{question.answer}}</p>
                 </details>
             </div>
             {% endfor %}

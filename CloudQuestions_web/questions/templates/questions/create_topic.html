@@ -19,12 +19,18 @@
     <div id="list_questions">
         <ul>
             {% autoescape off %}
-            {% for q, answer in list_by_topic.items %}
-            <div class="note rounded color-light_{{topic.color}}">
+            {% for question in list_by_topic %}
+            <div class="note rounded color-light_{{topic.color}} inline-block-black">
                 <details id="questions_answers">
-	                <summary>{{q}}</summary>
-                    <p class="align-left"> {{answer}}</p>
+	                <summary>{{question.question}}</summary>
+                    <p class="align-left"> {{question.answer}}</p>
                 </details>
+            </div>
+            <div id="remove-button-container" class="inline-block-black">
+                <form method="get">
+                    <input name="remove-button" type="image" src="{% static 'questions/clear-24px.svg' %}"alt="Public button"/>
+                    <input type="hidden" name="action" value="{{question.id}}">
+                </form>
             </div>
             {% endfor %}
             {% endautoescape %}

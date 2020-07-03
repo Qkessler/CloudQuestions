@@ -5,7 +5,7 @@
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
-    <p class="inline-block-black" > Creator: {{ creator }}</p>
+    <p id="creator-text-detail" class="inline-block-black" > Creator: {{ creator }}</p>
     {% if is_creator %}
     <div id="privacy-button-container" class="inline-block-black">
         {% if public == 1%}
@@ -17,6 +17,11 @@
             <input name="privacy-button" type="image" src="{% static 'questions/lock-24px.svg' %}"alt="Public button"/>
         </form>
         {% endif %}
+    </div>
+    <div id="modify-button-container" class="inline-block-black">
+        <form method="get">
+            <input name="modify-button" type="image" src="{% static 'questions/build-24px.svg' %}"alt="Public button"/>
+        </form>
     </div>
     {% endif %}
 </div>
@@ -49,12 +54,12 @@
 <div id="list_questions">
 <ul>
     {% autoescape off %}
-    {% for q, answer in questions_by_topic.items %}
+    {% for question in questions_by_topic %}
     <div class="note rounded color-light_{{topic.color}}">
     <details id="questions_answers">
-	    <summary>{{q}}</summary>
+	    <summary>{{question.question}}</summary>
         <div class="note-answer">
-            <p class="align-left"> {{answer}}</p>
+            <p class="align-left"> {{question.answer}}</p>
         </div>
     </details>
     </div>

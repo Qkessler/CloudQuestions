@@ -766,7 +766,7 @@ summary {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 50% 20% 20% 10%;
+    grid-template-rows: 280px 20% 20% 10%;
 }
 
 .footer-grid-a {
@@ -942,11 +942,6 @@ summary {
 
 .twitter-creators {
     margin-top: 15px;
-}
-
-#photo-enrique {
-    width: 35px;
-    height: auto;
 }
 
 #footer-twitter-logo {

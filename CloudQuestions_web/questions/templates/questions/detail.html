@@ -5,7 +5,7 @@
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
     <p class="inline-block-black"> Created: {{topic.created}}</p>
-    <p class="inline-block-black" > Creator: {{ creator }}</p>
+    <p id="creator-text-detail" class="inline-block-black" > Creator: {{ creator }}</p>
     {% if is_creator %}
     <div id="privacy-button-container" class="inline-block-black">
         {% if public == 1%}

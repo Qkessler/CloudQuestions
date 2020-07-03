@@ -214,7 +214,7 @@ def create_topic(request, topic_id=None):
                     Question.objects.filter(topic=topic_url).count() > 1)
                 context['list_by_topic'] = question_service.questions_by_topic(
                     topic_url.name)
-                if request.GET.get('remove-button'):
+                if request.GET.get('remove-button.x'):
                     question_id = request.GET.get('action')
                     question_to_remove = question_service.get_question(
                         question_id)

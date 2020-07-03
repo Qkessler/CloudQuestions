@@ -811,22 +811,22 @@ summary {
         grid-template-rows: auto !important;
     }
 
-    #footer-about {
+    .footer-grid-a {
         grid-column: 1 !important;
         grid-row: 1 !important;
     }
 
-    #footer-developers {
+    .footer-grid-b {
         grid-column: 2 !important;
         grid-row: 1 !important;
     }
 
-    #footer-connect {
+    .footer-grid-c {
         grid-column: 1 !important;
         grid-row: 2 !important;
     }
 
-    #footer-help {
+    .footer-grid-d {
         grid-column: 2 !important;
         grid-row: 2 !important;
     }

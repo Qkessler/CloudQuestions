@@ -30,8 +30,6 @@ def questions_by_topic(topic_name):
     """ Query of questions given a topic name. """
     topic_ids = topics_by_id(topic_name)
     questions = Question.objects.filter(topic__in=topic_ids)
-    questions = {question.question: question.answer
-                 for question in questions}
     return questions
 
 
@@ -269,6 +267,7 @@ def create_or_modify(topic_name, question, answer, user):
     question_to_add.topic = topic_com
     question_to_add.question = markdown.markdown(question)
     question_to_add.answer = markdown.markdown(answer)
+    question_to_add.added_flag = False
     question_to_add.save()
     return topic_com
 
@@ -280,6 +279,9 @@ def delete_flagged():
     query_flagged = Topic.objects.filter(created_flag=False)
     for topic in query_flagged:
         topic.delete()
+    query_flagged = Question.objects.filter(added_flag=False)
+    for question in query_flagged:
+        question.delete()
 
 
 def get_privacy(topic):

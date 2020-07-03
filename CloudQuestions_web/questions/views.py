@@ -192,7 +192,8 @@ def create_topic(request, topic_id=None):
     if request.method == 'POST':
         topic_form = CreateTopicForm(request.POST, prefix="example_form")
         if topic_form.is_valid():
-            topic_name = topic_form.cleaned_data['name']
+            topic_name = parsing.scrub_name(
+                topic_form.cleaned_data['name'])
             question = topic_form.cleaned_data['question']
             answer = topic_form.cleaned_data['answer']
             user = request.user
@@ -210,9 +211,12 @@ def create_topic(request, topic_id=None):
                     Question.objects.filter(topic=topic_url).count() > 1)
                 context['list_by_topic'] = question_service.questions_by_topic(
                     topic_url.name)
-                print(question_service.questions_by_topic(topic_url))
                 if request.GET.get('add_topic'):
                     topic_url.created_flag = True
+                    for question in context['list_by_topic']:
+                        if not question.added_flag:
+                            question.added_flag = True
+                            question.save()
                     topic_url.save()
                     return redirect('questions:questions')
 

@@ -769,24 +769,28 @@ summary {
     grid-column: 1;
     grid-row: 1;
     padding: 20px;
+    background: red;
 }
 
 .footer-grid-b {
     grid-column: 1;
     grid-row: 2;
     padding: 10px;
+    background: blue;
 }
 
 .footer-grid-c {
     grid-column: 1;
     grid-row: 3;
     padding: 20px;
+    background: green;
 }
 
 .footer-grid-d {
     grid-column: 1;
     grid-row: 4;
     padding: 20px;
+    background: yellow;
 }
 
 

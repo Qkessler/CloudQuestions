@@ -19,6 +19,7 @@ class Question(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, db_index=True)
     question = models.TextField(unique=False, db_index=True)
     answer = models.TextField(unique=False, db_index=True)
+    added_flag = models.BooleanField(default=True)
 
 
 class Rating(models.Model):

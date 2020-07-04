@@ -5,7 +5,7 @@ from accounts.src.api_client import random_color
 import markdown
 
 
-def include_questions(q_a, topic_name, user):    # pragma: no cover
+def include_questions(q_a, topic_name, user):
     """ Inserting the questions and answers in the db. """
     topics = list(Topic.objects.all())
     if topic_name not in [topic.name for topic in topics]:

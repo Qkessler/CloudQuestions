@@ -1,4 +1,5 @@
-from questions.src import question_service
+import pytest
+from src import question_service
 
 
 def test_questions_by_topic():

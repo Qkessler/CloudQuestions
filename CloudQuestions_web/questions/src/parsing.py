@@ -24,8 +24,9 @@ def handling_uploaded_file(uploaded, user):
     with open(full_tmp_path, 'wb') as f:
         for chunk in uploaded.chunks():
             f.write(chunk)
-    parsing_markdown(full_tmp_path, user)
+    return_dict = parsing_markdown(full_tmp_path, user)
     default_storage.delete(full_tmp_path)
+    return return_dict
 
 
 # Gets the line number of the line that contains the string given.
@@ -63,8 +64,8 @@ def scrub_name(name):
 # the answer below.
 def parsing_markdown(file, user):
     return_file = {}
-    with open(file, 'r') as f:
-        file_lines = f.readlines()
+    with open(file, 'r') as uploaded_file:
+        file_lines = uploaded_file.readlines()
     lines = file_lines
     questions = [' '.join(q.strip('\n').split(' ')[1:]) for q in lines
                  if pat_questions1.match(q) or pat_questions2.match(q)]
@@ -75,7 +76,8 @@ def parsing_markdown(file, user):
     if questions:
         q_a = get_inside(questions, file)
         return_file['q_a'] = q_a
-        question_service.include_questions(q_a, s_name, user)
+        return_file['topic_id'] = question_service.include_questions(
+            q_a, s_name, user)
     return return_file
 
 

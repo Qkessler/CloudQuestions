@@ -42,7 +42,10 @@ def questions(request):
             upload_file_form = UploadFileForm(request.POST, request.FILES)
             if upload_file_form.is_valid():
                 uploaded = request.FILES.get('file_upload')
-                parsing.handling_uploaded_file(uploaded, request.user)
+                return_dict = parsing.handling_uploaded_file(
+                    uploaded, request.user)
+                return redirect('questions:create_topic',
+                                return_dict['topic_id'])
     else:
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')

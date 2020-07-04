@@ -24,6 +24,7 @@ def include_questions(q_a, topic_name, user):    # pragma: no cover
             question.question = question_el
             question.answer = answer_el
             question.save()
+    return topic.id
 
 
 def questions_by_topic(topic_name):

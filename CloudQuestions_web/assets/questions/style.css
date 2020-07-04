@@ -399,7 +399,7 @@ summary {
 }
 
 #add-topic-button-div {
-    margin-bottom: 30px;
+    padding: 30px;
 }
 
 #create-new-topic {
@@ -884,6 +884,27 @@ summary {
         margin: 0 auto;
         width: 70%;
     }
+
+    #create-topic-container-grid {
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+    }
+
+    .create-topic-item-a {
+        grid-column: 1;
+        grid-row: 1;
+        padding: 20px;
+    }
+
+    .create-topic-item-b {
+        grid-column: 2;
+        grid-row: 1:;
+        padding: 20px;
+    }
+
 }
 
 @media (min-width: 1024px) {

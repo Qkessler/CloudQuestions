@@ -215,7 +215,6 @@ def create_topic(request, topic_id=None):
             topic_form = CreateTopicFormId(
                 request.POST, prefix="create_topic_id_form")
             if topic_form.is_valid():
-                breakpoint()
                 topic_name = Topic.objects.get(id=topic_id).name
                 question = topic_form.cleaned_data['question']
                 answer = topic_form.cleaned_data['answer']
@@ -249,4 +248,5 @@ def create_topic(request, topic_id=None):
                     return redirect('questions:questions')
 
     context['topic_form'] = topic_form
+    breakpoint()
     return render(request, 'questions/create_topic.html', context)

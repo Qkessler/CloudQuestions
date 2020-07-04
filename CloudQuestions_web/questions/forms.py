@@ -76,7 +76,6 @@ class CreateTopicFormId(forms.Form):
             Fieldset(
                 '',
                 Div(
-                    'name',
                     'question',
                     'answer',
                     'captcha',

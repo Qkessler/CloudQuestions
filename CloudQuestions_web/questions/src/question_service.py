@@ -13,6 +13,7 @@ def include_questions(q_a, topic_name, user):    # pragma: no cover
         topic.name = topic_name
         topic.color = random_color()
         topic.creator = user
+        topic.created_flag = False
         topic.save()
     else:
         topic = Topic.objects.get(name=topic_name)
@@ -23,7 +24,9 @@ def include_questions(q_a, topic_name, user):    # pragma: no cover
             question.topic = topic
             question.question = question_el
             question.answer = answer_el
+            question.added_flag = False
             question.save()
+    return topic.id
 
 
 def questions_by_topic(topic_name):

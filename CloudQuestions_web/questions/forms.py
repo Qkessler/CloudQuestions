@@ -33,7 +33,38 @@ class CreateTopicForm(forms.Form):
         widget=forms.Textarea)
     answer = forms.CharField(
         label='Answer',
-        max_length=400,
+        max_length=600,
+        required=True,
+        widget=forms.Textarea)
+    captcha = ReCaptchaField(label='')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                Div(
+                    'name',
+                    'question',
+                    'answer',
+                    'captcha',
+                    css_id="create-topic-form")),
+            ButtonHolder(
+                Submit('submit', 'Add question', css_class='button white')
+            )
+        )
+
+
+class CreateTopicFormId(forms.Form):
+    question = forms.CharField(
+        label='Question',
+        max_length=200,
+        required=True,
+        widget=forms.Textarea)
+    answer = forms.CharField(
+        label='Answer',
+        max_length=600,
         required=True,
         widget=forms.Textarea)
     captcha = ReCaptchaField(label='')

@@ -10,45 +10,52 @@
     </form>    
 </div>
 {% if topic %}
-<div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
-    <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
-    <p class="inline-block-black"> Created: {{topic.created}}</p>
-    <p class="inline-block-black" > Creator: {{ topic.creator }}</p>
-</div>
-<div id="lq-create-topic">
-    <div id="list_questions">
-        <ul>
-            {% autoescape off %}
-            {% for question in list_by_topic %}
-            <div class="note rounded color-light_{{topic.color}} inline-block-black">
-                <details id="questions_answers">
-	                <summary>{{question.question}}</summary>
-                    <p class="align-left"> {{question.answer}}</p>
-                </details>
+<div id="create-topic-container-grid">
+    <div class="create-topic-item-a">
+        <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
+            <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
+            <p class="inline-block-black"> Created: {{topic.created}}</p>
+            <p class="inline-block-black" > Creator: {{ topic.creator }}</p>
+        </div>
+        <div id="lq-create-topic">
+            <div id="list_questions">
+                <ul>
+                    {% autoescape off %}
+                    {% for question in list_by_topic %}
+                    <div class="note rounded color-light_{{topic.color}} inline-block-black">
+                        <details id="questions_answers">
+	                        <summary>{{question.question}}</summary>
+                            <p class="align-left"> {{question.answer}}</p>
+                        </details>
+                    </div>
+                    <div id="remove-button-container" class="inline-block-black">
+                        <form method="get">
+                            <input name="remove-button" type="image" src="{% static 'questions/clear-24px.svg' %}"alt="Public button"/>
+                            <input type="hidden" name="action" value="{{question.id}}">
+                        </form>
+                    </div>
+                    {% endfor %}
+                    {% endautoescape %}
+                </ul>
             </div>
-            <div id="remove-button-container" class="inline-block-black">
-                <form method="get">
-                    <input name="remove-button" type="image" src="{% static 'questions/clear-24px.svg' %}"alt="Public button"/>
-                    <input type="hidden" name="action" value="{{question.id}}">
-                </form>
-            </div>
-            {% endfor %}
-            {% endautoescape %}
-        </ul>
+        </div>
+    </div>
+    <div id="create-topic-container" class="create-topic-item-b">
+        {% crispy topic_form topic_form.helper %}
+        {% if enough_size %}
+        <div id="add-topic-button-div">
+            <form method="get">
+                <input class="btn btn-outline-success" id="add-topic-button" name="add_topic" type="submit" value="Save topic"/>
+            </form>
+        </div>
+        {% endif %}
     </div>
 </div>
-{% if enough_size %}
-<div id="add-topic-button-div">
-    <form method="get">
-        <input class="btn btn-outline-success" id="add-topic-button" name="add_topic" type="submit" value="Save topic"/>
-    </form>
-</div>
-{% endif %}
-{% endif %}
-
+{% else %}
 <div id="create-topic-container">
     {% crispy topic_form topic_form.helper %}
 </div>
+{% endif %}
 {% endblock %}
 
 

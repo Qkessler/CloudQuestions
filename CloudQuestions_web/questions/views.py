@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import (SearchForm, UploadFileForm,
-                    CreateTopicForm)
+                    CreateTopicForm, CreateTopicFormId)
 from questions.src import question_service, parsing
 from .models import Topic, Question
 from accounts.src import api_client
@@ -192,20 +192,37 @@ def login(request):
 
 def create_topic(request, topic_id=None):
     context = {}
-    topic_form = CreateTopicForm(prefix="example_form")
+    if not topic_id:
+        topic_form = CreateTopicForm(prefix="create_topic_form")
+    else:
+        topic_form = CreateTopicFormId(prefix="create_topic_id_form")
     if request.GET.get('toggle_help'):
         return redirect('questions:detail', 'CloudQuestions_Help')
     if request.method == 'POST':
-        topic_form = CreateTopicForm(request.POST, prefix="example_form")
-        if topic_form.is_valid():
-            topic_name = parsing.scrub_name(
-                topic_form.cleaned_data['name'])
-            question = topic_form.cleaned_data['question']
-            answer = topic_form.cleaned_data['answer']
-            user = request.user
-            topic_com = question_service.create_or_modify(
-                topic_name, question, answer, user)
-            return redirect('questions:create_topic', topic_com.id)
+        if not topic_id:
+            topic_form = CreateTopicForm(
+                request.POST, prefix="create_topic_form")
+            if topic_form.is_valid():
+                topic_name = parsing.scrub_name(
+                    topic_form.cleaned_data['name'])
+                question = topic_form.cleaned_data['question']
+                answer = topic_form.cleaned_data['answer']
+                user = request.user
+                topic_com = question_service.create_or_modify(
+                    topic_name, question, answer, user)
+                return redirect('questions:create_topic', topic_com.id)
+        else:
+            topic_form = CreateTopicFormId(
+                request.POST, prefix="create_topic_id_form")
+            if topic_form.is_valid():
+                breakpoint()
+                topic_name = Topic.objects.get(id=topic_id).name
+                question = topic_form.cleaned_data['question']
+                answer = topic_form.cleaned_data['answer']
+                user = request.user
+                topic_com = question_service.create_or_modify(
+                    topic_name, question, answer, user)
+                return redirect('questions:create_topic', topic_com.id)
     else:
         if topic_id:
             topic_url = Topic.objects.get(id=topic_id)

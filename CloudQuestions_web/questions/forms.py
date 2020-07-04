@@ -33,7 +33,7 @@ class CreateTopicForm(forms.Form):
         widget=forms.Textarea)
     answer = forms.CharField(
         label='Answer',
-        max_length=400,
+        max_length=600,
         required=True,
         widget=forms.Textarea)
     captcha = ReCaptchaField(label='')
@@ -64,7 +64,7 @@ class CreateTopicFormId(forms.Form):
         widget=forms.Textarea)
     answer = forms.CharField(
         label='Answer',
-        max_length=400,
+        max_length=600,
         required=True,
         widget=forms.Textarea)
     captcha = ReCaptchaField(label='')

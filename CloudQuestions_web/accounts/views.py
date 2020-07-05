@@ -26,11 +26,13 @@ def register(request):
         password = form.cleaned_data.get('password1')
         email = form.cleaned_data.get('email')
         user = authenticate(username=username, password=password,
-                            email=email, is_active=False)
+                            email=email)
+        user.is_active = False
+        user.save()
         question_service.create_calendar_connection(user)
         current_site = get_current_site(request)
         mail_subject = 'Activate your CloudQuestions account!'
-        message = render_to_string('accounts/verify_email.html', {
+        message = render_to_string('verify_email.html', {
             'user': user,
             'domain': current_site.domain,
             'uid': urlsafe_base64_encode(force_bytes(user.pk)),

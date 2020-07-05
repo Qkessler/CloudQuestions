@@ -582,7 +582,7 @@ summary {
     margin: 0 auto;
 }
 
-#logout-done {
+.logout-done {
     margin-top: 150px;;
     text-align: center;
     margin-bottom: 150px;

@@ -9,13 +9,12 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
-from .tokens import account_activation_token
 from .forms import SignUpForm
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event
 from questions.src import question_service
-from models import User
+from django.contrib.auth.models import User
 
 
 def register(request):
@@ -61,7 +60,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         context['active'] = True
-    return render(request, 'verify.html', context)
+    return render(request, 'activated.html', context)
 
 
 @login_required

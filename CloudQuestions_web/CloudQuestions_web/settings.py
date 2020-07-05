@@ -56,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_sorcery.db.middleware.SQLAlchemyMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware'
 ]
 

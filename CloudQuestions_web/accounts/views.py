@@ -29,6 +29,7 @@ def register(request):
                             email=email)
         user.is_active = False
         user.save()
+        breakpoint()
         question_service.create_calendar_connection(user)
         current_site = get_current_site(request)
         mail_subject = 'Activate your CloudQuestions account!'
@@ -42,13 +43,9 @@ def register(request):
             mail_subject, message, to=[email]
         )
         email_message.send()
-        return redirect('accounts:verify')
+        return render(request, 'verify.html')
     context['form'] = form
     return render(request, 'register.html', context)
-
-
-def verify(request):
-    return render(request, 'verify.html')
 
 
 def activate(request, uidb64, token):

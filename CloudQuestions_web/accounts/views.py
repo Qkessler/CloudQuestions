@@ -3,32 +3,65 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
+from .tokens import account_activation_token
 from .forms import SignUpForm
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event
 from questions.src import question_service
-from oauth2client.contrib import xsrfutil
-from oauth2client.client import OAuth2WebServerFlow
-from oauth2client.file import Storage
-
-CALENDAR_API_KEY = os.environ['CALENDAR_API_KEY']
-SCOPE_EVENTS = 'https://www.googleapis.com/auth/calendar.events'
-CALENDAR_REDIRECT_URI = 'http://127.0.0.1:8000/accounts/settings/'
+from models import User
 
 
 def register(request):
     form = SignUpForm(request.POST)
+    context = {}
     if form.is_valid():
         form.save()
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
         email = form.cleaned_data.get('email')
-        user = authenticate(username=username, password=password, email=email)
-        login(request, user)
+        user = authenticate(username=username, password=password,
+                            email=email, is_active=False)
         question_service.create_calendar_connection(user)
-        return redirect('questions:questions')
-    return render(request, 'register.html', {'form': form})
+        current_site = get_current_site(request)
+        mail_subject = 'Activate your CloudQuestions account!'
+        message = render_to_string('accounts/verify_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': default_token_generator.make_token(user),
+        })
+        email_message = EmailMessage(
+            mail_subject, message, to=[email]
+        )
+        email_message.send()
+        return redirect('accounts:verify')
+    context['form'] = form
+    return render(request, 'register.html', context)
+
+
+def verify(request):
+    return render(request, 'verify.html')
+
+
+def activate(request, uidb64, token):
+    context = {}
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        context['active'] = True
+    return render(request, 'verify.html', context)
 
 
 @login_required

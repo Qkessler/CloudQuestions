@@ -1,6 +1,6 @@
 import os
 from src import parsing
-from pytest import raises
+import pytest
 
 
 def test_line_num():
@@ -22,28 +22,16 @@ def test_scrub_name():
     assert parsing.scrub_name('REAL NAME') == 'REAL_NAME'
 
 
-def test_parsing_markdown():
-    test_dict = {'q_a':
-                 {'- Pregunta1':
-                  'Esto es la respuesta1\nEsto es la segunda línea\n'},
-                 'file_name': 'test'}
-    path = 'test_files/test.md'
-    dir_path = os.path.dirname(os.path.abspath(__file__))
-    test_path = '/'.join([dir_path, path])
-    assert parsing.parsing_markdown(test_path) == test_dict
-    assert raises(FileNotFoundError,
-                  parsing.parsing_markdown, 'file_not_existent')
-
-
 def tests_get_inside():
-    test_dict = {'- Pregunta1':
-                 'Esto es la respuesta1\nEsto es la segunda línea\n'}
+    test_dict = {
+        '- Pregunta1':
+        '<p>Esto es la respuesta1\nEsto es la segunda línea</p>'}
     path = 'test_files/test.md'
     dir_path = os.path.dirname(os.path.abspath(__file__))
     test_path = '/'.join([dir_path, path])
     questions = ['- Pregunta1']
-    assert raises(FileNotFoundError,
-                  parsing.get_inside, [], 'file_not_existent')
+    assert pytest.raises(FileNotFoundError,
+                         parsing.get_inside, [], 'file_not_existent')
     assert parsing.get_inside(questions, test_path) == test_dict
 
 

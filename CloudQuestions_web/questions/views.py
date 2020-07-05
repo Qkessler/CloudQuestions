@@ -248,5 +248,4 @@ def create_topic(request, topic_id=None):
                     return redirect('questions:questions')
 
     context['topic_form'] = topic_form
-    breakpoint()
     return render(request, 'questions/create_topic.html', context)

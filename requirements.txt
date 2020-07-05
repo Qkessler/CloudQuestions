@@ -47,6 +47,7 @@ PyJWT==1.7.1
 pyparsing==2.4.7
 pytest==5.4.1
 pytest-cov==2.8.1
+pytest-django==3.9.0
 python-dateutil==2.8.1
 python-editor==1.0.4
 python-magic==0.4.15

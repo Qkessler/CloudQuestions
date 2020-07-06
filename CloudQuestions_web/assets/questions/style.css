@@ -835,9 +835,12 @@ summary {
     #register-form-container {
         margin-bottom: 40px;
         padding: 40px;
+        width: 60%;
+    }
+
+    .card-container {
         border-radius: 4px;
         box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-        width: 60%;
     }
     
     #reset-password-container {
@@ -925,7 +928,7 @@ summary {
     }
 
     #register-form-container {
-        width: 500px;
+        width: 600px;
     }
 
     #reset-password-container {

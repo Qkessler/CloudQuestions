@@ -5,7 +5,7 @@
 {% block content %}
 
 <div id="login-form">
-    <div id="login-form-container">
+    <div id="login-form-container" class="card-container">
         <h2 id="login-text" class="architects">Login</h2>
         {% if form.errors %}
         <p>{{ form.errors | crispy }}</p>
@@ -33,15 +33,15 @@
         <p id="register-login-link"><a href="{% url 'accounts:register' %}">Don't have an account?</a></p>
     </div>
     <div id="social-login-container">
-        <div id="google-login-container" class="social-login">
+        <div id="google-login-container" class="social-login card-container">
             <img id="google-logo" alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
             <a id="google-login-link" href="{% url 'social:begin' 'google-oauth2' %}">Google</a><br>
         </div>
-        <div id="github-login-container" class="social-login">
+        <div id="github-login-container" class="social-login card-container">
             <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
             <a id="github-login-link" href="{% url 'social:begin' 'github' %}">GitHub</a><br>
         </div>
-        <div id="twitter-login-container" class="social-login">
+        <div id="twitter-login-container" class="social-login card-container">
             <img id="twitter-logo" alt="Twitter logo" src="{% static 'questions/twitter-logo-trans.png'%}"/>
             <a id="twitter-login-link" href="{% url 'social:begin' 'twitter' %}">Twitter</a><br>
         </div>

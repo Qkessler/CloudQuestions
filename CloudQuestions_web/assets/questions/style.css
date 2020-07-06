@@ -538,13 +538,6 @@ summary {
 .social-login {
     margin: 0 auto;
     width: 140px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: lightgrey;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius: 0 0 0 5px;
-    border-radius: 0 0 0 5px;
-    box-shadow: 0 6px 4px -4px #263238;
     margin-bottom: 10px;
 }
 
@@ -828,8 +821,6 @@ summary {
     #login-form-container {
         margin-bottom: 40px;
         padding: 40px;
-        border-radius: 4px;
-        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     }
 
     #register-form-container {

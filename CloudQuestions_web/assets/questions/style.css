@@ -924,19 +924,19 @@ summary {
         grid-template-rows: 100%;
     }
 
-    .create-topic-item-a {
+    .dcolumn-item-a {
         grid-column: 1;
         grid-row: 1;
         padding: 20px;
     }
 
-    .create-topic-item-b {
+    .dcolumn-item-b {
         grid-column: 2;
         grid-row: 1:;
         padding: 20px;
     }
 
-    #social-connections-container {
+    #account-management-grid {
         width: 100%;
         margin: 0 auto;
         display: grid;

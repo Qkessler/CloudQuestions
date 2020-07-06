@@ -13,80 +13,85 @@
     </div>
 </div>
 
-<div class="align-center card-container" id="social-connections-container">
-    <div class="align-left" id="social-login">
-        <div class="padding-login social-connection">
-            <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
-            {% if github_login %}
-            <p class="label-connection">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
-            {% if can_disconnect %}
-            <div class="inline-block-black">
-                <form method="post" action="{% url 'social:disconnect' 'github' %}">
-                    {% csrf_token %}
-                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
-                </form>
+<div id="account-management-grid">
+    <div class="align-center card-container dcolumn-item-a" id="social-connections-container">
+        <div class="align-left" id="social-login">
+            <div class="padding-login social-connection">
+                <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
+                {% if github_login %}
+                <p class="label-connection">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+                {% if can_disconnect %}
+                <div class="inline-block-black">
+                    <form method="post" action="{% url 'social:disconnect' 'github' %}">
+                        {% csrf_token %}
+                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                    </form>
+                </div>
+                {% else %}
+                <button class="inline-block-black" type="button" disabled>Disconnect from GitHub</button>
+                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
+                {% endif %}
             </div>
-            {% else %}
-            <button class="inline-block-black" type="button" disabled>Disconnect from GitHub</button>
-            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
-            {% endif %}
-        </div>
-        
-        <div class="padding-login social-connection">
-            <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
-            {% if twitter_login %}
-            <p class="label-connection">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
-            {% if can_disconnect %}
-            <div class="inline-block-black">
-                <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
-                    {% csrf_token %}
-                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
-                </form>
+            
+            <div class="padding-login social-connection">
+                <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
+                {% if twitter_login %}
+                <p class="label-connection">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+                {% if can_disconnect %}
+                <div class="inline-block-black">
+                    <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
+                        {% csrf_token %}
+                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                    </form>
+                </div>
+                {% else %}
+                <button class="inline-block-black" type="button" disabled>Disconnect from Twitter</button>
+                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
+                {% endif %}
             </div>
-            {% else %}
-            <button class="inline-block-black" type="button" disabled>Disconnect from Twitter</button>
-            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
-            {% endif %}
-        </div>
-        <div class="padding-login social-connection">
-            <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
-            {% if google_login %}
-            <p id="label-connection">Connected with Google</p>
-            {% if can_disconnect %}
-            <div class="inline-block-black">
-                <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
-                    {% csrf_token %}
-                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
-                </form>
+            <div class="padding-login social-connection">
+                <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
+                {% if google_login %}
+                <p id="label-connection">Connected with Google</p>
+                {% if can_disconnect %}
+                <div class="inline-block-black">
+                    <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+                        {% csrf_token %}
+                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                    </form>
+                </div>
+                {% else %}
+                <button type="button" disabled>Disconnect from Google</button>
+                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+                {% endif %}
             </div>
-            {% else %}
-            <button type="button" disabled>Disconnect from Google</button>
-            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
-            {% endif %}
-        </div>
-        <div class="social-connection">
-            <img id="calendar-logo" alt="Calendar logo" src="{% static 'questions/calendar-logo.png'%}"/>
-            <div>
-                <form method="get" action="">
-                    {% if calendar_connection %}
-                    <label class="label-connection" for="calendar">Connected to Google Calendar!</label>
-                    <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
-                    {% else %}
-                    <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>
-                    <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="Connect"/>
-                    {% endif %}
-                </form>
+            <div class="social-connection">
+                <img id="calendar-logo" alt="Calendar logo" src="{% static 'questions/calendar-logo.png'%}"/>
+                <div>
+                    <form method="get" action="">
+                        {% if calendar_connection %}
+                        <label class="label-connection" for="calendar">Connected to Google Calendar!</label>
+                        <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
+                        {% else %}
+                        <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>
+                        <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="Connect"/>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="dcolumn-item-b">
+        <h1>Testing</h1>
     </div>
 </div>
 

@@ -11,7 +11,7 @@
 </div>
 {% if topic %}
 <div id="create-topic-container-grid">
-    <div class="create-topic-item-a">
+    <div class="dcolumn-item-a">
         <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
             <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
             <p class="inline-block-black"> Created: {{topic.created}}</p>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <div id="create-topic-container" class="create-topic-item-b">
+    <div id="create-topic-container" class="dcolumn-item-b">
         {% crispy topic_form topic_form.helper %}
         {% if enough_size %}
         <div id="add-topic-button-div">

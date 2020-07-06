@@ -32,8 +32,8 @@ class SignUpForm(UserCreationForm):
         )
 
 
-class ChangeUsernameForm():
-    username = forms.CharField(max_length=30, required=True)
+class ChangeUsernameForm(forms.Form):
+    username = forms.CharField(max_length=30, required=True, label="")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

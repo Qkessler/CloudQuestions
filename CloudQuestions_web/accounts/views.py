@@ -9,7 +9,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
-from .forms import SignUpForm
+from .forms import SignUpForm, ChangeUsernameForm
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event
@@ -81,6 +81,9 @@ def settings(request, topic=None, color=None):
     if request.GET.get('calendar'):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')
+    if request.GET.get('change_user'):
+        change_user_form = ChangeUsernameForm(request.POST)
+        context['change_user_form'] = change_user_form
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

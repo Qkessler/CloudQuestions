@@ -94,9 +94,12 @@
     <div class="dcolumn-item-b" id="account-management-container">
         <div>
             <p>User</p>
-            {% if change_user %}
-            <p>{{user.username}}</p>
+            {% if not change_user_form %}
+            <form method="get">
+                <input name="change_user" type="submit" value="{{user.username}}"/>
+            </form>
             {% else %}
+            <p>Testing</p>
             {% crispy change_user_form change_user_form.helper %}
             {% endif %}
         </div>

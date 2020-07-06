@@ -70,7 +70,6 @@ def settings(request, topic=None, color=None):
     user = request.user
     table = question_service.create_table(user)
     user_calendar = question_service.get_calendar(request.user)
-    context['ratings_table'] = table
     flow = get_flow(topic, color)
     if topic and color and user_calendar:
         return redirect(get_url(flow))
@@ -104,4 +103,6 @@ def settings(request, topic=None, color=None):
     context['twitter_login'] = twitter_login
     context['google_login'] = google_login
     context['can_disconnect'] = can_disconnect
+    context['ratings_table'] = table
+    context['user'] = user
     return render(request, 'settings.html', context)

@@ -30,3 +30,17 @@ class SignUpForm(UserCreationForm):
                 Submit('submit', 'Signup', css_class='button white')
             )
         )
+
+
+class ChangeUsernameForm():
+    username = forms.CharField(max_length=30, required=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                Div(
+                    'username',
+                    css_id="change-username-form")),
+        )

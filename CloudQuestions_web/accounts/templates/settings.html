@@ -15,10 +15,10 @@
 
 <div class="align-center card-container" id="social-connections-container">
     <div class="align-left" id="social-login">
-        <div class="padding-login" id="github-login">
+        <div class="padding-login social-connection">
             <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
             {% if github_login %}
-            <p class="inline-block-black">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+            <p class="label-connection">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
             {% if can_disconnect %}
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'github' %}">
@@ -35,10 +35,10 @@
             {% endif %}
         </div>
         
-        <div class="padding-login" id="twitter-login">
+        <div class="padding-login social-connection">
             <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
             {% if twitter_login %}
-            <p class="inline-block-black">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+            <p class="label-connection">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
             {% if can_disconnect %}
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
@@ -54,10 +54,10 @@
             <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
             {% endif %}
         </div>
-        <div class="padding-login" id="google-connection">
+        <div class="padding-login social-connection">
             <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
             {% if google_login %}
-            <p id="label-google">Connected with Google</p>
+            <p id="label-connection">Connected with Google</p>
             {% if can_disconnect %}
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
@@ -73,12 +73,12 @@
             <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
             {% endif %}
         </div>
-        <div id="calendar-connection">
+        <div class="social-connection">
             <img id="calendar-logo" alt="Calendar logo" src="{% static 'questions/calendar-logo.png'%}"/>
-            <div class="inline-block-black">
+            <div>
                 <form method="get" action="">
                     {% if calendar_connection %}
-                    <label id="label-calendar" for="calendar">Connected to Google Calendar!</label>
+                    <label class="label-connection" for="calendar">Connected to Google Calendar!</label>
                     <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
                     {% else %}
                     <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>

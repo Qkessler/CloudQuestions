@@ -434,7 +434,6 @@ summary {
     padding: 20px;
 }
 
-
 #social-login {
     padding: 20px;
 }
@@ -450,30 +449,34 @@ summary {
     margin-bottom: 10px;
 }
 
-#google-connection {
+.social-connection {
     text-align: center;
     margin: 0 auto;
     display: block;
+    margin-bottom: 20px;
 }
 
-#label-google {
+.label-connection {
     display: block;
 }
 
 #twitter-logo {
     width: 40px;
     height: auto;
+    margin-bottom: 10px;
 }
 
 #github-logo {
     width: 30px;
     height: auto;
+    margin-bottom: 10px;
 }
 
 #calendar-logo {
     width: 30px;
     height: auto;
     margin-right: 5px;
+    margin-bottom: 10px;
 }
 
 #label-calendar {
@@ -814,6 +817,10 @@ summary {
         width: 50%;
     }
 
+    #social-connections-container {
+        width: 450px;
+    }
+
     #create-topic-form {
         width: 600px;
     }
@@ -872,6 +879,32 @@ summary {
     }
 }
 
+@media (min-width: 1024px) {
+    #calendar-explanation-image {
+        width: 50%;
+    }
+    
+    #topic-image-mockup {
+        width: 60%;
+    }
+
+    #table-legend {
+        width: 60%;
+    }
+
+    #login-form {
+        width: 500px;
+    }
+
+    #register-form-container {
+        width: 600px;
+    }
+
+    #reset-password-container {
+        width: 500px;
+    }
+}
+
 @media (min-width: 1440px) {
     .navbar {
         width: 70%;
@@ -903,31 +936,12 @@ summary {
         padding: 20px;
     }
 
-}
-
-@media (min-width: 1024px) {
-    #calendar-explanation-image {
-        width: 50%;
-    }
-    
-    #topic-image-mockup {
-        width: 60%;
-    }
-
-    #table-legend {
-        width: 60%;
-    }
-
-    #login-form {
-        width: 500px;
-    }
-
-    #register-form-container {
-        width: 600px;
-    }
-
-    #reset-password-container {
-        width: 500px;
+    #social-connections-container {
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
     }
 }
 

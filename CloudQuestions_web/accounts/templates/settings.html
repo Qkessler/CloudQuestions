@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="align-center" id="social-container">
+<div class="align-center card-container" id="social-connections-container">
     <div class="align-left" id="social-login">
         <div class="padding-login" id="github-login">
             <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
@@ -54,10 +54,10 @@
             <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
             {% endif %}
         </div>
-        <div class="padding-login" id="google-login">
+        <div class="padding-login" id="google-connection">
             <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
             {% if google_login %}
-            <p class="inline-block-black">Connected with Google</p>
+            <p id="label-google">Connected with Google</p>
             {% if can_disconnect %}
             <div class="inline-block-black">
                 <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
@@ -78,7 +78,7 @@
             <div class="inline-block-black">
                 <form method="get" action="">
                     {% if calendar_connection %}
-                    <label class="label-calendar" for="calendar">Connected to Google Calendar!</label>
+                    <label id="label-calendar" for="calendar">Connected to Google Calendar!</label>
                     <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
                     {% else %}
                     <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>

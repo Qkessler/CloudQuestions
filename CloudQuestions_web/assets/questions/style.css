@@ -439,21 +439,25 @@ summary {
     padding: 20px;
 }
 
-#social-container {
+#social-connections-container {
     margin: 0 auto;
-    width: 60%;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #7a7977;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius: 0 0 0 5px;
-    border-radius: 0 0 0 5px;
-    box-shadow: 0 6px 4px -4px #263238;
+    width: 90%;
 }
 
 #google-logo {
     width: 30px;
     height: auto;
+    margin-bottom: 10px;
+}
+
+#google-connection {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+#label-google {
+    display: block;
 }
 
 #twitter-logo {
@@ -466,19 +470,18 @@ summary {
     height: auto;
 }
 
-.padding-login{
-    padding-bottom: 7px;
-}
-
-
 #calendar-logo {
     width: 30px;
     height: auto;
     margin-right: 5px;
 }
 
-.label-calendar {
+#label-calendar {
     margin-right: 10px;
+}
+
+.padding-login{
+    padding-bottom: 7px;
 }
 
 
@@ -701,6 +704,12 @@ summary {
     margin-left: 20px;
 }
 
+.card-container {
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+
 #calendar-explanation-container {
     padding: 60px;
     display: grid;
@@ -827,11 +836,6 @@ summary {
         margin-bottom: 40px;
         padding: 40px;
         width: 60%;
-    }
-
-    .card-container {
-        border-radius: 4px;
-        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     }
     
     #reset-password-container {

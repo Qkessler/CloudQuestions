@@ -5,7 +5,7 @@ from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from crispy_forms.layout import (Layout, Fieldset, ButtonHolder,
-                                 Submit, Field, Div)
+                                 Submit, Field, Div, HTML)
 
 
 class SignUpForm(UserCreationForm):
@@ -42,6 +42,7 @@ class ChangeUsernameForm(forms.Form):
             Fieldset(
                 '',
                 Div(
-                    'username',
-                    css_id="change-username-form")),
+                    Field('username', placeholder=HTML('{{user.username}}')),
+                    css_id="change-username-form")
+            )
         )

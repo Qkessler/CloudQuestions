@@ -949,7 +949,7 @@ summary {
     }
 
     #account-management-grid {
-        width: 80%;
+        width: 1008px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 50% 50%;

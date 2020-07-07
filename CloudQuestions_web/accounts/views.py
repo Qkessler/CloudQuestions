@@ -82,10 +82,10 @@ def settings(request, topic=None, color=None):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')
     if request.GET.get('change_user'):
-        change_user_form = ChangeUsernameForm()
+        print(user.username)
+        change_user_form = ChangeUsernameForm(user_name=user.username)
         if request.method == 'POST':
             change_user_form = ChangeUsernameForm(request.POST)
-            user = request.user
             user.username = request.POST.get('username')
             user.save()
             context['user_changed'] = True

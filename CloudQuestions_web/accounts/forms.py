@@ -40,6 +40,7 @@ class ChangeUsernameForm(forms.Form):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
+                '',
                 Div(
                     'username',
                     css_id="change-username-form")),

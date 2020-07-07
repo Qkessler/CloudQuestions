@@ -82,7 +82,10 @@ def settings(request, topic=None, color=None):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')
     if request.GET.get('change_user'):
-        change_user_form = ChangeUsernameForm(request.POST)
+        change_user_form = ChangeUsernameForm()
+        if request.method == 'POST':
+            change_user_form = ChangeUsernameForm(request.POST)
+            request.POST.get('username')
         context['change_user_form'] = change_user_form
     try:
         github_login = user.social_auth.get(provider='github')
@@ -98,7 +101,6 @@ def settings(request, topic=None, color=None):
         google_login = user.social_auth.get(provider='google-oauth2')
     except UserSocialAuth.DoesNotExist:
         google_login = None
-
     can_disconnect = (user.social_auth.count() > 1 or
                       user.has_usable_password())
     context['calendar_connection'] = user_calendar

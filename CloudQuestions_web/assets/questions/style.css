@@ -1034,3 +1034,8 @@ summary {
 #creator-text-detail {
     margin-right: 20px;
 }
+
+#change-username-form {
+    width: 90%;
+    margin: 0 auto;
+}

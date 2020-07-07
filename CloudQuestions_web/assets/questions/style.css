@@ -443,6 +443,11 @@ summary {
     width: 90%;
 }
 
+#account-management-container {
+    margin: 0 auto;
+    width: 90%;
+}
+
 #google-logo {
     width: 30px;
     height: auto;
@@ -818,6 +823,10 @@ summary {
     }
 
     #social-connections-container {
+        width: 450px;
+    }
+
+    #account-management-container {
         width: 450px;
     }
 

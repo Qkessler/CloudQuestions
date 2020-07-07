@@ -441,11 +441,14 @@ summary {
 #social-connections-container {
     margin: 0 auto;
     width: 90%;
+    margin-bottom: 40px;
 }
 
 #account-management-container {
     margin: 0 auto;
     width: 90%;
+    margin-bottom: 40px;
+    padding: 20px;
 }
 
 #google-logo {

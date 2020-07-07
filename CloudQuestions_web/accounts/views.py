@@ -85,7 +85,10 @@ def settings(request, topic=None, color=None):
         change_user_form = ChangeUsernameForm()
         if request.method == 'POST':
             change_user_form = ChangeUsernameForm(request.POST)
-            request.POST.get('username')
+            user = request.user
+            user.username = request.POST.get('username')
+            user.save()
+            context['user_changed'] = True
         context['change_user_form'] = change_user_form
     try:
         github_login = user.social_auth.get(provider='github')

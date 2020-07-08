@@ -9,7 +9,8 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
-from .forms import SignUpForm
+from .forms import (SignUpForm, ChangeUsernameForm,
+                    ChangeEmailForm, RemoveAccountForm)
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event
@@ -70,7 +71,6 @@ def settings(request, topic=None, color=None):
     user = request.user
     table = question_service.create_table(user)
     user_calendar = question_service.get_calendar(request.user)
-    context['ratings_table'] = table
     flow = get_flow(topic, color)
     if topic and color and user_calendar:
         return redirect(get_url(flow))
@@ -82,6 +82,28 @@ def settings(request, topic=None, color=None):
     if request.GET.get('calendar'):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')
+    if request.GET.get('remove_account'):
+        context['remove_pressed'] = True
+    change_user_form = ChangeUsernameForm(user_name=user.username)
+    change_email_form = ChangeEmailForm(user_email=user.email)
+    remove_account_form = RemoveAccountForm()
+    if request.method == 'POST':
+        if request.POST.get('action') == 'email_form':
+            change_email_form = ChangeEmailForm(request.POST)
+            user.email = request.POST.get('email')
+            user.save()
+        elif request.POST.get('action') == 'user_form':
+            change_user_form = ChangeUsernameForm(request.POST)
+            user.username = request.POST.get('username')
+            user.save()
+        elif request.POST.get('action') == 'remove_account':
+            remove_account_form = RemoveAccountForm(request.POST)
+            if request.POST.get('username') == user.username:
+                user.delete()
+                return redirect('login')
+    context['change_user_form'] = change_user_form
+    context['change_email_form'] = change_email_form
+    context['remove_account_form'] = remove_account_form
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:
@@ -96,7 +118,6 @@ def settings(request, topic=None, color=None):
         google_login = user.social_auth.get(provider='google-oauth2')
     except UserSocialAuth.DoesNotExist:
         google_login = None
-
     can_disconnect = (user.social_auth.count() > 1 or
                       user.has_usable_password())
     context['calendar_connection'] = user_calendar
@@ -104,4 +125,6 @@ def settings(request, topic=None, color=None):
     context['twitter_login'] = twitter_login
     context['google_login'] = google_login
     context['can_disconnect'] = can_disconnect
+    context['ratings_table'] = table
+    context['user'] = user
     return render(request, 'settings.html', context)

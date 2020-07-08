@@ -434,51 +434,65 @@ summary {
     padding: 20px;
 }
 
-
 #social-login {
     padding: 20px;
 }
 
-#social-container {
+#social-connections-container {
     margin: 0 auto;
-    width: 60%;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #7a7977;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius: 0 0 0 5px;
-    border-radius: 0 0 0 5px;
-    box-shadow: 0 6px 4px -4px #263238;
+    width: 90%;
+    margin-bottom: 40px;
+}
+
+#account-management-container {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 40px;
+    padding: 20px;
 }
 
 #google-logo {
     width: 30px;
     height: auto;
+    margin-bottom: 10px;
+}
+
+.social-connection {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.label-connection {
+    display: block;
 }
 
 #twitter-logo {
     width: 40px;
     height: auto;
+    margin-bottom: 10px;
 }
 
 #github-logo {
     width: 30px;
     height: auto;
+    margin-bottom: 10px;
 }
-
-.padding-login{
-    padding-bottom: 7px;
-}
-
 
 #calendar-logo {
     width: 30px;
     height: auto;
     margin-right: 5px;
+    margin-bottom: 10px;
 }
 
-.label-calendar {
+#label-calendar {
     margin-right: 10px;
+}
+
+.padding-login{
+    padding-bottom: 7px;
 }
 
 
@@ -538,13 +552,6 @@ summary {
 .social-login {
     margin: 0 auto;
     width: 140px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: lightgrey;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius: 0 0 0 5px;
-    border-radius: 0 0 0 5px;
-    box-shadow: 0 6px 4px -4px #263238;
     margin-bottom: 10px;
 }
 
@@ -708,6 +715,12 @@ summary {
     margin-left: 20px;
 }
 
+.card-container {
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+
 #calendar-explanation-container {
     padding: 60px;
     display: grid;
@@ -812,6 +825,14 @@ summary {
         width: 50%;
     }
 
+    #social-connections-container {
+        width: 450px;
+    }
+
+    #account-management-container {
+        width: 450px;
+    }
+
     #create-topic-form {
         width: 600px;
     }
@@ -828,19 +849,12 @@ summary {
     #login-form-container {
         margin-bottom: 40px;
         padding: 40px;
-        border-radius: 4px;
-        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     }
 
     #register-form-container {
         margin-bottom: 40px;
         padding: 40px;
         width: 60%;
-    }
-
-    .card-container {
-        border-radius: 4px;
-        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     }
     
     #reset-password-container {
@@ -877,39 +891,6 @@ summary {
     }
 }
 
-@media (min-width: 1440px) {
-    .navbar {
-        width: 70%;
-        margin: 0 auto;
-    }
-    
-    #ratings-container {
-        margin: 0 auto;
-        width: 70%;
-    }
-
-    #create-topic-container-grid {
-        width: 100%;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 100%;
-    }
-
-    .create-topic-item-a {
-        grid-column: 1;
-        grid-row: 1;
-        padding: 20px;
-    }
-
-    .create-topic-item-b {
-        grid-column: 2;
-        grid-row: 1:;
-        padding: 20px;
-    }
-
-}
-
 @media (min-width: 1024px) {
     #calendar-explanation-image {
         width: 50%;
@@ -933,6 +914,46 @@ summary {
 
     #reset-password-container {
         width: 500px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .navbar {
+        width: 70%;
+        margin: 0 auto;
+    }
+    
+    #ratings-container {
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    #create-topic-container-grid {
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+    }
+
+    .dcolumn-item-a {
+        grid-column: 1;
+        grid-row: 1;
+        padding: 20px;
+    }
+
+    .dcolumn-item-b {
+        grid-column: 2;
+        grid-row: 1:;
+        padding: 20px;
+    }
+
+    #account-management-grid {
+        width: 1008px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
     }
 }
 
@@ -1024,4 +1045,16 @@ summary {
 
 #creator-text-detail {
     margin-right: 20px;
+}
+
+#change-password-link {
+    font-size: 10px;
+}
+
+#change-password-container {
+    margin-bottom: 10px;
+}
+
+#remove-account-container {
+    margin-top: 15px;
 }

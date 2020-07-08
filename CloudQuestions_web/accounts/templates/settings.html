@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
 
@@ -13,79 +14,106 @@
     </div>
 </div>
 
-<div class="align-center" id="social-container">
-    <div class="align-left" id="social-login">
-        <div class="padding-login" id="github-login">
-            <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
-            {% if github_login %}
-            <p class="inline-block-black">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
-            {% if can_disconnect %}
-            <div class="inline-block-black">
-                <form method="post" action="{% url 'social:disconnect' 'github' %}">
-                    {% csrf_token %}
-                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
-                </form>
+<div id="account-management-grid">
+    <div class="align-center card-container dcolumn-item-a" id="social-connections-container">
+        <div class="align-left" id="social-login">
+            <div class="padding-login social-connection">
+                <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
+                {% if github_login %}
+                <p class="label-connection">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+                {% if can_disconnect %}
+                <div class="inline-block-black">
+                    <form method="post" action="{% url 'social:disconnect' 'github' %}">
+                        {% csrf_token %}
+                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                    </form>
+                </div>
+                {% else %}
+                <button class="inline-block-black" type="button" disabled>Disconnect from GitHub</button>
+                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
+                {% endif %}
             </div>
-            {% else %}
-            <button class="inline-block-black" type="button" disabled>Disconnect from GitHub</button>
-            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
-            {% endif %}
+            
+            <div class="padding-login social-connection">
+                <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
+                {% if twitter_login %}
+                <p class="label-connection">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+                {% if can_disconnect %}
+                <div class="inline-block-black">
+                    <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
+                        {% csrf_token %}
+                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                    </form>
+                </div>
+                {% else %}
+                <button class="inline-block-black" type="button" disabled>Disconnect from Twitter</button>
+                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
+                {% endif %}
+            </div>
+            <div class="padding-login social-connection">
+                <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
+                {% if google_login %}
+                <p id="label-connection">Connected with Google</p>
+                {% if can_disconnect %}
+                <div class="inline-block-black">
+                    <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+                        {% csrf_token %}
+                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                    </form>
+                </div>
+                {% else %}
+                <button type="button" disabled>Disconnect from Google</button>
+                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+                {% endif %}
+            </div>
+            <div class="social-connection">
+                <img id="calendar-logo" alt="Calendar logo" src="{% static 'questions/calendar-logo.png'%}"/>
+                <div>
+                    <form method="get" action="">
+                        {% if calendar_connection %}
+                        <label class="label-connection" for="calendar">Connected to Google Calendar!</label>
+                        <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
+                        {% else %}
+                        <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>
+                        <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="Connect"/>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
         </div>
-        
-        <div class="padding-login" id="twitter-login">
-            <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
-            {% if twitter_login %}
-            <p class="inline-block-black">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
-            {% if can_disconnect %}
-            <div class="inline-block-black">
-                <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
-                    {% csrf_token %}
-                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
-                </form>
-            </div>
-            {% else %}
-            <button class="inline-block-black" type="button" disabled>Disconnect from Twitter</button>
-            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
-            {% endif %}
+    </div>
+    <div class="align-center card-container dcolumn-item-b" id="account-management-container">
+        <div class="align-left">
+            {% crispy change_user_form change_user_form.helper %}
         </div>
-        <div class="padding-login" id="google-login">
-            <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
-            {% if google_login %}
-            <p class="inline-block-black">Connected with Google</p>
-            {% if can_disconnect %}
-            <div class="inline-block-black">
-                <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
-                    {% csrf_token %}
-                    <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
-                </form>
-            </div>
-            {% else %}
-            <button type="button" disabled>Disconnect from Google</button>
-            <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
-            {% endif %}
+        <div id="change-password-container" class="align-left">
+            <p id="change-password-text">Password</p>
+            <a id="change-password-link" class="footer-link" href="{% url 'password_reset' %}">⚫⚫⚫⚫⚫⚫⚫⚫⚫</a>
         </div>
-        <div id="calendar-connection">
-            <img id="calendar-logo" alt="Calendar logo" src="{% static 'questions/calendar-logo.png'%}"/>
-            <div class="inline-block-black">
-                <form method="get" action="">
-                    {% if calendar_connection %}
-                    <label class="label-calendar" for="calendar">Connected to Google Calendar!</label>
-                    <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
-                    {% else %}
-                    <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>
-                    <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="Connect"/>
-                    {% endif %}
+        <div class="align-left">
+            {% crispy change_email_form change_email_form.helper %}
+        </div>
+        <div id="remove-account-container">
+            {% if remove_pressed %}
+            <div class="align-left">
+                {% crispy remove_account_form remove_account_form.helper %}
+            </div>
+            {% else %}
+            <div class="align-left">
+                <form method="get">
+                    <input class="btn btn-danger" name="remove_account" type="submit" value="Remove account">
                 </form>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

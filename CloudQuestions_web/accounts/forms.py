@@ -67,8 +67,8 @@ class ChangeEmailForm(forms.Form):
 
 
 class RemoveAccountForm(forms.Form):
-    username = forms.EmailField(
-        required=True, label="Enter your username to delete")
+    username = forms.CharField(max_length=30, required=True,
+                               label="Enter your username to delete")
     action = forms.CharField(max_length=30)
 
     def __init__(self, *args, **kwargs):

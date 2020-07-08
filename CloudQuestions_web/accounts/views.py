@@ -100,6 +100,7 @@ def settings(request, topic=None, color=None):
             remove_account_form = RemoveAccountForm(request.POST)
             if request.POST.get('username') == user.username:
                 user.delete()
+                return redirect('login')
     context['change_user_form'] = change_user_form
     context['change_email_form'] = change_email_form
     context['remove_account_form'] = remove_account_form

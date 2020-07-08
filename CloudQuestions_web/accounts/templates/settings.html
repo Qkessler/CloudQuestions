@@ -102,17 +102,19 @@
         <div class="align-left">
             {% crispy change_email_form change_email_form.helper %}
         </div>
-        {% if remove_pressed %}
-        <div class="align-left">
-            {% crispy remove_account_form remove_account_form.helper %}
+        <div id="remove-account-container">
+            {% if remove_pressed %}
+            <div class="align-left">
+                {% crispy remove_account_form remove_account_form.helper %}
+            </div>
+            {% else %}
+            <div class="align-left">
+                <form method="get">
+                    <input class="btn btn-danger" name="remove_account" type="submit" value="Remove account">
+                </form>
+            </div>
+            {% endif %}
         </div>
-        {% else %}
-        <div>
-            <form method="get">
-                <input class="btn btn-danger" name="remove_account" type="submit" value="Remove account">
-            </form>
-        </div>
-        {% endif %}
     </div>
 </div>
 

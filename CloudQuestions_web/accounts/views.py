@@ -81,15 +81,13 @@ def settings(request, topic=None, color=None):
     if request.GET.get('calendar'):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')
-    if request.GET.get('change_user'):
-        print(user.username)
-        change_user_form = ChangeUsernameForm(user_name=user.username)
-        if request.method == 'POST':
-            change_user_form = ChangeUsernameForm(request.POST)
-            user.username = request.POST.get('username')
-            user.save()
-            context['user_changed'] = True
-        context['change_user_form'] = change_user_form
+
+    change_user_form = ChangeUsernameForm(user_name=user.username)
+    if request.method == 'POST':
+        change_user_form = ChangeUsernameForm(request.POST)
+        user.username = request.POST.get('username')
+        user.save()
+    context['change_user_form'] = change_user_form
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

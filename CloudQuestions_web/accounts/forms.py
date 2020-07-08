@@ -31,7 +31,7 @@ class SignUpForm(UserCreationForm):
 
 
 class ChangeUsernameForm(forms.Form):
-    username = forms.CharField(max_length=30, required=True, label="")
+    username = forms.CharField(max_length=30, required=True, label="Username")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, {})
@@ -40,7 +40,7 @@ class ChangeUsernameForm(forms.Form):
             Fieldset(
                 '',
                 Div(
-                    Field('username', placeholder=kwargs.get('user_name')),
+                    Field('username', value=kwargs.get('user_name')),
                     css_id="change-username-form")
             )
         )

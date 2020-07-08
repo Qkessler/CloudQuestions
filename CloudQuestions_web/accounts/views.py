@@ -9,7 +9,8 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
-from .forms import SignUpForm, ChangeUsernameForm
+from .forms import (SignUpForm, ChangeUsernameForm,
+                    ChangeEmailForm, RemoveAccountForm)
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event
@@ -81,13 +82,27 @@ def settings(request, topic=None, color=None):
     if request.GET.get('calendar'):
         question_service.change_calendar_connection(user)
         return redirect('accounts:settings')
-
+    if request.GET.get('remove_account'):
+        context['remove_pressed'] = True
     change_user_form = ChangeUsernameForm(user_name=user.username)
+    change_email_form = ChangeEmailForm(user_email=user.email)
+    remove_account_form = RemoveAccountForm()
     if request.method == 'POST':
-        change_user_form = ChangeUsernameForm(request.POST)
-        user.username = request.POST.get('username')
-        user.save()
+        if request.POST.get('action') == 'email_form':
+            change_email_form = ChangeEmailForm(request.POST)
+            user.email = request.POST.get('email')
+            user.save()
+        elif request.POST.get('action') == 'user_form':
+            change_user_form = ChangeUsernameForm(request.POST)
+            user.username = request.POST.get('username')
+            user.save()
+        elif request.POST.get('action') == 'remove_account':
+            remove_account_form = RemoveAccountForm(request.POST)
+            if request.POST.get('username') == user.username:
+                user.delete()
     context['change_user_form'] = change_user_form
+    context['change_email_form'] = change_email_form
+    context['remove_account_form'] = remove_account_form
     try:
         github_login = user.social_auth.get(provider='github')
     except UserSocialAuth.DoesNotExist:

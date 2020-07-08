@@ -1047,7 +1047,10 @@ summary {
     margin-right: 20px;
 }
 
-#change-username-form {
-    width: 90%;
-    margin: 0 auto;
+#change-password-link {
+    font-size: 10px;
+}
+
+#change-password-container {
+    margin-bottom: 10px;
 }

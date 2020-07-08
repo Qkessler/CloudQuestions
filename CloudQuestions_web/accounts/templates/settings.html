@@ -95,6 +95,24 @@
         <div class="align-left">
             {% crispy change_user_form change_user_form.helper %}
         </div>
+        <div id="change-password-container" class="align-left">
+            <p id="change-password-text">Password</p>
+            <a id="change-password-link" class="footer-link" href="{% url 'password_reset' %}">⚫⚫⚫⚫⚫⚫⚫⚫⚫</a>
+        </div>
+        <div class="align-left">
+            {% crispy change_email_form change_email_form.helper %}
+        </div>
+        {% if remove_pressed %}
+        <div class="align-left">
+            {% crispy remove_account_form remove_account_form.helper %}
+        </div>
+        {% else %}
+        <div>
+            <form method="get">
+                <input class="btn btn-danger" name="remove_account" type="submit" value="Remove account">
+            </form>
+        </div>
+        {% endif %}
     </div>
 </div>
 

@@ -31,7 +31,7 @@ def questions(request):
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
                 db_topics = question_service.search_engine(
-                    search_term, request.user)
+                    search_term, creator=request.user)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))
@@ -77,7 +77,7 @@ def detail(request, topic_name):
         context['is_creator'] = True
 
     is_public = topic.privacy
-    if is_public or context['creator']:
+    if is_public or context['is_creator']:
 
         if request.GET.get('delete') and context['creator']:
             topic.delete()
@@ -87,31 +87,31 @@ def detail(request, topic_name):
             topic.privacy = not topic.privacy
             topic.save()
 
-            if request.GET.get('modify-button.x'):
-                return redirect('questions:create_topic', topic.id)
+        if request.GET.get('modify-button.x'):
+            return redirect('questions:create_topic', topic.id)
 
-            if request.GET.get('red_button') == 'Bad':
-                color = 'red'
-            elif request.GET.get('yellow_button') == 'Medium':
-                color = 'yellow'
-            elif request.GET.get('green_button') == 'Good':
-                color = 'green'
-                if color:
-                    question_service.update_stats(
-                        topic_name, color, request.user)
-                    return redirect('accounts:settings', topic_name, color)
+        if request.GET.get('red_button') == 'Bad':
+            color = 'red'
+        elif request.GET.get('yellow_button') == 'Medium':
+            color = 'yellow'
+        elif request.GET.get('green_button') == 'Good':
+            color = 'green'
+        if color:
+            question_service.update_stats(
+                topic_name, color, request.user)
+            return redirect('accounts:settings', topic_name, color)
 
-            if request.GET.get('random'):
-                return redirect('questions:random', topic_name, ' ')
+        if request.GET.get('random'):
+            return redirect('questions:random', topic_name, ' ')
 
-            context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
-            context['topic'] = topic
-            questions_by_topic = question_service.questions_by_topic_name(
-                topic_name)
-            context['questions_by_topic'] = questions_by_topic
-            context['public'] = question_service.get_privacy(topic_name)
-            return render(request, 'questions/detail.html', context)
-        return redirect('questions:questions')
+        context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
+        context['topic'] = topic
+        questions_by_topic = question_service.questions_by_topic_name(
+            topic_name)
+        context['questions_by_topic'] = questions_by_topic
+        context['public'] = question_service.get_privacy(topic_name)
+        return render(request, 'questions/detail.html', context)
+    return redirect('questions:browse')
 
 
 def browse(request, number_questions=10):
@@ -131,7 +131,8 @@ def browse(request, number_questions=10):
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
-                db_topics = question_service.search_engine(search_term)
+                db_topics = question_service.search_engine(
+                    search_term, public=True)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))

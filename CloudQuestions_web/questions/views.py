@@ -31,7 +31,7 @@ def questions(request):
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
                 db_topics = question_service.search_engine(
-                    search_term, request.user)
+                    search_term, creator=request.user)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))
@@ -66,42 +66,52 @@ def questions(request):
 def detail(request, topic_name):
     if request.GET.get('toggle_help'):
         return redirect('questions:detail', 'CloudQuestions_Help')
-    questions_by_topic = question_service.questions_by_topic_name(topic_name)
     color = None
     context = {}
     context['is_creator'] = False
+    topic = question_service.get_topic(topic_name)
+
     creator = question_service.get_creator(topic_name)
     context['creator'] = creator.username
     if creator.id == request.user.id:
         context['is_creator'] = True
-    if request.GET.get('delete') and context['creator']:
-        topic_delete = question_service.get_topic(topic_name)
-        topic_delete.delete()
-        return redirect('questions:questions')
-    if request.GET.get('privacy-button.x'):
-        topic_privacy = question_service.get_topic(topic_name)
-        topic_privacy.privacy = not topic_privacy.privacy
-        topic_privacy.save()
-    if request.GET.get('modify-button.x'):
-        topic_modify = question_service.get_topic(topic_name)
-        return redirect('questions:create_topic', topic_modify.id)
-    if request.GET.get('red_button') == 'Bad':
-        color = 'red'
-    elif request.GET.get('yellow_button') == 'Medium':
-        color = 'yellow'
-    elif request.GET.get('green_button') == 'Good':
-        color = 'green'
-    if color:
-        question_service.update_stats(topic_name, color, request.user)
-        return redirect('accounts:settings', topic_name, color)
-    if request.GET.get('random'):
-        return redirect('questions:random', topic_name, ' ')
-    context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
-    topic_context = question_service.get_topic(topic_name)
-    context['topic'] = topic_context
-    context['questions_by_topic'] = questions_by_topic
-    context['public'] = question_service.get_privacy(topic_name)
-    return render(request, 'questions/detail.html', context)
+
+    is_public = topic.privacy
+    if is_public or context['is_creator']:
+
+        if request.GET.get('delete') and context['creator']:
+            topic.delete()
+            return redirect('questions:questions')
+
+        if request.GET.get('privacy-button.x'):
+            topic.privacy = not topic.privacy
+            topic.save()
+
+        if request.GET.get('modify-button.x'):
+            return redirect('questions:create_topic', topic.id)
+
+        if request.GET.get('red_button') == 'Bad':
+            color = 'red'
+        elif request.GET.get('yellow_button') == 'Medium':
+            color = 'yellow'
+        elif request.GET.get('green_button') == 'Good':
+            color = 'green'
+        if color:
+            question_service.update_stats(
+                topic_name, color, request.user)
+            return redirect('accounts:settings', topic_name, color)
+
+        if request.GET.get('random'):
+            return redirect('questions:random', topic_name, ' ')
+
+        context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
+        context['topic'] = topic
+        questions_by_topic = question_service.questions_by_topic_name(
+            topic_name)
+        context['questions_by_topic'] = questions_by_topic
+        context['public'] = question_service.get_privacy(topic_name)
+        return render(request, 'questions/detail.html', context)
+    return redirect('questions:browse')
 
 
 def browse(request, number_questions=10):
@@ -121,7 +131,8 @@ def browse(request, number_questions=10):
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
-                db_topics = question_service.search_engine(search_term)
+                db_topics = question_service.search_engine(
+                    search_term, public=True)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))
@@ -159,27 +170,25 @@ def browse(request, number_questions=10):
     return render(request, 'questions/browse.html', context)
 
 
-def random_questions(request, topic, list_questions=''):
+def random_questions(request, topic_name, list_questions=''):
     context = {}
     questions_list = question_service.get_list_questions(list_questions)
     first_question = len(questions_list) == 0
     if request.GET.get('next_question') or first_question:
         random_question = question_service.random_question(
-            topic, questions_list)
+            topic_name, questions_list)
         if random_question:
             questions_list.append(random_question)
             str_list = question_service.create_question_list(questions_list)
-            return redirect('questions:random', topic, str_list)
-        return redirect('questions:detail', topic)
+            return redirect('questions:random', topic_name, str_list)
+        return redirect('questions:detail', topic_name)
     if request.GET.get('return'):
-        return redirect('questions:detail', topic)
-    context['topic_pretty_name'] = parsing.unscrub_name(topic)
-    topic_id = question_service.topics_by_id(topic)[0]
-    topic_context = Topic.objects.get(id=topic_id)
-    context['topic'] = topic_context
-    context['creator'] = topic_context.creator
+        return redirect('questions:detail', topic_name)
+    context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
+    context['topic'] = question_service.get_topic(topic_name)
+    context['creator'] = context['topic'].creator
     context['random_question'] = question_service.question_by_position(
-        topic, questions_list[-1])
+        topic_name, questions_list[-1])
     return render(request, 'questions/random.html', context)
 
 
@@ -228,8 +237,9 @@ def create_topic(request, topic_id=None):
                 context['topic'] = topic_url
                 context['enough_size'] = (
                     Question.objects.filter(topic=topic_url).count() > 1)
-                context['list_by_topic'] = question_service.questions_by_topic(
+                list_by_topic = question_service.questions_by_topic_name(
                     topic_url.name)
+                context['list_by_topic'] = list_by_topic
                 if request.GET.get('remove-button.x'):
                     question_id = request.GET.get('action')
                     question_to_remove = question_service.get_question(

@@ -96,7 +96,7 @@ def get_words(question):
     return [parsing.scrub_name(word) for word in text.split(' ')]
 
 
-def search_engine(search_term, creator=None):
+def search_engine(search_term, creator=None, public=None):
     """ Checks if the search_term is any of the topics first. Returns the topics
     where we have any question that contains the search_term given by the user.
     The creator is the decider to which search_engine to use, depending if
@@ -122,8 +122,12 @@ def search_engine(search_term, creator=None):
             if search_term in words_topic:
                 if topic not in topics_ids:
                     topics_ids.append(topic.id)
-        topics_return = Topic.objects.all().filter(
-            id__in=topics_ids).order_by('name')
+        if not public:
+            topics_return = Topic.objects.filter(
+                id__in=topics_ids).order_by('name')
+        else:
+            topics_return = Topic.objects.filter(
+                id__in=topics_ids).filter(privacy=True).order_by('name')
     else:
         topics_ids = []
         topic_id_query = topics_by_id(parsing.scrub_name(search_term), creator)
@@ -150,9 +154,9 @@ def search_engine(search_term, creator=None):
     return topics_return
 
 
-def random_question(topic, questions_showed):
+def random_question(topic_name, questions_showed):
     """ Function that returns a random question for a topic. """
-    topic_id = Topic.objects.filter(name=topic)[0].id
+    topic_id = Topic.objects.filter(name=topic_name)[0].id
     len_query = Question.objects.filter(topic=topic_id).count()
     question_id = None
     if len(questions_showed) == len_query:

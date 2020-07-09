@@ -9,8 +9,8 @@ urlpatterns = [
     path('create_topic', views.create_topic, name='create_topic'),
     path('create_topic/<int:topic_id>',
          views.create_topic, name='create_topic'),
-    path('<str:topic>/', views.detail, name='detail'),
-    path('<str:topic>/random/', views.random_questions, name='random'),
-    path('<str:topic>/random/<str:list_questions>',
+    path('<str:topic_name>/', views.detail, name='detail'),
+    path('<str:topic_name>/random/', views.random_questions, name='random'),
+    path('<str:topic_name>/random/<str:list_questions>',
          views.random_questions, name='random'),
 ]

@@ -63,30 +63,28 @@ def questions(request):
     return render(request, 'questions/questions.html', context)
 
 
-def detail(request, topic):
+def detail(request, topic_name):
     if request.GET.get('toggle_help'):
         return redirect('questions:detail', 'CloudQuestions_Help')
-    questions_by_topic = question_service.questions_by_topic(topic)
+    questions_by_topic = question_service.questions_by_topic_name(topic_name)
     color = None
     context = {}
     context['is_creator'] = False
-    creator = question_service.get_creator(topic)
+    creator = question_service.get_creator(topic_name)
     context['creator'] = creator.username
     if creator.id == request.user.id:
         context['is_creator'] = True
     if request.GET.get('delete') and context['creator']:
-        topic_id = question_service.topics_by_id(topic)[0]
-        topic = Topic.objects.get(id=topic_id)
-        topic.delete()
+        topic_delete = question_service.get_topic(topic_name)
+        topic_delete.delete()
         return redirect('questions:questions')
     if request.GET.get('privacy-button.x'):
-        topic_id = question_service.topics_by_id(topic)[0]
-        topic_privacy = Topic.objects.get(id=topic_id)
+        topic_privacy = question_service.get_topic(topic_name)
         topic_privacy.privacy = not topic_privacy.privacy
         topic_privacy.save()
     if request.GET.get('modify-button.x'):
-        topic_id = question_service.topics_by_id(topic)[0]
-        return redirect('questions:create_topic', topic_id)
+        topic_modify = question_service.get_topic(topic_name)
+        return redirect('questions:create_topic', topic_modify.id)
     if request.GET.get('red_button') == 'Bad':
         color = 'red'
     elif request.GET.get('yellow_button') == 'Medium':
@@ -94,16 +92,15 @@ def detail(request, topic):
     elif request.GET.get('green_button') == 'Good':
         color = 'green'
     if color:
-        question_service.update_stats(topic, color, request.user)
-        return redirect('accounts:settings', topic, color)
+        question_service.update_stats(topic_name, color, request.user)
+        return redirect('accounts:settings', topic_name, color)
     if request.GET.get('random'):
-        return redirect('questions:random', topic, ' ')
-    context['topic_pretty_name'] = parsing.unscrub_name(topic)
-    topic_id = question_service.topics_by_id(topic)[0]
-    topic_context = Topic.objects.get(id=topic_id)
+        return redirect('questions:random', topic_name, ' ')
+    context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
+    topic_context = question_service.get_topic(topic_name)
     context['topic'] = topic_context
     context['questions_by_topic'] = questions_by_topic
-    context['public'] = question_service.get_privacy(topic)
+    context['public'] = question_service.get_privacy(topic_name)
     return render(request, 'questions/detail.html', context)
 
 

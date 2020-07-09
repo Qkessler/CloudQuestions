@@ -29,7 +29,7 @@ def include_questions(q_a, topic_name, user):
     return topic.id
 
 
-def questions_by_topic(topic_name):
+def questions_by_topic_name(topic_name):
     """ Query of questions given a topic name. """
     topic_ids = topics_by_id(topic_name)
     questions = Question.objects.filter(topic__in=topic_ids)
@@ -166,7 +166,7 @@ def random_question(topic, questions_showed):
 def update_stats(topic_name, color, user):
     """ Given the color of the rating for the topic studied, creates
     a rating instance in the db. """
-    topic = Topic.objects.get(name=topic_name)
+    topic = get_topic(topic_name)
     rating = Rating()
     rating.rating = color
     rating.topic = topic
@@ -298,3 +298,10 @@ def get_privacy(topic):
 def get_question(question_id):
     """ Given an id, gets question from db."""
     return Question.objects.get(id=question_id)
+
+
+def get_topic(topic_name):
+    """ Given the topic name, function returns the oldest
+    topic with the same name."""
+    topic = Topic.objects.filter(name=topic_name).order_by('created')[0]
+    return topic

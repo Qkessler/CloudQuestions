@@ -150,9 +150,9 @@ def search_engine(search_term, creator=None):
     return topics_return
 
 
-def random_question(topic, questions_showed):
+def random_question(topic_name, questions_showed):
     """ Function that returns a random question for a topic. """
-    topic_id = Topic.objects.filter(name=topic)[0].id
+    topic_id = Topic.objects.filter(name=topic_name)[0].id
     len_query = Question.objects.filter(topic=topic_id).count()
     question_id = None
     if len(questions_showed) == len_query:

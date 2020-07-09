@@ -163,27 +163,25 @@ def browse(request, number_questions=10):
     return render(request, 'questions/browse.html', context)
 
 
-def random_questions(request, topic, list_questions=''):
+def random_questions(request, topic_name, list_questions=''):
     context = {}
     questions_list = question_service.get_list_questions(list_questions)
     first_question = len(questions_list) == 0
     if request.GET.get('next_question') or first_question:
         random_question = question_service.random_question(
-            topic, questions_list)
+            topic_name, questions_list)
         if random_question:
             questions_list.append(random_question)
             str_list = question_service.create_question_list(questions_list)
-            return redirect('questions:random', topic, str_list)
-        return redirect('questions:detail', topic)
+            return redirect('questions:random', topic_name, str_list)
+        return redirect('questions:detail', topic_name)
     if request.GET.get('return'):
-        return redirect('questions:detail', topic)
-    context['topic_pretty_name'] = parsing.unscrub_name(topic)
-    topic_id = question_service.topics_by_id(topic)[0]
-    topic_context = Topic.objects.get(id=topic_id)
-    context['topic'] = topic_context
-    context['creator'] = topic_context.creator
+        return redirect('questions:detail', topic_name)
+    context['topic_pretty_name'] = parsing.unscrub_name(topic_name)
+    context['topic'] = question_service.get_topic(topic_name)
+    context['creator'] = context['topic'].creator
     context['random_question'] = question_service.question_by_position(
-        topic, questions_list[-1])
+        topic_name, questions_list[-1])
     return render(request, 'questions/random.html', context)
 
 

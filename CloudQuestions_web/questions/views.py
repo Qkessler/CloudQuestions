@@ -230,8 +230,9 @@ def create_topic(request, topic_id=None):
                 context['topic'] = topic_url
                 context['enough_size'] = (
                     Question.objects.filter(topic=topic_url).count() > 1)
-                context['list_by_topic'] = question_service.questions_by_topic(
+                list_by_topic = question_service.questions_by_topic_name(
                     topic_url.name)
+                context['list_by_topic'] = list_by_topic
                 if request.GET.get('remove-button.x'):
                     question_id = request.GET.get('action')
                     question_to_remove = question_service.get_question(

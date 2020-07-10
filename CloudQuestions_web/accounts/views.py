@@ -93,14 +93,13 @@ def settings(request, topic=None, color=None):
                 user.email = request.POST.get('email')
                 user.save()
         elif request.POST.get('action') == 'user_form':
+            change_user_form = ChangeUsernameForm(
+                request.POST, instance=request.user)
             if change_user_form.is_valid():
-                change_user_form = ChangeUsernameForm(
-                    request.POST, instance=request.user)
-                # user.username = request.POST.get('username')
-                # user.save()
-                change_user_form.save()
+                user.username = request.POST.get('username')
+                user.save()
         elif request.POST.get('action') == 'remove_account':
-            if remove_acccount_form.is_valid():
+            if remove_account_form.is_valid():
                 remove_account_form = RemoveAccountForm(request.POST)
                 if request.POST.get('username') == user.username:
                     user.delete()

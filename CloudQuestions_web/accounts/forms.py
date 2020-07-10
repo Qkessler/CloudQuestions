@@ -4,6 +4,7 @@ from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (Layout, Fieldset, ButtonHolder,
                                  Submit, Field, Div, HTML)
+from django.contrib.auth.models import User
 
 
 class SignUpForm(UserCreationForm):
@@ -30,9 +31,19 @@ class SignUpForm(UserCreationForm):
         )
 
 
-class ChangeUsernameForm(forms.Form):
+class ChangeUsernameForm(forms.ModelForm):
     username = forms.CharField(max_length=30, required=True, label="Username")
     action = forms.CharField(max_length=30)
+
+    def clean_username(self):
+        """ Cleaning username, checking if username exists in the
+        db before changing it. """
+        username = self.cleaned_data['username']
+        if User.objects.exclude(pk=self.instance.pk).filter(
+                username=username).exists():
+            raise forms.ValidationError(
+                f'Username {username} is already in use.')
+        return username
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, {})
@@ -46,6 +57,10 @@ class ChangeUsernameForm(forms.Form):
                     css_id="change-username-form")
             )
         )
+
+    class Meta:
+        model = User
+        fields = ('username')
 
 
 class ChangeEmailForm(forms.Form):

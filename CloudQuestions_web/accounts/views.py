@@ -30,7 +30,6 @@ def register(request):
                             email=email)
         user.is_active = False
         user.save()
-        breakpoint()
         question_service.create_calendar_connection(user)
         current_site = get_current_site(request)
         mail_subject = 'Activate your CloudQuestions account!'
@@ -93,9 +92,11 @@ def settings(request, topic=None, color=None):
             user.email = request.POST.get('email')
             user.save()
         elif request.POST.get('action') == 'user_form':
-            change_user_form = ChangeUsernameForm(request.POST)
-            user.username = request.POST.get('username')
-            user.save()
+            change_user_form = ChangeUsernameForm(
+                request.POST, instance=request.user)
+            # user.username = request.POST.get('username')
+            # user.save()
+            change_user_form.save()
         elif request.POST.get('action') == 'remove_account':
             remove_account_form = RemoveAccountForm(request.POST)
             if request.POST.get('username') == user.username:

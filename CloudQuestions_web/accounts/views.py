@@ -88,20 +88,23 @@ def settings(request, topic=None, color=None):
     remove_account_form = RemoveAccountForm()
     if request.method == 'POST':
         if request.POST.get('action') == 'email_form':
-            change_email_form = ChangeEmailForm(request.POST)
-            user.email = request.POST.get('email')
-            user.save()
+            if change_email_form.is_valid():
+                change_email_form = ChangeEmailForm(request.POST)
+                user.email = request.POST.get('email')
+                user.save()
         elif request.POST.get('action') == 'user_form':
-            change_user_form = ChangeUsernameForm(
-                request.POST, instance=request.user)
-            # user.username = request.POST.get('username')
-            # user.save()
-            change_user_form.save()
+            if change_user_form.is_valid():
+                change_user_form = ChangeUsernameForm(
+                    request.POST, instance=request.user)
+                # user.username = request.POST.get('username')
+                # user.save()
+                change_user_form.save()
         elif request.POST.get('action') == 'remove_account':
-            remove_account_form = RemoveAccountForm(request.POST)
-            if request.POST.get('username') == user.username:
-                user.delete()
-                return redirect('login')
+            if remove_acccount_form.is_valid():
+                remove_account_form = RemoveAccountForm(request.POST)
+                if request.POST.get('username') == user.username:
+                    user.delete()
+                    return redirect('login')
     context['change_user_form'] = change_user_form
     context['change_email_form'] = change_email_form
     context['remove_account_form'] = remove_account_form

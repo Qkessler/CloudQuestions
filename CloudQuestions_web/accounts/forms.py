@@ -31,7 +31,7 @@ class SignUpForm(UserCreationForm):
         )
 
 
-class ChangeUsernameForm(forms.Form):
+class ChangeUsernameForm(forms.ModelForm):
     username = forms.CharField(max_length=30, required=True, label="Username")
     action = forms.CharField(max_length=30)
 
@@ -63,7 +63,7 @@ class ChangeUsernameForm(forms.Form):
         fields = ('username',)
 
 
-class ChangeEmailForm(forms.Form):
+class ChangeEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, label="Email")
     action = forms.CharField(max_length=30)
 
@@ -79,6 +79,10 @@ class ChangeEmailForm(forms.Form):
                     css_id="change-email-form")
             )
         )
+
+    class Meta:
+        model = User
+        fields = ('email',)
 
 
 class RemoveAccountForm(forms.Form):

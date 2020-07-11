@@ -24,10 +24,11 @@ def register(request):
         email = form.cleaned_data.get('email')
         user = authenticate(username=username, password=password,
                             email=email)
+        user.email = email
         user.is_active = False
         user.save()
         question_service.create_calendar_connection(user)
-        question_service.verification_email(request, user)
+        question_service.verification_email(request, user, email)
         return render(request, 'verify.html')
     context['form'] = form
     return render(request, 'register.html', context)
@@ -84,8 +85,8 @@ def settings(request, topic=None, color=None):
                 user.username = request.POST.get('username')
                 user.save()
         elif request.POST.get('action') == 'remove_account':
+            remove_account_form = RemoveAccountForm(request.POST)
             if remove_account_form.is_valid():
-                remove_account_form = RemoveAccountForm(request.POST)
                 if request.POST.get('username') == user.username:
                     user.delete()
                     return redirect('login')

@@ -3,12 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
-from django.contrib.sites.shortcuts import get_current_site
-from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
+from django.contrib.auth.tokens import default_token_generator
 from .forms import (SignUpForm, ChangeUsernameForm,
                     ChangeEmailForm, RemoveAccountForm)
 from social_django.models import UserSocialAuth
@@ -28,27 +24,17 @@ def register(request):
         email = form.cleaned_data.get('email')
         user = authenticate(username=username, password=password,
                             email=email)
+        user.email = email
         user.is_active = False
         user.save()
         question_service.create_calendar_connection(user)
-        current_site = get_current_site(request)
-        mail_subject = 'Activate your CloudQuestions account!'
-        message = render_to_string('verify_email.html', {
-            'user': user,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'token': default_token_generator.make_token(user),
-        })
-        email_message = EmailMessage(
-            mail_subject, message, to=[email]
-        )
-        email_message.send()
+        question_service.verification_email(request, user, email)
         return render(request, 'verify.html')
     context['form'] = form
     return render(request, 'register.html', context)
 
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, email):
     context = {}
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
@@ -56,6 +42,7 @@ def activate(request, uidb64, token):
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
     if user is not None and default_token_generator.check_token(user, token):
+        user.email = email
         user.is_active = True
         user.save()
         context['active'] = True
@@ -89,19 +76,22 @@ def settings(request, topic=None, color=None):
     if request.method == 'POST':
         if request.POST.get('action') == 'email_form':
             change_email_form = ChangeEmailForm(request.POST)
-            user.email = request.POST.get('email')
-            user.save()
+            if change_email_form.is_valid():
+                email = request.POST.get('email')
+                question_service.verification_email(request, user, email)
+                return render(request, 'verify.html')
         elif request.POST.get('action') == 'user_form':
             change_user_form = ChangeUsernameForm(
                 request.POST, instance=request.user)
-            # user.username = request.POST.get('username')
-            # user.save()
-            change_user_form.save()
+            if change_user_form.is_valid():
+                user.username = request.POST.get('username')
+                user.save()
         elif request.POST.get('action') == 'remove_account':
             remove_account_form = RemoveAccountForm(request.POST)
-            if request.POST.get('username') == user.username:
-                user.delete()
-                return redirect('login')
+            if remove_account_form.is_valid():
+                if request.POST.get('username') == user.username:
+                    user.delete()
+                    return redirect('login')
     context['change_user_form'] = change_user_form
     context['change_email_form'] = change_email_form
     context['remove_account_form'] = remove_account_form

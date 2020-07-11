@@ -60,12 +60,22 @@ class ChangeUsernameForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username')
+        fields = ('username',)
 
 
-class ChangeEmailForm(forms.Form):
+class ChangeEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, label="Email")
     action = forms.CharField(max_length=30)
+
+    def clean_email(self):
+        """ Cleaning email, checking if it exists in the
+        db before changing it. """
+        email = self.cleaned_data['email']
+        if User.objects.exclude(pk=self.instance.pk).filter(
+                email=email).exists():
+            raise forms.ValidationError(
+                f'{email} is already in use. Try another one.')
+        return email
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, {})
@@ -79,6 +89,10 @@ class ChangeEmailForm(forms.Form):
                     css_id="change-email-form")
             )
         )
+
+    class Meta:
+        model = User
+        fields = ('email',)
 
 
 class RemoveAccountForm(forms.Form):

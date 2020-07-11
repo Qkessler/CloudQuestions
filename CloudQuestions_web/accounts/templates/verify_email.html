@@ -3,7 +3,7 @@ Hi {{ user.username }},
 If the following link doesn't work, please try copying and pasting it on your browser.
 Please click the link to verify your account.
 
-http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
+http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token email=email%}
 
 In case you don't know what this email is about, please contact me at
 qkessler@gmail.com

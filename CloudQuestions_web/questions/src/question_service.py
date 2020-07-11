@@ -326,6 +326,7 @@ def verification_email(request, user, email):
         'domain': current_site.domain,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': default_token_generator.make_token(user),
+        'email': email
     })
     email_message = EmailMessage(
         mail_subject, message, to=[email]

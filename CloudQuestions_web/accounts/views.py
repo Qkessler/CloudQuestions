@@ -34,7 +34,7 @@ def register(request):
     return render(request, 'register.html', context)
 
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, email):
     context = {}
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
@@ -42,6 +42,7 @@ def activate(request, uidb64, token):
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
     if user is not None and default_token_generator.check_token(user, token):
+        user.email = email
         user.is_active = True
         user.save()
         context['active'] = True
@@ -74,10 +75,11 @@ def settings(request, topic=None, color=None):
     remove_account_form = RemoveAccountForm()
     if request.method == 'POST':
         if request.POST.get('action') == 'email_form':
+            change_email_form = ChangeEmailForm(request.POST)
             if change_email_form.is_valid():
-                change_email_form = ChangeEmailForm(request.POST)
-                user.email = request.POST.get('email')
-                user.save()
+                email = request.POST.get('email')
+                question_service.verification_email(request, user, email)
+                return render(request, 'verify.html')
         elif request.POST.get('action') == 'user_form':
             change_user_form = ChangeUsernameForm(
                 request.POST, instance=request.user)

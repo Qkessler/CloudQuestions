@@ -3,12 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
-from django.contrib.sites.shortcuts import get_current_site
-from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode, urlsafe_base64_decode)
+from django.contrib.auth.tokens import default_token_generator
 from .forms import (SignUpForm, ChangeUsernameForm,
                     ChangeEmailForm, RemoveAccountForm)
 from social_django.models import UserSocialAuth
@@ -31,18 +27,7 @@ def register(request):
         user.is_active = False
         user.save()
         question_service.create_calendar_connection(user)
-        current_site = get_current_site(request)
-        mail_subject = 'Activate your CloudQuestions account!'
-        message = render_to_string('verify_email.html', {
-            'user': user,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'token': default_token_generator.make_token(user),
-        })
-        email_message = EmailMessage(
-            mail_subject, message, to=[email]
-        )
-        email_message.send()
+        question_service.verification_email(request, user)
         return render(request, 'verify.html')
     context['form'] = form
     return render(request, 'register.html', context)

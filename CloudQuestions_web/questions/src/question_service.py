@@ -3,6 +3,12 @@ import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import random_color
 import markdown
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
 
 
 def include_questions(q_a, topic_name, user):
@@ -292,7 +298,7 @@ def delete_flagged():
 
 
 def get_privacy(topic):
-    """ Function created to get the context for the detail form, which puts and 
+    """ Function created to get the context for the detail form, which puts and
     icon if the topic is public"""
     topic_id = topics_by_id(topic)[0]
     topic = Topic.objects.get(id=topic_id)
@@ -309,3 +315,18 @@ def get_topic(topic_name):
     topic with the same name."""
     topic = Topic.objects.filter(name=topic_name).order_by('created')[0]
     return topic
+
+
+def verification_email(request, user):
+    current_site = get_current_site(request)
+    mail_subject = 'Activate your CloudQuestions account!'
+    message = render_to_string('verify_email.html', {
+        'user': user,
+        'domain': current_site.domain,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': default_token_generator.make_token(user),
+    })
+    email_message = EmailMessage(
+        mail_subject, message, to=[user.email]
+    )
+    email_message.send()

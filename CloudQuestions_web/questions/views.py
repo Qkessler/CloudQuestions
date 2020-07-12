@@ -143,30 +143,34 @@ def browse(request, number_questions=10):
                 context['searched'] = True
     else:
         search_form = SearchForm(prefix='search_form')
+
     context['search_form'] = search_form
-    all_topics = {topic: parsing.unscrub_name(topic.name)
-                  for topic in Topic.objects.all().filter(privacy=True)}
-    all_topics_items = list(all_topics.items())
-    if len(all_topics_items) + number_questions > 20:
+    if context['searched']:
+        topics_items = topics_searched_items
+    else:
+        all_topics = {topic: parsing.unscrub_name(topic.name)
+                      for topic in Topic.objects.all().filter(privacy=True)}
+        topics_items = list(all_topics.items())
+    if len(topics_items) + number_questions > 20:
         context['more'] = True
     if request.GET.get('next_topics'):
         return redirect('questions:browse', number_questions + 10)
     if number_questions > 10:
-        if len(all_topics_items) > number_questions:
+        if len(topics_items) > number_questions:
             number = number_questions - 10
-            context['all_topics'] = all_topics_items[
+            context['all_topics'] = topics_items[
                 number:number_questions]
-        elif len(all_topics_items) > number_questions + 10:
+        elif len(topics_items) > number_questions + 10:
             number = number_questions + 10
-            context['all_topics'] = all_topics_items[
+            context['all_topics'] = topics_items[
                 number_questions:number]
         else:
-            length = len(all_topics_items)
-            context['all_topics'] = all_topics_items[
+            length = len(topics_items)
+            context['all_topics'] = topics_items[
                 number_questions-10:length]
             context['more'] = False
     else:
-        context['all_topics'] = all_topics_items[:10]
+        context['all_topics'] = topics_items[:10]
     return render(request, 'questions/browse.html', context)
 
 

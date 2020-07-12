@@ -147,7 +147,7 @@ def browse(request, number_questions=10):
     all_topics = {topic: parsing.unscrub_name(topic.name)
                   for topic in Topic.objects.all().filter(privacy=True)}
     all_topics_items = list(all_topics.items())
-    if len(all_topics_items) + number_questions > 10:
+    if len(all_topics_items) + number_questions > 20:
         context['more'] = True
     if request.GET.get('next_topics'):
         return redirect('questions:browse', number_questions + 10)

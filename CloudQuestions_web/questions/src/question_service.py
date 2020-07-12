@@ -1,10 +1,11 @@
+import os
 import random
 import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import random_color
 import markdown
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
@@ -346,7 +347,5 @@ def verification_email(request, user, email):
         'email': email
     })
     plain_message = strip_tags(html_message)
-    email_message = EmailMessage(
-        mail_subject, plain_message, to=[email], html_message=html_message
-    )
-    email_message.send()
+    send_mail(mail_subject, plain_message, os.environ['DEFAULT_FROM_EMAIL'],
+              [email], html_message=html_message)

@@ -5,6 +5,7 @@ from accounts.src.api_client import random_color
 import markdown
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -317,18 +318,35 @@ def get_topic(topic_name):
     return topic
 
 
+# def verification_email(request, user, email):
+#     """ Given a request, user, sends the verification email. """
+#     current_site = get_current_site(request)
+#     mail_subject = 'Activate your CloudQuestions account!'
+#     message = render_to_string('verify_email.html', {
+#         'user': user,
+#         'domain': current_site.domain,
+#         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+#         'token': default_token_generator.make_token(user),
+#         'email': email
+#     })
+#     email_message = EmailMessage(
+#         mail_subject, message, to=[email]
+#     )
+#     email_message.send()
+
 def verification_email(request, user, email):
     """ Given a request, user, sends the verification email. """
     current_site = get_current_site(request)
     mail_subject = 'Activate your CloudQuestions account!'
-    message = render_to_string('verify_email.html', {
+    html_message = render_to_string('testing_verify_email.html', {
         'user': user,
         'domain': current_site.domain,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': default_token_generator.make_token(user),
         'email': email
     })
+    plain_message = strip_tags(html_message)
     email_message = EmailMessage(
-        mail_subject, message, to=[email]
+        mail_subject, plain_message, to=[email], html_message=html_message
     )
     email_message.send()

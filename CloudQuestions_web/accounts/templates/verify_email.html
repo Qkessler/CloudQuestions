@@ -1,13 +1,13 @@
-{% autoescape off %}  
-Hi {{ user.username }},  
-If the following link doesn't work, please try copying and pasting it on your browser.
-Please click the link to verify your account.
-
-http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token email=email%}
-
-In case you don't know what this email is about, please contact me at
-qkessler@gmail.com
-
-Sincerely,
-CloudQuestions' team.
-{% endautoescape %}
+{% load static %}
+{% block content %}
+<div class="align-center card-container" id="email-container">
+    <p>Hi {{ user.username }},</p>
+    <p>If the following link doesn't work, please try copying and pasting it on your browser.</p>
+    <p>Please click the link to verify your account.</p>
+    <p>http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token email=email%}</p>
+    <p>In case you don't know what this email is about, please contact me at</p>
+    <p>qkessler@gmail.com</p>
+    <p>Sincerely,</p>
+    <p>CloudQuestions' team.</p>
+</div>
+{% endblock %}

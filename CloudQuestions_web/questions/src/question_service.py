@@ -319,17 +319,27 @@ def get_topic(topic_name):
     return topic
 
 
-def verification_email(request, user, email):
+def verification_email(request, user, email=None):
     """ Given a request, user, sends the verification email. """
     current_site = get_current_site(request)
     mail_subject = 'Activate your CloudQuestions account!'
-    html_message = render_to_string('verify_email.html', {
-        'user': user,
-        'domain': current_site.domain,
-        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-        'token': default_token_generator.make_token(user),
-        'email': email
-    })
-    plain_message = strip_tags(html_message)
+    if email:
+        html_message = render_to_string('change_email_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': default_token_generator.make_token(user),
+            'email': email
+        })
+        plain_message = strip_tags(html_message)
+    else:
+        html_message = render_to_string('verify_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': default_token_generator.make_token(user),
+            'email': user.email
+        })
+        plain_message = strip_tags(html_message)
     send_mail(mail_subject, plain_message, os.environ['DEFAULT_FROM_EMAIL'],
               [email], html_message=html_message)

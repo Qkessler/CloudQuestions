@@ -28,7 +28,7 @@ def register(request):
         user.is_active = False
         user.save()
         question_service.create_calendar_connection(user)
-        question_service.verification_email(request, user, email)
+        question_service.verification_email(request, user)
         return render(request, 'verify.html')
     context['form'] = form
     return render(request, 'register.html', context)

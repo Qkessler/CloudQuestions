@@ -1,11 +1,26 @@
-{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Pangolin&display=swap" rel="stylesheet">
+
 <div style="background-color: #f8f9fa; margin-top: 40px;">
     <div style="margin: 0 auto; width: 600px; padding-top: 40px; padding-bottom: 40px;">
-        <div style="text-align: left; border-radius: 10px; box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px; margin-top: 40px; margin-bottom: 40px; padding: 40px; border-style: solid; border-color: #D3D3D3; border-width: 1px; background-color: white;">
-            <p style="font-size: 25px; text-align: center;">Hi {{ user.username }},</p>
-            <p>If the following link doesn't work, please try copying and pasting it on your browser.</p>
-            <p>Please click the link to verify your account.</p>
-            <p>http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token email=email%}</p>
+        <div style="text-align: center; border-radius: 10px; box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px; margin-top: 40px; margin-bottom: 40px; padding: 40px; border-style: solid; border-color: #D3D3D3; border-width: 1px; background-color: white;">
+            <p style="font-size: 25px; font-family: 'Oxygen', sans-serif;">Hi, {{ user.username }}:</p>
+            <p>This email is generated because someone (hopefully you) tried to change the email on your CloudQuestions account.</p>
+            <p>Please click the button to verify the new email.</p>
+            <a style="color: #fff;
+                      background-color: #007bff;
+                      border-color: #007bff;
+                      display: inline-block;
+                      font-weight: 400;
+                      text-align: center;
+                      vertical-align: middle;
+                      user-select: none;
+                      border: 1px solid transparent;
+                      padding: .375rem .75rem;
+                      font-size: 1rem;
+                      line-height: 1.5;
+                      border-radius: .25rem;
+                      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                      " href="http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token email=email%}">Verify new email</a>
             <p>In case you don't know what this email is about, please contact me at</p>
             <p>qkessler@gmail.com</p>
             <p>Sincerely,</p>
@@ -13,4 +28,3 @@
         </div>
     </div>
 </div>
-{% endblock %}

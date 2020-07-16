@@ -17,6 +17,7 @@ class SearchForm(forms.Form):
 class UploadFileForm(forms.Form):
     file = forms.FileField(validators=[validators.validate_markdown],
                            label="")
+    action = forms.CharField(max_length=30)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -25,6 +26,7 @@ class UploadFileForm(forms.Form):
             Fieldset(
                 '',
                 Div(
+                    Field('action', value="upload", type="hidden"),
                     Field('file', css_id="file-upload", name="file_upload"),
                     css_id="file-upload-form")),
             ButtonHolder(

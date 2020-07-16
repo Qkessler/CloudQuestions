@@ -25,7 +25,7 @@ def questions(request):
         search_form = SearchForm(prefix='search_form')
         upload_file_form = UploadFileForm(prefix='upload_file_form')
         action = request.POST.get('action')
-
+        breakpoint()
         if action == 'search':
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
@@ -42,6 +42,8 @@ def questions(request):
             upload_file_form = UploadFileForm(request.POST, request.FILES)
             if upload_file_form.is_valid():
                 uploaded = request.FILES.get('file_upload')
+                print(request.FILES)
+                print(uploaded)
                 return_dict = parsing.handling_uploaded_file(
                     uploaded, request.user)
                 return redirect('questions:create_topic',

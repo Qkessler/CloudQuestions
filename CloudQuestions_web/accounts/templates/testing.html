@@ -5,7 +5,9 @@
 <div style="background-color: #f8f9fa; margin-top: 40px;">
     <div style="margin: 0 auto; width: 600px; padding-top: 40px; padding-bottom: 40px;">
         <div style="text-align: center; border-radius: 10px; box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px; margin-top: 40px; margin-bottom: 40px; padding: 40px; border-style: solid; border-color: #D3D3D3; border-width: 1px;  background-image: url({% static 'questions/testing-background3.gif' %});">
-            <p style="font-size: 25px; font-family: 'Oxygen', sans-serif;">Hi, {{ user.username }}:</p>
+            <div style="font-size: 25px; font-family: 'Oxygen', sans-serif; border-radius: 10px; box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px; border-style: solid; border-color: #D3D3D3; border-width: 1px; margin: 0 auto;">
+                <p>Hi, {{ user.username }}:</p>
+            </div>
             <p style="padding-bottom: 20px;">This email is generated because someone (hopefully you) tried to change the email on your CloudQuestions account.</p>
             <p>Please click the button to verify the new email.</p>
             <a style="text-decoration: none;

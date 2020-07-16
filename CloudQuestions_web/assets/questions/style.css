@@ -1058,3 +1058,7 @@ summary {
 #remove-account-container {
     margin-top: 15px;
 }
+
+#email-container {
+    width: 90%;
+}

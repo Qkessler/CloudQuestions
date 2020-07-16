@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div style="background-color: white; margin-top: 40px;">
+    <div style="margin: 0 auto; width: 600px; padding-top: 40px; padding-bottom: 40px;">
+        <div style="text-align: center; border-radius: 10px; box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px; margin-top: 40px; margin-bottom: 40px; padding: 40px; border-style: solid; border-color: #D3D3D3; border-width: 1px;  background-image: url({% static 'questions/testing-background3.gif' %});">
+            <div style="font-size: 25px; font-family: 'Oxygen', sans-serif; background-color: #f8f9fa; width: 40%; margin: 0 auto;">
+                <p>Hi, {{ user.username }}:</p>
+            </div>
+            <div style="margin-bottom: 20px; background-color: #f8f9fa; margin: 0 auto">
+                <p>This email is generated because someone (hopefully you) tried to change the email on your CloudQuestions account.</p>
+            </div>
+            <div style="width: 70%; margin: 0 auto;">
+                <p>Please click the button to verify the new email.</p>
+            </div>
+            <a style="text-decoration: none;
+                      color: #fff;
+                      background-color: #007bff;
+                      border-color: #007bff;
+                      display: inline-block;
+                      font-weight: 400;
+                      text-align: center;
+                      vertical-align: middle;
+                      user-select: none;
+                      border: 1px solid transparent;
+                      padding: .25rem .5rem;
+                      font-size: .875rem;
+                      line-height: 1.5;
+                      border-radius: .2rem;
+                      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                      " href="">Verify new email</a>
+            <div style="width: 95%; margin: 0 auto; margin-top: 30px; ">
+                <p>In case you don't know what this email is about, please contact me at</p>
+            </div>
+            <p>qkessler@gmail.com</p>
+            <p>Sincerely,</p>
+            <p>CloudQuestions' team.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

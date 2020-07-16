@@ -1,10 +1,12 @@
+import os
 import random
 import questions.src.parsing as parsing
 from questions.models import Topic, Question, Rating, CalendarConnection
 from accounts.src.api_client import random_color
 import markdown
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
+from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -317,18 +319,27 @@ def get_topic(topic_name):
     return topic
 
 
-def verification_email(request, user, email):
+def verification_email(request, user, email=None):
     """ Given a request, user, sends the verification email. """
     current_site = get_current_site(request)
     mail_subject = 'Activate your CloudQuestions account!'
-    message = render_to_string('verify_email.html', {
-        'user': user,
-        'domain': current_site.domain,
-        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-        'token': default_token_generator.make_token(user),
-        'email': email
-    })
-    email_message = EmailMessage(
-        mail_subject, message, to=[email]
-    )
-    email_message.send()
+    if email:
+        html_message = render_to_string('change_email_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': default_token_generator.make_token(user),
+            'email': email
+        })
+        plain_message = strip_tags(html_message)
+    else:
+        html_message = render_to_string('verify_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': default_token_generator.make_token(user),
+            'email': user.email
+        })
+        plain_message = strip_tags(html_message)
+    send_mail(mail_subject, plain_message, os.environ['DEFAULT_FROM_EMAIL'],
+              [email], html_message=html_message)

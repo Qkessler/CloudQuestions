@@ -73,12 +73,12 @@ body {
     padding-bottom: 20px;
 }
 
-#file_button {
-    margin-bottom: 10px;
+#file-button {
+    argin-bottom: 10px;
     margin-top: 10px;
 }
 
-#file_upload_form, #create_topic_container {
+#file-upload-container, #create_topic_container {
     padding-left: 10px;
     padding-right: 20px;
     display: inline-block;

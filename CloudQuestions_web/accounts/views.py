@@ -119,3 +119,7 @@ def settings(request, topic=None, color=None):
     context['ratings_table'] = table
     context['user'] = user
     return render(request, 'settings.html', context)
+
+
+def testing(request):
+    return render(request, 'testing.html')

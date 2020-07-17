@@ -4,7 +4,7 @@ from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from crispy_forms.layout import (Layout, Fieldset, ButtonHolder,
-                                 Submit, Field, Div)
+                                 Field, Div, Submit)
 
 
 class SearchForm(forms.Form):

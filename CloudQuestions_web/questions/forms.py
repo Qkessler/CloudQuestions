@@ -30,7 +30,7 @@ class UploadFileForm(forms.Form):
                     Field('file', css_id="file-upload", name="file_upload"),
                     css_id="file-upload-form")),
             ButtonHolder(
-                Submit('submit', 'Submit', css_class='btn btn-outline-danger',
+                Submit('submit', 'Submit', css_class='btn btn-danger',
                        css_id="file-button")
             )
         )

@@ -16,17 +16,18 @@ def questions(request):
     topics_searched = []
     context['searched'] = False
     context['empty'] = True
+    search_form = SearchForm(prefix='search_form')
+    upload_file_form = UploadFileForm(prefix='upload_file_form')
     question_service.delete_flagged()
     if request.GET.get('toggle_help'):
         return redirect('questions:detail', 'CloudQuestions_Help')
     if request.GET.get('upload_topic'):
         return redirect('questions:create_topic')
     if request.method == 'POST':
-        search_form = SearchForm(prefix='search_form')
-        upload_file_form = UploadFileForm(prefix='upload_file_form')
-        action = request.POST.get('action')
-
-        if action == 'search':
+        if 'search' in request.POST.values():
+            # We are using the values because forms in crispy-forms are weird,
+            # and the hidden element only works in as is in model forms. The
+            # hidden element in forms is called <name_form>-<name_hidden>.
             search_form = SearchForm(request.POST, prefix='search_form')
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get('search_text')
@@ -38,17 +39,14 @@ def questions(request):
                 topics_searched = dict(zip(db_topics, unscrubed_topics))
                 context['empty'] = False
                 context['searched'] = True
-        elif action == 'upload':
+        elif 'upload' in request.POST.values():
             upload_file_form = UploadFileForm(request.POST, request.FILES)
             if upload_file_form.is_valid():
-                uploaded = request.FILES.get('file_upload')
+                uploaded = request.FILES.get('file')
                 return_dict = parsing.handling_uploaded_file(
                     uploaded, request.user)
                 return redirect('questions:create_topic',
                                 return_dict['topic_id'])
-    else:
-        search_form = SearchForm(prefix='search_form')
-        upload_file_form = UploadFileForm(prefix='upload_file_form')
     context['search_form'] = search_form
     context['upload_file_form'] = upload_file_form
     all_topics = {topic: parsing.unscrub_name(topic.name)

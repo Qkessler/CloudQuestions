@@ -1,10 +1,10 @@
-from django import forms
 from . import validators
+from django import forms
 from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from crispy_forms.layout import (Layout, Fieldset, ButtonHolder,
-                                 Submit, Field, Div)
+                                 Field, Div, Submit)
 
 
 class SearchForm(forms.Form):
@@ -15,10 +15,25 @@ class SearchForm(forms.Form):
 
 
 class UploadFileForm(forms.Form):
-    file_upload = forms.FileField(validators=[validators.validate_markdown],
-                                  label="",
-                                  widget=forms.FileInput(
-                                      attrs={'id': 'file-upload'}))
+    file = forms.FileField(validators=[validators.validate_markdown],
+                           label="")
+    action = forms.CharField(max_length=30)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                Div(
+                    Field('action', value="upload", type="hidden"),
+                    Field('file', css_id="file-upload", name="file_upload"),
+                    css_id="file-upload-form")),
+            ButtonHolder(
+                Submit('submit', 'Submit', css_class='btn btn-danger',
+                       css_id="file-button")
+            )
+        )
 
 
 class CreateTopicForm(forms.Form):

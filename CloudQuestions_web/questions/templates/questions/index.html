@@ -9,8 +9,14 @@
         <div id="description-text-container">
             <p id="description-title" class="align-left">Efficient learning made easy</p>
             <p class="align-left" id="description-text">CloudQuestions combines FlashCards with active recall functionality, helping deep understanding of topics.</p>
+            <div class="align-left" id="description-button-container">
+                <form action="{% url 'accounts:register'%}" method="get">
+                    <input id="description-button" type="submit" value="Sign up"/>
+                </form>
+            </div>
         </div>
     </div>
+    
 {% endblock %}
 
 

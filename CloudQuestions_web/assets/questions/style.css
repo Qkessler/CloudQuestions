@@ -623,7 +623,7 @@ summary {
 
 #logo-container {
     padding: 40px;
-    background-color: black;
+    background-color: #0a2540;
     border-radius: 0 0 80% 80% / 50px;
 }
 
@@ -1094,3 +1094,13 @@ summary {
 #description-text {
     font-size: 5.5vw;
 }
+
+#description-button {
+    padding: 3px 16px 3px 16px;
+    color: white;
+    background-color: #0a2540;
+    border-color: transparent;
+    border-radius: 16.5px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+

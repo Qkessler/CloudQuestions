@@ -5,97 +5,12 @@
     <div id="logo-container">
         <img id="cloudquestions-logo" alt="CloudQuestions logo" src="{% static 'questions/settings-logo.png'%}"/>
     </div>
-    <div id="topic-explanation-container">
-        <div id="topic-explanation-topic" class="list_topic_item color-opacity_2">
-            <h3 class="inline-block-black">Topic</h3>
-            <p class="inline-block-black">Created: 10/05/2020</p>
-            <p class="inline-block-black">Creator: name</p>
-        </div>
-        <div id="topic-explanation-text-container">
-            <p id="topic-explanation-text" class="align-left architects">Information divided in Topics</p>
-            <p class="align-left" id="topic-text">Topics contain questions, which can be answered as a random session. Questions should be easy to read and not so long that they become tiring.</p>
+    <div id="description-container">
+        <div id="description-text-container">
+            <p id="description-title" class="align-left">Efficient learning made easy</p>
+            <p class="align-left" id="description-text">CloudQuestions combines FlashCards with active recall functionality, helping deep understanding of topics.</p>
         </div>
     </div>
-    <div id="topic-image">
-        <img id="topic-image-mockup" alt="Topic example" src="{% static 'questions/topic_example.png'%}"/>
-    </div>
-    <div id="ratings-explanation-container">
-        <div id="random-session-container">
-            <button id="random-session-button" class="btn btn-primary">Random session</button>
-            <div id="random-session-text">
-                <h2 class="architects">Answer questions</h2>
-                <p id="questions-randomized" class="align-left">Questions are randomized creating a random session, which ends when all questions are answered.</p>
-            </div>
-        </div>
-        <div id="rating-buttons">
-            <input id="red-button" class="btn btn-danger" name="red_button" type="submit" value="Bad"/>
-            <input id="yellow-button" class="btn btn-warning" name="yellow_button" type="submit" value="Medium"/>
-            <input id="green-button" class="btn btn-success" name="green_button" type="submit" value="Good"/>
-            <div id="rating-text">
-                <h2 class="architects">Rate the topic!</h2>
-            </div>
-        </div>
-    </div>
-    <div id="ratings-table-container">
-        <div class="item-a" id="ratings-table">
-            <table class="table table-sm table-stripped table-hover">
-	            <thead id="table-head" class="thead-light">
-	                <tr>
-		                <th>Topic name</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	                <tr>
-		                <td>Topic</td>
-		                <td class='bg-danger'>10/05/2020</td>
-		                <td class='bg-warning'>10/05/2020</td>
-		                <td class='bg-success'>10/05/2020</td>
-	                </tr>
-                    <tr>
-		                <td>Tema2COMP</td>
-		                <td class='bg-danger'>25/05/2020</td>
-		                <td class='bg-danger'>26/05/2020</td>
-		                <td class='bg-danger'>27/05/2020</td>
-		                <td class='bg-success'>30/05/2020</td>
-		                <td class='bg-success'>31/05/2020</td>
-	                </tr>
-                    <tr>
-		                <td>T1_Introduccion</td>
-		                <td class='bg-success'>27/05/2020</td>
-		                <td class='bg-success'>31/05/2020</td>
-	                </tr>
-                    <tr>
-		                <td>B4_2</td>
-		                <td class='bg-success'>27/05/2020</td>
-		                <td class='bg-danger'>30/05/2020</td>
-		                <td class='bg-success'>3/05/2020</td>
-		                <td class='bg-success'>5/05/2020</td>
-	                </tr>
-	            </tbody>
-            </table>
-        </div>
-        <div class="item-b" id="ratings-table-text-container">
-            <p id="ratings-table-header" class="architects align-left">Revisit the topics</p>
-            <p class="align-left" id="ratings-table-text">
-                The Active Recall method suggests revisiting topics every few days. Following this advice, CloudQuestions uses the following:
-            </p>
-        </div>
-        <div class="item-c align-left" id="ratings-table-caption">
-            <img class="inline-block-black" id="table-legend" alt="Table Legend" src="{% static 'questions/legend_table.gif'%}"/>
-        </div>
-    </div>
-    <div id="calendar-explanation-container">
-        <div id="calendar-explanation-text">
-            <p id="event-reminder" class="architects align-left">Event reminder</p>
-            <p class="align-left" id="event-reminder-info">
-                When topics are rated, if the calendar connection is enabled, a Google Calendar event will be created.
-            </p>
-        </div>
-        <div id="calendar-image-container">
-            <img class="inline-block-black" id="calendar-explanation-image" alt="Settings emoji" src="{% static 'questions/calendar_event.png'%}"/>
-        </div>
-    </div>
-</div>
 {% endblock %}
 
 

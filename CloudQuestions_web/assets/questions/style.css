@@ -623,6 +623,8 @@ summary {
 
 #logo-container {
     padding: 40px;
+    background-color: black;
+    border-radius: 0 0 50% 50% / 50px;
 }
 
 #topic-explanation-container {
@@ -1076,4 +1078,19 @@ summary {
 
 #email-container {
     width: 90%;
+}
+
+#description-title {
+    font-weight: 900;
+    font-size: 14vw;
+    line-height: 0.95;
+    padding-bottom: 10px;
+}
+
+#description-text-container {
+    padding: 30px;
+}
+
+#description-text {
+    font-size: 5.5vw;
 }

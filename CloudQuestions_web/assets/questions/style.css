@@ -1080,7 +1080,7 @@ summary {
     width: 90%;
 }
 
-#description-title {
+.index-title {
     font-weight: 900;
     font-size: 14vw;
     line-height: 0.95;
@@ -1102,5 +1102,18 @@ summary {
     border-color: transparent;
     border-radius: 16.5px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+#experts-container {
+    background-color: #f8f9fa;
+    padding: 30px;
+}
+
+.expert {
+    border-style: solid;
+    border-color: #0a2540;
+    border-width: 1px;
+    padding: 10px;
+    opacity: 0.7;
 }
 

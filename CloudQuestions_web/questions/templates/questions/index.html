@@ -7,8 +7,8 @@
     </div>
     <div id="description-container">
         <div id="description-text-container">
-            <p id="description-title" class="align-left">Efficient learning made easy</p>
-            <p class="align-left" id="description-text">CloudQuestions combines FlashCards with active recall functionality, helping deep understanding of topics.</p>
+            <p class="index-title align-left">Efficient learning made easy</p>
+            <p class="align-left" id="description-text">CloudQuestions combines FlashCards with spaced repetition functionality, helping deep understanding of topics.</p>
             <div class="align-left" id="description-button-container">
                 <form action="{% url 'accounts:register'%}" method="get">
                     <input id="description-button" type="submit" value="Sign up"/>
@@ -16,7 +16,13 @@
             </div>
         </div>
     </div>
-    
+    <div id="experts-container">
+        <p class="index-title align-left">Experts</p>
+        <div class="expert" id="expert-1">
+            <p>Ali Abdaal -</p>
+            <p>I’ve come across active recall and spaced repetition which, in combination, will help make your studies more efficient, effective and rewarding.</p>
+        </div>
+    </div>
 {% endblock %}
 
 

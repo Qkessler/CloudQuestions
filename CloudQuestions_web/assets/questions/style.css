@@ -1114,6 +1114,14 @@ summary {
     border-color: #0a2540;
     border-width: 1px;
     padding: 10px;
-    opacity: 0.7;
+    opacity: 0.2;
+}
+
+#expert-1 {
+    margin-bottom: 15px;
+}
+
+.expert:hover {
+    opacity: 0.4;
 }
 

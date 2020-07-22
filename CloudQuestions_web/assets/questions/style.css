@@ -1140,5 +1140,16 @@ summary {
 #device-container {
     width: 100%;
     overflow: hidden;
-    padding-right: 0px;
+}
+
+.scale-04 {
+  -webkit-transform: scale(0.4);
+  transform: scale(0.4);
+}
+
+.marvel-device.iphone-x.scale-04 {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transition: transform 1s ease-in;
+    transition: transform 1s ease-in;
 }

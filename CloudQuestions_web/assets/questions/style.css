@@ -1121,7 +1121,15 @@ summary {
     margin-bottom: 15px;
 }
 
+#expert-2 {
+    margin-bottom: 15px;
+}
+
 .expert:hover {
     opacity: 0.4;
+}
+
+#workflow-container {
+    padding: 30px;
 }
 

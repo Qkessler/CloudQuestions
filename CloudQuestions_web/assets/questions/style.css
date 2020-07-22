@@ -1133,3 +1133,8 @@ summary {
     padding: 30px;
 }
 
+#device-container {
+    width: 100%;
+    overflow: hidden;
+    padding-right: 0px;
+}

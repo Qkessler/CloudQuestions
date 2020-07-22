@@ -2534,6 +2534,8 @@
   top: 10em;
 }
 
-/* .iphone-x .screen { */
-/*   background: linear-gradient(to bottom, #ff268e 0%, #ff694f 100%); */
-/* } */
+.iphone-x .screen {
+    background: url("device-show.gif");
+    background-repeat: no-repeat;
+    background-size: 248px;
+}

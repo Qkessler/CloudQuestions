@@ -2537,5 +2537,5 @@
 .iphone-x .screen {
     background: url("device-show.gif");
     background-repeat: no-repeat;
-    background-size: 248px;
+    background-size: 100%;
 }

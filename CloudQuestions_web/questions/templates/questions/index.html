@@ -37,14 +37,9 @@
         <p class="align-left" id="workflow-text">The recommended way of using the app is accessing the topics and answering the questions without looking at the response. Then, rate your session and redo it as you need.</p>
         <div id="device-container">
             <div class="marvel-device iphone-x scale--05">
-                <div class="notch">
-                    <div class="camera"></div>
-                    <div class="speaker"></div>
-                </div>
                 <div class="top-bar"></div>
                 <div class="sleep"></div>
                 <div class="bottom-bar"></div>
-                <div class="volume"></div>
                 <div class="overflow">
                     <div class="shadow shadow--tr"></div>
                     <div class="shadow shadow--tl"></div>
@@ -52,12 +47,23 @@
                     <div class="shadow shadow--bl"></div>
                 </div>
                 <div class="inner-shadow"></div>
-                <div class="screen">
-                    <!-- Content goes here -->
-                </div>
+                <div class="screen"></div>
             </div>
         </div>
     </div>
+    <div id="opensource-container">
+        <p class="index-title align-left">Open Source</p>
+        <p id="opensource-text" class="align-left">CloudQuestions is Open Source! Feel free to contribute and become part of the community.</p>
+        <div class="align-left inline-block-black" id="opensource-repo">
+            <form action="https://github.com/Qkessler/CloudQuestions" method="get">
+                <input class="opensource-button" type="submit" value="Repository"/>
+            </form>
+        </div>
+        <div class="align-left inline-block-black">
+            <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
+                <input class="opensource-button" type="submit" value="Issues"/>
+            </form>
+        </div>        
+        <img id="opensource-image" alt="Woman coding" src="{% static 'questions/drawkit-server-woman-monochrome.svg'%}"/>
+    </div>
 {% endblock %}
-
-

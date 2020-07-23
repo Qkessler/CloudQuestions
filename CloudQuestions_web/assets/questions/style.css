@@ -920,6 +920,10 @@ summary {
         padding: 30px 30px 80px 30px !important;
     }
 
+    #logo-container {
+        margin-bottom: 30px;
+    }
+
 }
 
 @media (min-width: 1024px) {

@@ -931,6 +931,11 @@ summary {
         background-position: 250px -40px;
     }
 
+    #experts {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 }
 
 @media (min-width: 1024px) {
@@ -1140,6 +1145,10 @@ summary {
     border-width: 1px;
     padding: 10px;
     opacity: 0.2;
+}
+
+#experts-title {
+    padding-bottom: 20px;
 }
 
 #expert-1 {

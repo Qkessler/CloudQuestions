@@ -950,7 +950,9 @@ summary {
     }
 
     #workflow-steps {
-        display: block !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
         padding-right: 30px;
     }
 
@@ -1190,6 +1192,10 @@ summary {
 }
 
 .workflow-step {
+    flex: 0 1 300px;
+}
+
+.workflow-step-circle {
     margin: 0 auto;
     margin-bottom: 30px;
     width: 60px;

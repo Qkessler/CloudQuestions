@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
 <div id="index-container">
     <div id="logo-container">
@@ -7,10 +8,78 @@
     </div>
     <div id="description-container">
         <div id="description-text-container">
-            <p id="description-title" class="align-left">Efficient learning made easy</p>
-            <p class="align-left" id="description-text">CloudQuestions combines FlashCards with active recall functionality, helping deep understanding of topics.</p>
+            <p class="index-title align-left">Efficient learning made easy</p>
+            <p class="align-left" id="description-text">CloudQuestions combines FlashCards with spaced repetition functionality, helping you reach your full potential.</p>
+            <div class="align-left" id="description-button-container">
+                <form action="{% url 'accounts:register'%}" method="get">
+                    <input id="description-button" type="submit" value="Sign up"/>
+                </form>
+            </div>
         </div>
     </div>
+    <div id="experts-container">
+        <p class="index-title align-left" id="experts-title">Experts</p>
+        <div id="experts">
+            <div class="expert" id="expert-1">
+                <p>Ali Abdaal -</p>
+                <p>"I’ve come across active recall and spaced repetition which, in combination, will help make your studies more efficient, effective and rewarding."</p>
+            </div>
+            <div class="expert" id="expert-2">
+                <p>Mark A. McDaniel -</p>
+                <p>"If you ask people to free-recall, you can generate a better mental model of a subject area, and in turn that can lead to better problem-solving."</p>
+            </div>
+            <div class="expert">
+                <p>Sean H. K. Kang -</p>
+                <p>"Repeated encounters with to-be-learned material that are spaced out in time (as opposed to recurring back-to-back) are an effective way to foster learning that is long-lasting."</p>
+            </div>
+        </div>
+    </div>
+    <div id="workflow-container">
+        <p class="index-title align-left">Workflow</p>
+        <p class="align-left" id="workflow-text">The recommended way of using the app is accessing the topics and answering the questions without looking at the response. Then, rate your session and redo it as you need.</p>
+        <div id="device-container">
+            <div class="marvel-device iphone-x scale--05">
+                <div class="top-bar"></div>
+                <div class="sleep"></div>
+                <div class="bottom-bar"></div>
+                <div class="overflow">
+                    <div class="shadow shadow--tr"></div>
+                    <div class="shadow shadow--tl"></div>
+                    <div class="shadow shadow--br"></div>
+                    <div class="shadow shadow--bl"></div>
+                </div>
+                <div class="inner-shadow"></div>
+                <div class="screen"></div>
+            </div>
+        </div>
+        <div id="workflow-steps">
+            <div class="workflow-step color-opacity_1">
+                <p class="step-number">1</p>
+            </div>
+            <div class="workflow-step color-opacity_3">
+                <p class="step-number">2</p>
+            </div>
+            <div class="workflow-step color-opacity_5">
+                <p class="step-number">3</p>
+            </div>
+            <div class="workflow-step color-opacity_7">
+                <p class="step-number">4</p>
+            </div>
+        </div>
+    </div>
+    <div id="opensource-container">
+        <p class="index-title align-left">Open Source</p>
+        <p id="opensource-text" class="align-left">CloudQuestions is Open Source! Feel free to contribute and become part of the community.</p>
+        <div class="align-left inline-block-black" id="opensource-repo">
+            <form action="https://github.com/Qkessler/CloudQuestions" method="get">
+                <input class="opensource-button" type="submit" value="Repository"/>
+            </form>
+        </div>
+        <div class="align-left inline-block-black">
+            <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
+                <input class="opensource-button" type="submit" value="Issues"/>
+            </form>
+        </div>        
+        <img id="opensource-image" alt="Woman coding" src="{% static 'questions/drawkit-server-woman-monochrome.svg'%}"/>
+    </div>
 {% endblock %}
-
-

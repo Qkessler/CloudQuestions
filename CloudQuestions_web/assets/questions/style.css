@@ -623,8 +623,8 @@ summary {
 
 #logo-container {
     padding: 40px;
-    background-color: black;
-    border-radius: 0 0 50% 50% / 50px;
+    background-color: #0a2540;
+    border-radius: 0 0 80% 80% / 50px;
 }
 
 #topic-explanation-container {
@@ -906,6 +906,54 @@ summary {
         width: 60%;
     }
 
+    .index-title {
+        font-size: 56px !important;
+        width: 500px;
+    }
+
+    #description-text {
+        font-size: 2.3vw !important;
+        width: 450px;
+    }
+
+    #description-text-container {
+        padding: 30px 30px 80px 30px !important;
+    }
+
+    #logo-container {
+        margin-bottom: 30px;
+    }
+
+    #description-container {
+        background-image: url(768-mockup.gif);
+        background-size: 110%;
+        background-repeat: no-repeat;
+        background-position: 250px -40px;
+    }
+
+    #experts {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    #workflow-text {
+        font-size: 2.3vw;
+    }
+
+    #device-container {
+        display: none;
+    }
+
+    #workflow-container {
+        padding: 30px !important;
+    }
+
+    #workflow-steps {
+        display: block !important;
+        padding-right: 30px;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -1080,7 +1128,7 @@ summary {
     width: 90%;
 }
 
-#description-title {
+.index-title {
     font-weight: 900;
     font-size: 14vw;
     line-height: 0.95;
@@ -1093,4 +1141,108 @@ summary {
 
 #description-text {
     font-size: 5.5vw;
+}
+
+#description-button {
+    padding: 3px 16px 3px 16px;
+    color: white;
+    background-color: #0a2540;
+    border-color: transparent;
+    border-radius: 16.5px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+#experts-container {
+    background-color: #f8f9fa;
+    padding: 30px;
+}
+
+.expert {
+    border-style: solid;
+    border-color: #0a2540;
+    border-width: 1px;
+    padding: 10px;
+    opacity: 0.2;
+}
+
+#experts-title {
+    padding-bottom: 20px;
+}
+
+#expert-1 {
+    margin-bottom: 15px;
+}
+
+#expert-2 {
+    margin-bottom: 15px;
+}
+
+.expert:hover {
+    opacity: 0.4;
+}
+
+#workflow-container {
+    padding: 30px 0px 30px 30px;
+}
+
+#workflow-text {
+    padding-right: 30px;
+}
+
+.workflow-step {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+#workflow-steps {
+    display: none;
+}
+
+.step-number {
+    padding: 15px;
+    font-size: 20px;
+    color: black;
+}
+    
+#device-container {
+    width: 100%;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+#opensource-container {
+    margin-top: 30px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    overflow: hidden;
+}
+
+#opensource-text {
+    padding: 0px 10px 10px 10px;
+}
+
+#opensource-image {
+    position: relative;
+    width: 350px;
+    left: -50px;
+}
+
+.opensource-button {
+    padding: 3px 16px 3px 16px;
+    color: white;
+    background-color: #0a2540;
+    border-color: transparent;
+    border-radius: 16.5px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+}
+
+#opensource-repo {
+    padding: 0px 10px 0px 0px;
 }

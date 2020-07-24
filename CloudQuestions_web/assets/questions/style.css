@@ -936,6 +936,24 @@ summary {
         grid-gap: 1rem;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
+
+    #workflow-text {
+        font-size: 2.3vw;
+    }
+
+    #device-container {
+        display: none;
+    }
+
+    #workflow-container {
+        padding: 30px !important;
+    }
+
+    #workflow-steps {
+        display: block !important;
+        padding-right: 30px;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -1171,6 +1189,27 @@ summary {
     padding-right: 30px;
 }
 
+.workflow-step {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+#workflow-steps {
+    display: none;
+}
+
+.step-number {
+    padding: 15px;
+    font-size: 20px;
+    color: whitesmoke;
+}
+    
 #device-container {
     width: 100%;
     overflow: hidden;

@@ -1191,8 +1191,14 @@ summary {
 }
 
 .workflow-step {
-    flex: 0 1 300px;
+    flex: 0 1 500px;
     margin: 15px;
+}
+
+.workflow-title {
+    font-weight: 900;
+    font-size: 45px;
+    padding-bottom: 20px;
 }
 
 .workflow-step-circle {

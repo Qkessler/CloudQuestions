@@ -912,7 +912,6 @@ summary {
     }
 
     #description-text {
-        font-size: 2.3vw !important;
         width: 450px;
     }
 
@@ -937,10 +936,6 @@ summary {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
-    #workflow-text {
-        font-size: 2.3vw;
-    }
-
     #device-container {
         display: none;
     }
@@ -954,6 +949,10 @@ summary {
         flex-wrap: wrap;
         justify-content: center;
         padding-right: 30px;
+    }
+
+    .index-text {
+        font-size: 2.3vw !important;
     }
 
 }

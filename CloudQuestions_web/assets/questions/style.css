@@ -955,6 +955,10 @@ summary {
         font-size: 2.3vw !important;
     }
 
+    #opensource-text {
+        width: 450px;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -1243,6 +1247,7 @@ summary {
     position: relative;
     width: 350px;
     left: -50px;
+    display: block;
 }
 
 .opensource-button {
@@ -1253,6 +1258,10 @@ summary {
     border-radius: 16.5px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 
+}
+
+#opensource-buttons {
+    padding-left: 10px;
 }
 
 #opensource-repo {

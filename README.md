@@ -4,7 +4,7 @@ Django Web-App for studying which creates an easier costumer experience for appl
 
 ## Summary
 
-    - [Getting started](#getting-started)
+- [Getting started](#getting-started)
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
 
 ```
 git clone https://github.com/Qkessler/CloudQuestions.git
-python3 -m venv .env
+python3 -m venv <environment_name>
 pip install -r requirements.txt
 ```
 
@@ -30,3 +30,30 @@ import os
 os.environ['NAME']
 ```
 
+### API keys
+As I said before, CloudQuestions uses API calls for some functionality. To be able to access the full experience when developing, we use a template to be included in the environment:
+
+```
+export DJANGO_SECRET='YOUR_DJANGO_KEY'
+export EMAIL_HOST_USER='YOUR_EMAIL'
+export EMAIL_HOST_PASSWORD='YOUR_EMAIL_PASSWORD'
+export DEFAULT_FROM_EMAIL='YOUR_EMAIL'
+export SERVER_EMAIL='YOUR_EMAIL'
+export SOCIAL_AUTH_GITHUB_KEY='YOUR_KEY'
+export SOCIAL_AUTH_GITHUB_SECRET='YOUR_KEY'
+export SOCIAL_AUTH_TWITTER_KEY='YOUR_KEY'
+export SOCIAL_AUTH_TWITTER_SECRET='YOUR_KEY'
+export SOCIAL_AUTH_GOOGLE_OAUTH2_KEY='YOUR_KEY'
+export SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='YOUR_KEY'
+export CALENDAR_CLIENT_ID='YOUR_KEY'
+export CALENDAR_CLIENT_SECRET='YOUR_KEY'
+export CALENDAR_API_KEY='YOUR_KEY'
+export RECAPTCHA_PUBLIC_KEY='YOUR_KEY'
+export RECAPTCHA_PRIVATE_KEY='YOUR_KEY'
+```
+
+To be able to include this template into your environment, fill the keys for the functionality you are interested in on the TEMPLATE_KEYS.txt file and include it the following way:
+
+```
+cat TEMPLATE_KEYS.txt >> <environment_name>/bin/activate
+```

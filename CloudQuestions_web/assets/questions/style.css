@@ -364,6 +364,10 @@ details > summary::-webkit-details-marker {
     text-align: left;
 }
 
+.align-right {
+    text-align: right;
+}
+
 .align-center {
     text-align: center;
 }
@@ -957,6 +961,13 @@ summary {
 
     #opensource-text {
         width: 450px;
+    }
+
+    #opensource-image {
+        width: 500px !important;
+        margin: 0 auto;
+        top: -70px !important;
+        left: 0px !important;
     }
 
 }

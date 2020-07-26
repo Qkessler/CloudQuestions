@@ -364,6 +364,10 @@ details > summary::-webkit-details-marker {
     text-align: left;
 }
 
+.align-right {
+    text-align: right;
+}
+
 .align-center {
     text-align: center;
 }
@@ -912,7 +916,6 @@ summary {
     }
 
     #description-text {
-        font-size: 2.3vw !important;
         width: 450px;
     }
 
@@ -937,10 +940,6 @@ summary {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
-    #workflow-text {
-        font-size: 2.3vw;
-    }
-
     #device-container {
         display: none;
     }
@@ -950,8 +949,25 @@ summary {
     }
 
     #workflow-steps {
-        display: block !important;
-        padding-right: 30px;
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 30px 30px 30px 0px;
+    }
+
+    .index-text {
+        font-size: 2.3vw !important;
+    }
+
+    #opensource-text {
+        width: 450px;
+    }
+
+    #opensource-image {
+        width: 500px !important;
+        margin: 0 auto;
+        top: -70px !important;
+        left: 0px !important;
     }
 
 }
@@ -1190,6 +1206,17 @@ summary {
 }
 
 .workflow-step {
+    flex: 0 1 500px;
+    margin: 15px;
+}
+
+.workflow-title {
+    font-weight: 900;
+    font-size: 45px;
+    padding-bottom: 20px;
+}
+
+.workflow-step-circle {
     margin: 0 auto;
     margin-bottom: 30px;
     width: 60px;
@@ -1207,7 +1234,7 @@ summary {
 .step-number {
     padding: 15px;
     font-size: 20px;
-    color: black;
+    color: #666160;
 }
     
 #device-container {
@@ -1231,6 +1258,7 @@ summary {
     position: relative;
     width: 350px;
     left: -50px;
+    display: block;
 }
 
 .opensource-button {
@@ -1243,6 +1271,14 @@ summary {
 
 }
 
+#opensource-buttons {
+    padding-left: 10px;
+}
+
 #opensource-repo {
     padding: 0px 10px 0px 0px;
+}
+
+.workflow-gif {
+    width: 100%;
 }

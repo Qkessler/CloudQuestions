@@ -7,7 +7,8 @@ Django Web-App for studying which creates an easier costumer experience for appl
 ## Summary
 
 - [Contributing](#contributing)
-- [Developing](#developing)
+- [Development](#development)
+- [Tests](#tests)
 
 ## Contributing
 
@@ -15,7 +16,7 @@ Contributions are warmly welcomed. Doesn't have to be implementing new functiona
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Developing
+## Development
 
 This instructions will get you up and running for development purposes. See testing for notes on how to test the app and special requests on tests created.
 
@@ -34,7 +35,11 @@ python3 -m venv <environment_name>
 pip install -r requirements.txt
 ```
 
-At this point the app should be running locally.
+At this point the app should be running locally. To run the Django server:
+
+```
+python manage.py runserver
+```
 
 Note: CloudQuestions uses API calls (auth, calendar events). Local development might malfunction if API keys are not provided to the environment. We use os to provide privacy on source files to important bits.
 
@@ -70,3 +75,14 @@ To be able to include this template into your environment, fill the keys for the
 ```
 cat TEMPLATE_KEYS.txt >> <environment_name>/bin/activate
 ```
+
+## Tests
+
+We use pytest to run all our tests. It is included in the dependencies, so the only steps required are:
+
+```
+cd Cloudquestions_Web
+pytest
+```
+
+We recommend writing tests on new functionality for an easier process for merging it to the repo.

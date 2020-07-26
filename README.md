@@ -2,11 +2,17 @@
 
 Django Web-App for studying which creates an easier costumer experience for applying a mix between Flash Cards and Active Recall techniques.
 
+:house: The home link is the following: https://cloudquestions.es/
+
 ## Summary
 
 - [Getting started](#getting-started)
 
-## Getting Started
+## Contributing
+
+
+
+## Developing
 
 This instructions will get you up and running for development purposes. See testing for notes on how to test the app and special requests on tests created.
 
@@ -15,9 +21,12 @@ This instructions will get you up and running for development purposes. See test
 At CloudQuestions, we use environments for development (pyvenv). On these environments, we install the dependencies with pip.
 
 ### Installing steps
+ 
+1. Fork this repository.
+2. Clone your forked repository.
+3. Set up your environment and dependencies.
 
 ```
-git clone https://github.com/Qkessler/CloudQuestions.git
 python3 -m venv <environment_name>
 pip install -r requirements.txt
 ```

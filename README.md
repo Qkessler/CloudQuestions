@@ -6,11 +6,14 @@ Django Web-App for studying which creates an easier costumer experience for appl
 
 ## Summary
 
-- [Getting started](#getting-started)
+- [Contributing](#contributing)
+- [Developing](#developing)
 
 ## Contributing
 
+Contributions are warmly welcomed. Doesn't have to be implementing new functionality, issues are also opened for documentation, support, etc. 
 
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Developing
 
@@ -32,6 +35,7 @@ pip install -r requirements.txt
 ```
 
 At this point the app should be running locally.
+
 Note: CloudQuestions uses API calls (auth, calendar events). Local development might malfunction if API keys are not provided to the environment. We use os to provide privacy on source files to important bits.
 
 ```python

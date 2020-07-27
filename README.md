@@ -23,7 +23,7 @@ This instructions will get you up and running for development purposes. See test
 
 ### Prerequisites
 
-At CloudQuestions, we use environments for development (pyvenv). On these environments, we install the dependencies with pip.
+At CloudQuestions, we use environments for development pyvenv. On these environments, we install the dependencies with pip.
 
 ### Installing steps
  
@@ -36,7 +36,7 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
     ```
     git checkout -b <new_branch_name>
     ```
-5. Add exclude info to avoid unwanted files.
+5. Add [EXCLUDE](https://github.com/Qkessler/CloudQuestions/blob/master/EXCLUDE.txt) info to avoid unwanted files.
     
     ```
     cat EXCLUDE.txt >> .git/info/exclude
@@ -49,7 +49,7 @@ python3 -m venv <environment_name>
 pip install -r requirements.txt
 ```
     
-At this point the app should be running locally. To craete migrations and create the database.
+At this point the app should be running locally. To create migrations and create the database.
 
 ```    
 python manage.py makemigration questions accounts
@@ -91,7 +91,7 @@ export RECAPTCHA_PUBLIC_KEY='YOUR_KEY'
 export RECAPTCHA_PRIVATE_KEY='YOUR_KEY'
 ```
 
-To be able to include this template into your environment, fill the keys for the functionality you are interested in on the TEMPLATE_KEYS.txt file and include it the following way:
+To be able to include this template into your environment, fill the keys for the functionality you are interested in on the [TEMPLATE_KEYS.txt](https://github.com/Qkessler/CloudQuestions/blob/master/TEMPLATE_KEYS.txt) file and include it the following way:
 
 ```
 cat TEMPLATE_KEYS.txt >> <environment_name>/bin/activate
@@ -99,7 +99,7 @@ cat TEMPLATE_KEYS.txt >> <environment_name>/bin/activate
 
 ## Tests
 
-We use pytest to run all our tests. It is included in the dependencies, so the only steps required are:
+We use [pytest](https://docs.pytest.org/en/stable/contents.html) to run all our tests. It is included in the dependencies, so the only steps required are:
 
 ```
 cd CloudQuestions_Web

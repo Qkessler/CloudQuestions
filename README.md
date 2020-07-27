@@ -117,4 +117,4 @@ pytest --black
 ```           
 
 ## Licence
-This project is licenced under the [MIT])(https://github.com/Qkessler/CloudQuestions/blob/master/LICENSE) Licence - see the [LICENCE](https://github.com/Qkessler/CloudQuestions/blob/master/LICENSE) for details.        
+This project is licenced under the [MIT](https://github.com/Qkessler/CloudQuestions/blob/master/LICENSE) Licence - see the [LICENCE](https://github.com/Qkessler/CloudQuestions/blob/master/LICENSE) for details.        

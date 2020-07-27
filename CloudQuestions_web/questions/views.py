@@ -3,7 +3,6 @@ from .forms import (SearchForm, UploadFileForm,
                     CreateTopicForm, CreateTopicFormId)
 from questions.src import question_service, parsing
 from .models import Topic, Question
-from accounts.src import api_client
 from django.http import HttpResponse
 
 

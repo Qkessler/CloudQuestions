@@ -7,23 +7,5 @@
 line-length = 88
 target-version = ['py36', 'py37', 'py38']
 include = '\.pyi?$'
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.env
-  | \migrations
-  | _build
-  | buck-out
-  | build
-  | dist
+exclude = '(/(\.env|migrations)|.*\/settings\.py.*|tests/|manage|apps|asgi|wsgi)'
 
-  # The following are specific to Black, you probably don't want those.
-  | blib2to3
-  | tests/data
-  | profiling
-)/
-'''

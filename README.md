@@ -32,7 +32,7 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
     git checkout dev
     ```
 4. Create a new branch off the "dev" branch:
-        ```
+    ```
     git checkout -b <new_branch_name>
     ```
 5. Set up your environment and dependencies:
@@ -42,7 +42,14 @@ python3 -m venv <environment_name>
 pip install -r requirements.txt
 ```
 
-At this point the app should be running locally. To run the Django server:
+At this point the app should be running locally. To craete migrations and create the database.
+
+```    
+python manage.py makemigration questions accounts
+python manage.py migrate    
+```    
+    
+To run the Django server:
 
 ```
 python manage.py runserver

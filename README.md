@@ -28,7 +28,15 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
  
 1. Fork this repository.
 2. Clone your forked repository.
-3. Set up your environment and dependencies.
+3. Checkout to the "dev" branch:
+    ```
+    git checkout dev
+    ```
+4. Create a new branch off the "dev" branch:
+        ```
+    git checkout -b <new_branch_name>
+    ```
+5. Set up your environment and dependencies.
 
 ```
 python3 -m venv <environment_name>

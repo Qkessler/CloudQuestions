@@ -9,12 +9,13 @@ Django Web-App for studying which creates an easier costumer experience for appl
 - [Contributing](#contributing)
 - [Development](#development)
 - [Tests](#tests)
+- [Licence] (#licence)
 
 ## Contributing
 
 Contributions are warmly welcomed. Doesn't have to be implementing new functionality, issues are also opened for documentation, support, etc. 
 
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/Qkessler/CloudQuestions/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Development
 
@@ -114,3 +115,6 @@ We use Black formatter at CloudQuestions. To test files to have a black format:
 ```
 pytest --black    
 ```           
+
+## Licence
+This project is licenced under the [MIT])(https://github.com/Qkessler/CloudQuestions/blob/master/LICENSE) Licence - see the [LICENCE](https://github.com/Qkessler/CloudQuestions/blob/master/LICENSE) for details.        

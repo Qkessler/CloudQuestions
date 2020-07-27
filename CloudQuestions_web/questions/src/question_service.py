@@ -27,7 +27,8 @@ def include_questions(q_a, topic_name, user):
         topic = Topic.objects.get(name=topic_name)
     for question_el, answer_el in q_a.items():
         if not same_questions(question_el, topic_name) and not same_answers(
-                answer_el, topic_name):
+            answer_el, topic_name
+        ):
             question = Question()
             question.topic = topic
             question.question = question_el
@@ -51,7 +52,8 @@ def same_questions(question, topic):
     if topic:
         topic_id = topic.id
         query_questions = Question.objects.filter(topic=topic_id).filter(
-            question=question)
+            question=question
+        )
         if not query_questions:
             return False
         return True
@@ -62,8 +64,7 @@ def same_answers(answer, topic):
     topic = Topic.objects.get(name=topic)
     if topic:
         topic_id = topic.id
-        query_answers = Question.objects.filter(
-            answer=answer).filter(topic=topic_id)
+        query_answers = Question.objects.filter(answer=answer).filter(topic=topic_id)
         if not query_answers:
             return False
         return True
@@ -78,8 +79,7 @@ def topics_by_name(ids, creator=None):
         query = Topic.objects.filter(id__in=ids)
         topic_names = [topic.name for topic in query]
     else:
-        query_creator = Topic.objects.filter(
-            id__in=ids).filter(creator=creator)
+        query_creator = Topic.objects.filter(id__in=ids).filter(creator=creator)
         topic_names = [topic.name for topic in query_creator]
     return topic_names
 
@@ -92,8 +92,9 @@ ids in the db. """
         query = Topic.objects.filter(name__contains=name)
         topic_ids = [topic.id for topic in query]
     else:
-        query_creator = Topic.objects.filter(
-            name__contains=name).filter(creator=creator)
+        query_creator = Topic.objects.filter(name__contains=name).filter(
+            creator=creator
+        )
         topic_ids = [topic.id for topic in query_creator]
     return topic_ids
 
@@ -101,7 +102,7 @@ ids in the db. """
 def get_words(question):
     """ Gets the words of a question. """
     text = question.question
-    return [parsing.scrub_name(word) for word in text.split(' ')]
+    return [parsing.scrub_name(word) for word in text.split(" ")]
 
 
 def search_engine(search_term, creator=None, public=None):
@@ -131,13 +132,12 @@ def search_engine(search_term, creator=None, public=None):
                 if topic not in topics_ids:
                     topics_ids.append(topic.id)
         if not public:
-            topics_return = Topic.objects.filter(
-                id__in=topics_ids).order_by("name")
+            topics_return = Topic.objects.filter(id__in=topics_ids).order_by("name")
         else:
             topics_return = (
                 Topic.objects.filter(id__in=topics_ids)
                 .filter(privacy=True)
-                .order_by('name')
+                .order_by("name")
             )
     else:
         topics_ids = []
@@ -160,8 +160,7 @@ def search_engine(search_term, creator=None, public=None):
             if search_term in words_topic:
                 if topic not in topics_ids:
                     topics_ids.append(topic.id)
-        topics_return = Topic.objects.all().filter(id__in=topics_ids).order_by(
-            "name")
+        topics_return = Topic.objects.all().filter(id__in=topics_ids).order_by("name")
     return topics_return
 
 

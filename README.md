@@ -26,8 +26,7 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
 
 ### Installing steps
  
-1. Fork this repository.
-2. Clone your forked repository.
+2. Clone this repository.
 3. Checkout to the "dev" branch:
     ```
     git checkout dev
@@ -36,7 +35,7 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
         ```
     git checkout -b <new_branch_name>
     ```
-5. Set up your environment and dependencies.
+5. Set up your environment and dependencies:
 
 ```
 python3 -m venv <environment_name>
@@ -94,3 +93,11 @@ pytest
 ```
 
 We recommend writing tests on new functionality for an easier process for merging it to the repo.
+
+### Format tests.
+
+We use Black formatter at CloudQuestions. To test files to have a black format:
+
+```
+pytest --black    
+```           

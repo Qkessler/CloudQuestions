@@ -110,7 +110,7 @@ We recommend writing tests on new functionality for an easier process for mergin
 
 ### Format tests.
 
-We use Black formatter at CloudQuestions. To test files to have a black format:
+We use [Black](https://black.readthedocs.io/en/stable/) formatter at CloudQuestions. To test files to have a black format:
 
 ```
 pytest --black    

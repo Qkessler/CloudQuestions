@@ -35,13 +35,19 @@ At CloudQuestions, we use environments for development (pyvenv). On these enviro
     ```
     git checkout -b <new_branch_name>
     ```
-5. Set up your environment and dependencies:
+5. Add exclude info to avoid unwanted files.
+    
+    ```
+    cat EXCLUDE.txt >> .git/info/exclude
+    ```
+    
+6. Set up your environment and dependencies:
 
 ```
 python3 -m venv <environment_name>
 pip install -r requirements.txt
 ```
-
+    
 At this point the app should be running locally. To craete migrations and create the database.
 
 ```    

@@ -99,8 +99,8 @@ def get_inside(question_list, file):
     for _ in question_num:
         answer = []
         not_last = True
-        while not_last and (pat_answers.match(clean_lines[_+1])
-                            or clean_lines[_+1] == '\n'):
+        while not_last and (pat_answers.match(
+                clean_lines[_+1]) or clean_lines[_+1] == '\n'):
             not_last = (_ + 1 < (last_line - 1))
             answer.append(clean_lines[_+1].strip('    '))
             _ += 1

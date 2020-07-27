@@ -81,7 +81,7 @@ cat TEMPLATE_KEYS.txt >> <environment_name>/bin/activate
 We use pytest to run all our tests. It is included in the dependencies, so the only steps required are:
 
 ```
-cd Cloudquestions_Web
+cd CloudQuestions_Web
 pytest
 ```
 

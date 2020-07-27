@@ -125,17 +125,20 @@ def search_engine(search_term, creator=None, public=None):
             words_topic = []
             for question in questions:
                 for word in get_words(question):
-                    if word != '':
+                    if word != "":
                         words_topic.append(word)
             if search_term in words_topic:
                 if topic not in topics_ids:
                     topics_ids.append(topic.id)
         if not public:
             topics_return = Topic.objects.filter(
-                id__in=topics_ids).order_by('name')
+                id__in=topics_ids).order_by("name")
         else:
-            topics_return = Topic.objects.filter(
-                id__in=topics_ids).filter(privacy=True).order_by('name')
+            topics_return = (
+                Topic.objects.filter(id__in=topics_ids)
+                .filter(privacy=True)
+                .order_by('name')
+            )
     else:
         topics_ids = []
         topic_id_query = topics_by_id(parsing.scrub_name(search_term), creator)
@@ -152,26 +155,25 @@ def search_engine(search_term, creator=None, public=None):
             words_topic = []
             for question in questions:
                 for word in get_words(question):
-                    if word != '':
+                    if word != "":
                         words_topic.append(word)
             if search_term in words_topic:
                 if topic not in topics_ids:
                     topics_ids.append(topic.id)
-        topics_return = Topic.objects.all().filter(
-            id__in=topics_ids).order_by('name')
+        topics_return = Topic.objects.all().filter(id__in=topics_ids).order_by(
+            "name")
     return topics_return
 
 
 def random_question(topic_name, questions_showed):
-    """ Function that returns a random question for a topic. """
+    """Function that returns a random question for a topic."""
     topic_id = Topic.objects.filter(name=topic_name)[0].id
     len_query = Question.objects.filter(topic=topic_id).count()
     question_id = None
     if len(questions_showed) == len_query:
         return None
     while question_id is None or question_id in questions_showed:
-        question_id = random.randrange(
-            0, len_query) + 1
+        question_id = random.randrange(0, len_query) + 1
     return question_id
 
 
@@ -242,18 +244,18 @@ def get_list_questions(list_questions):
     for the random view. """
     if not list_questions.strip():
         return []
-    questions_list = [int(string) for string in list_questions.split('+')]
+    questions_list = [int(string) for string in list_questions.split("+")]
     return questions_list
 
 
 def create_question_list(question_list):
-    """ Function that creates a string for the questions_list given. """
-    string = '+'.join([str(id) for id in question_list])
+    """ Function that creates a string for the questions_list given."""
+    string = "+".join([str(id) for id in question_list])
     return string
 
 
 def question_by_position(topic, position):
-    """ Return a question given the id. """
+    """ Return a question given the topic id and position of the question."""
     topic_id = topics_by_id(topic)[0]
     questions = Question.objects.all().filter(topic=topic_id)
     return questions[position - 1]
@@ -315,31 +317,42 @@ def get_question(question_id):
 def get_topic(topic_name):
     """ Given the topic name, function returns the oldest
     topic with the same name."""
-    topic = Topic.objects.filter(name=topic_name).order_by('created')[0]
+    topic = Topic.objects.filter(name=topic_name).order_by("created")[0]
     return topic
 
 
 def verification_email(request, user, email=None):
     """ Given a request, user, sends the verification email. """
     current_site = get_current_site(request)
-    mail_subject = 'Activate your CloudQuestions account!'
+    mail_subject = "Activate your CloudQuestions account!"
     if email:
-        html_message = render_to_string('change_email_email.html', {
-            'user': user,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'token': default_token_generator.make_token(user),
-            'email': email
-        })
+        html_message = render_to_string(
+            "change_email_email.html",
+            {
+                "user": user,
+                "domain": current_site.domain,
+                "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                "token": default_token_generator.make_token(user),
+                "email": email,
+            },
+        )
         plain_message = strip_tags(html_message)
     else:
-        html_message = render_to_string('verify_email.html', {
-            'user': user,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'token': default_token_generator.make_token(user),
-            'email': user.email
-        })
+        html_message = render_to_string(
+            "verify_email.html",
+            {
+                "user": user,
+                "domain": current_site.domain,
+                "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                "token": default_token_generator.make_token(user),
+                "email": user.email,
+            },
+        )
         plain_message = strip_tags(html_message)
-    send_mail(mail_subject, plain_message, os.environ['DEFAULT_FROM_EMAIL'],
-              [email], html_message=html_message)
+    send_mail(
+        mail_subject,
+        plain_message,
+        os.environ["DEFAULT_FROM_EMAIL"],
+        [email],
+        html_message=html_message,
+    )

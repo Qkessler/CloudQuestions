@@ -1,5 +1,7 @@
 social_auth_app_django==3.1.0
 pytest==5.4.1
+pytest-django==3.9.0
+pytest-black==0.3.10
 httplib2==0.18.1
 Django==3.0.7
 Markdown==3.2.1
@@ -8,3 +10,4 @@ django_crispy_forms==1.9.2
 django_recaptcha==2.0.6
 google_api_python_client==1.10.0
 python_magic==0.4.18
+

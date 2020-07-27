@@ -7,4 +7,4 @@
 line-length = 88
 target-version = ['py36', 'py37', 'py38']
 include = '\.pyi?$'
-exclude = '(/(\.env|migrations)|.*\/settings\.py.*|tests/)'
+exclude = '(/(\.env|migrations)|.*\/settings\.py.*|tests/|manage|apps)'

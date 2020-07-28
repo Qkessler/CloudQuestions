@@ -9,7 +9,7 @@ Django Web-App for studying which creates an easier costumer experience for appl
 - [Contributing](#contributing)
 - [Development](#development)
 - [Tests](#tests)
-- [Licence] (#licence)
+- [Licence](#licence)
 
 ## Contributing
 

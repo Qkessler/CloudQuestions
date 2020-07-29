@@ -322,6 +322,7 @@ def get_topic(topic_name):
 
 def verification_email(request, user, email=None):
     """ Given a request, user, sends the verification email. """
+    breakpoint()
     current_site = get_current_site(request)
     mail_subject = "Activate your CloudQuestions account!"
     if email:
@@ -354,6 +355,7 @@ def verification_email(request, user, email=None):
         os.environ["DEFAULT_FROM_EMAIL"],
         [email],
         html_message=html_message,
+        fail_silently=False,
     )
 
 

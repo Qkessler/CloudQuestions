@@ -322,7 +322,6 @@ def get_topic(topic_name):
 
 def verification_email(request, user, email=None):
     """ Given a request, user, sends the verification email. """
-    breakpoint()
     current_site = get_current_site(request)
     if email:
         mail_subject = "Change your CloudQuestions email!"

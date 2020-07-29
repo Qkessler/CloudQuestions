@@ -66,7 +66,6 @@ def detail(request, topic_name):
     context = {}
     context["is_creator"] = False
     topic = question_service.get_topic(topic_name)
-
     creator = question_service.get_creator(topic_name)
     context["creator"] = creator.username
     if creator.id == request.user.id:

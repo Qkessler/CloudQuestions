@@ -359,4 +359,3 @@ def verification_email(request, user, email=None):
 
 def is_participant(user, topic):
     """Function created to check if a certain user given belongs to a group."""
-    

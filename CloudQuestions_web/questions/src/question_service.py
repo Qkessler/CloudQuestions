@@ -323,8 +323,8 @@ def get_topic(topic_name):
 def verification_email(request, user, email=None):
     """ Given a request, user, sends the verification email. """
     current_site = get_current_site(request)
-    mail_subject = "Activate your CloudQuestions account!"
     if email:
+        mail_subject = "Change your CloudQuestions email!"
         html_message = render_to_string(
             "change_email_email.html",
             {
@@ -337,6 +337,7 @@ def verification_email(request, user, email=None):
         )
         plain_message = strip_tags(html_message)
     else:
+        mail_subject = "Activate your CloudQuestions account!"
         html_message = render_to_string(
             "verify_email.html",
             {
@@ -354,4 +355,9 @@ def verification_email(request, user, email=None):
         os.environ["DEFAULT_FROM_EMAIL"],
         [email],
         html_message=html_message,
+        fail_silently=False,
     )
+
+
+def is_participant(user, topic):
+    """Function created to check if a certain user given belongs to a group."""

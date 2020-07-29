@@ -1,6 +1,7 @@
 from django.conf import settings
 from datetime import datetime
 from django.db import models
+from accounts.models import Group
 
 
 class Topic(models.Model):
@@ -12,6 +13,9 @@ class Topic(models.Model):
     )
     created_flag = models.BooleanField(default=True)
     privacy = models.BooleanField(default=False)
+    group = models.ForeignKey(
+        Group, on_delete=models.DO_NOTHING, db_index=True
+    )
 
 
 class Question(models.Model):

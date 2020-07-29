@@ -66,14 +66,14 @@ def detail(request, topic_name):
     context = {}
     context["is_creator"] = False
     topic = question_service.get_topic(topic_name)
-
     creator = question_service.get_creator(topic_name)
     context["creator"] = creator.username
     if creator.id == request.user.id:
         context["is_creator"] = True
 
     is_public = topic.privacy
-    if is_public or context["is_creator"]:
+    group_participant = question_service.is_participant(request.user, topic)
+    if is_public or context["is_creator"] or group_participant:
 
         if request.GET.get("delete") and context["creator"]:
             topic.delete()

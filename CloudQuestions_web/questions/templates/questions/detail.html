@@ -25,9 +25,17 @@
     </div>
     <div id="share-button-container" class="inline-block-black">
         <div class="dropdown">
-            <button class="dropdown-toggle" type="button" id="dropdown-image" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" id="dropdown-image" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img alt="Share image" src="{% static 'questions/share-24px.svg' %}"/>
             </button>
+            <!-- <a href="" data-toggle="dropdown">
+                 <img alt="Share image" src="{% static 'questions/share-24px.svg' %}"/>
+                 </a> -->
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+            </div>
         </div>
     </div>
     {% endif %}

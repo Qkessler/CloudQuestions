@@ -86,6 +86,8 @@ def detail(request, topic_name):
         if request.GET.get("modify-button.x"):
             return redirect("questions:create_topic", topic.id)
 
+        if request.GET.get("")
+
         if request.GET.get("red_button") == "Bad":
             color = "red"
         elif request.GET.get("yellow_button") == "Medium":

@@ -348,6 +348,7 @@ def verification_email(request, user, email=None):
                 "email": user.email,
             },
         )
+        email = user.email
         plain_message = strip_tags(html_message)
     send_mail(
         mail_subject,

@@ -14,7 +14,7 @@ class Topic(models.Model):
     created_flag = models.BooleanField(default=True)
     privacy = models.BooleanField(default=False)
     group = models.ForeignKey(
-        Group, on_delete=models.DO_NOTHING, db_index=True
+        Group, null=True, on_delete=models.DO_NOTHING, db_index=True
     )
 
 

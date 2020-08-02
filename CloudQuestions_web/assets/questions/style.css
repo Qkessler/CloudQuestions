@@ -1283,3 +1283,13 @@ summary {
     width: 100%;
 }
 
+#cloudquestions-text {
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 3px;
+    color: white;
+    font-size: 6vw;
+}
+
+#cloudquestions-logo {
+    display: none;
+}

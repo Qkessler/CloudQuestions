@@ -1006,6 +1006,7 @@ summary {
     .opensource-a {
         grid-colum: 1;
         grid-row: 1;
+        padding: 50px;
     }
 
     .opensource-b {
@@ -1024,6 +1025,10 @@ summary {
     #description-container {
         background-size: 1126px;
         background-position: 250px -150px;
+    }
+
+    .index-section {
+        width: 90%;
         margin: 0 auto;
     }
 }
@@ -1065,6 +1070,10 @@ summary {
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: 100%;
+    }
+    
+    .index-section {
+        width: 70%;
     }
 }
 
@@ -1259,6 +1268,10 @@ summary {
 
 #workflow-steps {
     display: none;
+}
+
+.blight {
+    background-color: #f8f9fa;
 }
 
 .step-number {

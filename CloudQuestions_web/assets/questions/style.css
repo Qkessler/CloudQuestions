@@ -1016,6 +1016,16 @@ summary {
     #opensource-image {
         top: -70px !important;
     }
+
+    .index-text {
+        font-size: 23.55px !important;
+    }
+
+    #description-container {
+        background-size: 1126px;
+        background-position: 250px -150px;
+        margin: 0 auto;
+    }
 }
 
 @media (min-width: 1440px) {

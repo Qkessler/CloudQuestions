@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    <div id="workflow-container">
+    <div class="index-section" id="workflow-container">
         <p class="index-title align-left">Workflow</p>
         <p class="align-left index-text" id="workflow-text">The recommended way of using the app is accessing the topics and answering the questions without looking at the response. Then, rate your session and redo it as you need.</p>
         <div id="device-container">
@@ -102,25 +102,27 @@
             </div>
         </div>
     </div>
-    <div id="opensource-container">
-        <div class="opensource-a">
-            <p class="index-title align-left">Open Source</p>
-            <p id="opensource-text" class="align-left index-text">CloudQuestions is Open Source! Feel free to contribute and become part of the community.</p>
-            <div id="opensource-buttons" class="align-left">
-                <div class="inline-block-black" id="opensource-repo">
-                    <form action="https://github.com/Qkessler/CloudQuestions" method="get">
-                        <input class="opensource-button" type="submit" value="Repository"/>
-                    </form>
-                </div>
-                <div class="inline-block-black">
-                    <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
-                        <input class="opensource-button" type="submit" value="Issues"/>
-                    </form>
+    <div class="blight">
+        <div class="index-section" id="opensource-container">
+            <div class="opensource-a">
+                <p class="index-title align-left">Open Source</p>
+                <p id="opensource-text" class="align-left index-text">CloudQuestions is Open Source! Feel free to contribute and become part of the community.</p>
+                <div id="opensource-buttons" class="align-left">
+                    <div class="inline-block-black" id="opensource-repo">
+                        <form action="https://github.com/Qkessler/CloudQuestions" method="get">
+                            <input class="opensource-button" type="submit" value="Repository"/>
+                        </form>
+                    </div>
+                    <div class="inline-block-black">
+                        <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
+                            <input class="opensource-button" type="submit" value="Issues"/>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="opensource-b">
-            <img id="opensource-image" alt="Woman coding" src="{% static 'questions/drawkit-server-woman-monochrome.svg'%}"/>
+            <div class="opensource-b">
+                <img id="opensource-image" alt="Woman coding" src="{% static 'questions/drawkit-server-woman-monochrome.svg'%}"/>
+            </div>
         </div>
     </div>
-{% endblock %}
+    {% endblock %}

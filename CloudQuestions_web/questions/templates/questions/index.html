@@ -101,20 +101,24 @@
         </div>
     </div>
     <div id="opensource-container">
-        <p class="index-title align-left">Open Source</p>
-        <p id="opensource-text" class="align-left index-text">CloudQuestions is Open Source! Feel free to contribute and become part of the community.</p>
-        <div id="opensource-buttons" class="align-left">
-            <div class="inline-block-black" id="opensource-repo">
-                <form action="https://github.com/Qkessler/CloudQuestions" method="get">
-                    <input class="opensource-button" type="submit" value="Repository"/>
-                </form>
-            </div>
-            <div class="inline-block-black">
-                <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
-                    <input class="opensource-button" type="submit" value="Issues"/>
-                </form>
+        <div class="opensource-a">
+            <p class="index-title align-left">Open Source</p>
+            <p id="opensource-text" class="align-left index-text">CloudQuestions is Open Source! Feel free to contribute and become part of the community.</p>
+            <div id="opensource-buttons" class="align-left">
+                <div class="inline-block-black" id="opensource-repo">
+                    <form action="https://github.com/Qkessler/CloudQuestions" method="get">
+                        <input class="opensource-button" type="submit" value="Repository"/>
+                    </form>
+                </div>
+                <div class="inline-block-black">
+                    <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
+                        <input class="opensource-button" type="submit" value="Issues"/>
+                    </form>
+                </div>
             </div>
         </div>
-        <img id="opensource-image" alt="Woman coding" src="{% static 'questions/drawkit-server-woman-monochrome.svg'%}"/>
+        <div class="opensource-b">
+            <img id="opensource-image" alt="Woman coding" src="{% static 'questions/drawkit-server-woman-monochrome.svg'%}"/>
+        </div>
     </div>
 {% endblock %}

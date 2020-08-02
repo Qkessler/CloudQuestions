@@ -964,9 +964,9 @@ summary {
     }
 
     #opensource-image {
-        width: 80vw !important;
+        width: 614px !important;
         margin: 0 auto;
-        top: -70px !important;
+        top: -150px !important;
         left: 0px !important;
     }
 
@@ -995,6 +995,26 @@ summary {
 
     #reset-password-container {
         width: 500px;
+    }
+
+    #opensource-container {
+        display: grid;
+        grid-template-column: 50% 50%;
+        grid-template-row: auto;
+    }
+
+    .opensource-a {
+        grid-colum: 1;
+        grid-row: 1;
+    }
+
+    .opensource-b {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    #opensource-image {
+        top: -70px !important;
     }
 }
 

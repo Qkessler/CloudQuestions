@@ -6,7 +6,7 @@ Django Web-App for studying which creates an easier costumer experience for appl
     
 :warning: CloudQuestions is not yet in production, localhost server development at the moment.
 
-    
+![CloudQuestions' index page.](https://github.com/Qkessler/CloudQuestions/blob/master/pics/index_page.png "CloudQuestions' index page.")
 
 ## Summary
 

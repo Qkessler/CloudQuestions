@@ -964,10 +964,15 @@ summary {
     }
 
     #opensource-image {
-        width: 80vw !important;
+        width: 614px !important;
         margin: 0 auto;
-        top: -70px !important;
+        top: -150px !important;
         left: 0px !important;
+    }
+
+    #workflow-text {
+        width: 600px;
+        margin-bottom: 60px;
     }
 
 }
@@ -995,6 +1000,41 @@ summary {
 
     #reset-password-container {
         width: 500px;
+    }
+
+    #opensource-container {
+        display: grid;
+        grid-template-column: 50% 50%;
+        grid-template-row: auto;
+    }
+
+    .opensource-a {
+        grid-colum: 1;
+        grid-row: 1;
+        padding: 50px;
+    }
+
+    .opensource-b {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    #opensource-image {
+        top: -70px !important;
+    }
+
+    .index-text {
+        font-size: 23.55px !important;
+    }
+
+    #description-container {
+        background-size: 1126px;
+        background-position: 250px -150px;
+    }
+
+    .index-section {
+        width: 90%;
+        margin: 0 auto;
     }
 }
 
@@ -1035,6 +1075,10 @@ summary {
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: 100%;
+    }
+    
+    .index-section {
+        width: 70%;
     }
 }
 
@@ -1231,6 +1275,10 @@ summary {
     display: none;
 }
 
+.blight {
+    background-color: #f8f9fa;
+}
+
 .step-number {
     padding: 15px;
     font-size: 20px;
@@ -1281,4 +1329,15 @@ summary {
 
 .workflow-gif {
     width: 100%;
+}
+
+#cloudquestions-text {
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 3px;
+    color: white;
+    font-size: 6vw;
+}
+
+#cloudquestions-logo {
+    display: none;
 }

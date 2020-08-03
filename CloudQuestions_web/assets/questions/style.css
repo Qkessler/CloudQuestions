@@ -722,11 +722,6 @@ summary {
     margin-left: 20px;
 }
 
-.card-container {
-    border-radius: 4px;
-    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-}
-
 
 #calendar-explanation-container {
     padding: 60px;
@@ -818,6 +813,11 @@ summary {
 }
 
 @media (min-width: 750px) {
+    .card-container {
+        border-radius: 4px;
+        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    }
+    
     .list_topic {
         width: 60%;
         margin: 0 auto;

@@ -1,6 +1,6 @@
 # CloudQuestions
 
-Django Web-App for studying which creates an easier costumer experience for applying a mix between Flash Cards and Active Recall techniques.
+Django Web-App for studying which creates an easier customer experience for applying a mix between Flash Cards and Active Recall techniques.
 
 :house: The home link is the following: https://cloudquestions.es/
     

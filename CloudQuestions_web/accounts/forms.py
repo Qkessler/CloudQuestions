@@ -26,7 +26,7 @@ class SignUpForm(UserCreationForm):
                     css_id="register-form",
                 ),
             ),
-            ButtonHolder(Submit("submit", "Signup", css_class="button white")),
+            ButtonHolder(Submit("submit", "Sign up", css_class="button white")),
         )
 
 

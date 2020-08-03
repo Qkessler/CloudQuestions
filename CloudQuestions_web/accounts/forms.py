@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div
@@ -29,6 +29,23 @@ class SignUpForm(UserCreationForm):
             ButtonHolder(Submit("submit", "Sign up", css_class="button white")),
         )
 
+
+class LoginForm(AuthenticationForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                Div(
+                    "username",
+                    "password",
+                    css_id="login-form",
+                ),
+            ),
+            ButtonHolder(Submit("submit", "Log in", css_class="button white")),
+        )
 
 class ChangeUsernameForm(forms.ModelForm):
     username = forms.CharField(max_length=30, required=True, label="Username")

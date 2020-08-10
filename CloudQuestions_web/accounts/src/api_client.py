@@ -5,10 +5,11 @@ import httplib2
 from questions.src import question_service
 from googleapiclient.discovery import build
 from oauth2client.client import OAuth2WebServerFlow
+from django.conf import settings
 
 
 DEFAULT_URL = "https://cloudquestions.es/"
-CALENDAR_API_KEY = os.environ["CALENDAR_API_KEY"]
+CALENDAR_API_KEY = settings.CALENDAR_API_KEY
 SCOPE_EVENTS = "https://www.googleapis.com/auth/calendar.events"
 
 
@@ -16,11 +17,11 @@ def get_flow(topic, color):
     """ Creation of the web server flow given the auth
     parameters in the environment """
     flow = OAuth2WebServerFlow(
-        client_id=os.environ["CALENDAR_CLIENT_ID"],
-        client_secret=os.environ["CALENDAR_CLIENT_SECRET"],
+        client_id=settings.CALENDAR_CLIENT_ID,
+        client_secret=settings.CALENDAR_CLIENT_SECRET,
         scope=SCOPE_EVENTS,
         user_agent="CloudQuestions",
-        redirect_uri="http://127.0.0.1:8000/accounts/settings/",
+        redirect_uri="https://cloudquestions.es/accounts/settings/",
         state=f"{topic}+{color}",
     )
     return flow

@@ -1,0 +1,20 @@
+* CloudQuestions help questions.
+** What is CloudQuestions?
+   CloudQuestions is a personal project that I (Enrique Kessler Martínez(link?)) started with the objective of learning the Django framework.
+   CloudQuestions is also my way of creating a better workflow at university, as it helps with the automation of my process.
+   Finally, CloudQuestions is "Efficient learning made easy", as we combine FlashCards with spaced repetition, helping you reach your full potential.
+   
+** How do you add topics?
+   You have to be logged in to be able to add topics.
+   There are two ways of adding topics:
+   - File uploading: Files supported are Markdown, which is a common format for text on the web. See below for the format required on questions.
+   - Web functionality: Click the "Create topic" button on the questions page. It links to the "Create topic" view, where you can create topics easily.
+     Every topic not saved with the "Save" button is discarded.
+** What is the recommended workflow?   
+** What is the format required for questions?
+** What is the price for a CloudQuestions' membership?
+** Which topics am I seeing on the Questions tab?
+** Which kind of files can I import through the browse file functionality?
+** I have a problem. Where can I get help?
+** I have found a bug. Where can I suggest the issue?
+** I want to contribute to CloudQuestions. What is the process required?

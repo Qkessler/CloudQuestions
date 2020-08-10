@@ -3,8 +3,6 @@
 Django Web-App for studying which creates an easier customer experience for applying a mix between Flash Cards and Active Recall techniques.
 
 :house: The home link is the following: https://cloudquestions.es/
-    
-:warning: CloudQuestions is not yet in production, localhost server development at the moment.
 
 ![CloudQuestions' index page.](https://github.com/Qkessler/CloudQuestions/blob/master/pics/index_page.png "CloudQuestions' index page.")
 

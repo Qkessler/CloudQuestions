@@ -10,22 +10,56 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import os
-
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SECRET']
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG") == "True"
+DEV = os.environ.get("DEV") == "True"
 
-ALLOWED_HOSTS = ['*']
+# CREDENTIALS
+if not DEV:
+    with open(BASE_DIR + '/CloudQuestions_web/secret.json', 'r') as f:
+        secret = json.load(f)
+    SECRET_KEY = secret["DJANGO_SECRET"]
+    EMAIL_HOST_USER = secret["EMAIL_HOST_USER"]
+    EMAIL_HOST_PASSWORD = secret["EMAIL_HOST_PASSWORD"]
+    DEFAULT_FROM_EMAIL = secret["DEFAULT_FROM_EMAIL"]
+    SERVER_EMAIL = secret["SERVER_EMAIL"]
+    POSTGRES_PASSWORD = secret["POSTGRES_PASSWORD"]
+    SOCIAL_AUTH_GITHUB_KEY = secret["SOCIAL_AUTH_GITHUB_KEY"]
+    SOCIAL_AUTH_GITHUB_SECRET = secret["SOCIAL_AUTH_GITHUB_SECRET"]
+    SOCIAL_AUTH_TWITTER_KEY = secret["SOCIAL_AUTH_TWITTER_KEY"]
+    SOCIAL_AUTH_TWITTER_SECRET = secret["SOCIAL_AUTH_TWITTER_SECRET"]
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = secret["SOCIAL_AUTH_GOOGLE_OAUTH2_KEY"]
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = secret["SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"]
+    RECAPTCHA_PUBLIC_KEY = secret["RECAPTCHA_PUBLIC_KEY"]
+    RECAPTCHA_PRIVATE_KEY = secret["RECAPTCHA_PRIVATE_KEY"]
+    CALENDAR_API_KEY = secret["CALENDAR_API_KEY"]
+    CALENDAR_CLIENT_ID = secret["CALENDAR_CLIENT_ID"]
+    CALENDAR_CLIENT_SECRET = secret["CALENDAR_CLIENT_SECRET"]
+else:
+    SECRET_KEY = os.environ.get("DJANGO_SECRET")
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+    DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+    SERVER_EMAIL = os.environ.get("SERVER_EMAIL")
+    SOCIAL_AUTH_GITHUB_KEY = os.environ.get("SOCIAL_AUTH_GITHUB_KEY")
+    SOCIAL_AUTH_GITHUB_SECRET = os.environ.get("SOCIAL_AUTH_GITHUB_SECRET")
+    SOCIAL_AUTH_TWITTER_KEY = os.environ.get("SOCIAL_AUTH_TWITTER_KEY")
+    SOCIAL_AUTH_TWITTER_SECRET = os.environ.get("SOCIAL_AUTH_TWITTER_SECRET")
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+    RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
+    RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
+    CALENDAR_API_KEY = os.environ.get("CALENDAR_API_KEY")
+    CALENDAR_CLIENT_ID = os.environ.get("CALENDAR_CLIENT_ID")
+    CALENDAR_CLIENT_SECRET = os.environ.get("CALENDAR_CLIENT_SECRET")
+
+# Had to include both localhost and IP because Django doesn't default to localhost.    
+ALLOWED_HOSTS = ['cloudquestions.es', 'www.cloudquestions.es', '127.0.0.1', 'localhost']
 
 LOGIN_REDIRECT_URL = 'questions:questions'
 SOCIAL_AUTH_LOGIN_ERROR_URL = 'accounts:settings'
@@ -86,22 +120,30 @@ WSGI_APPLICATION = 'CloudQuestions_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'questions.sqlite'),
+if not DEV:
+    database_config = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'cloudquestions',
+            'USER': 'qkessler',
+            'PASSWORD': POSTGRES_PASSWORD,
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-}
+else:
+    database_config = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'questions.sqlite'),
+        }
+    }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-# MIGRATION_MODULES = {'questions': None}
+DATABASES = database_config
 
 # Dates.
 USE_L10N = False
 DATE_FORMAT = "%d/%m/%Y"
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -131,27 +173,18 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    # Here you tell django to look for a folder named 'assets'
     os.path.join(BASE_DIR, 'assets'),
 ]
 
-
 # Email configuration.
-
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-SERVER_EMAIL = os.environ['SERVER_EMAIL']
 
 # Social login.
 AUTHENTICATION_BACKENDS = [
@@ -172,13 +205,3 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details')
-
-SOCIAL_AUTH_GITHUB_KEY = os.environ['SOCIAL_AUTH_GITHUB_KEY']
-SOCIAL_AUTH_GITHUB_SECRET = os.environ['SOCIAL_AUTH_GITHUB_SECRET']
-SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
-SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ[
-    'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
-RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']

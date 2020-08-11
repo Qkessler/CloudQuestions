@@ -10,12 +10,7 @@
    - File uploading: Files supported are Markdown, which is a common format for text on the web. See below for the format required on questions.
    - Web functionality: Click the "Create topic" button on the questions page. It links to the "Create topic" view, where you can create topics easily.
      Every topic not saved with the "Save" button is discarded.
-<<<<<<< HEAD
 ** What is the recommended workflow?
-   
-=======
-** What is the recommended workflow?   
->>>>>>> 62a1436b4a3098bcb7ed6879d71c08c4d115d6f8
 ** What is the format required for questions?
 ** What is the price for a CloudQuestions' membership?
 ** Which topics am I seeing on the Questions tab?

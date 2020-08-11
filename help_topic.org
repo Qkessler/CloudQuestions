@@ -1,19 +1,34 @@
 * CloudQuestions help questions.
 ** What is CloudQuestions?
-   CloudQuestions is a personal project that I (Enrique Kessler Martínez(link?)) started with the objective of learning the Django framework.
+   #+BEGIN_SRC html
+   <p>CloudQuestions is a personal project that I (Enrique Kessler Martínez(link?)) started with the objective of learning the Django framework.
    CloudQuestions is also my way of creating a better workflow at university, as it helps with the automation of my process.
-   Finally, CloudQuestions is "Efficient learning made easy", as we combine FlashCards with spaced repetition, helping you reach your full potential.
-   
+   Finally, CloudQuestions is "Efficient learning made easy", as we combine FlashCards with spaced repetition, helping you reach your full potential.</p>
+   #+END_SRC
 ** How do you add topics?
-   You have to be logged in to be able to add topics.
-   There are two ways of adding topics:
-   - File uploading: Files supported are Markdown, which is a common format for text on the web. See below for the format required on questions.
-   - Web functionality: Click the "Create topic" button on the questions page. It links to the "Create topic" view, where you can create topics easily.
-     Every topic not saved with the "Save" button is discarded.
+   #+BEGIN_SRC html
+     <p>You have to be logged in to be able to add topics.</p>
+     <p>There are two ways of adding topics:</p>
+     <ul>
+       <li>File uploading: Files supported are Markdown, which is a common format for text on the web. See below for the format required on questions.</li>
+       <li>Web functionality: Click the "Create topic" button on the questions page. It links to the "Create topic" view, where you can create topics easily.Web functionality: Click the "Create topic" button on the questions page. It links to the "Create topic" view, where you can create topics easily.</li>
+     </ul>
+     <p>Every topic not saved with the "Save" button is discarded.</p>
+   #+END_SRC
 ** What is the recommended workflow?
+   #+BEGIN_SRC html
+     """<div id="workflow-steps"> <div class="workflow-step"> <div class="workflow-step-circle color-opacity_1"> <p class="step-number">1</p> </div> <div> <p class="workflow-title">Create a topic</p> </div> <div> <img class="workflow-gif" alt="Creation of topics" src="/static/gifs/workflow-step1.gif"> </div> </div> <div class="workflow-step"> <div class="workflow-step-circle color-opacity_3"> <p class="step-number">2</p> </div> <div> <p class="workflow-title">Access the topic</p> </div> <div> <img class="workflow-gif" alt="" src="/static/gifs/workflow-step2.gif"> </div> </div> <div class="workflow-step"> <div class="workflow-step-circle color-opacity_5"> <p class="step-number">3</p> </div> <div> <p class="workflow-title">Answer the questions</p> </div> <div> <img class="workflow-gif" alt="" src="/static/gifs/workflow-step3.gif"> </div> </div> <div class="workflow-step"> <div class="workflow-step-circle color-opacity_7"> <p class="step-number">4</p> </div> <div> <p class="workflow-title">Rate the topic and revisit</p> </div> <div> <img class="workflow-gif" alt="" src="/static/gifs/workflow-step4.gif"> </div> </div> </div>"""
+   #+END_SRC
 ** What is the format required for questions?
+   """<p>We specify a required format for questions looking for an easier parsing.</p><p>The format is the same as Markdown &quot;Toggles&quot;. These are the following:</p><p>- This is the question.</p><p>&emsp;This is the answer.</p><p>Be aware that the horizontal space on answers must be 4 spaces."""
 ** What is the price for a CloudQuestions' membership?
+   #+BEGIN_SRC html
+     """<p>At the moment CloudQuestions is free! You will be able to access all functionality available. If you have any questions feel free to contact us!</p>"""
+   #+END_SRC
 ** Which topics am I seeing on the Questions tab?
+   #+BEGIN_SRC html
+
+   #+END_SRC
 ** Which kind of files can I import through the browse file functionality?
 ** I have a problem. Where can I get help?
 ** I have found a bug. Where can I suggest the issue?

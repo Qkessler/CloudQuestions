@@ -7,7 +7,28 @@
 <div id="login-form">
     <div id="login-form-container" class="card-container">
         <h2 id="login-text" class="architects">Login</h2>
-        {% crispy form %}
+        {% if form.errors %}
+        <p>{{ form.errors | crispy }}</p>
+        {% endif %}
+
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p class="architects">Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+        {% else %}
+        <p class="architects">Please login to see this page.</p>
+        {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div id="login-form-button">
+	            <input class="btn btn-primary" type="submit" value="Login" />
+	            <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </form>
+
         <p id="lost-password"><a href="{% url 'password_reset' %}">Lost password?</a></p>
         <p id="register-login-link"><a href="{% url 'accounts:register' %}">Don't have an account?</a></p>
     </div>

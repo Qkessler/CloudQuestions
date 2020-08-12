@@ -832,6 +832,10 @@ summary {
         width: 50%;
     }
 
+    .help-topic-title {
+        font-size: 2.4vw !important ;
+    }
+
     #social-connections-container {
         width: 450px;
     }
@@ -1340,4 +1344,18 @@ summary {
 
 #cloudquestions-logo {
     display: none;
+}
+
+#help-topic-container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.help-topic-title {
+    text-align: center;
+    font-size: 5vw;
+}
+
+.help-topic-section {
+    margin: 40px;
 }

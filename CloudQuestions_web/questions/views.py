@@ -73,7 +73,8 @@ def detail(request, topic_name):
 
     is_public = topic.privacy
     group_participant = question_service.is_participant(request.user, topic)
-    if is_public or context["is_creator"] or group_participant:
+    help_topic = topic_name == "CloudQuestions_Help"
+    if is_public or context["is_creator"] or group_participant or help_topic:
 
         if request.GET.get("delete") and context["creator"]:
             topic.delete()
@@ -85,8 +86,6 @@ def detail(request, topic_name):
 
         if request.GET.get("modify-button.x"):
             return redirect("questions:create_topic", topic.id)
-
-        #if request.GET.get("")
 
         if request.GET.get("red_button") == "Bad":
             color = "red"

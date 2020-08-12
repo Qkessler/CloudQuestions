@@ -17,7 +17,6 @@ def questions(request):
     search_form = SearchForm(prefix="search_form")
     upload_file_form = UploadFileForm(prefix="upload_file_form")
     question_service.delete_flagged()
-    breakpoint()
     if request.GET.get("toggle_help"):
         return redirect("questions:detail", "CloudQuestions_Help")
     if request.GET.get("upload_topic"):

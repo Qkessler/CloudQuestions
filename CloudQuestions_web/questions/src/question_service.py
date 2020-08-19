@@ -13,6 +13,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.conf import settings
 
+
 def include_questions(q_a, topic_name, user):
     """ Inserting the questions and answers in the db. """
     topics = list(Topic.objects.all())

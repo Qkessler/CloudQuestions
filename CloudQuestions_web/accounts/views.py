@@ -3,7 +3,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
-from .forms import SignUpForm, ChangeUsernameForm, ChangeEmailForm, RemoveAccountForm
+from .forms import (
+    SignUpForm,
+    ChangeUsernameForm,
+    ChangeEmailForm,
+    RemoveAccountForm,
+)
 from social_django.models import UserSocialAuth
 from accounts.src.api_client import get_url, get_flow, calendar_connection
 from accounts.src.api_client import create_event

@@ -37,3 +37,23 @@ q5 = Question.objects.get_or_create(topic=help_topic, question=q5_question, answ
 q6_question = "Which topics am I seeing on the Questions tab?"
 q6_answer = """<p>At the current release of CloudQuestions the topics you are seeing in the Questions tab are topics you created. On the browse tab you can check out topics from other users (public topics).</p>"""
 q = Question.objects.get_or_create(topic=help_topic, question=q6_question, answer=q6_answer)
+
+# Which kind of files can I import through the browse file functionality?
+q7_question = "Which kind of files can I import through the browse file functionality?"
+q7_answer = """<p>The kind of file we are working with at the moment is Markdown, which is a tag language for text reading. These files can be exported through note-taking applications such as Notion, OneNote, etc. Note: Questions inside these files must follow the format explained above.</p>"""
+q = Question.objects.get_or_create(topic=help_topic, question=q7_question, answer=q7_answer)
+
+# I have a problem. Where can I get help?
+q8_question = "I have a problem. Where can I get help?"
+q8_answer = """<p>Feel free to email me at qkessler@gmail.com, or check the issues tab on the Github Repository.</p>"""
+q = Question.objects.get_or_create(topic=help_topic, question=q8_question, answer=q8_answer)
+
+# I have found a bug. Where can I suggest the issue?
+q9_question = "I have found a bug. Where can I suggest the issue?"
+q9_answer = """<p>If you found a bug, the best way to get it fixed is to post an issue in the issues tab of the CloudQuestions Github Repository! We have all the links in the footer.</p>"""
+q = Question.objects.get_or_create(topic=help_topic, question=q9_question, answer=q9_answer)
+
+# I want to contribute to CloudQuestions. What is the process required?
+q10_question = "I want to contribute to CloudQuestions. What is the process required?"
+q10_answer = """<p>It's great that you want to contribute! All the information required and the process are in the CONTRIBUTING.md file in the CloudQuestions Github Repository. If you have any questions feel free to add an issue.</p>"""
+q = Question.objects.get_or_create(topic=help_topic, question=q10_question, answer=q10_answer)

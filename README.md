@@ -48,22 +48,9 @@ At CloudQuestions, we use environments for development pyvenv. On these environm
 
 ```
 python3 -m venv <environment_name>
+source <environment_name>/bin/activate    
 pip install -r requirements.txt
 ```
-    
-At this point the app should be running locally. To create migrations and create the database.
-
-```    
-python manage.py makemigration questions accounts
-python manage.py migrate    
-```    
-    
-To run the Django server:
-
-```
-python manage.py runserver
-```
-
 Note: CloudQuestions uses API calls (auth, calendar events). Local development might malfunction if API keys are not provided to the environment. We use os to provide privacy on source files to important bits.
 
 ```python
@@ -91,12 +78,27 @@ export CALENDAR_CLIENT_SECRET='YOUR_KEY'
 export CALENDAR_API_KEY='YOUR_KEY'
 export RECAPTCHA_PUBLIC_KEY='YOUR_KEY'
 export RECAPTCHA_PRIVATE_KEY='YOUR_KEY'
+export DEBUG='True/False'
+export DEV='True/False'      
 ```
 
 To be able to include this template into your environment, fill the keys for the functionality you are interested in on the [TEMPLATE_KEYS.txt](https://github.com/Qkessler/CloudQuestions/blob/master/TEMPLATE_KEYS.txt) file and include it the following way:
 
 ```
 cat TEMPLATE_KEYS.txt >> <environment_name>/bin/activate
+```
+    
+At this point the app should be running locally. To create migrations and create the database.
+
+```    
+python manage.py makemigration questions accounts
+python manage.py migrate    
+```    
+    
+To run the Django server:
+
+```
+python manage.py runserver
 ```
 
 ## Tests

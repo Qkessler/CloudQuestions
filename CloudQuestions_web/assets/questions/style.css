@@ -1040,6 +1040,20 @@ summary {
         width: 90%;
         margin: 0 auto;
     }
+
+    #cloudquestions-logo {
+        display: inline-block !important;
+        width: 12vw !important;
+        position: absolute !important;
+        margin: 0 auto !important;
+        padding: 10px !important;
+        left: 10vw !important;
+    }
+
+    #cloudquestions-text {
+        display: inline-block !important;
+        margin-left: 8vw;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -1340,10 +1354,14 @@ summary {
     letter-spacing: 3px;
     color: white;
     font-size: 6vw;
+    display: none;
 }
 
 #cloudquestions-logo {
-    display: none;
+    display: block;
+    margin: 0 auto;
+    width: 30vw;
+    padding: 10px;
 }
 
 #help-topic-container {

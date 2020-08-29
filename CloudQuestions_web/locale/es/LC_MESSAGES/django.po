@@ -1,0 +1,153 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-29 10:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/models.py:15
+msgid "group"
+msgstr "grupo"
+
+#: accounts/models.py:16
+msgid "groups"
+msgstr "grupos"
+
+#: accounts/models.py:26
+msgid "group connection"
+msgstr "conexión a un grupo"
+
+#: accounts/models.py:27
+msgid "group connections"
+msgstr "conexiones a un grupo"
+
+#: questions/models.py:22
+msgid "topic"
+msgstr "topic"
+
+#: questions/models.py:23
+msgid "topics"
+msgstr "topics"
+
+#: questions/models.py:34
+msgid "question"
+msgstr "pregunta"
+
+#: questions/models.py:35
+msgid "questions"
+msgstr "preguntas"
+
+#: questions/models.py:47
+msgid "rating"
+msgstr "calificación"
+
+#: questions/models.py:48
+msgid "ratings"
+msgstr "calificaciones"
+
+#: questions/models.py:58
+msgid "calendar connection"
+msgstr "conexión a calendar"
+
+#: questions/models.py:59
+msgid "calendar connections"
+msgstr "conexiones a calendar"
+
+#: questions/templates/questions/index.html:13
+msgid "Efficient learning made easy"
+msgstr "Aprendizaje eficiente de forma fácil"
+
+#: questions/templates/questions/index.html:14
+msgid ""
+"CloudQuestions combines FlashCards with spaced repetition functionality, "
+"helping you reach your full potential."
+msgstr ""
+"CloudQuestions combina FlashCards con funcionalidad de repetición, ayudando "
+"a que consigas tu máximo potencial."
+
+#: questions/templates/questions/index.html:17
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: questions/templates/questions/index.html:24
+msgid "Experts"
+msgstr "Expertos"
+
+#: questions/templates/questions/index.html:28
+msgid ""
+"I’ve come across active recall and spaced repetition which, in combination, "
+"will help make your studies more efficient, effective and rewarding."
+msgstr ""
+"Me he encontrado con ambas Active Recall y repetición en el tiempo, que "
+"combinadas, ayudarán a hacer tus estudios más eficientes, efectivos y "
+"gratificantes."
+
+#: questions/templates/questions/index.html:32
+msgid ""
+"If recall is supplemented by a metacognitive judgement before restudy then "
+"recall plus restudy promotes a better mental model and improved problem "
+"solving."
+msgstr ""
+"Si Recall es complementada con juicio metacognitivo antes de reestudiar, "
+"entonces Recall con reestudio consigue un mejor modelo mental y mejora de "
+"resolución de problemas."
+
+#: questions/templates/questions/index.html:36
+msgid ""
+"Repeated encounters with to-be-learned material that are spaced out in time "
+"(as opposed to recurring back-to-back) are an effective way to foster "
+"learning that is long-lasting."
+msgstr ""
+"Si te enfrentas repetidamente con material a aprender, estando estos "
+"encontronazos separados en el tiempo, el aprendizaje conseguido será "
+"efectivo para memoria a largo plazo."
+
+#: questions/templates/questions/index.html:42
+msgid "Workflow"
+msgstr "Pasos"
+
+#: questions/templates/questions/index.html:43
+msgid ""
+"The recommended way of using the app is accessing the topics and answering "
+"the questions without looking at the response. Then, rate your session and "
+"redo it as you need."
+msgstr ""
+"Los pasos recomendados para usar la app es, primero acceder a los topics y "
+"responder las preguntas sin mirar las respuestas. Después, califica la "
+"sesión y repite el proceso siempre que lo necesites."
+
+#: questions/templates/questions/index.html:65
+msgid "Create a topic"
+msgstr "Crea un topic"
+
+#: questions/templates/questions/index.html:76
+msgid "Access the topic"
+msgstr "Accede al topic"
+
+#: questions/templates/questions/index.html:87
+msgid "Answer the questions"
+msgstr "Responde las preguntas"
+
+#: questions/templates/questions/index.html:98
+msgid "Rate the topic and revisit"
+msgstr "Califica el topic y revisítalo"
+
+#: questions/templates/questions/index.html:110
+msgid ""
+"CloudQuestions is Open Source! Feel free to contribute and become part of "
+"the community."
+msgstr ""
+"CloudQuestions es de Código Abierto! Anímate a contribuir y formar parte de "
+"esta comunidad."

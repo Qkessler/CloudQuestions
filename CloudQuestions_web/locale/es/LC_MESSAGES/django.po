@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 10:11+0000\n"
+"POT-Creation-Date: 2020-08-30 10:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,53 +17,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/models.py:15
-msgid "group"
-msgstr "grupo"
+#: accounts/templates/activated.html:6
+msgid "Your account has been activated!"
+msgstr ""
 
-#: accounts/models.py:16
-msgid "groups"
-msgstr "grupos"
+#: accounts/templates/activated.html:7
+msgid "Login?"
+msgstr ""
 
-#: accounts/models.py:26
-msgid "group connection"
-msgstr "conexión a un grupo"
+#: accounts/templates/change_email_email.html:10
+msgid "Hi, {{ user.username }}:"
+msgstr ""
 
-#: accounts/models.py:27
-msgid "group connections"
-msgstr "conexiones a un grupo"
+#: accounts/templates/change_email_email.html:13
+msgid ""
+"This email is generated because someone b(hopefully you) tried to change the "
+"email on your CloudQuestions account."
+msgstr ""
 
-#: questions/models.py:22
-msgid "topic"
-msgstr "topic"
+#: accounts/templates/change_email_email.html:16
+msgid "Please click the button to verify the new email."
+msgstr ""
 
-#: questions/models.py:23
-msgid "topics"
-msgstr "topics"
+#: accounts/templates/change_email_email.html:33
+msgid "Verify new email"
+msgstr ""
 
-#: questions/models.py:34
-msgid "question"
-msgstr "pregunta"
+#: accounts/templates/change_email_email.html:35
+msgid "In case you don't know what this email is about, please contact me at"
+msgstr ""
 
-#: questions/models.py:35
-msgid "questions"
-msgstr "preguntas"
+#: accounts/templates/change_email_email.html:38
+msgid "Sincerely"
+msgstr ""
 
-#: questions/models.py:47
-msgid "rating"
-msgstr "calificación"
-
-#: questions/models.py:48
-msgid "ratings"
-msgstr "calificaciones"
-
-#: questions/models.py:58
-msgid "calendar connection"
-msgstr "conexión a calendar"
-
-#: questions/models.py:59
-msgid "calendar connections"
-msgstr "conexiones a calendar"
+#: accounts/templates/change_email_email.html:39
+msgid "CloudQuestions' team"
+msgstr ""
 
 #: questions/templates/questions/index.html:13
 msgid "Efficient learning made easy"
@@ -159,3 +149,39 @@ msgstr "Repositorio"
 #: questions/templates/questions/index.html:119
 msgid "Issues"
 msgstr "Issues"
+
+#~ msgid "group"
+#~ msgstr "grupo"
+
+#~ msgid "groups"
+#~ msgstr "grupos"
+
+#~ msgid "group connection"
+#~ msgstr "conexión a un grupo"
+
+#~ msgid "group connections"
+#~ msgstr "conexiones a un grupo"
+
+#~ msgid "topic"
+#~ msgstr "topic"
+
+#~ msgid "topics"
+#~ msgstr "topics"
+
+#~ msgid "question"
+#~ msgstr "pregunta"
+
+#~ msgid "questions"
+#~ msgstr "preguntas"
+
+#~ msgid "rating"
+#~ msgstr "calificación"
+
+#~ msgid "ratings"
+#~ msgstr "calificaciones"
+
+#~ msgid "calendar connection"
+#~ msgstr "conexión a calendar"
+
+#~ msgid "calendar connections"
+#~ msgstr "conexiones a calendar"

@@ -10,37 +10,37 @@
     </div>
     <div class="index-section" id="description-container">
         <div id="description-text-container">
-            <p class="index-title align-left">{% trans "Efficient learning made easy" %}</p>
-            <p class="align-left index-text" id="description-text">{% trans "CloudQuestions combines FlashCards with spaced repetition functionality, helping you reach your full potential." %}</p>
+            <p class="index-title align-left">{% translate "Efficient learning made easy" %}</p>
+            <p class="align-left index-text" id="description-text">{% translate "CloudQuestions combines FlashCards with spaced repetition functionality, helping you reach your full potential." %}</p>
             <div class="align-left" id="description-button-container">
                 <form action="{% url 'accounts:register'%}" method="get">
-                    <input id="description-button" type="submit" value="{% trans "Sign up" %}"/>
+                    <input id="description-button" type="submit" value="{% translate "Sign up" %}"/>
                 </form>
             </div>
         </div>
     </div>
     <div class="blight">
         <div class="index-section" id="experts-container">
-            <p class="index-title align-left" id="experts-title">{% trans "Experts" %}</p>
+            <p class="index-title align-left" id="experts-title">{% translate "Experts" %}</p>
             <div id="experts">
                 <div class="expert" id="expert-1">
                     <p>Ali Abdaal -</p>
-                    <p>"{% trans "I’ve come across active recall and spaced repetition which, in combination, will help make your studies more efficient, effective and rewarding." %}"</p>
+                    <p>"{% translate "I’ve come across active recall and spaced repetition which, in combination, will help make your studies more efficient, effective and rewarding." %}"</p>
                 </div>
                 <div class="expert" id="expert-2">
                     <p>Mark A. McDaniel -</p>
-                    <p>"{% trans "If recall is supplemented by a metacognitive judgement before restudy then recall plus restudy promotes a better mental model and improved problem solving." %}"</p>
+                    <p>"{% translate "If recall is supplemented by a metacognitive judgement before restudy then recall plus restudy promotes a better mental model and improved problem solving." %}"</p>
                 </div>
                 <div class="expert">
                     <p>Sean H. K. Kang -</p>
-                    <p>"{% trans "Repeated encounters with to-be-learned material that are spaced out in time (as opposed to recurring back-to-back) are an effective way to foster learning that is long-lasting." %}"</p>
+                    <p>"{% translate "Repeated encounters with to-be-learned material that are spaced out in time (as opposed to recurring back-to-back) are an effective way to foster learning that is long-lasting." %}"</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="index-section" id="workflow-container">
-        <p class="index-title align-left">{% trans "Workflow" %}</p>
-        <p class="align-left index-text" id="workflow-text">{% trans "The recommended way of using the app is accessing the topics and answering the questions without looking at the response. Then, rate your session and redo it as you need." %}</p>
+        <p class="index-title align-left">{% translate "Workflow" %}</p>
+        <p class="align-left index-text" id="workflow-text">{% translate "The recommended way of using the app is accessing the topics and answering the questions without looking at the response. Then, rate your session and redo it as you need." %}</p>
         <div id="device-container">
             <div class="marvel-device iphone-x scale--05">
                 <div class="top-bar"></div>
@@ -62,7 +62,7 @@
                     <p class="step-number">1</p>
                 </div>
                 <div>
-                    <p class="workflow-title">{% trans "Create a topic" %}</p>
+                    <p class="workflow-title">{% translate "Create a topic" %}</p>
                 </div>
                 <div>
                     <img class="workflow-gif" alt="Creation of topics" src="{% static 'gifs/workflow-step1.gif'%}"/>
@@ -73,7 +73,7 @@
                     <p class="step-number">2</p>
                 </div>
                 <div>
-                    <p class="workflow-title">{% trans "Access the topic" %}</p>
+                    <p class="workflow-title">{% translate "Access the topic" %}</p>
                 </div>
                 <div>
                     <img class="workflow-gif" alt="" src="{% static 'gifs/workflow-step2.gif'%}"/>
@@ -84,7 +84,7 @@
                     <p class="step-number">3</p>
                 </div>
                 <div>
-                    <p class="workflow-title">{% trans "Answer the questions" %}</p>
+                    <p class="workflow-title">{% translate "Answer the questions" %}</p>
                 </div>
                 <div>
                     <img class="workflow-gif" alt="" src="{% static 'gifs/workflow-step3.gif'%}"/>
@@ -95,7 +95,7 @@
                     <p class="step-number">4</p>
                 </div>
                 <div>
-                    <p class="workflow-title">{% trans "Rate the topic and revisit" %}</p>
+                    <p class="workflow-title">{% translate "Rate the topic and revisit" %}</p>
                 </div>
                 <div>
                     <img class="workflow-gif" alt="" src="{% static 'gifs/workflow-step4.gif'%}"/>
@@ -107,16 +107,16 @@
         <div class="index-section" id="opensource-container">
             <div class="opensource-a">
                 <p class="index-title align-left">Open Source</p>
-                <p id="opensource-text" class="align-left index-text">{% trans "CloudQuestions is Open Source! Feel free to contribute and become part of the community." %}</p>
+                <p id="opensource-text" class="align-left index-text">{% translate "CloudQuestions is Open Source! Feel free to contribute and become part of the community." %}</p>
                 <div id="opensource-buttons" class="align-left">
                     <div class="inline-block-black" id="opensource-repo">
                         <form action="https://github.com/Qkessler/CloudQuestions" method="get">
-                            <input class="opensource-button" type="submit" value="Repository"/>
+                            <input class="opensource-button" type="submit" value="{% translate "Repository" %}"/>
                         </form>
                     </div>
                     <div class="inline-block-black">
                         <form action="https://github.com/Qkessler/CloudQuestions/issues" method="get">
-                            <input class="opensource-button" type="submit" value="Issues"/>
+                            <input class="opensource-button" type="submit" value="{% translate "Issues" %}"/>
                         </form>
                     </div>
                 </div>

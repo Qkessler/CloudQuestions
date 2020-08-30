@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:41+0000\n"
+"POT-Creation-Date: 2020-08-30 10:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,3 +151,11 @@ msgid ""
 msgstr ""
 "CloudQuestions es de Código Abierto! Anímate a contribuir y formar parte de "
 "esta comunidad."
+
+#: questions/templates/questions/index.html:114
+msgid "Repository"
+msgstr "Repositorio"
+
+#: questions/templates/questions/index.html:119
+msgid "Issues"
+msgstr "Issues"

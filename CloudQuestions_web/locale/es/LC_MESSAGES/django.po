@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 10:22+0000\n"
+"POT-Creation-Date: 2020-08-31 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,43 +17,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/templates/activated.html:6
-msgid "Your account has been activated!"
-msgstr ""
-
 #: accounts/templates/activated.html:7
+msgid "Your credentials have been modified!"
+msgstr "¡Se han cambiado tus credenciales!"
+
+#: accounts/templates/activated.html:8
 msgid "Login?"
-msgstr ""
+msgstr "¿Quieres hacer login?"
 
-#: accounts/templates/change_email_email.html:10
-msgid "Hi, {{ user.username }}:"
-msgstr ""
+#: accounts/templates/change_email_email.html:11
+#: accounts/templates/verify_email.html:9
+msgid "Hi, "
+msgstr "Hola, "
 
-#: accounts/templates/change_email_email.html:13
+#: accounts/templates/change_email_email.html:14
 msgid ""
-"This email is generated because someone b(hopefully you) tried to change the "
+"This email is generated because someone (hopefully you) tried to change the "
 "email on your CloudQuestions account."
 msgstr ""
+"Este email ha sido generado porque alguien ha intentado cambiar el email de "
+"tu cuenta de CloudQuestions."
 
-#: accounts/templates/change_email_email.html:16
+#: accounts/templates/change_email_email.html:17
 msgid "Please click the button to verify the new email."
-msgstr ""
+msgstr "Por favor, haz click en el botón para verificar el nuevo email."
 
-#: accounts/templates/change_email_email.html:33
+#: accounts/templates/change_email_email.html:34
 msgid "Verify new email"
-msgstr ""
+msgstr "Verificar nuevo email"
 
-#: accounts/templates/change_email_email.html:35
+#: accounts/templates/change_email_email.html:36
+#: accounts/templates/verify_email.html:28
 msgid "In case you don't know what this email is about, please contact me at"
 msgstr ""
-
-#: accounts/templates/change_email_email.html:38
-msgid "Sincerely"
-msgstr ""
+"En caso de que no sepas qué es este email, por favor, contacta conmigo en"
 
 #: accounts/templates/change_email_email.html:39
+#: accounts/templates/verify_email.html:30
+msgid "Sincerely"
+msgstr "Un saludo"
+
+#: accounts/templates/change_email_email.html:40
+#: accounts/templates/verify_email.html:31
 msgid "CloudQuestions' team"
+msgstr "El equipo de CloudQuestions"
+
+#: accounts/templates/verify.html:7
+msgid "Account verification"
+msgstr "Verificación de cuenta"
+
+#: accounts/templates/verify.html:8
+msgid "An email was sent to your email address. Please verify your account."
+msgstr "Un email ha sido enviado a tu cuenta de email. Por favor, verifica tu correo."
+
+#: accounts/templates/verify_email.html:10
+msgid ""
+"This email is generated because someone (hopefully you) registered with this "
+"email at CloudQuestions."
 msgstr ""
+"Este email ha sido generado porque alguien se ha registrado con este email en "
+"CloudQuestions."
+
+#: accounts/templates/verify_email.html:11
+msgid "Please click the button to verify your account."
+msgstr "Por favor, haz click en el botón para verificar tu cuenta."
 
 #: questions/templates/questions/index.html:13
 msgid "Efficient learning made easy"

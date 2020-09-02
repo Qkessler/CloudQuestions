@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 10:56+0000\n"
+"POT-Creation-Date: 2020-09-02 11:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,6 +87,7 @@ msgid "Settings"
 msgstr "Configuración"
 
 #: accounts/templates/settings.html:12
+#: questions/templates/questions/browse.html:10
 msgid "Help?"
 msgstr "¿Necesitas ayuda?"
 
@@ -221,6 +222,28 @@ msgstr "conexión a calendar"
 #: questions/models.py:59
 msgid "calendar connections"
 msgstr "conexiones a calendar"
+
+#: questions/templates/questions/browse.html:6
+msgid "Browse topics from other users!"
+msgstr "¡Busca \"Topics\" de otros usuarios!"
+
+#: questions/templates/questions/browse.html:30
+#: questions/templates/questions/browse.html:47
+msgid "Created:"
+msgstr "Creado:"
+
+#: questions/templates/questions/browse.html:31
+#: questions/templates/questions/browse.html:48
+msgid "Creator:"
+msgstr "Creador:"
+
+#: questions/templates/questions/browse.html:38
+msgid "No topics with that search"
+msgstr "No hay \"Topics\" con esa búsqueda"
+
+#: questions/templates/questions/browse.html:58
+msgid "Next"
+msgstr "Siguiente"
 
 #: questions/templates/questions/index.html:13
 msgid "Efficient learning made easy"

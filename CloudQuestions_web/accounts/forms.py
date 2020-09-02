@@ -5,7 +5,6 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div
 from django.contrib.auth.models import User
 
-
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(max_length=200, required=True)

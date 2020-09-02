@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block content %}
 <div id="register-form-container" class="card-container">
-    <h2 id="signup-text" class="architects">Register</h2>
+    <h2 id="signup-text" class="architects">{% translate "Register" %}</h2>
     <div id="register-form">
         {% crispy form form.helper %}
     </form>
     </div>
 </div>
 {% endblock %}
+

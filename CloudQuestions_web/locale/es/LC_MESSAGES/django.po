@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 15:57+0000\n"
+"POT-Creation-Date: 2020-09-02 10:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/models.py:15
+msgid "group"
+msgstr "grupo"
+
+#: accounts/models.py:16
+msgid "groups"
+msgstr "grupos"
+
+#: accounts/models.py:26
+msgid "group connection"
+msgstr "conexión a un grupo"
+
+#: accounts/models.py:27
+msgid "group connections"
+msgstr "conexiones a un grupo"
 
 #: accounts/templates/activated.html:7
 msgid "Your credentials have been modified!"
@@ -62,25 +78,149 @@ msgstr "Un saludo"
 msgid "CloudQuestions' team"
 msgstr "El equipo de CloudQuestions"
 
+#: accounts/templates/register.html:7
+msgid "Register"
+msgstr "Crea una cuenta"
+
+#: accounts/templates/settings.html:8
+msgid "Settings"
+msgstr "Configuración"
+
+#: accounts/templates/settings.html:12
+msgid "Help?"
+msgstr "¿Necesitas ayuda?"
+
+#: accounts/templates/settings.html:28 accounts/templates/settings.html:48
+#: accounts/templates/settings.html:67 accounts/templates/settings.html:84
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: accounts/templates/settings.html:32
+msgid "Disconnect from GitHub"
+msgstr "Desconectar de Github"
+
+#: accounts/templates/settings.html:33 accounts/templates/settings.html:53
+#: accounts/templates/settings.html:72
+msgid "You must"
+msgstr "Debes"
+
+#: accounts/templates/settings.html:33 accounts/templates/settings.html:53
+#: accounts/templates/settings.html:72
+msgid "define a password"
+msgstr "definir una contraseña"
+
+#: accounts/templates/settings.html:33
+msgid "for your account before disconnecting from Github"
+msgstr "para tu cuenta antes de desconectarte de Github"
+
+#: accounts/templates/settings.html:36
+msgid "Connect to GitHub"
+msgstr "Conectarse a Github"
+
+#: accounts/templates/settings.html:43
+msgid "Connected as"
+msgstr "Conectado como"
+
+#: accounts/templates/settings.html:52
+msgid "Disconnect from Twitter"
+msgstr "Desconectar de Twitter"
+
+#: accounts/templates/settings.html:53
+msgid "for your account before disconnecting from Twitter"
+msgstr "para tu cuenta antes de desconectarte de Twitter"
+
+#: accounts/templates/settings.html:56
+msgid "Connect to Twitter"
+msgstr "Conectarse a Twitter"
+
+#: accounts/templates/settings.html:62
+msgid "Connected with Google"
+msgstr "Conectarse a Google"
+
+#: accounts/templates/settings.html:71
+msgid "Disconnect from Google"
+msgstr "Desconectarse de Google"
+
+#: accounts/templates/settings.html:72
+msgid "for your account before disconnecting from Google"
+msgstr "para tu cuenta antes de desconectarte de Google"
+
+#: accounts/templates/settings.html:75
+msgid "Connect to Google"
+msgstr "Conectarse a Google"
+
+#: accounts/templates/settings.html:83
+msgid "Connected to Google Calendar!"
+msgstr "Conectado a Google Calendar!"
+
+#: accounts/templates/settings.html:86
+msgid "Not connected to Google Calendar"
+msgstr "No conectado a Google Calendar"
+
+#: accounts/templates/settings.html:87
+msgid "Connect"
+msgstr "Conectar"
+
+#: accounts/templates/settings.html:122
+msgid "Ratings table"
+msgstr "Tabla de calificaciones"
+
+#: accounts/templates/settings.html:127
+msgid "Topic name"
+msgstr "Nombre del \"Topic\""
+
 #: accounts/templates/verify.html:7
 msgid "Account verification"
 msgstr "Verificación de cuenta"
 
 #: accounts/templates/verify.html:8
 msgid "An email was sent to your email address. Please verify your account."
-msgstr "Un email ha sido enviado a tu cuenta de email. Por favor, verifica tu correo."
+msgstr ""
+"Un email ha sido enviado a tu cuenta de email. Por favor, verifica tu correo."
 
 #: accounts/templates/verify_email.html:10
 msgid ""
 "This email is generated because someone (hopefully you) registered with this "
 "email at CloudQuestions."
 msgstr ""
-"Este email ha sido generado porque alguien se ha registrado con este email en "
-"CloudQuestions."
+"Este email ha sido generado porque alguien se ha registrado con este email "
+"en CloudQuestions."
 
 #: accounts/templates/verify_email.html:11
 msgid "Please click the button to verify your account."
 msgstr "Por favor, haz click en el botón para verificar tu cuenta."
+
+#: questions/models.py:22
+msgid "topic"
+msgstr "topic"
+
+#: questions/models.py:23
+msgid "topics"
+msgstr "topics"
+
+#: questions/models.py:34
+msgid "question"
+msgstr "pregunta"
+
+#: questions/models.py:35
+msgid "questions"
+msgstr "preguntas"
+
+#: questions/models.py:47
+msgid "rating"
+msgstr "calificación"
+
+#: questions/models.py:48
+msgid "ratings"
+msgstr "calificaciones"
+
+#: questions/models.py:58
+msgid "calendar connection"
+msgstr "conexión a calendar"
+
+#: questions/models.py:59
+msgid "calendar connections"
+msgstr "conexiones a calendar"
 
 #: questions/templates/questions/index.html:13
 msgid "Efficient learning made easy"
@@ -176,39 +316,3 @@ msgstr "Repositorio"
 #: questions/templates/questions/index.html:119
 msgid "Issues"
 msgstr "Issues"
-
-#~ msgid "group"
-#~ msgstr "grupo"
-
-#~ msgid "groups"
-#~ msgstr "grupos"
-
-#~ msgid "group connection"
-#~ msgstr "conexión a un grupo"
-
-#~ msgid "group connections"
-#~ msgstr "conexiones a un grupo"
-
-#~ msgid "topic"
-#~ msgstr "topic"
-
-#~ msgid "topics"
-#~ msgstr "topics"
-
-#~ msgid "question"
-#~ msgstr "pregunta"
-
-#~ msgid "questions"
-#~ msgstr "preguntas"
-
-#~ msgid "rating"
-#~ msgstr "calificación"
-
-#~ msgid "ratings"
-#~ msgstr "calificaciones"
-
-#~ msgid "calendar connection"
-#~ msgstr "conexión a calendar"
-
-#~ msgid "calendar connections"
-#~ msgstr "conexiones a calendar"

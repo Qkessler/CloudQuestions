@@ -8,5 +8,4 @@ urlpatterns = [
     path("register/activate/<uidb64>/<token>/<email>", views.activate, name="activate"),
     path("settings/", views.settings, name="settings"),
     path("settings/<str:topic>/<str:color>", views.settings, name="settings"),
-    path("testing/", views.testing, name="testing"),
 ]

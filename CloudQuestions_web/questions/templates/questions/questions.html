@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block content %}
 <div id="questions-container">
     {% if user.is_authenticated %}
     <div class="base inline-block-black">
-        <p id="user_hi" class="architects">Hi, <a id="user_name" href="/accounts/settings/">{{ user.username }}</a>! </p>
+        <p id="user_hi" class="architects">{% translate "Hi, "%}<a id="user_name" href="/accounts/settings/">{{ user.username }}</a>! </p>
     </div>
     <div class="toggle-help inline-block-black hide-help">
         <form method="get">
-            <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="Help?"/>
+            <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="{% translate "Help?"%}"/>
         </form>
     </div>
     {% endif %}
@@ -29,7 +30,7 @@
         </div>
         <div id="create_topic_form">
             <form method="get">
-                <input class="btn btn-outline-primary" name="upload_topic" type="submit" value="Create topic"/>
+                <input class="btn btn-outline-primary" name="upload_topic" type="submit" value="{% translate "Create topic"%}"/>
             </form>
         </div>
         {% endif %}
@@ -41,15 +42,15 @@
             <li class="list_topic_item color_{{topic.color}}">
                 <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
                     <h3 class="inline-block-black">{{printable_topic}}</h3>
-                    <p class="inline-block-black">Created: {{topic.created}}</p>
-                    <p class="inline-block-black">Creator: {{topic.creator}}</p>
+                    <p class="inline-block-black">{% translate "Created:"%} {{topic.created}}</p>
+                    <p class="inline-block-black">{% translate "Creator:"%} {{topic.creator}}</p>
                 </a>
             </li>
             {% endfor %}
         </ul>
     </div>
     {% if empty %}
-    <p> No hay ningún topic con esa búsqueda. </p>
+    <p> {% translate "No hay ningún topic con esa búsqueda."%}</p>
     {% endif %}
     {% else %}
     <div class="list_topic">
@@ -58,8 +59,8 @@
             <li class="list_topic_item color_{{topic.color}}">
                 <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
                     <h3 class="inline-block-black">{{printable_topic}}</h3>
-                    <p class="inline-block-black">Created: {{topic.created}}</p>
-                    <p class="inline-block-black">Creator: {{topic.creator}}</p>
+                    <p class="inline-block-black">{% translate "Created:"%} {{topic.created}}</p>
+                    <p class="inline-block-black">{% translate "Creator:"%} {{topic.creator}}</p>
                 </a>
             </li>
             {% endfor %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-12 10:22+0000\n"
+"POT-Creation-Date: 2020-09-12 10:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,6 +188,7 @@ msgstr "¡Busca \"Topics\" de otros usuarios!"
 #: questions/templates/questions/detail.html:8
 #: questions/templates/questions/questions.html:45
 #: questions/templates/questions/questions.html:62
+#: questions/templates/questions/random.html:8
 msgid "Created:"
 msgstr "Creado:"
 
@@ -197,6 +198,7 @@ msgstr "Creado:"
 #: questions/templates/questions/detail.html:9
 #: questions/templates/questions/questions.html:46
 #: questions/templates/questions/questions.html:63
+#: questions/templates/questions/random.html:9
 msgid "Creator:"
 msgstr "Creador:"
 
@@ -205,6 +207,7 @@ msgid "No topics with that search"
 msgstr "No hay \"Topics\" con esa búsqueda"
 
 #: questions/templates/questions/browse.html:58
+#: questions/templates/questions/random.html:30
 msgid "Next"
 msgstr "Siguiente"
 
@@ -338,6 +341,10 @@ msgstr "Crea un topic"
 #: questions/templates/questions/questions.html:53
 msgid "No hay ningún topic con esa búsqueda."
 msgstr ""
+
+#: questions/templates/questions/random.html:24
+msgid "Go back"
+msgstr "Atrás"
 
 #~ msgid "group"
 #~ msgstr "grupo"

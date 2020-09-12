@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div id="settings-text-container">
-    <h2 class="architects inline-block-black" id="settings-text">Settings</h2>
+    <h2 class="architects inline-block-black" id="settings-text">{% translate "Settings" %}</h2>
     <img class="inline-block-black" id="settings-logo" alt="Settings emoji" src="{% static 'questions/settings-logo.png'%}"/>
     <div class="toggle-help inline-block-black hide-help">
         <form method="get">
-            <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="Help?"/>
+            <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="{% translate "Help?"%}"/>
         </form>
     </div>
 </div>
@@ -19,59 +20,59 @@
             <div class="padding-login social-connection">
                 <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
                 {% if github_login %}
-                <p class="label-connection">Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+                <p class="label-connection">{% translate "Connected as%} <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
                 {% if can_disconnect %}
                 <div class="inline-block-black">
                     <form method="post" action="{% url 'social:disconnect' 'github' %}">
                         {% csrf_token %}
-                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                        <input class="btn btn-danger btn-sm" type="submit" value="{% translate "Disconnect"%}">
                     </form>
                 </div>
                 {% else %}
-                <button class="inline-block-black" type="button" disabled>Disconnect from GitHub</button>
-                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Github.</p>
+                <button class="inline-block-black" type="button" disabled>{% translate "Disconnect from GitHub"%}</button>
+                <p style="color: red">{% translate "You must"%} <a href="{% url 'password_reset' %}"{% translate "define a password"%}></a> {% translate "for your account before disconnecting from Github"%}.</p>
                 {% endif %}
                 {% else %}
-                <a href="{% url 'social:begin' 'github' %}">Connect to GitHub</a>
+                <a href="{% url 'social:begin' 'github' %}">{% translate "Connect to GitHub"%}</a>
                 {% endif %}
             </div>
             
             <div class="padding-login social-connection">
                 <img id="twitter-logo"Twitter logo" src="{% static 'questions/twitter-logo.png'%}"/>
                 {% if twitter_login %}
-                <p class="label-connection">Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+                <p class="label-connection">{% translate "Connected as"%} <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
                 {% if can_disconnect %}
                 <div class="inline-block-black">
                     <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
                         {% csrf_token %}
-                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                        <input class="btn btn-danger btn-sm" type="submit" value="{% translate "Disconnect"%}">
                     </form>
                 </div>
                 {% else %}
-                <button class="inline-block-black" type="button" disabled>Disconnect from Twitter</button>
-                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+                <button class="inline-block-black" type="button" disabled>{% translate "Disconnect from Twitter"%}</button>
+                <p style="color: red">{% translate "You must"%} <a href="{% url 'password_reset' %}">{% translate "define a password"%}</a> {% translate "for your account before disconnecting from Twitter"%}.</p>
                 {% endif %}
                 {% else %}
-                <a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
+                <a href="{% url 'social:begin' 'twitter' %}">{% translate "Connect to Twitter"%}</a>
                 {% endif %}
             </div>
             <div class="padding-login social-connection">
                 <img id="google-logo"alt="Google logo" src="{% static 'questions/google-logo.png'%}"/>
                 {% if google_login %}
-                <p id="label-connection">Connected with Google</p>
+                <p id="label-connection">{% translate "Connected with Google"%}</p>
                 {% if can_disconnect %}
                 <div class="inline-block-black">
                     <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
                         {% csrf_token %}
-                        <input class="btn btn-danger btn-sm" type="submit" value="Disconnect">
+                        <input class="btn btn-danger btn-sm" type="submit" value="{% translate "Disconnect"%}">
                     </form>
                 </div>
                 {% else %}
-                <button type="button" disabled>Disconnect from Google</button>
-                <p style="color: red">You must <a href="{% url 'password_reset' %}">define a password</a> for your account before disconnecting from Google.</p>
+                <button type="button" disabled>{% translate "Disconnect from Google"%}</button>
+                <p style="color: red">{% translate "You must"%} <a href="{% url 'password_reset' %}">{% translate "define a password"%}</a> {% translate "for your account before disconnecting from Google"%}.</p>
                 {% endif %}
                 {% else %}
-                <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}">{% translate "Connect to Google"%}</a>
                 {% endif %}
             </div>
             <div class="social-connection">
@@ -79,11 +80,11 @@
                 <div>
                     <form method="get" action="">
                         {% if calendar_connection %}
-                        <label class="label-connection" for="calendar">Connected to Google Calendar!</label>
-                        <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="Disconnect"/>
+                        <label class="label-connection" for="calendar">{% translate "Connected to Google Calendar!"%}</label>
+                        <input class="btn btn-danger btn-sm" name="calendar" type="submit" value="{% translate "Disconnect"%}"/>
                         {% else %}
-                        <label class="label-calendar" for="calendar">Not connected to Google Calendar!</label>
-                        <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="Connect"/>
+                        <label class="label-calendar" for="calendar">{% translate "Not connected to Google Calendar"%}!</label>
+                        <input class="btn btn-primary btn-sm" name="calendar" type="submit" value="{% translate "Connect"%}"/>
                         {% endif %}
                     </form>
                 </div>
@@ -118,12 +119,12 @@
 </div>
 
 <div id="ratings-container">
-    <h2 id="ratings-table-title" class="architects">Ratings table</h2>
+    <h2 id="ratings-table-title" class="architects">{% translate "Ratings table"%}</h2>
     <div id="ratings-table">
         <table class="table table-sm table-stripped table-hover">
 	        <thead id="table-head" class="thead-light">
 	            <tr>
-		            <th>Topic name</th>
+		            <th>{% translate "Topic name"%}</th>
 	            </tr>
 	        </thead>
 	        <tbody>

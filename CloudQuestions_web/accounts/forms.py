@@ -29,7 +29,7 @@ class SignUpForm(UserCreationForm):
             ButtonHolder(Submit("submit", "Sign up", css_class="button white")),
         )
 
-        
+
 class ChangeUsernameForm(forms.ModelForm):
     username = forms.CharField(max_length=30, required=True, label="Username")
     action = forms.CharField(max_length=30)

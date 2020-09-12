@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
-<h1 class="architects inline-block-black" id="create-new-topic">Create or modify a topic!</h1>
+<h1 class="architects inline-block-black" id="create-new-topic">{% translate "Create or modify a topic"%}</h1>
 <div class="toggle-help inline-block-black hide-help">
     <form method="get">
-        <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="Help?"/>
+        <input class="btn btn-outline-success" id="help-button" name="toggle_help" type="submit" value="{% translate "Help?" %}"/>
     </form>    
 </div>
 {% if topic %}
@@ -14,8 +15,8 @@
     <div class="dcolumn-item-a">
         <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
             <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
-            <p class="inline-block-black"> Created: {{topic.created}}</p>
-            <p class="inline-block-black" > Creator: {{ topic.creator }}</p>
+            <p class="inline-block-black"> {% translate "Created:"%} {{topic.created}}</p>
+            <p class="inline-block-black" > {% translate "Creator:"%}: {{ topic.creator }}</p>
         </div>
         <div id="lq-create-topic">
             <div id="list_questions">
@@ -45,7 +46,7 @@
         {% if enough_size %}
         <div id="add-topic-button-div">
             <form method="get">
-                <input class="btn btn-outline-success" id="add-topic-button" name="add_topic" type="submit" value="Save topic"/>
+                <input class="btn btn-outline-success" id="add-topic-button" name="add_topic" type="submit" value="{% translate "Save topic" %}"/>
             </form>
         </div>
         {% endif %}

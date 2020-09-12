@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="architects inline-block-black" id="browse-title">
-    <h1>Browse topics from other users!</h1>
+    <h1>{% translate "Browse topics from other users!"%}</h1>
 </div>
 <div class="toggle-help inline-block-black hide-help">
     <form method="get">
-        <input class="btn btn-outline-success" id="help-button-browse" name="toggle_help" type="submit" value="Help?"/>
+        <input class="btn btn-outline-success" id="help-button-browse" name="toggle_help" type="submit" value="{% translate "Help?"%}"/>
     </form>
 </div>
 
@@ -26,15 +27,15 @@
         <li class="list_topic_item color_{{topic.color}}">
             <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
                 <h3 class="inline-block-black">{{printable_topic}}</h3>
-                <p class="inline-block-black">Created: {{topic.created}}</p>
-                <p class="inline-block-black">Creator: {{topic.creator}}</p>
+                <p class="inline-block-black">{% translate "Created:"%} {{topic.created}}</p>
+                <p class="inline-block-black">{% translate "Creator:"%} {{topic.creator}}</p>
             </a>
         </li>
         {% endfor %}
     </ul>
 </div>
 {% if empty %}
-<p> No hay ningún topic con esa búsqueda. </p>
+<p>{% translate "No topics with that search" %}.</p>
 {% endif %}
 {% else %}
 <div class="list_topic">
@@ -43,8 +44,8 @@
         <li class="list_topic_item color_{{topic.color}}">
             <a class="link-clickable" href="{% url 'questions:detail' topic.name %}">
                 <h3 class="inline-block-black">{{printable_topic}}</h3>
-                <p class="inline-block-black">Created: {{topic.created}}</p>
-                <p class="inline-block-black">Creator: {{topic.creator}}</p>
+                <p class="inline-block-black">{% translate "Created:"%} {{topic.created}}</p>
+                <p class="inline-block-black">{% translate "Creator:"%} {{topic.creator}}</p>
             </a>
         </li>
         {% endfor %}
@@ -54,7 +55,7 @@
 {% if more %}
 <div id="more-topics-form">
     <form method="get">
-        <input class="btn btn-outline-primary" name="next_topics" type="submit" value="Next"/>
+        <input class="btn btn-outline-primary" name="next_topics" type="submit" value="{% translate "Next"%}"/>
     </form>
 </div>
 {% endif %}

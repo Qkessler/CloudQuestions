@@ -1,0 +1,467 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-12 10:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/templates/activated.html:7
+msgid "Your credentials have been modified!"
+msgstr "¡Se han cambiado tus credenciales!"
+
+#: accounts/templates/activated.html:8
+msgid "Login?"
+msgstr "¿Quieres hacer login?"
+
+#: accounts/templates/change_email_email.html:11
+#: accounts/templates/verify_email.html:9
+#: questions/templates/questions/questions.html:10
+msgid "Hi, "
+msgstr "Hola, "
+
+#: accounts/templates/change_email_email.html:14
+msgid ""
+"This email is generated because someone (hopefully you) tried to change the "
+"email on your CloudQuestions account."
+msgstr ""
+"Este email ha sido generado porque alguien ha intentado cambiar el email de "
+"tu cuenta de CloudQuestions."
+
+#: accounts/templates/change_email_email.html:17
+msgid "Please click the button to verify the new email."
+msgstr "Por favor, haz click en el botón para verificar el nuevo email."
+
+#: accounts/templates/change_email_email.html:34
+msgid "Verify new email"
+msgstr "Verificar nuevo email"
+
+#: accounts/templates/change_email_email.html:36
+#: accounts/templates/verify_email.html:28
+msgid "In case you don't know what this email is about, please contact me at"
+msgstr ""
+"En caso de que no sepas qué es este email, por favor, contacta conmigo en"
+
+#: accounts/templates/change_email_email.html:39
+#: accounts/templates/verify_email.html:30
+#: templates/registration/password_reset_email.html:13
+msgid "Sincerely"
+msgstr "Un saludo"
+
+#: accounts/templates/change_email_email.html:40
+#: accounts/templates/verify_email.html:31
+msgid "CloudQuestions' team"
+msgstr "El equipo de CloudQuestions"
+
+#: accounts/templates/register.html:7
+msgid "Register"
+msgstr "Crea una cuenta"
+
+#: accounts/templates/settings.html:8
+msgid "Settings"
+msgstr "Configuración"
+
+#: accounts/templates/settings.html:12
+#: questions/templates/questions/browse.html:10
+#: questions/templates/questions/create_topic.html:10
+#: questions/templates/questions/questions.html:14
+msgid "Help?"
+msgstr "¿Necesitas ayuda?"
+
+#: accounts/templates/settings.html:28 accounts/templates/settings.html:48
+#: accounts/templates/settings.html:67 accounts/templates/settings.html:84
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: accounts/templates/settings.html:32
+msgid "Disconnect from GitHub"
+msgstr "Desconectar de Github"
+
+#: accounts/templates/settings.html:33 accounts/templates/settings.html:53
+#: accounts/templates/settings.html:72
+msgid "You must"
+msgstr "Debes"
+
+#: accounts/templates/settings.html:33 accounts/templates/settings.html:53
+#: accounts/templates/settings.html:72
+msgid "define a password"
+msgstr "definir una contraseña"
+
+#: accounts/templates/settings.html:33
+msgid "for your account before disconnecting from Github"
+msgstr "para tu cuenta antes de desconectarte de Github"
+
+#: accounts/templates/settings.html:36
+msgid "Connect to GitHub"
+msgstr "Conectarse a Github"
+
+#: accounts/templates/settings.html:43
+msgid "Connected as"
+msgstr "Conectado como"
+
+#: accounts/templates/settings.html:52
+msgid "Disconnect from Twitter"
+msgstr "Desconectar de Twitter"
+
+#: accounts/templates/settings.html:53
+msgid "for your account before disconnecting from Twitter"
+msgstr "para tu cuenta antes de desconectarte de Twitter"
+
+#: accounts/templates/settings.html:56
+msgid "Connect to Twitter"
+msgstr "Conectarse a Twitter"
+
+#: accounts/templates/settings.html:62
+msgid "Connected with Google"
+msgstr "Conectarse a Google"
+
+#: accounts/templates/settings.html:71
+msgid "Disconnect from Google"
+msgstr "Desconectarse de Google"
+
+#: accounts/templates/settings.html:72
+msgid "for your account before disconnecting from Google"
+msgstr "para tu cuenta antes de desconectarte de Google"
+
+#: accounts/templates/settings.html:75
+msgid "Connect to Google"
+msgstr "Conectarse a Google"
+
+#: accounts/templates/settings.html:83
+msgid "Connected to Google Calendar!"
+msgstr "Conectado a Google Calendar!"
+
+#: accounts/templates/settings.html:86
+msgid "Not connected to Google Calendar"
+msgstr "No conectado a Google Calendar"
+
+#: accounts/templates/settings.html:87
+msgid "Connect"
+msgstr "Conectar"
+
+#: accounts/templates/settings.html:122
+msgid "Ratings table"
+msgstr "Tabla de calificaciones"
+
+#: accounts/templates/settings.html:127
+msgid "Topic name"
+msgstr "Nombre del \"Topic\""
+
+#: accounts/templates/verify.html:7
+msgid "Account verification"
+msgstr "Verificación de cuenta"
+
+#: accounts/templates/verify.html:8
+msgid "An email was sent to your email address. Please verify your account."
+msgstr ""
+"Un email ha sido enviado a tu cuenta de email. Por favor, verifica tu correo."
+
+#: accounts/templates/verify_email.html:10
+msgid ""
+"This email is generated because someone (hopefully you) registered with this "
+"email at CloudQuestions."
+msgstr ""
+"Este email ha sido generado porque alguien se ha registrado con este email "
+"en CloudQuestions."
+
+#: accounts/templates/verify_email.html:11
+msgid "Please click the button to verify your account."
+msgstr "Por favor, haz click en el botón para verificar tu cuenta."
+
+#: questions/templates/questions/browse.html:6
+msgid "Browse topics from other users!"
+msgstr "¡Busca \"Topics\" de otros usuarios!"
+
+#: questions/templates/questions/browse.html:30
+#: questions/templates/questions/browse.html:47
+#: questions/templates/questions/create_topic.html:18
+#: questions/templates/questions/detail.html:8
+#: questions/templates/questions/questions.html:45
+#: questions/templates/questions/questions.html:62
+#: questions/templates/questions/random.html:8
+msgid "Created:"
+msgstr "Creado:"
+
+#: questions/templates/questions/browse.html:31
+#: questions/templates/questions/browse.html:48
+#: questions/templates/questions/create_topic.html:19
+#: questions/templates/questions/detail.html:9
+#: questions/templates/questions/questions.html:46
+#: questions/templates/questions/questions.html:63
+#: questions/templates/questions/random.html:9
+msgid "Creator:"
+msgstr "Creador:"
+
+#: questions/templates/questions/browse.html:38
+msgid "No topics with that search"
+msgstr "No hay \"Topics\" con esa búsqueda"
+
+#: questions/templates/questions/browse.html:58
+#: questions/templates/questions/random.html:30
+msgid "Next"
+msgstr "Siguiente"
+
+#: questions/templates/questions/create_topic.html:7
+msgid "Create or modify a topic"
+msgstr "Crea o modifica un topic"
+
+#: questions/templates/questions/create_topic.html:49
+msgid "Save topic"
+msgstr "Guardar"
+
+#: questions/templates/questions/detail.html:31
+msgid "Random session"
+msgstr "Sesión aleatoria"
+
+#: questions/templates/questions/detail.html:37
+msgid "Bad"
+msgstr "Mal"
+
+#: questions/templates/questions/detail.html:40
+msgid "Medium"
+msgstr "Medio"
+
+#: questions/templates/questions/detail.html:43
+msgid "Good"
+msgstr "Bien"
+
+#: questions/templates/questions/detail.html:51
+msgid "Remove topic"
+msgstr "Eliminar topic"
+
+#: questions/templates/questions/index.html:13
+msgid "Efficient learning made easy"
+msgstr "Aprendizaje eficiente de forma fácil"
+
+#: questions/templates/questions/index.html:14
+msgid ""
+"CloudQuestions combines FlashCards with spaced repetition functionality, "
+"helping you reach your full potential."
+msgstr ""
+"CloudQuestions combina FlashCards con funcionalidad de repetición, ayudando "
+"a que consigas tu máximo potencial."
+
+#: questions/templates/questions/index.html:17
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: questions/templates/questions/index.html:24
+msgid "Experts"
+msgstr "Expertos"
+
+#: questions/templates/questions/index.html:28
+msgid ""
+"I’ve come across active recall and spaced repetition which, in combination, "
+"will help make your studies more efficient, effective and rewarding."
+msgstr ""
+"Me he encontrado con ambas Active Recall y repetición en el tiempo, que "
+"combinadas, ayudarán a hacer tus estudios más eficientes, efectivos y "
+"gratificantes."
+
+#: questions/templates/questions/index.html:32
+msgid ""
+"If recall is supplemented by a metacognitive judgement before restudy then "
+"recall plus restudy promotes a better mental model and improved problem "
+"solving."
+msgstr ""
+"Si Recall es complementada con juicio metacognitivo antes de reestudiar, "
+"entonces Recall con reestudio consigue un mejor modelo mental y mejora de "
+"resolución de problemas."
+
+#: questions/templates/questions/index.html:36
+msgid ""
+"Repeated encounters with to-be-learned material that are spaced out in time "
+"(as opposed to recurring back-to-back) are an effective way to foster "
+"learning that is long-lasting."
+msgstr ""
+"Si te enfrentas repetidamente con material a aprender, estando estos "
+"encontronazos separados en el tiempo, el aprendizaje conseguido será "
+"efectivo para memoria a largo plazo."
+
+#: questions/templates/questions/index.html:42
+msgid "Workflow"
+msgstr "Pasos"
+
+#: questions/templates/questions/index.html:43
+msgid ""
+"The recommended way of using the app is accessing the topics and answering "
+"the questions without looking at the response. Then, rate your session and "
+"redo it as you need."
+msgstr ""
+"Los pasos recomendados para usar la app es, primero acceder a los topics y "
+"responder las preguntas sin mirar las respuestas. Después, califica la "
+"sesión y repite el proceso siempre que lo necesites."
+
+#: questions/templates/questions/index.html:65
+msgid "Create a topic"
+msgstr "Crea un topic"
+
+#: questions/templates/questions/index.html:76
+msgid "Access the topic"
+msgstr "Accede al topic"
+
+#: questions/templates/questions/index.html:87
+msgid "Answer the questions"
+msgstr "Responde las preguntas"
+
+#: questions/templates/questions/index.html:98
+msgid "Rate the topic and revisit"
+msgstr "Califica el topic y revisítalo"
+
+#: questions/templates/questions/index.html:110
+msgid ""
+"CloudQuestions is Open Source! Feel free to contribute and become part of "
+"the community."
+msgstr ""
+"CloudQuestions es de Código Abierto! Anímate a contribuir y formar parte de "
+"esta comunidad."
+
+#: questions/templates/questions/index.html:114
+msgid "Repository"
+msgstr "Repositorio"
+
+#: questions/templates/questions/index.html:119
+msgid "Issues"
+msgstr "Issues"
+
+#: questions/templates/questions/questions.html:33
+msgid "Create topic"
+msgstr "Crea un topic"
+
+#: questions/templates/questions/questions.html:53
+msgid "No hay ningún topic con esa búsqueda."
+msgstr ""
+
+#: questions/templates/questions/random.html:24
+msgid "Go back"
+msgstr "Atrás"
+
+#: templates/registration/logged_out.html:7
+msgid "You are now logged out."
+msgstr "Ya no estás dentro."
+
+#: templates/registration/logged_out.html:8
+msgid "Login again?"
+msgstr "¿Quieres hacer login?"
+
+#: templates/registration/login.html:10 templates/registration/login.html:28
+#: templates/registration/password_reset_complete.html:8
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/registration/login.html:20
+msgid "Please login to see this page."
+msgstr "Por favor, haz Log in para ver esta página."
+
+#: templates/registration/login.html:33
+msgid "Lost password?"
+msgstr "¿Has perdido la contraseña?"
+
+#: templates/registration/login.html:34
+msgid "Don't have an account?"
+msgstr "¿No tienes cuenta?"
+
+#: templates/registration/password_change_done.html:7
+msgid "Password Changed"
+msgstr "La contraseña ha cambiado"
+
+#: templates/registration/password_change_done.html:8
+msgid "Go back?"
+msgstr "Atrás"
+
+#: templates/registration/password_change_form.html:9
+#: templates/registration/password_change_form.html:11
+msgid "Change Password"
+msgstr "Cambia la contraseña"
+
+#: templates/registration/password_change_form.html:19
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead and"
+msgstr "Tu contraseña ha sido cambiada. Puedes hacer"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "now"
+msgstr "ahora"
+
+#: templates/registration/password_reset_confirm.html:8
+#: templates/registration/password_reset_confirm.html:12
+msgid "Change password"
+msgstr "Cambia la contraseña"
+
+#: templates/registration/password_reset_email.html:4
+msgid ""
+"\n"
+"To initiate the password reset process for your %(username)s CloudQuestions "
+"Account,\n"
+"click the link below:\n"
+msgstr ""
+"\n"
+"Para empezar el proceso de reinicio de contraseña para tu cuenta de"
+" CloudQuestions, con usuario %(username)\n"
+"Haz click en el link de abajo:\n"
+
+#: templates/registration/password_reset_email.html:11
+msgid ""
+"If clicking the link above doesn't work, please copy and paste the URL in a "
+"new browser window instead."
+msgstr "Si el link no funciona, Por favor, copia y pega la URL en una nueva "
+"ventana."
+
+#: templates/registration/password_reset_email.html:14
+msgid "The CloudQuestions Team"
+msgstr "El equipo de CloudQuestions"
+
+#: templates/registration/password_reset_form.html:8
+#: templates/registration/password_reset_form.html:12
+msgid "Reset password"
+msgstr "Reiniciar la contraseña"
+
+#~ msgid "group"
+#~ msgstr "grupo"
+
+#~ msgid "groups"
+#~ msgstr "grupos"
+
+#~ msgid "group connection"
+#~ msgstr "conexión a un grupo"
+
+#~ msgid "group connections"
+#~ msgstr "conexiones a un grupo"
+
+#~ msgid "topic"
+#~ msgstr "topic"
+
+#~ msgid "topics"
+#~ msgstr "topics"
+
+#~ msgid "question"
+#~ msgstr "pregunta"
+
+#~ msgid "questions"
+#~ msgstr "preguntas"
+
+#~ msgid "rating"
+#~ msgstr "calificación"
+
+#~ msgid "ratings"
+#~ msgstr "calificaciones"
+
+#~ msgid "calendar connection"
+#~ msgstr "conexión a calendar"
+
+#~ msgid "calendar connections"
+#~ msgstr "conexiones a calendar"

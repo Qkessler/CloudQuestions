@@ -85,6 +85,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -142,7 +143,6 @@ else:
 DATABASES = database_config
 
 # Dates.
-USE_L10N = False
 DATE_FORMAT = "%d/%m/%Y"
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -164,6 +164,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [
+    ('en-us','English'),
+    ('es', 'Spanish'),
+    ('fr', 'French')
+]
+
+TEMPLATE_CONTEXT_PROCESSORS = {
+    'django.core.context_processors.i18n',
+}
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
 
 TIME_ZONE = 'UTC'
 

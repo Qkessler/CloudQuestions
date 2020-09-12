@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %%}
 
 {% block content %}
 <div class="logout-done">
-    <h1 class="architects">You are now logged out.</h1>
-    <a href="{% url 'login' %}">Login again?</a>
+    <h1 class="architects">{% translate "You are now logged out."%}</h1>
+    <a href="{% url 'login' %}">{% translate "Login again?"%}</a>
 </div>
 {% endblock %}

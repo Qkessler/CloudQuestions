@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="logout-done">
-    <h1 class="architects">Your account has been activated!</h1>
-    <a href="{% url 'login' %}">Login?</a>
+    <h1 class="architects">{% translate "Your credentials have been modified!" %}</h1>
+    <a href="{% url 'login' %}">{% translate "Login?" %}</a>
 </div>
 {% endblock %}

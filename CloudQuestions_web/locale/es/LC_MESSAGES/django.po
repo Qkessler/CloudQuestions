@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-12 10:26+0000\n"
+"POT-Creation-Date: 2020-09-12 10:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,6 +55,7 @@ msgstr ""
 
 #: accounts/templates/change_email_email.html:39
 #: accounts/templates/verify_email.html:30
+#: templates/registration/password_reset_email.html:13
 msgid "Sincerely"
 msgstr "Un saludo"
 
@@ -345,6 +346,89 @@ msgstr ""
 #: questions/templates/questions/random.html:24
 msgid "Go back"
 msgstr "Atrás"
+
+#: templates/registration/logged_out.html:7
+msgid "You are now logged out."
+msgstr "Ya no estás dentro."
+
+#: templates/registration/logged_out.html:8
+msgid "Login again?"
+msgstr "¿Quieres hacer login?"
+
+#: templates/registration/login.html:10 templates/registration/login.html:28
+#: templates/registration/password_reset_complete.html:8
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/registration/login.html:20
+msgid "Please login to see this page."
+msgstr "Por favor, haz Log in para ver esta página."
+
+#: templates/registration/login.html:33
+msgid "Lost password?"
+msgstr "¿Has perdido la contraseña?"
+
+#: templates/registration/login.html:34
+msgid "Don't have an account?"
+msgstr "¿No tienes cuenta?"
+
+#: templates/registration/password_change_done.html:7
+msgid "Password Changed"
+msgstr "La contraseña ha cambiado"
+
+#: templates/registration/password_change_done.html:8
+msgid "Go back?"
+msgstr "Atrás"
+
+#: templates/registration/password_change_form.html:9
+#: templates/registration/password_change_form.html:11
+msgid "Change Password"
+msgstr "Cambia la contraseña"
+
+#: templates/registration/password_change_form.html:19
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead and"
+msgstr "Tu contraseña ha sido cambiada. Puedes hacer"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "now"
+msgstr "ahora"
+
+#: templates/registration/password_reset_confirm.html:8
+#: templates/registration/password_reset_confirm.html:12
+msgid "Change password"
+msgstr "Cambia la contraseña"
+
+#: templates/registration/password_reset_email.html:4
+msgid ""
+"\n"
+"To initiate the password reset process for your %(username)s CloudQuestions "
+"Account,\n"
+"click the link below:\n"
+msgstr ""
+"\n"
+"Para empezar el proceso de reinicio de contraseña para tu cuenta de"
+" CloudQuestions, con usuario %(username)\n"
+"Haz click en el link de abajo:\n"
+
+#: templates/registration/password_reset_email.html:11
+msgid ""
+"If clicking the link above doesn't work, please copy and paste the URL in a "
+"new browser window instead."
+msgstr "Si el link no funciona, Por favor, copia y pega la URL en una nueva "
+"ventana."
+
+#: templates/registration/password_reset_email.html:14
+msgid "The CloudQuestions Team"
+msgstr "El equipo de CloudQuestions"
+
+#: templates/registration/password_reset_form.html:8
+#: templates/registration/password_reset_form.html:12
+msgid "Reset password"
+msgstr "Reiniciar la contraseña"
 
 #~ msgid "group"
 #~ msgstr "grupo"

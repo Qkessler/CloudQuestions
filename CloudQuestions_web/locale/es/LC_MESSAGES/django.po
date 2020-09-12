@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 11:03+0000\n"
+"POT-Creation-Date: 2020-09-12 10:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,22 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: accounts/models.py:15
-msgid "group"
-msgstr "grupo"
-
-#: accounts/models.py:16
-msgid "groups"
-msgstr "grupos"
-
-#: accounts/models.py:26
-msgid "group connection"
-msgstr "conexión a un grupo"
-
-#: accounts/models.py:27
-msgid "group connections"
-msgstr "conexiones a un grupo"
 
 #: accounts/templates/activated.html:7
 msgid "Your credentials have been modified!"
@@ -88,6 +72,7 @@ msgstr "Configuración"
 
 #: accounts/templates/settings.html:12
 #: questions/templates/questions/browse.html:10
+#: questions/templates/questions/create_topic.html:10
 msgid "Help?"
 msgstr "¿Necesitas ayuda?"
 
@@ -191,49 +176,19 @@ msgstr ""
 msgid "Please click the button to verify your account."
 msgstr "Por favor, haz click en el botón para verificar tu cuenta."
 
-#: questions/models.py:22
-msgid "topic"
-msgstr "topic"
-
-#: questions/models.py:23
-msgid "topics"
-msgstr "topics"
-
-#: questions/models.py:34
-msgid "question"
-msgstr "pregunta"
-
-#: questions/models.py:35
-msgid "questions"
-msgstr "preguntas"
-
-#: questions/models.py:47
-msgid "rating"
-msgstr "calificación"
-
-#: questions/models.py:48
-msgid "ratings"
-msgstr "calificaciones"
-
-#: questions/models.py:58
-msgid "calendar connection"
-msgstr "conexión a calendar"
-
-#: questions/models.py:59
-msgid "calendar connections"
-msgstr "conexiones a calendar"
-
 #: questions/templates/questions/browse.html:6
 msgid "Browse topics from other users!"
 msgstr "¡Busca \"Topics\" de otros usuarios!"
 
 #: questions/templates/questions/browse.html:30
 #: questions/templates/questions/browse.html:47
+#: questions/templates/questions/create_topic.html:18
 msgid "Created:"
 msgstr "Creado:"
 
 #: questions/templates/questions/browse.html:31
 #: questions/templates/questions/browse.html:48
+#: questions/templates/questions/create_topic.html:19
 msgid "Creator:"
 msgstr "Creador:"
 
@@ -244,6 +199,14 @@ msgstr "No hay \"Topics\" con esa búsqueda"
 #: questions/templates/questions/browse.html:58
 msgid "Next"
 msgstr "Siguiente"
+
+#: questions/templates/questions/create_topic.html:7
+msgid "Create or modify a topic"
+msgstr "Crea o modifica un topic"
+
+#: questions/templates/questions/create_topic.html:49
+msgid "Save topic"
+msgstr "Guardar"
 
 #: questions/templates/questions/index.html:13
 msgid "Efficient learning made easy"
@@ -339,3 +302,39 @@ msgstr "Repositorio"
 #: questions/templates/questions/index.html:119
 msgid "Issues"
 msgstr "Issues"
+
+#~ msgid "group"
+#~ msgstr "grupo"
+
+#~ msgid "groups"
+#~ msgstr "grupos"
+
+#~ msgid "group connection"
+#~ msgstr "conexión a un grupo"
+
+#~ msgid "group connections"
+#~ msgstr "conexiones a un grupo"
+
+#~ msgid "topic"
+#~ msgstr "topic"
+
+#~ msgid "topics"
+#~ msgstr "topics"
+
+#~ msgid "question"
+#~ msgstr "pregunta"
+
+#~ msgid "questions"
+#~ msgstr "preguntas"
+
+#~ msgid "rating"
+#~ msgstr "calificación"
+
+#~ msgid "ratings"
+#~ msgstr "calificaciones"
+
+#~ msgid "calendar connection"
+#~ msgstr "conexión a calendar"
+
+#~ msgid "calendar connections"
+#~ msgstr "conexiones a calendar"

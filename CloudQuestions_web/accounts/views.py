@@ -48,6 +48,7 @@ def activate(request, uidb64, token, email):
         user.save()
     return render(request, "activated.html", context)
 
+
 @login_required
 def settings(request, topic=None, color=None):
     if request.GET.get("toggle_help"):
@@ -80,7 +81,8 @@ def settings(request, topic=None, color=None):
                 question_service.verification_email(request, user, email)
                 return render(request, "verify.html")
         elif request.POST.get("action") == "user_form":
-            change_user_form = ChangeUsernameForm(request.POST, instance=request.user)
+            change_user_form = ChangeUsernameForm(request.POST,
+                                                  instance=request.user)
             if change_user_form.is_valid():
                 user.username = request.POST.get("username")
                 user.save()

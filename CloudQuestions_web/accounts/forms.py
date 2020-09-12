@@ -5,6 +5,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div
 from django.contrib.auth.models import User
 
+
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(max_length=200, required=True)
@@ -28,7 +29,7 @@ class SignUpForm(UserCreationForm):
             ButtonHolder(Submit("submit", "Sign up", css_class="button white")),
         )
 
-        
+
 class ChangeUsernameForm(forms.ModelForm):
     username = forms.CharField(max_length=30, required=True, label="Username")
     action = forms.CharField(max_length=30)

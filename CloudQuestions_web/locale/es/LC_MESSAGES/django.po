@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-12 10:11+0000\n"
+"POT-Creation-Date: 2020-09-12 10:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,7 @@ msgstr "¿Quieres hacer login?"
 
 #: accounts/templates/change_email_email.html:11
 #: accounts/templates/verify_email.html:9
+#: questions/templates/questions/questions.html:10
 msgid "Hi, "
 msgstr "Hola, "
 
@@ -73,6 +74,7 @@ msgstr "Configuración"
 #: accounts/templates/settings.html:12
 #: questions/templates/questions/browse.html:10
 #: questions/templates/questions/create_topic.html:10
+#: questions/templates/questions/questions.html:14
 msgid "Help?"
 msgstr "¿Necesitas ayuda?"
 
@@ -183,12 +185,18 @@ msgstr "¡Busca \"Topics\" de otros usuarios!"
 #: questions/templates/questions/browse.html:30
 #: questions/templates/questions/browse.html:47
 #: questions/templates/questions/create_topic.html:18
+#: questions/templates/questions/detail.html:8
+#: questions/templates/questions/questions.html:45
+#: questions/templates/questions/questions.html:62
 msgid "Created:"
 msgstr "Creado:"
 
 #: questions/templates/questions/browse.html:31
 #: questions/templates/questions/browse.html:48
 #: questions/templates/questions/create_topic.html:19
+#: questions/templates/questions/detail.html:9
+#: questions/templates/questions/questions.html:46
+#: questions/templates/questions/questions.html:63
 msgid "Creator:"
 msgstr "Creador:"
 
@@ -207,6 +215,26 @@ msgstr "Crea o modifica un topic"
 #: questions/templates/questions/create_topic.html:49
 msgid "Save topic"
 msgstr "Guardar"
+
+#: questions/templates/questions/detail.html:31
+msgid "Random session"
+msgstr "Sesión aleatoria"
+
+#: questions/templates/questions/detail.html:37
+msgid "Bad"
+msgstr "Mal"
+
+#: questions/templates/questions/detail.html:40
+msgid "Medium"
+msgstr "Medio"
+
+#: questions/templates/questions/detail.html:43
+msgid "Good"
+msgstr "Bien"
+
+#: questions/templates/questions/detail.html:51
+msgid "Remove topic"
+msgstr "Eliminar topic"
 
 #: questions/templates/questions/index.html:13
 msgid "Efficient learning made easy"
@@ -302,6 +330,14 @@ msgstr "Repositorio"
 #: questions/templates/questions/index.html:119
 msgid "Issues"
 msgstr "Issues"
+
+#: questions/templates/questions/questions.html:33
+msgid "Create topic"
+msgstr "Crea un topic"
+
+#: questions/templates/questions/questions.html:53
+msgid "No hay ningún topic con esa búsqueda."
+msgstr ""
 
 #~ msgid "group"
 #~ msgstr "grupo"

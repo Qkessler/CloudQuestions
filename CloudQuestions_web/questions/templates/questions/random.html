@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
+
 {% block content %}
 <div class="list_topic_item color-opacity_{{topic.color}}" id="header-topic">
     <h1 class="inline-block-black"> {{ topic_pretty_name }} </h1>
-    <p class="inline-block-black"> Created: {{topic.created}}</p>
-    <p class="inline-block-black" > Creator: {{ creator }}</p>
+    <p class="inline-block-black"> {% translate "Created:"%} {{topic.created}}</p>
+    <p class="inline-block-black" > {% translate "Creator:"%} {{ creator }}</p>
 </div>
 {% autoescape off %}
 <div class="note rounded color-light_{{topic.color}}">
@@ -19,13 +21,13 @@
 <div id="buttons-random">
 <div class="inline-block-black" id="return-button">
     <form method="get">
-        <input class="btn btn-primary" name="return" type="submit" value="Go back"/>
+        <input class="btn btn-primary" name="return" type="submit" value="{% translate "Go back"%}"/>
     </form>
 </div>
 
 <div class="inline-block-black margin-left" id="next-question">
     <form method="get">
-        <input class="btn btn-success" name="next_question" type="submit" value="Next"/>
+        <input class="btn btn-success" name="next_question" type="submit" value="{% translate "Next"%}"/>
     </form>
 </div>
 </div>

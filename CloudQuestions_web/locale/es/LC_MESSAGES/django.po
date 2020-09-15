@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-12 10:41+0000\n"
+"POT-Creation-Date: 2020-09-12 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,6 +79,10 @@ msgstr "Configuración"
 msgid "Help?"
 msgstr "¿Necesitas ayuda?"
 
+#: accounts/templates/settings.html:23 accounts/templates/settings.html:43
+msgid "Connected as"
+msgstr "Conectado como"
+
 #: accounts/templates/settings.html:28 accounts/templates/settings.html:48
 #: accounts/templates/settings.html:67 accounts/templates/settings.html:84
 msgid "Disconnect"
@@ -105,10 +109,6 @@ msgstr "para tu cuenta antes de desconectarte de Github"
 #: accounts/templates/settings.html:36
 msgid "Connect to GitHub"
 msgstr "Conectarse a Github"
-
-#: accounts/templates/settings.html:43
-msgid "Connected as"
-msgstr "Conectado como"
 
 #: accounts/templates/settings.html:52
 msgid "Disconnect from Twitter"
@@ -410,16 +410,16 @@ msgid ""
 "click the link below:\n"
 msgstr ""
 "\n"
-"Para empezar el proceso de reinicio de contraseña para tu cuenta de"
-" CloudQuestions, con usuario %(username)\n"
+"Para empezar el proceso de reinicio de contraseña para tu cuenta de "
+"CloudQuestions, con usuario %(username)\n"
 "Haz click en el link de abajo:\n"
 
 #: templates/registration/password_reset_email.html:11
 msgid ""
 "If clicking the link above doesn't work, please copy and paste the URL in a "
 "new browser window instead."
-msgstr "Si el link no funciona, Por favor, copia y pega la URL en una nueva "
-"ventana."
+msgstr ""
+"Si el link no funciona, Por favor, copia y pega la URL en una nueva ventana."
 
 #: templates/registration/password_reset_email.html:14
 msgid "The CloudQuestions Team"

@@ -20,7 +20,7 @@
             <div class="padding-login social-connection">
                 <img id="github-logo" alt="Github logo" src="{% static 'questions/github-logo.png'%}"/>
                 {% if github_login %}
-                <p class="label-connection">{% translate "Connected as%} <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+                <p class="label-connection">{% translate "Connected as"%} <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
                 {% if can_disconnect %}
                 <div class="inline-block-black">
                     <form method="post" action="{% url 'social:disconnect' 'github' %}">

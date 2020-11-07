@@ -150,11 +150,11 @@ def search_engine(search_term, creator=None, public=None):
         for qa in all_questions:
             question = qa.question
             answer = qa.answer
-            topic_id = qa.id
+            topic_id = qa.topic_id
             if search_term in question or search_term in answer:
                 if topic_id not in topic_ids:
                     topic_ids.append(topic_id)
-        breakpoint()
+        # breakpoint()
         # for question in query:
         #     if question.topic not in topic_question.keys():
         #         topic_question[question.topic] = []

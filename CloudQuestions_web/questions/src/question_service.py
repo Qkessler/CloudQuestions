@@ -141,27 +141,35 @@ def search_engine(search_term, creator=None, public=None):
                 .order_by("name")
             )
     else:
-        topics_ids = []
+        topic_ids = []
         topic_id_query = topics_by_id(parsing.scrub_name(search_term), creator)
         if topic_id_query:
             topics_ids = topic_id_query
-        query = Question.objects.all().filter(topic__in=topics_ids)
-        topic_question = {}
-        for question in query:
-            if question.topic not in topic_question.keys():
-                topic_question[question.topic] = []
-            topic_question[question.topic].append(question)
+        all_questions = Question.objects.all()
+        # topic_question = {}
+        for qa in all_questions:
+            question = qa.question
+            answer = qa.answer
+            topic_id = qa.id
+            if search_term in question or search_term in answer:
+                if topic_id not in topic_ids:
+                    topic_ids.append(topic_id)
+        breakpoint()
+        # for question in query:
+        #     if question.topic not in topic_question.keys():
+        #         topic_question[question.topic] = []
+        #     topic_question[question.topic].append(question)
 
-        for topic, questions in topic_question.items():
-            words_topic = []
-            for question in questions:
-                for word in get_words(question):
-                    if word != "":
-                        words_topic.append(word)
-            if search_term in words_topic:
-                if topic not in topics_ids:
-                    topics_ids.append(topic.id)
-        topics_return = Topic.objects.all().filter(id__in=topics_ids).order_by("name")
+        # for topic, questions in topic_question.items():
+        #     words_topic = []
+        #     for question in questions:
+        #         for word in get_words(question):
+        #             if word != "":
+        #                 words_topic.append(word)
+        #     if search_term in words_topic:
+        #         if topic not in topics_ids:
+        #             topics_ids.append(topic.id)
+        topics_return = Topic.objects.all().filter(id__in=topic_ids).order_by("name")
     return topics_return
 
 

@@ -126,7 +126,7 @@ def browse(request, number_questions=10):
             search_form = SearchForm(request.POST, prefix="search_form")
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get("search_text")
-                db_topics = question_service.search_engine(search_term, public=True)
+                db_topics = question_service.search_engine(search_term)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))

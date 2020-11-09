@@ -273,6 +273,15 @@ def delete_flagged():
         question.delete()
 
 
+def delete_questions(topic):
+    """
+    Function called when the delete topic button is pressed on the details view.
+    """
+    questions_topic = Question.objects.filter(topic_id=topic)
+    for question in questions_topic:
+        question.delete()
+
+
 def get_privacy(topic):
     """ Function created to get the context for the detail form, which puts and
     icon if the topic is public"""

@@ -77,6 +77,8 @@ def detail(request, topic_name):
     if is_public or context["is_creator"] or group_participant or help_topic:
 
         if request.GET.get("delete") and context["creator"]:
+            topic_id = topic.id
+            question_service.delete_questions(topic_id);
             topic.delete()
             return redirect("questions:questions")
 

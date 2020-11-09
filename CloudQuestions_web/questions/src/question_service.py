@@ -273,11 +273,12 @@ def delete_flagged():
         question.delete()
 
 
-def delete_questions(topic):
+def delete_topic(topic):
     """
     Function called when the delete topic button is pressed on the details view.
     """
-    questions_topic = Question.objects.filter(topic_id=topic)
+    topic.delete()
+    questions_topic = Question.objects.filter(topic_id=topic.id)
     for question in questions_topic:
         question.delete()
 

@@ -77,7 +77,7 @@ def detail(request, topic_name):
     if is_public or context["is_creator"] or group_participant or help_topic:
 
         if request.GET.get("delete") and context["creator"]:
-            topic.delete()
+            question_service.delete_topic(topic)
             return redirect("questions:questions")
 
         if request.GET.get("privacy-button.x"):
@@ -126,7 +126,7 @@ def browse(request, number_questions=10):
             search_form = SearchForm(request.POST, prefix="search_form")
             if search_form.is_valid():
                 search_term = search_form.cleaned_data.get("search_text")
-                db_topics = question_service.search_engine(search_term, public=True)
+                db_topics = question_service.search_engine(search_term)
                 unscrubed_topics = []
                 for topic in db_topics:
                     unscrubed_topics.append(parsing.unscrub_name(topic.name))

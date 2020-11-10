@@ -1,4 +1,6 @@
 # CloudQuestions
+<p align="center"><a href="https://cloudquestions.es" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
+
 
 Django Web-App for studying which creates an easier customer experience for applying a mix between Flash Cards and Active Recall techniques.
 

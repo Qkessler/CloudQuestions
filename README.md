@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://cloudquestions.es" target="_blank" rel="noopener noreferrer">
-        <img width="150" src="https://github.com/Qkessler/CloudQuestions/blob/improving_readme/pics/logo_readme.png" alt="CloudQuestions Logo">
+        <img width="150" src="https://github.com/Qkessler/CloudQuestions/blob/master/pics/logo_readme.png" alt="CloudQuestions Logo">
     </a>
 </p>
 

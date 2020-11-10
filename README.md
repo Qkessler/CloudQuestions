@@ -1,4 +1,10 @@
-# CloudQuestions
+<p align="center">
+    <a href="https://cloudquestions.es" target="_blank" rel="noopener noreferrer">
+        <img width="150" src="https://github.com/Qkessler/CloudQuestions/blob/improving_readme/pics/logo_readme.png" alt="CloudQuestions Logo">
+    </a>
+</p>
+
+<h1 align="center">CloudQuestions</h1>
 
 Django Web-App for studying which creates an easier customer experience for applying a mix between Flash Cards and Active Recall techniques.
 

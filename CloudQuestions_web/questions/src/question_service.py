@@ -92,10 +92,10 @@ def topics_by_id(name, creator=None):
 ids in the db. """
     topic_ids = []
     if not creator:
-        query = Topic.objects.filter(name__contains=name)
+        query = Topic.objects.filter(name__icontains=name)
         topic_ids = [topic.id for topic in query]
     else:
-        query_creator = Topic.objects.filter(name__contains=name).filter(
+        query_creator = Topic.objects.filter(name__icontains=name).filter(
             creator=creator
         )
         topic_ids = [topic.id for topic in query_creator]
@@ -108,14 +108,14 @@ def get_words(question):
     return [parsing.scrub_name(word) for word in text.split(" ")]
 
 
-def search_engine(search_term, creator=None):
+def search_engine(search_term: str, creator=None):
     """ Checks if the search_term is any of the topics first. Returns the topics
     where we have any question that contains the search_term given by the user.
     The creator is the decider to which search_engine to use, depending if
     the user is in the questions or the browse view. """
     topic_ids = []
     topics_matching = topics_by_id(parsing.scrub_name(
-        search_term), creator) if creator else topics_by_id(parsing.scrub_name(search_term))
+        search_term.lower()), creator) if creator else topics_by_id(parsing.scrub_name(search_term.lower()))
     if topics_matching:
         topic_ids = topics_matching
     if creator:
@@ -127,10 +127,10 @@ def search_engine(search_term, creator=None):
         all_questions = [question for question in Question.objects.all(
         ) if question.topic in public_topics]
     for qa in all_questions:
-        question = qa.question
-        answer = qa.answer
+        lower_question = qa.question.lower()
+        lower_answer = qa.answer.lower()
         topic_id = qa.topic_id
-        if search_term in question or search_term in answer:
+        if search_term.lower() in lower_question or search_term.lower() in lower_answer:
             if topic_id not in topic_ids:
                 topic_ids.append(topic_id)
     topics_return = Topic.objects.all().filter(id__in=topic_ids).order_by("name")

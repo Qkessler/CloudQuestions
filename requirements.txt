@@ -2,7 +2,7 @@ social_auth_app_django==3.1.0
 pytest==5.4.1
 pytest-django==3.9.0
 pytest-black==0.3.10
-httplib2==0.18.1
+httplib2==0.19.0
 Django==3.1
 Markdown==3.2.1
 oauth2client==4.1.3
